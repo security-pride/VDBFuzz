@@ -34,7 +34,7 @@ def get_port(name: str, default: str, env_values: dict) -> str:
 def build_targets() -> dict:
     env_values = load_env_file()
     qdrant_http_port = get_port("QDRANT_HTTP_PORT", "6333", env_values)
-    weaviate_http_port = get_port("WEAVIATE_HTTP_PORT", "8080", env_values)
+    weaviate_http_port = get_port("WEAVIATE_HTTP_PORT", "18080", env_values)
     milvus_http_port = get_port("MILVUS_HTTP_PORT", "9091", env_values)
 
     return {
