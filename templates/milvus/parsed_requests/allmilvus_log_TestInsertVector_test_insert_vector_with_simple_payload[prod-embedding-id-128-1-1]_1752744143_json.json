@@ -1,0 +1,112 @@
+{
+  "test_name": "allmilvus_log.TestInsertVector_test_insert_vector_with_simple_payload[prod-embedding-id-128-1-1]_1752744143.json",
+  "vdb_type": "qdrant",
+  "requests": [
+    {
+      "response": {
+        "status_code": 200,
+        "headers": {
+          "Access-Control-Allow-Credentials": "true",
+          "Access-Control-Allow-Headers": "Content-Type, Content-Length, Accept-Encoding, X-CSRF-Token, Authorization, accept, origin, Cache-Control, X-Requested-With",
+          "Access-Control-Allow-Methods": "GET, HEAD, POST, PUT, DELETE, OPTIONS, PATCH",
+          "Access-Control-Allow-Origin": "*",
+          "Content-Type": "application/json; charset=utf-8",
+          "Date": "Thu, 17 Jul 2025 09:22:23 GMT",
+          "Content-Length": "22"
+        },
+        "elapsed_ms": 115.881,
+        "timestamp": 1752744143.6002321,
+        "request_id": 0,
+        "content": {
+          "code": 200,
+          "data": {}
+        }
+      },
+      "method": "POST",
+      "url": "http://172.17.0.11:23210/v1/vector/collections/create",
+      "headers": {
+        "Content-Type": "application/json",
+        "Authorization": "Bearer root:Milvus",
+        "RequestId": "8c0cb571-62ef-11f0-a52e-0242ac110005"
+      },
+      "timestamp": 1752744143.4836462,
+      "request_id": 0,
+      "content": {
+        "collectionName": "test_collection_2025_07_17_17_22_22_483308DainuKsl",
+        "dimension": 128,
+        "primaryField": "id",
+        "vectorField": "embedding",
+        "autoID": true,
+        "dbName": "prod"
+      }
+    },
+    {
+      "response": {
+        "status_code": 200,
+        "headers": {
+          "Access-Control-Allow-Credentials": "true",
+          "Access-Control-Allow-Headers": "Content-Type, Content-Length, Accept-Encoding, X-CSRF-Token, Authorization, accept, origin, Cache-Control, X-Requested-With",
+          "Access-Control-Allow-Methods": "GET, HEAD, POST, PUT, DELETE, OPTIONS, PATCH",
+          "Access-Control-Allow-Origin": "*",
+          "Content-Type": "application/json; charset=utf-8",
+          "Date": "Thu, 17 Jul 2025 09:22:23 GMT",
+          "Content-Length": "70"
+        },
+        "elapsed_ms": 4.595,
+        "timestamp": 1752744143.6133578,
+        "request_id": 2,
+        "content": {
+          "code": 200,
+          "data": {
+            "insertCount": 1,
+            "insertIds": [
+              459470532653886307
+            ]
+          }
+        }
+      },
+      "method": "POST",
+      "url": "http://172.17.0.11:23210/v1/vector/insert",
+      "headers": {
+        "Content-Type": "application/json",
+        "Authorization": "Bearer root:Milvus",
+        "RequestId": "8c1fb4e3-62ef-11f0-84ec-0242ac110005"
+      },
+      "timestamp": 1752744143.6081507,
+      "request_id": 2,
+      "content": {
+        "collectionName": "test_collection_2025_07_17_17_22_22_483308DainuKsl",
+        "data": [
+          {
+            "embedding": "__FLOAT_ARRAY_DIM_128__",
+            "uid": 0,
+            "name": "Julie Leonard",
+            "address": "0885 Robinson Dale\nBrittanyton, PW 88865",
+            "text": "Political particularly sister property. Majority position time off east prove. Stuff surface board instead total agree.",
+            "email": "laramatthew@example.com",
+            "phone_number": "381.569.7899x249",
+            "array_int_dynamic": "__FLOAT_ARRAY_DIM_3__",
+            "array_varchar_dynamic": [
+              "James Wilson",
+              "Evelyn Estrada",
+              "Erin Williams DDS",
+              "John Carter",
+              "Natalie Kennedy",
+              "Kara Mitchell",
+              "Jared Garcia",
+              "Heather Haas",
+              "Dalton Wang"
+            ],
+            "json": {
+              "name": "Kelly Whitehead",
+              "address": "56158 Hernandez Estates Suite 123\nCoreyport, SD 56093"
+            },
+            "key23148": "value48584",
+            "key40665": "value8431"
+          }
+        ],
+        "dbName": "prod"
+      }
+    }
+  ]
+}

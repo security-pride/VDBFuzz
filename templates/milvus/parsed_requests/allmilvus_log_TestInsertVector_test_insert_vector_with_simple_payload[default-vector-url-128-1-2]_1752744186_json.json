@@ -1,0 +1,175 @@
+{
+  "test_name": "allmilvus_log.TestInsertVector_test_insert_vector_with_simple_payload[default-vector-url-128-1-2]_1752744186.json",
+  "vdb_type": "qdrant",
+  "requests": [
+    {
+      "response": {
+        "status_code": 200,
+        "headers": {
+          "Access-Control-Allow-Credentials": "true",
+          "Access-Control-Allow-Headers": "Content-Type, Content-Length, Accept-Encoding, X-CSRF-Token, Authorization, accept, origin, Cache-Control, X-Requested-With",
+          "Access-Control-Allow-Methods": "GET, HEAD, POST, PUT, DELETE, OPTIONS, PATCH",
+          "Access-Control-Allow-Origin": "*",
+          "Content-Type": "application/json; charset=utf-8",
+          "Date": "Thu, 17 Jul 2025 09:23:06 GMT",
+          "Content-Length": "22"
+        },
+        "elapsed_ms": 19.889,
+        "timestamp": 1752744186.0936608,
+        "request_id": 0,
+        "content": {
+          "code": 200,
+          "data": {}
+        }
+      },
+      "method": "POST",
+      "url": "http://172.17.0.11:23210/v1/vector/collections/create",
+      "headers": {
+        "Content-Type": "application/json",
+        "Authorization": "Bearer root:Milvus",
+        "RequestId": "a56f5954-62ef-11f0-b07a-0242ac110005"
+      },
+      "timestamp": 1752744186.0731177,
+      "request_id": 0,
+      "content": {
+        "collectionName": "test_collection_2025_07_17_17_23_05_072715YpNvNBld",
+        "dimension": 128,
+        "primaryField": "url",
+        "vectorField": "vector",
+        "autoID": true,
+        "dbName": "default"
+      }
+    },
+    {
+      "response": {
+        "status_code": 200,
+        "headers": {
+          "Access-Control-Allow-Credentials": "true",
+          "Access-Control-Allow-Headers": "Content-Type, Content-Length, Accept-Encoding, X-CSRF-Token, Authorization, accept, origin, Cache-Control, X-Requested-With",
+          "Access-Control-Allow-Methods": "GET, HEAD, POST, PUT, DELETE, OPTIONS, PATCH",
+          "Access-Control-Allow-Origin": "*",
+          "Content-Type": "application/json; charset=utf-8",
+          "Date": "Thu, 17 Jul 2025 09:23:06 GMT",
+          "Content-Length": "70"
+        },
+        "elapsed_ms": 4.949,
+        "timestamp": 1752744186.1062434,
+        "request_id": 2,
+        "content": {
+          "code": 200,
+          "data": {
+            "insertCount": 1,
+            "insertIds": [
+              459470532653888355
+            ]
+          }
+        }
+      },
+      "method": "POST",
+      "url": "http://172.17.0.11:23210/v1/vector/insert",
+      "headers": {
+        "Content-Type": "application/json",
+        "Authorization": "Bearer root:Milvus",
+        "RequestId": "a5738df1-62ef-11f0-9a80-0242ac110005"
+      },
+      "timestamp": 1752744186.1007025,
+      "request_id": 2,
+      "content": {
+        "collectionName": "test_collection_2025_07_17_17_23_05_072715YpNvNBld",
+        "data": [
+          {
+            "vector": "__FLOAT_ARRAY_DIM_128__",
+            "uid": 0,
+            "name": "Kyle Madden",
+            "address": "929 Jones Manor\nEast Gabrielview, OR 28172",
+            "text": "Tend organization daughter serious kind. Toward bed development still film.\nWithout each rest door upon. Born new bank finish morning its picture. Wide whatever both.",
+            "email": "angela90@example.com",
+            "phone_number": "+1-542-685-0456x20422",
+            "array_int_dynamic": "__FLOAT_ARRAY_DIM_4__",
+            "array_varchar_dynamic": [
+              "Daniel Li",
+              "Jesse Kelly",
+              "Jason Rodriguez",
+              "Olivia Jones",
+              "Sheila Gonzales"
+            ],
+            "json": {
+              "name": "Jason Smith",
+              "address": "915 Pena Rue\nWest Douglas, MS 30804"
+            },
+            "key13934": "value6271",
+            "key4582": "value20432"
+          }
+        ],
+        "dbName": "default"
+      }
+    },
+    {
+      "response": {
+        "status_code": 200,
+        "headers": {
+          "Access-Control-Allow-Credentials": "true",
+          "Access-Control-Allow-Headers": "Content-Type, Content-Length, Accept-Encoding, X-CSRF-Token, Authorization, accept, origin, Cache-Control, X-Requested-With",
+          "Access-Control-Allow-Methods": "GET, HEAD, POST, PUT, DELETE, OPTIONS, PATCH",
+          "Access-Control-Allow-Origin": "*",
+          "Content-Type": "application/json; charset=utf-8",
+          "Date": "Thu, 17 Jul 2025 09:23:06 GMT",
+          "Content-Length": "70"
+        },
+        "elapsed_ms": 2.529,
+        "timestamp": 1752744186.1130702,
+        "request_id": 3,
+        "content": {
+          "code": 200,
+          "data": {
+            "insertCount": 1,
+            "insertIds": [
+              459470532653888357
+            ]
+          }
+        }
+      },
+      "method": "POST",
+      "url": "http://172.17.0.11:23210/v1/vector/insert",
+      "headers": {
+        "Content-Type": "application/json",
+        "Authorization": "Bearer root:Milvus",
+        "RequestId": "a574f7bd-62ef-11f0-9716-0242ac110005"
+      },
+      "timestamp": 1752744186.1099558,
+      "request_id": 3,
+      "content": {
+        "collectionName": "test_collection_2025_07_17_17_23_05_072715YpNvNBld",
+        "data": [
+          {
+            "vector": "__FLOAT_ARRAY_DIM_128__",
+            "uid": 0,
+            "name": "Brian Hobbs",
+            "address": "19787 Hernandez Lock Suite 923\nWest Glennport, ID 36479",
+            "text": "Talk weight politics until develop. Establish fight training pressure dog. Eat military drive reach such tree.",
+            "email": "andersonpeggy@example.com",
+            "phone_number": "798-819-9977x8688",
+            "array_int_dynamic": "__FLOAT_ARRAY_DIM_8__",
+            "array_varchar_dynamic": [
+              "Edward Watson",
+              "Christopher Collins",
+              "Kaitlyn Holmes",
+              "Philip Myers",
+              "Michelle Norton DDS",
+              "Samantha Hill",
+              "Kenneth Dennis",
+              "Cheryl Anderson",
+              "Megan Franklin"
+            ],
+            "json": {
+              "name": "Julie Guerrero",
+              "address": "7365 Kathy Hills\nMichelleberg, GA 73286"
+            },
+            "key75655": "value73929"
+          }
+        ],
+        "dbName": "default"
+      }
+    }
+  ]
+}

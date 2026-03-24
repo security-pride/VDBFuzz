@@ -1,0 +1,114 @@
+{
+  "test_name": "allmilvus_log.TestInsertVector_test_insert_vector_with_simple_payload[prod-embedding-id-32-1-1]_1752744136.json",
+  "vdb_type": "qdrant",
+  "requests": [
+    {
+      "response": {
+        "status_code": 200,
+        "headers": {
+          "Access-Control-Allow-Credentials": "true",
+          "Access-Control-Allow-Headers": "Content-Type, Content-Length, Accept-Encoding, X-CSRF-Token, Authorization, accept, origin, Cache-Control, X-Requested-With",
+          "Access-Control-Allow-Methods": "GET, HEAD, POST, PUT, DELETE, OPTIONS, PATCH",
+          "Access-Control-Allow-Origin": "*",
+          "Content-Type": "application/json; charset=utf-8",
+          "Date": "Thu, 17 Jul 2025 09:22:16 GMT",
+          "Content-Length": "22"
+        },
+        "elapsed_ms": 19.503,
+        "timestamp": 1752744136.1000633,
+        "request_id": 0,
+        "content": {
+          "code": 200,
+          "data": {}
+        }
+      },
+      "method": "POST",
+      "url": "http://172.17.0.11:23210/v1/vector/collections/create",
+      "headers": {
+        "Content-Type": "application/json",
+        "Authorization": "Bearer root:Milvus",
+        "RequestId": "87a2fbf6-62ef-11f0-85a3-0242ac110005"
+      },
+      "timestamp": 1752744136.0798461,
+      "request_id": 0,
+      "content": {
+        "collectionName": "test_collection_2025_07_17_17_22_15_079553RhNImnYZ",
+        "dimension": 32,
+        "primaryField": "id",
+        "vectorField": "embedding",
+        "autoID": true,
+        "dbName": "prod"
+      }
+    },
+    {
+      "response": {
+        "status_code": 200,
+        "headers": {
+          "Access-Control-Allow-Credentials": "true",
+          "Access-Control-Allow-Headers": "Content-Type, Content-Length, Accept-Encoding, X-CSRF-Token, Authorization, accept, origin, Cache-Control, X-Requested-With",
+          "Access-Control-Allow-Methods": "GET, HEAD, POST, PUT, DELETE, OPTIONS, PATCH",
+          "Access-Control-Allow-Origin": "*",
+          "Content-Type": "application/json; charset=utf-8",
+          "Date": "Thu, 17 Jul 2025 09:22:16 GMT",
+          "Content-Length": "70"
+        },
+        "elapsed_ms": 4.771,
+        "timestamp": 1752744136.1120715,
+        "request_id": 2,
+        "content": {
+          "code": 200,
+          "data": {
+            "insertCount": 1,
+            "insertIds": [
+              459470532653885965
+            ]
+          }
+        }
+      },
+      "method": "POST",
+      "url": "http://172.17.0.11:23210/v1/vector/insert",
+      "headers": {
+        "Content-Type": "application/json",
+        "Authorization": "Bearer root:Milvus",
+        "RequestId": "87a7129e-62ef-11f0-94c5-0242ac110005"
+      },
+      "timestamp": 1752744136.1066473,
+      "request_id": 2,
+      "content": {
+        "collectionName": "test_collection_2025_07_17_17_22_15_079553RhNImnYZ",
+        "data": [
+          {
+            "embedding": "__FLOAT_ARRAY_DIM_32__",
+            "uid": 0,
+            "name": "Kelsey Green",
+            "address": "77808 Brian Valley Suite 992\nSouth Chad, KY 54997",
+            "text": "Administration billion resource fine model nor present. Form to this listen sister security work. Day audience Congress stage pay important soon.",
+            "email": "nathanielanderson@example.org",
+            "phone_number": "(775)811-7276",
+            "array_int_dynamic": "__FLOAT_ARRAY_DIM_4__",
+            "array_varchar_dynamic": [
+              "Anna Jordan",
+              "Julie Perry",
+              "Samuel Castillo",
+              "Paige Bryant"
+            ],
+            "json": {
+              "name": "Derek Schmidt",
+              "address": "877 Wolf Flats Apt. 313\nKellychester, PR 45546"
+            },
+            "key8633": "value82185",
+            "key4505": "value20669",
+            "key56849": "value17058",
+            "key96732": "value88021",
+            "key13087": "value62157",
+            "key74990": "value70285",
+            "key1100": "value19865",
+            "key43757": "value2211",
+            "key59457": "value97224"
+          }
+        ],
+        "dbName": "prod"
+      }
+    }
+  ]
+}

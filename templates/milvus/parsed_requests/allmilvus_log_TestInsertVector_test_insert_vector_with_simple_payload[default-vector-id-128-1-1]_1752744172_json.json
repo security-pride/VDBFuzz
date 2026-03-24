@@ -1,0 +1,115 @@
+{
+  "test_name": "allmilvus_log.TestInsertVector_test_insert_vector_with_simple_payload[default-vector-id-128-1-1]_1752744172.json",
+  "vdb_type": "qdrant",
+  "requests": [
+    {
+      "response": {
+        "status_code": 200,
+        "headers": {
+          "Access-Control-Allow-Credentials": "true",
+          "Access-Control-Allow-Headers": "Content-Type, Content-Length, Accept-Encoding, X-CSRF-Token, Authorization, accept, origin, Cache-Control, X-Requested-With",
+          "Access-Control-Allow-Methods": "GET, HEAD, POST, PUT, DELETE, OPTIONS, PATCH",
+          "Access-Control-Allow-Origin": "*",
+          "Content-Type": "application/json; charset=utf-8",
+          "Date": "Thu, 17 Jul 2025 09:22:52 GMT",
+          "Content-Length": "22"
+        },
+        "elapsed_ms": 30.634999999999998,
+        "timestamp": 1752744172.8838725,
+        "request_id": 0,
+        "content": {
+          "code": 200,
+          "data": {}
+        }
+      },
+      "method": "POST",
+      "url": "http://172.17.0.11:23210/v1/vector/collections/create",
+      "headers": {
+        "Content-Type": "application/json",
+        "Authorization": "Bearer root:Milvus",
+        "RequestId": "9d8e138b-62ef-11f0-8955-0242ac110005"
+      },
+      "timestamp": 1752744172.8526776,
+      "request_id": 0,
+      "content": {
+        "collectionName": "test_collection_2025_07_17_17_22_51_852398rOlZfgzG",
+        "dimension": 128,
+        "primaryField": "id",
+        "vectorField": "vector",
+        "autoID": true,
+        "dbName": "default"
+      }
+    },
+    {
+      "response": {
+        "status_code": 200,
+        "headers": {
+          "Access-Control-Allow-Credentials": "true",
+          "Access-Control-Allow-Headers": "Content-Type, Content-Length, Accept-Encoding, X-CSRF-Token, Authorization, accept, origin, Cache-Control, X-Requested-With",
+          "Access-Control-Allow-Methods": "GET, HEAD, POST, PUT, DELETE, OPTIONS, PATCH",
+          "Access-Control-Allow-Origin": "*",
+          "Content-Type": "application/json; charset=utf-8",
+          "Date": "Thu, 17 Jul 2025 09:22:52 GMT",
+          "Content-Length": "70"
+        },
+        "elapsed_ms": 5.009,
+        "timestamp": 1752744172.8961508,
+        "request_id": 2,
+        "content": {
+          "code": 200,
+          "data": {
+            "insertCount": 1,
+            "insertIds": [
+              459470532653887675
+            ]
+          }
+        }
+      },
+      "method": "POST",
+      "url": "http://172.17.0.11:23210/v1/vector/insert",
+      "headers": {
+        "Content-Type": "application/json",
+        "Authorization": "Bearer root:Milvus",
+        "RequestId": "9d93d852-62ef-11f0-9da9-0242ac110005"
+      },
+      "timestamp": 1752744172.8905404,
+      "request_id": 2,
+      "content": {
+        "collectionName": "test_collection_2025_07_17_17_22_51_852398rOlZfgzG",
+        "data": [
+          {
+            "vector": "__FLOAT_ARRAY_DIM_128__",
+            "uid": 0,
+            "name": "Christy Johnson",
+            "address": "8727 Hickman Cove Apt. 577\nJamiebury, AZ 82965",
+            "text": "Side state start result wear. See seek city finish sea finally perhaps. Nor floor many big why.\nMorning can artist heart lot direction action.",
+            "email": "laurenfox@example.org",
+            "phone_number": "426-406-3289x00780",
+            "array_int_dynamic": "__FLOAT_ARRAY_DIM_7__",
+            "array_varchar_dynamic": [
+              "Timothy Medina",
+              "Adam Walker",
+              "Nicholas Diaz",
+              "Jacob Frank"
+            ],
+            "json": {
+              "name": "Juan Lawrence",
+              "address": "63066 Nathan Prairie\nPort Hollyfurt, TN 92021"
+            },
+            "key55182": "value69556",
+            "key609": "value66986",
+            "key72761": "value29393",
+            "key93538": "value99660",
+            "key86936": "value4808",
+            "key74651": "value59924",
+            "key71573": "value22425",
+            "key36299": "value66873",
+            "key47610": "value81448",
+            "key40653": "value27352"
+          }
+        ],
+        "dbName": "default"
+      }
+    }
+  ]
+}

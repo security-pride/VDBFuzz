@@ -1,0 +1,188 @@
+{
+  "test_name": "allmilvus_log.TestInsertVector_test_insert_vector_with_simple_payload[prod-embedding-url-128-1-2]_1752744157.json",
+  "vdb_type": "qdrant",
+  "requests": [
+    {
+      "response": {
+        "status_code": 200,
+        "headers": {
+          "Access-Control-Allow-Credentials": "true",
+          "Access-Control-Allow-Headers": "Content-Type, Content-Length, Accept-Encoding, X-CSRF-Token, Authorization, accept, origin, Cache-Control, X-Requested-With",
+          "Access-Control-Allow-Methods": "GET, HEAD, POST, PUT, DELETE, OPTIONS, PATCH",
+          "Access-Control-Allow-Origin": "*",
+          "Content-Type": "application/json; charset=utf-8",
+          "Date": "Thu, 17 Jul 2025 09:22:37 GMT",
+          "Content-Length": "22"
+        },
+        "elapsed_ms": 30.061999999999998,
+        "timestamp": 1752744157.4231298,
+        "request_id": 0,
+        "content": {
+          "code": 200,
+          "data": {}
+        }
+      },
+      "method": "POST",
+      "url": "http://172.17.0.11:23210/v1/vector/collections/create",
+      "headers": {
+        "Content-Type": "application/json",
+        "Authorization": "Bearer root:Milvus",
+        "RequestId": "9457034c-62ef-11f0-ab18-0242ac110005"
+      },
+      "timestamp": 1752744157.3923886,
+      "request_id": 0,
+      "content": {
+        "collectionName": "test_collection_2025_07_17_17_22_36_392036PjWqLimw",
+        "dimension": 128,
+        "primaryField": "url",
+        "vectorField": "embedding",
+        "autoID": true,
+        "dbName": "prod"
+      }
+    },
+    {
+      "response": {
+        "status_code": 200,
+        "headers": {
+          "Access-Control-Allow-Credentials": "true",
+          "Access-Control-Allow-Headers": "Content-Type, Content-Length, Accept-Encoding, X-CSRF-Token, Authorization, accept, origin, Cache-Control, X-Requested-With",
+          "Access-Control-Allow-Methods": "GET, HEAD, POST, PUT, DELETE, OPTIONS, PATCH",
+          "Access-Control-Allow-Origin": "*",
+          "Content-Type": "application/json; charset=utf-8",
+          "Date": "Thu, 17 Jul 2025 09:22:37 GMT",
+          "Content-Length": "70"
+        },
+        "elapsed_ms": 5.831,
+        "timestamp": 1752744157.43636,
+        "request_id": 2,
+        "content": {
+          "code": 200,
+          "data": {
+            "insertCount": 1,
+            "insertIds": [
+              459470532653886987
+            ]
+          }
+        }
+      },
+      "method": "POST",
+      "url": "http://172.17.0.11:23210/v1/vector/insert",
+      "headers": {
+        "Content-Type": "application/json",
+        "Authorization": "Bearer root:Milvus",
+        "RequestId": "945cc15f-62ef-11f0-b3e7-0242ac110005"
+      },
+      "timestamp": 1752744157.4300034,
+      "request_id": 2,
+      "content": {
+        "collectionName": "test_collection_2025_07_17_17_22_36_392036PjWqLimw",
+        "data": [
+          {
+            "embedding": "__FLOAT_ARRAY_DIM_128__",
+            "uid": 0,
+            "name": "Matthew Bowen",
+            "address": "8524 Park Springs\nBrockport, MO 27978",
+            "text": "Police address bring memory early. Level line take whole defense often nor.\nWindow term toward because structure business. Hotel home yeah west might throw.",
+            "email": "eric23@example.net",
+            "phone_number": "+1-528-702-4481x75570",
+            "array_int_dynamic": "__FLOAT_ARRAY_DIM_5__",
+            "array_varchar_dynamic": [
+              "Ashley Fields",
+              "Virginia Figueroa",
+              "Eric Johnson",
+              "Nathan Vaughn",
+              "Jessica Stewart",
+              "Jacqueline Lewis",
+              "Glenn Lee",
+              "Hannah Holmes"
+            ],
+            "json": {
+              "name": "Stacy Irwin",
+              "address": "7073 Emily Island\nEast Tyler, AS 18867"
+            },
+            "key64842": "value60104",
+            "key26791": "value2348",
+            "key87502": "value88745",
+            "key23867": "value23642"
+          }
+        ],
+        "dbName": "prod"
+      }
+    },
+    {
+      "response": {
+        "status_code": 200,
+        "headers": {
+          "Access-Control-Allow-Credentials": "true",
+          "Access-Control-Allow-Headers": "Content-Type, Content-Length, Accept-Encoding, X-CSRF-Token, Authorization, accept, origin, Cache-Control, X-Requested-With",
+          "Access-Control-Allow-Methods": "GET, HEAD, POST, PUT, DELETE, OPTIONS, PATCH",
+          "Access-Control-Allow-Origin": "*",
+          "Content-Type": "application/json; charset=utf-8",
+          "Date": "Thu, 17 Jul 2025 09:22:37 GMT",
+          "Content-Length": "70"
+        },
+        "elapsed_ms": 2.2430000000000003,
+        "timestamp": 1752744157.4427447,
+        "request_id": 3,
+        "content": {
+          "code": 200,
+          "data": {
+            "insertCount": 1,
+            "insertIds": [
+              459470532653886989
+            ]
+          }
+        }
+      },
+      "method": "POST",
+      "url": "http://172.17.0.11:23210/v1/vector/insert",
+      "headers": {
+        "Content-Type": "application/json",
+        "Authorization": "Bearer root:Milvus",
+        "RequestId": "945e4772-62ef-11f0-b4c0-0242ac110005"
+      },
+      "timestamp": 1752744157.439984,
+      "request_id": 3,
+      "content": {
+        "collectionName": "test_collection_2025_07_17_17_22_36_392036PjWqLimw",
+        "data": [
+          {
+            "embedding": "__FLOAT_ARRAY_DIM_128__",
+            "uid": 0,
+            "name": "Stephanie Massey",
+            "address": "46107 Smith Walk Apt. 434\nJonesland, OK 25612",
+            "text": "Six yourself hundred. On control item. Fight note last two.\nUntil computer although school director bank always. Big more his bad model true relationship.",
+            "email": "sarawilliams@example.com",
+            "phone_number": "001-604-771-9815",
+            "array_int_dynamic": "__FLOAT_ARRAY_DIM_10__",
+            "array_varchar_dynamic": [
+              "Jeffrey Pena",
+              "Jasmine Taylor",
+              "Nicole Patrick DVM",
+              "Jane Foster",
+              "Julie Munoz",
+              "Denise Rodriguez",
+              "Kenneth Parker",
+              "Vincent Taylor",
+              "Stacy Stone",
+              "Jenny Simmons"
+            ],
+            "json": {
+              "name": "James Smith",
+              "address": "2498 Torres Brooks\nRichardfurt, NC 88466"
+            },
+            "key73274": "value36733",
+            "key53324": "value41115",
+            "key2841": "value35830",
+            "key3461": "value52216",
+            "key78688": "value38982",
+            "key86146": "value27544",
+            "key41169": "value97959",
+            "key98253": "value39794"
+          }
+        ],
+        "dbName": "prod"
+      }
+    }
+  ]
+}

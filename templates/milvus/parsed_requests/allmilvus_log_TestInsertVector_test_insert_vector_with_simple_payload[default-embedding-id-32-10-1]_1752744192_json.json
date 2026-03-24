@@ -1,0 +1,362 @@
+{
+  "test_name": "allmilvus_log.TestInsertVector_test_insert_vector_with_simple_payload[default-embedding-id-32-10-1]_1752744192.json",
+  "vdb_type": "qdrant",
+  "requests": [
+    {
+      "response": {
+        "status_code": 200,
+        "headers": {
+          "Access-Control-Allow-Credentials": "true",
+          "Access-Control-Allow-Headers": "Content-Type, Content-Length, Accept-Encoding, X-CSRF-Token, Authorization, accept, origin, Cache-Control, X-Requested-With",
+          "Access-Control-Allow-Methods": "GET, HEAD, POST, PUT, DELETE, OPTIONS, PATCH",
+          "Access-Control-Allow-Origin": "*",
+          "Content-Type": "application/json; charset=utf-8",
+          "Date": "Thu, 17 Jul 2025 09:23:12 GMT",
+          "Content-Length": "22"
+        },
+        "elapsed_ms": 19.650000000000002,
+        "timestamp": 1752744192.0418296,
+        "request_id": 0,
+        "content": {
+          "code": 200,
+          "data": {}
+        }
+      },
+      "method": "POST",
+      "url": "http://172.17.0.11:23210/v1/vector/collections/create",
+      "headers": {
+        "Content-Type": "application/json",
+        "Authorization": "Bearer root:Milvus",
+        "RequestId": "a8fb00db-62ef-11f0-aab1-0242ac110005"
+      },
+      "timestamp": 1752744192.0214853,
+      "request_id": 0,
+      "content": {
+        "collectionName": "test_collection_2025_07_17_17_23_11_021213aEZaKtIC",
+        "dimension": 32,
+        "primaryField": "id",
+        "vectorField": "embedding",
+        "autoID": true,
+        "dbName": "default"
+      }
+    },
+    {
+      "response": {
+        "status_code": 200,
+        "headers": {
+          "Access-Control-Allow-Credentials": "true",
+          "Access-Control-Allow-Headers": "Content-Type, Content-Length, Accept-Encoding, X-CSRF-Token, Authorization, accept, origin, Cache-Control, X-Requested-With",
+          "Access-Control-Allow-Methods": "GET, HEAD, POST, PUT, DELETE, OPTIONS, PATCH",
+          "Access-Control-Allow-Origin": "*",
+          "Content-Type": "application/json; charset=utf-8",
+          "Date": "Thu, 17 Jul 2025 09:23:12 GMT",
+          "Content-Length": "242"
+        },
+        "elapsed_ms": 5.904000000000001,
+        "timestamp": 1752744192.0719247,
+        "request_id": 2,
+        "content": {
+          "code": 200,
+          "data": {
+            "insertCount": 10,
+            "insertIds": [
+              459470532653888686,
+              459470532653888687,
+              459470532653888688,
+              459470532653888689,
+              459470532653888690,
+              459470532653888691,
+              459470532653888692,
+              459470532653888693,
+              459470532653888694,
+              459470532653888695
+            ]
+          }
+        }
+      },
+      "method": "POST",
+      "url": "http://172.17.0.11:23210/v1/vector/insert",
+      "headers": {
+        "Content-Type": "application/json",
+        "Authorization": "Bearer root:Milvus",
+        "RequestId": "a901a6e4-62ef-11f0-bb25-0242ac110005"
+      },
+      "timestamp": 1752744192.0653148,
+      "request_id": 2,
+      "content": {
+        "collectionName": "test_collection_2025_07_17_17_23_11_021213aEZaKtIC",
+        "data": [
+          {
+            "embedding": "__FLOAT_ARRAY_DIM_32__",
+            "uid": 0,
+            "name": "Joshua Vang",
+            "address": "189 Nunez Inlet\nDawsonstad, UT 67572",
+            "text": "Open talk table white event. Together wait how. College score partner part ready somebody.\nMe firm attorney possible hear receive. Suffer big education future.",
+            "email": "skinnerlisa@example.org",
+            "phone_number": "874.249.8128x32966",
+            "array_int_dynamic": "__FLOAT_ARRAY_DIM_4__",
+            "array_varchar_dynamic": [
+              "Robert Burgess",
+              "Veronica Kline",
+              "Lori Mills",
+              "Rachel Brown",
+              "Matthew Parker",
+              "Toni Rodriguez",
+              "Michael Ward"
+            ],
+            "json": {
+              "name": "Brandi Crawford",
+              "address": "67187 Eugene Keys Apt. 084\nCampbellfurt, OK 00871"
+            },
+            "key9563": "value68023",
+            "key93813": "value8604",
+            "key89068": "value73343",
+            "key65641": "value32948"
+          },
+          {
+            "embedding": "__FLOAT_ARRAY_DIM_32__",
+            "uid": 1,
+            "name": "Justin Buck",
+            "address": "91624 May Union Suite 515\nWest Jennifer, NY 69652",
+            "text": "Game box push purpose support probably your. Attention necessary send guess size. Poor begin just role chance machine.\nAllow resource tonight able. What commercial ever rest report.",
+            "email": "thomaslopez@example.com",
+            "phone_number": "847.484.5652",
+            "array_int_dynamic": [
+              93048
+            ],
+            "array_varchar_dynamic": [
+              "Alisha Parker",
+              "Heather Moore",
+              "Frank Norris",
+              "David Ware",
+              "Michael Bowen",
+              "Jennifer Irwin",
+              "Michael Blake",
+              "Denise Lee",
+              "Matthew Campbell"
+            ],
+            "json": {
+              "name": "Brandon Arnold DDS",
+              "address": "0902 Becker Prairie\nSouth Jacquelineshire, LA 38095"
+            },
+            "key79173": "value68253",
+            "key23716": "value45990"
+          },
+          {
+            "embedding": "__FLOAT_ARRAY_DIM_32__",
+            "uid": 2,
+            "name": "Jose Dennis",
+            "address": "PSC 4401, Box 9778\nAPO AA 67618",
+            "text": "Knowledge it about ago. Only truth week town entire least. Make memory thing boy front.\nThroughout I each challenge scene determine. People arm statement move. Discover the generation reflect.",
+            "email": "fryconnor@example.net",
+            "phone_number": "001-808-576-7517x99996",
+            "array_int_dynamic": "__FLOAT_ARRAY_DIM_4__",
+            "array_varchar_dynamic": [
+              "Ethan Williams",
+              "Colleen James",
+              "Susan Williams",
+              "Crystal Moreno",
+              "Daniel Walker",
+              "Heidi Carter",
+              "Jessica Juarez"
+            ],
+            "json": {
+              "name": "Chloe Jones",
+              "address": "PSC 9898, Box 8229\nAPO AP 34688"
+            },
+            "key91754": "value76198",
+            "key40815": "value36515",
+            "key46288": "value67493"
+          },
+          {
+            "embedding": "__FLOAT_ARRAY_DIM_32__",
+            "uid": 3,
+            "name": "Danny King",
+            "address": "302 Kiara Street Suite 284\nSouth Charles, CT 16850",
+            "text": "Could throw on see anyone religious business. Add knowledge southern particular prove north. Long standard require keep hold world.",
+            "email": "samanthaalvarez@example.net",
+            "phone_number": "001-587-952-9764x9629",
+            "array_int_dynamic": [
+              38582
+            ],
+            "array_varchar_dynamic": [
+              "Leslie Thomas",
+              "Kelly Burgess"
+            ],
+            "json": {
+              "name": "Aaron Jones",
+              "address": "Unit 8889 Box 0802\nDPO AA 36151"
+            },
+            "key37673": "value14180",
+            "key79323": "value20639",
+            "key46543": "value28912",
+            "key8322": "value96935",
+            "key31823": "value16109",
+            "key99114": "value66652",
+            "key50800": "value1755",
+            "key26371": "value24493"
+          },
+          {
+            "embedding": "__FLOAT_ARRAY_DIM_32__",
+            "uid": 4,
+            "name": "Jessica Guerrero",
+            "address": "303 Steven Field Suite 027\nScotttown, KS 77550",
+            "text": "Water movement environmental site spend. Source across mother big project. Site administration nation bar worker change.\nFocus reduce clear. Involve like be though doctor field.",
+            "email": "valerie07@example.com",
+            "phone_number": "771-779-8881",
+            "array_int_dynamic": [
+              82713
+            ],
+            "array_varchar_dynamic": [
+              "Kaitlin Morgan",
+              "Nicole Johnson",
+              "Kyle Cohen",
+              "Corey Boyd",
+              "Henry Henry",
+              "Desiree Morales",
+              "Jennifer Baker",
+              "Jordan Franklin"
+            ],
+            "json": {
+              "name": "Kenneth Barr",
+              "address": "33867 Eric Expressway Apt. 437\nStacyville, PR 74440"
+            },
+            "key46683": "value53969",
+            "key66437": "value17520",
+            "key87707": "value16986",
+            "key52352": "value8436"
+          },
+          {
+            "embedding": "__FLOAT_ARRAY_DIM_32__",
+            "uid": 5,
+            "name": "Hannah Wilson",
+            "address": "4698 Kevin Ways Suite 150\nLaurieborough, PR 34260",
+            "text": "Quite trouble material choice season culture laugh. Science quite heart energy military.",
+            "email": "margaretellison@example.com",
+            "phone_number": "001-596-253-0246x95162",
+            "array_int_dynamic": "__FLOAT_ARRAY_DIM_5__",
+            "array_varchar_dynamic": [
+              "Matthew Alvarez",
+              "Brian Melton",
+              "Nathaniel King",
+              "Brian Christian"
+            ],
+            "json": {
+              "name": "Patricia Wilson",
+              "address": "6597 Melissa Ferry Suite 934\nSpenceborough, MI 18794"
+            },
+            "key52278": "value35700",
+            "key75546": "value93729",
+            "key96959": "value3531",
+            "key37642": "value33830",
+            "key7344": "value12128",
+            "key97170": "value56669",
+            "key7270": "value25265"
+          },
+          {
+            "embedding": "__FLOAT_ARRAY_DIM_32__",
+            "uid": 6,
+            "name": "Angela Holland",
+            "address": "44111 Ramos Fort\nPort Fernando, SC 62141",
+            "text": "Knowledge daughter measure. Their poor something happen scientist explain.\nRoad way cover thought inside. Entire serve relationship of. Note until general.",
+            "email": "victoriabriggs@example.net",
+            "phone_number": "276-726-4921",
+            "array_int_dynamic": "__FLOAT_ARRAY_DIM_6__",
+            "array_varchar_dynamic": [
+              "Charles Cruz"
+            ],
+            "json": {
+              "name": "Steven Armstrong",
+              "address": "3436 Elizabeth Parks\nSouth Tylerland, MI 46046"
+            },
+            "key63214": "value23832",
+            "key89529": "value41928",
+            "key19996": "value96640",
+            "key87390": "value7976",
+            "key20446": "value90942"
+          },
+          {
+            "embedding": "__FLOAT_ARRAY_DIM_32__",
+            "uid": 7,
+            "name": "Thomas Lawrence",
+            "address": "98169 Mitchell Club Suite 781\nSmithfort, ID 68356",
+            "text": "Election plant health stop particularly. Actually cup too be member over.\nDay knowledge grow follow. Mouth this black notice.",
+            "email": "cochrancody@example.org",
+            "phone_number": "9708123244",
+            "array_int_dynamic": "__FLOAT_ARRAY_DIM_9__",
+            "array_varchar_dynamic": [
+              "Terri Kennedy",
+              "Katrina Oneal",
+              "Kristie Wells",
+              "Aaron Smith",
+              "James Kelly"
+            ],
+            "json": {
+              "name": "Ashley Turner",
+              "address": "Unit 6430 Box 3074\nDPO AE 65162"
+            },
+            "key4789": "value10243",
+            "key5937": "value86460"
+          },
+          {
+            "embedding": "__FLOAT_ARRAY_DIM_32__",
+            "uid": 8,
+            "name": "Cheryl Bruce",
+            "address": "48763 Arias Branch\nLake Terrenceland, AR 80811",
+            "text": "Live page same write collection must become. Store no hit school.\nDeal campaign sea attention. Analysis authority three usually national.\nSoon hold term small. Fight common size city.",
+            "email": "nforbes@example.com",
+            "phone_number": "001-856-349-5548x142",
+            "array_int_dynamic": "__FLOAT_ARRAY_DIM_10__",
+            "array_varchar_dynamic": [
+              "Glenda Martin"
+            ],
+            "json": {
+              "name": "Richard Andrews",
+              "address": "027 Catherine Terrace\nEast Paul, VI 60630"
+            },
+            "key49550": "value44914",
+            "key34743": "value93807",
+            "key1144": "value74533",
+            "key22460": "value21760",
+            "key53834": "value64905",
+            "key43097": "value37102",
+            "key42710": "value84356",
+            "key37058": "value83892",
+            "key34974": "value79098"
+          },
+          {
+            "embedding": "__FLOAT_ARRAY_DIM_32__",
+            "uid": 9,
+            "name": "Elizabeth Walker",
+            "address": "2944 Castro Shoals\nGibsonchester, MT 68565",
+            "text": "Require happen boy total explain. Article create expert remain difference improve. Story site plan.\nFish enjoy point service. Authority to cover field us. Week lay feeling family own.",
+            "email": "danielle87@example.net",
+            "phone_number": "431.768.2569x6852",
+            "array_int_dynamic": "__FLOAT_ARRAY_DIM_7__",
+            "array_varchar_dynamic": [
+              "John Davis",
+              "Randy Barber",
+              "Jason Roberts",
+              "Carol Flores",
+              "Pamela Cortez",
+              "Jessica Schaefer"
+            ],
+            "json": {
+              "name": "Ryan Hill",
+              "address": "0377 Robert Lane Suite 293\nChavezland, UT 23644"
+            },
+            "key8456": "value79766",
+            "key41397": "value80592",
+            "key38766": "value99817",
+            "key77478": "value90633",
+            "key500": "value85411",
+            "key35725": "value97851",
+            "key27316": "value17539",
+            "key63974": "value43119"
+          }
+        ],
+        "dbName": "default"
+      }
+    }
+  ]
+}

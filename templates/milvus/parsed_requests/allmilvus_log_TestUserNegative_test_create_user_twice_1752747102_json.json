@@ -1,0 +1,109 @@
+{
+  "test_name": "allmilvus_log.TestUserNegative_test_create_user_twice_1752747102.json",
+  "vdb_type": "qdrant",
+  "requests": [
+    {
+      "response": {
+        "status_code": 200,
+        "headers": {
+          "Access-Control-Allow-Credentials": "true",
+          "Access-Control-Allow-Headers": "Content-Type, Content-Length, Accept-Encoding, X-CSRF-Token, Authorization, accept, origin, Cache-Control, X-Requested-With",
+          "Access-Control-Allow-Methods": "GET, HEAD, POST, PUT, DELETE, OPTIONS, PATCH",
+          "Access-Control-Allow-Origin": "*",
+          "Content-Type": "application/json; charset=utf-8",
+          "Date": "Thu, 17 Jul 2025 10:11:42 GMT",
+          "Content-Length": "54"
+        },
+        "elapsed_ms": 1.246,
+        "timestamp": 1752747102.8473237,
+        "request_id": 0,
+        "content": {
+          "code": 0,
+          "data": [
+            "user_yDdKexAD",
+            "root",
+            "test_user"
+          ]
+        }
+      },
+      "method": "POST",
+      "url": "http://172.17.0.11:23210/v2/vectordb/users/list",
+      "headers": {
+        "Content-Type": "application/json",
+        "Authorization": "Bearer None",
+        "RequestId": "6ff70c78-62f6-11f0-a47a-0242ac11000b"
+      },
+      "timestamp": 1752747102.8455791,
+      "request_id": 0,
+      "content": "null"
+    },
+    {
+      "response": {
+        "status_code": 200,
+        "headers": {
+          "Access-Control-Allow-Credentials": "true",
+          "Access-Control-Allow-Headers": "Content-Type, Content-Length, Accept-Encoding, X-CSRF-Token, Authorization, accept, origin, Cache-Control, X-Requested-With",
+          "Access-Control-Allow-Methods": "GET, HEAD, POST, PUT, DELETE, OPTIONS, PATCH",
+          "Access-Control-Allow-Origin": "*",
+          "Content-Type": "application/json; charset=utf-8",
+          "Date": "Thu, 17 Jul 2025 10:11:42 GMT",
+          "Content-Length": "20"
+        },
+        "elapsed_ms": 3.5829999999999997,
+        "timestamp": 1752747102.8517594,
+        "request_id": 1,
+        "content": {
+          "code": 0,
+          "data": {}
+        }
+      },
+      "method": "POST",
+      "url": "http://172.17.0.11:23210/v2/vectordb/users/create",
+      "headers": {
+        "Content-Type": "application/json",
+        "Authorization": "Bearer None",
+        "RequestId": "6ff70c78-62f6-11f0-a47a-0242ac11000b"
+      },
+      "timestamp": 1752747102.847674,
+      "request_id": 1,
+      "content": {
+        "userName": "user_jMIsfqUZ",
+        "password": "12345678"
+      }
+    },
+    {
+      "response": {
+        "status_code": 200,
+        "headers": {
+          "Access-Control-Allow-Credentials": "true",
+          "Access-Control-Allow-Headers": "Content-Type, Content-Length, Accept-Encoding, X-CSRF-Token, Authorization, accept, origin, Cache-Control, X-Requested-With",
+          "Access-Control-Allow-Methods": "GET, HEAD, POST, PUT, DELETE, OPTIONS, PATCH",
+          "Access-Control-Allow-Origin": "*",
+          "Content-Type": "application/json; charset=utf-8",
+          "Date": "Thu, 17 Jul 2025 10:11:42 GMT",
+          "Content-Length": "61"
+        },
+        "elapsed_ms": 2.584,
+        "timestamp": 1752747102.8551433,
+        "request_id": 2,
+        "content": {
+          "code": 65535,
+          "message": "user already exists: user_jMIsfqUZ"
+        }
+      },
+      "method": "POST",
+      "url": "http://172.17.0.11:23210/v2/vectordb/users/create",
+      "headers": {
+        "Content-Type": "application/json",
+        "Authorization": "Bearer None",
+        "RequestId": "6ff70c78-62f6-11f0-a47a-0242ac11000b"
+      },
+      "timestamp": 1752747102.8520703,
+      "request_id": 2,
+      "content": {
+        "userName": "user_jMIsfqUZ",
+        "password": "12345678"
+      }
+    }
+  ]
+}

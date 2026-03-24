@@ -1,0 +1,92 @@
+{
+  "vdb_type": "milvus",
+  "version": "2.x",
+  
+  "keyword_mapping": {
+    "metric_types": [
+      "L2", "IP", "COSINE", "HAMMING", "JACCARD"
+    ],
+    "index_types": [
+      "FLAT", "IVF_FLAT", "IVF_SQ8", "IVF_PQ", 
+      "HNSW", "RHNSW_FLAT", "RHNSW_SQ", "RHNSW_PQ",
+      "ANNOY", "DISKANN", "AUTOINDEX",
+      "GPU_IVF_FLAT", "GPU_IVF_PQ", "GPU_CAGRA",
+      "SPARSE_INVERTED_INDEX", "SPARSE_WAND",
+      "BIN_FLAT", "BIN_IVF_FLAT"
+    ],
+    "consistency_levels": [
+      "Strong", "Session", "Bounded", "Eventually", "Customized"
+    ],
+    "data_types": [
+      "Bool", "Int8", "Int16", "Int32", "Int64",
+      "Float", "Double", "String", "VarChar", "JSON",
+      "Array", "FloatVector", "BinaryVector", "Float16Vector", 
+      "BFloat16Vector", "SparseFloatVector"
+    ],
+    "partition_key_isolation": [
+      true, false
+    ],
+    "enable_dynamic_field": [
+      true, false
+    ],
+    "auto_id": [
+      true, false
+    ],
+    "nlist_options": [
+      128, 256, 512, 1024, 2048, 4096
+    ],
+    "nprobe_options": [
+      8, 16, 32, 64, 128, 256
+    ],
+    "m_options": [
+      4, 8, 16, 32, 64
+    ],
+    "ef_construction_options": [
+      64, 128, 256, 512
+    ],
+    "ef_options": [
+      64, 128, 256, 512
+    ],
+    "search_k_options": [
+      -1, 50, 100, 200, 500
+    ],
+    "nbits_options": [
+      8, 10, 12, 16
+    ],
+    "drop_ratio_build_options": [
+      0.0, 0.1, 0.2, 0.3
+    ],
+    "drop_ratio_search_options": [
+      0.0, 0.1, 0.2, 0.3
+    ]
+  },
+  
+  "field_path_mapping": {
+    "metric_type": "metric_types",
+    "index_type": "index_types",
+    "consistency_level": "consistency_levels",
+    "dtype": "data_types",
+    "data_type": "data_types",
+    "partition_key_isolation": "partition_key_isolation",
+    "enable_dynamic_field": "enable_dynamic_field",
+    "auto_id": "auto_id",
+    "nlist": "nlist_options",
+    "nprobe": "nprobe_options",
+    "M": "m_options",
+    "efConstruction": "ef_construction_options",
+    "ef": "ef_options",
+    "search_k": "search_k_options",
+    "nbits": "nbits_options",
+    "drop_ratio_build": "drop_ratio_build_options",
+    "drop_ratio_search": "drop_ratio_search_options"
+  },
+  
+  "excluded_data_fields": [
+    "collection_name", "collection", "name",
+    "vectors", "vector", "embedding", "embeddings",
+    "ids", "id", "pk", "primary_key",
+    "partition_name", "partition_names",
+    "field_name", "output_fields",
+    "expr", "filter", "data"
+  ]
+}

@@ -1,0 +1,200 @@
+{
+  "vdb_type": "weaviate",
+  "version": "1.x",
+  
+  "keyword_mapping": {
+    "vector_index_types": [
+      "hnsw",
+      "flat",
+      "dynamic"
+    ],
+    "distance_metrics": [
+      "cosine",
+      "dot",
+      "l2-squared",
+      "hamming",
+      "manhattan"
+    ],
+    "vectorizers": [
+      "none",
+      "text2colbert-jinaai",
+      "text2vec-aws",
+      "text2vec-cohere",
+      "text2vec-contextionary",
+      "text2vec-databricks",
+      "text2vec-gpt4all",
+      "text2vec-huggingface",
+      "text2vec-mistral",
+      "text2vec-nvidia",
+      "text2vec-ollama",
+      "text2vec-openai",
+      "text2vec-palm",
+      "text2vec-transformers",
+      "text2vec-jinaai",
+      "text2vec-voyageai",
+      "text2vec-weaviate",
+      "img2vec-neural",
+      "multi2vec-clip",
+      "multi2vec-cohere",
+      "multi2vec-jinaai",
+      "multi2vec-bind",
+      "multi2vec-palm",
+      "multi2vec-voyageai",
+      "multi2vec-nvidia",
+      "ref2vec-centroid"
+    ],
+    "data_types": [
+      "text",
+      "text[]",
+      "int",
+      "int[]",
+      "boolean",
+      "boolean[]",
+      "number",
+      "number[]",
+      "date",
+      "date[]",
+      "uuid",
+      "uuid[]",
+      "geoCoordinates",
+      "blob",
+      "phoneNumber",
+      "object",
+      "object[]"
+    ],
+    "consistency_levels": [
+      "ALL",
+      "ONE",
+      "QUORUM"
+    ],
+    "tokenization": [
+      "word",
+      "whitespace",
+      "lowercase",
+      "field",
+      "gse",
+      "trigram",
+      "kagome_ja",
+      "kagome_kr"
+    ],
+    "generative_searches": [
+      "generative-aws",
+      "generative-anthropic",
+      "generative-anyscale",
+      "generative-cohere",
+      "generative-databricks",
+      "generative-dummy",
+      "generative-friendliai",
+      "generative-mistral",
+      "generative-nvidia",
+      "generative-ollama",
+      "generative-openai",
+      "generative-palm",
+      "generative-xai"
+    ],
+    "rerankers": [
+      "none",
+      "reranker-cohere",
+      "reranker-transformers",
+      "reranker-voyageai",
+      "reranker-jinaai",
+      "reranker-nvidia"
+    ],
+    "stopwords_preset": [
+      "none",
+      "en"
+    ],
+    "replication_deletion_strategy": [
+      "DeleteOnConflict",
+      "NoAutomatedResolution",
+      "TimeBasedResolution"
+    ],
+    "pq_encoder_type": [
+      "kmeans",
+      "tile"
+    ],
+    "pq_encoder_distribution": [
+      "log-normal",
+      "normal"
+    ],
+    "multi_vector_aggregation": [
+      "maxSim"
+    ],
+    "vector_filter_strategy": [
+      "sweeping",
+      "acorn"
+    ]
+  },
+  
+  "excluded_data_fields": [
+    "class", "className", "collection",
+    "vector", "vectors", "embedding",
+    "id", "uuid", "beacon",
+    "properties", "property",
+    "tenant", "tenants",
+    "objects", "object",
+    "query", "nearVector", "nearText"
+  ],
+  "field_path_mapping": {
+    "vectorIndexType": "vector_index_types",
+    "distance": "distance_metrics",
+    "vectorizer": "vectorizers",
+    "dataType": "data_types",
+    "consistency": "consistency_levels",
+    "tokenization": "tokenization",
+    "generative": "generative_searches",
+    "reranker": "rerankers",
+    "stopwordsPreset": "stopwords_preset",
+    "deletionStrategy": "replication_deletion_strategy",
+    "encoderType": "pq_encoder_type",
+    "distribution": "pq_encoder_distribution",
+    "aggregation": "multi_vector_aggregation",
+    "filterStrategy": "vector_filter_strategy"
+  },
+  "field_relationships": {
+    "vectorizers": {
+      "text2vec-openai": [
+        "text-embedding-3-small",
+        "text-embedding-3-large",
+        "text-embedding-ada-002"
+      ],
+      "text2vec-cohere": [
+        "embed-multilingual-v2.0",
+        "embed-english-v2.0",
+        "embed-multilingual-v3.0",
+        "embed-english-v3.0"
+      ],
+      "text2vec-huggingface": [],
+      "text2vec-jinaai": [
+        "jina-embeddings-v2-base-en",
+        "jina-embeddings-v2-small-en",
+        "jina-embeddings-v3"
+      ],
+      "text2vec-voyageai": [
+        "voyage-3",
+        "voyage-3-lite",
+        "voyage-large-2",
+        "voyage-2"
+      ]
+    },
+    "vector_index_types": {
+      "hnsw": [
+        "distance",
+        "ef",
+        "maxConnections",
+        "dynamicEfMin",
+        "dynamicEfMax",
+        "vectorCacheMaxObjects"
+      ],
+      "flat": [
+        "distance"
+      ],
+      "dynamic": [
+        "distance",
+        "threshold",
+        "flat",
+        "hnsw"
+      ]
+    }
+  }
+}

@@ -1,0 +1,233 @@
+{
+  "test_name": "allmilvus_log.TestUpsertVectorNegative_test_upsert_entities_with_none_no_nullable_field_1752747536.json",
+  "vdb_type": "qdrant",
+  "requests": [
+    {
+      "response": {
+        "status_code": 200,
+        "headers": {
+          "Access-Control-Allow-Credentials": "true",
+          "Access-Control-Allow-Headers": "Content-Type, Content-Length, Accept-Encoding, X-CSRF-Token, Authorization, accept, origin, Cache-Control, X-Requested-With",
+          "Access-Control-Allow-Methods": "GET, HEAD, POST, PUT, DELETE, OPTIONS, PATCH",
+          "Access-Control-Allow-Origin": "*",
+          "Content-Type": "application/json; charset=utf-8",
+          "Date": "Thu, 17 Jul 2025 10:18:56 GMT",
+          "Content-Length": "20"
+        },
+        "elapsed_ms": 13.948,
+        "timestamp": 1752747536.4680653,
+        "request_id": 0,
+        "content": {
+          "code": 0,
+          "data": {}
+        }
+      },
+      "method": "POST",
+      "url": "http://172.17.0.11:23210/v2/vectordb/collections/create",
+      "headers": {
+        "Content-Type": "application/json",
+        "Authorization": "Bearer None",
+        "RequestId": "71d16e34-62f7-11f0-85c3-0242ac11000b",
+        "Request-Timeout": "120"
+      },
+      "timestamp": 1752747536.453399,
+      "request_id": 0,
+      "content": {
+        "collectionName": "test_collection_2025_07_17_18_18_55_452141GOXRoQgT",
+        "schema": {
+          "autoId": true,
+          "fields": [
+            {
+              "fieldName": "book_id",
+              "dataType": "Int64",
+              "isPrimary": true,
+              "elementTypeParams": {}
+            },
+            {
+              "fieldName": "word_count",
+              "dataType": "Int64",
+              "elementTypeParams": {}
+            },
+            {
+              "fieldName": "text_emb",
+              "dataType": "FloatVector",
+              "elementTypeParams": {
+                "dim": "128"
+              }
+            }
+          ]
+        },
+        "params": {
+          "consistencyLevel": "Strong"
+        }
+      }
+    },
+    {
+      "response": {
+        "status_code": 200,
+        "headers": {
+          "Access-Control-Allow-Credentials": "true",
+          "Access-Control-Allow-Headers": "Content-Type, Content-Length, Accept-Encoding, X-CSRF-Token, Authorization, accept, origin, Cache-Control, X-Requested-With",
+          "Access-Control-Allow-Methods": "GET, HEAD, POST, PUT, DELETE, OPTIONS, PATCH",
+          "Access-Control-Allow-Origin": "*",
+          "Content-Type": "application/json; charset=utf-8",
+          "Date": "Thu, 17 Jul 2025 10:18:56 GMT",
+          "Content-Length": "936"
+        },
+        "elapsed_ms": 3.955,
+        "timestamp": 1752747536.4732232,
+        "request_id": 1,
+        "content": {
+          "code": 0,
+          "data": {
+            "aliases": [],
+            "autoId": true,
+            "collectionID": 459470532655629382,
+            "collectionName": "test_collection_2025_07_17_18_18_55_452141GOXRoQgT",
+            "consistencyLevel": "Strong",
+            "description": "",
+            "enableDynamicField": false,
+            "fields": [
+              {
+                "autoId": true,
+                "clusteringKey": false,
+                "description": "",
+                "id": 100,
+                "name": "book_id",
+                "nullable": false,
+                "partitionKey": false,
+                "primaryKey": true,
+                "type": "Int64"
+              },
+              {
+                "autoId": false,
+                "clusteringKey": false,
+                "description": "",
+                "id": 101,
+                "name": "word_count",
+                "nullable": false,
+                "partitionKey": false,
+                "primaryKey": false,
+                "type": "Int64"
+              },
+              {
+                "autoId": false,
+                "clusteringKey": false,
+                "description": "",
+                "id": 102,
+                "name": "text_emb",
+                "nullable": false,
+                "params": [
+                  {
+                    "key": "dim",
+                    "value": "128"
+                  }
+                ],
+                "partitionKey": false,
+                "primaryKey": false,
+                "type": "FloatVector"
+              }
+            ],
+            "functions": [],
+            "indexes": [],
+            "load": "LoadStateNotLoad",
+            "partitionsNum": 1,
+            "properties": [],
+            "shardsNum": 1
+          },
+          "message": "index not found[collection=test_collection_2025_07_17_18_18_55_452141GOXRoQgT];"
+        }
+      },
+      "method": "POST",
+      "url": "http://172.17.0.11:23210/v2/vectordb/collections/describe",
+      "headers": {
+        "Content-Type": "application/json",
+        "Authorization": "Bearer None",
+        "RequestId": "71d16e34-62f7-11f0-85c3-0242ac11000b",
+        "Request-Timeout": "120"
+      },
+      "timestamp": 1752747536.4686306,
+      "request_id": 1,
+      "content": {
+        "collectionName": "test_collection_2025_07_17_18_18_55_452141GOXRoQgT"
+      }
+    },
+    {
+      "response": {
+        "status_code": 200,
+        "headers": {
+          "Access-Control-Allow-Credentials": "true",
+          "Access-Control-Allow-Headers": "Content-Type, Content-Length, Accept-Encoding, X-CSRF-Token, Authorization, accept, origin, Cache-Control, X-Requested-With",
+          "Access-Control-Allow-Methods": "GET, HEAD, POST, PUT, DELETE, OPTIONS, PATCH",
+          "Access-Control-Allow-Origin": "*",
+          "Content-Type": "application/json; charset=utf-8",
+          "Date": "Thu, 17 Jul 2025 10:18:56 GMT",
+          "Content-Length": "153"
+        },
+        "elapsed_ms": 3.59,
+        "timestamp": 1752747536.4809313,
+        "request_id": 2,
+        "content": {
+          "code": 1804,
+          "message": "fail to deal the insert data, error: strconv.ParseInt: parsing \"\": invalid syntax: invalid parameter[expected=Int64][actual=]"
+        }
+      },
+      "method": "POST",
+      "url": "http://172.17.0.11:23210/v2/vectordb/entities/upsert",
+      "headers": {
+        "Content-Type": "application/json",
+        "Authorization": "Bearer None",
+        "Accept-Type-Allow-Int64": "true",
+        "RequestId": "71d16e34-62f7-11f0-85c3-0242ac11000b",
+        "Request-Timeout": "120"
+      },
+      "timestamp": 1752747536.476214,
+      "request_id": 2,
+      "content": {
+        "collectionName": "test_collection_2025_07_17_18_18_55_452141GOXRoQgT",
+        "data": [
+          {
+            "word_count": null,
+            "text_emb": "__FLOAT_ARRAY_DIM_128__"
+          },
+          {
+            "word_count": 1,
+            "text_emb": "__FLOAT_ARRAY_DIM_128__"
+          },
+          {
+            "word_count": null,
+            "text_emb": "__FLOAT_ARRAY_DIM_128__"
+          },
+          {
+            "word_count": 3,
+            "text_emb": "__FLOAT_ARRAY_DIM_128__"
+          },
+          {
+            "word_count": null,
+            "text_emb": "__FLOAT_ARRAY_DIM_128__"
+          },
+          {
+            "word_count": 5,
+            "text_emb": "__FLOAT_ARRAY_DIM_128__"
+          },
+          {
+            "word_count": null,
+            "text_emb": "__FLOAT_ARRAY_DIM_128__"
+          },
+          {
+            "word_count": 7,
+            "text_emb": "__FLOAT_ARRAY_DIM_128__"
+          },
+          {
+            "word_count": null,
+            "text_emb": "__FLOAT_ARRAY_DIM_128__"
+          },
+          {
+            "word_count": 9,
+            "text_emb": "__FLOAT_ARRAY_DIM_128__"
+          }
+        ]
+      }
+    }
+  ]
+}

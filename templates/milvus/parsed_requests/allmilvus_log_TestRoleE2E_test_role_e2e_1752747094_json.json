@@ -1,0 +1,177 @@
+{
+  "test_name": "allmilvus_log.TestRoleE2E_test_role_e2e_1752747094.json",
+  "vdb_type": "qdrant",
+  "requests": [
+    {
+      "response": {
+        "status_code": 200,
+        "headers": {
+          "Access-Control-Allow-Credentials": "true",
+          "Access-Control-Allow-Headers": "Content-Type, Content-Length, Accept-Encoding, X-CSRF-Token, Authorization, accept, origin, Cache-Control, X-Requested-With",
+          "Access-Control-Allow-Methods": "GET, HEAD, POST, PUT, DELETE, OPTIONS, PATCH",
+          "Access-Control-Allow-Origin": "*",
+          "Content-Type": "application/json; charset=utf-8",
+          "Date": "Thu, 17 Jul 2025 10:11:34 GMT",
+          "Content-Length": "36"
+        },
+        "elapsed_ms": 2.876,
+        "timestamp": 1752747094.5736108,
+        "request_id": 0,
+        "content": {
+          "code": 0,
+          "data": [
+            "admin",
+            "public"
+          ]
+        }
+      },
+      "method": "POST",
+      "url": "http://172.17.0.11:23210/v2/vectordb/roles/list",
+      "headers": {
+        "Content-Type": "application/json",
+        "Authorization": "Bearer None",
+        "RequestId": "6b062fc8-62f6-11f0-8047-0242ac11000b"
+      },
+      "timestamp": 1752747094.5694363,
+      "request_id": 0,
+      "content": "null"
+    },
+    {
+      "response": {
+        "status_code": 200,
+        "headers": {
+          "Access-Control-Allow-Credentials": "true",
+          "Access-Control-Allow-Headers": "Content-Type, Content-Length, Accept-Encoding, X-CSRF-Token, Authorization, accept, origin, Cache-Control, X-Requested-With",
+          "Access-Control-Allow-Methods": "GET, HEAD, POST, PUT, DELETE, OPTIONS, PATCH",
+          "Access-Control-Allow-Origin": "*",
+          "Content-Type": "application/json; charset=utf-8",
+          "Date": "Thu, 17 Jul 2025 10:11:34 GMT",
+          "Content-Length": "20"
+        },
+        "elapsed_ms": 2.699,
+        "timestamp": 1752747094.577502,
+        "request_id": 1,
+        "content": {
+          "code": 0,
+          "data": {}
+        }
+      },
+      "method": "POST",
+      "url": "http://172.17.0.11:23210/v2/vectordb/roles/create",
+      "headers": {
+        "Content-Type": "application/json",
+        "Authorization": "Bearer None",
+        "RequestId": "6b062fc8-62f6-11f0-8047-0242ac11000b"
+      },
+      "timestamp": 1752747094.5741737,
+      "request_id": 1,
+      "content": {
+        "roleName": "role_rfeorygI"
+      }
+    },
+    {
+      "response": {
+        "status_code": 200,
+        "headers": {
+          "Access-Control-Allow-Credentials": "true",
+          "Access-Control-Allow-Headers": "Content-Type, Content-Length, Accept-Encoding, X-CSRF-Token, Authorization, accept, origin, Cache-Control, X-Requested-With",
+          "Access-Control-Allow-Methods": "GET, HEAD, POST, PUT, DELETE, OPTIONS, PATCH",
+          "Access-Control-Allow-Origin": "*",
+          "Content-Type": "application/json; charset=utf-8",
+          "Date": "Thu, 17 Jul 2025 10:11:34 GMT",
+          "Content-Length": "52"
+        },
+        "elapsed_ms": 1.242,
+        "timestamp": 1752747094.579582,
+        "request_id": 2,
+        "content": {
+          "code": 0,
+          "data": [
+            "admin",
+            "public",
+            "role_rfeorygI"
+          ]
+        }
+      },
+      "method": "POST",
+      "url": "http://172.17.0.11:23210/v2/vectordb/roles/list",
+      "headers": {
+        "Content-Type": "application/json",
+        "Authorization": "Bearer None",
+        "RequestId": "6b062fc8-62f6-11f0-8047-0242ac11000b"
+      },
+      "timestamp": 1752747094.577846,
+      "request_id": 2,
+      "content": "null"
+    },
+    {
+      "response": {
+        "status_code": 200,
+        "headers": {
+          "Access-Control-Allow-Credentials": "true",
+          "Access-Control-Allow-Headers": "Content-Type, Content-Length, Accept-Encoding, X-CSRF-Token, Authorization, accept, origin, Cache-Control, X-Requested-With",
+          "Access-Control-Allow-Methods": "GET, HEAD, POST, PUT, DELETE, OPTIONS, PATCH",
+          "Access-Control-Allow-Origin": "*",
+          "Content-Type": "application/json; charset=utf-8",
+          "Date": "Thu, 17 Jul 2025 10:11:34 GMT",
+          "Content-Length": "20"
+        },
+        "elapsed_ms": 1.4580000000000002,
+        "timestamp": 1752747094.582523,
+        "request_id": 3,
+        "content": {
+          "code": 0,
+          "data": []
+        }
+      },
+      "method": "POST",
+      "url": "http://172.17.0.11:23210/v2/vectordb/roles/describe",
+      "headers": {
+        "Content-Type": "application/json",
+        "Authorization": "Bearer None",
+        "RequestId": "6b062fc8-62f6-11f0-8047-0242ac11000b"
+      },
+      "timestamp": 1752747094.580593,
+      "request_id": 3,
+      "content": {
+        "roleName": "role_rfeorygI"
+      }
+    },
+    {
+      "response": {
+        "status_code": 200,
+        "headers": {
+          "Access-Control-Allow-Credentials": "true",
+          "Access-Control-Allow-Headers": "Content-Type, Content-Length, Accept-Encoding, X-CSRF-Token, Authorization, accept, origin, Cache-Control, X-Requested-With",
+          "Access-Control-Allow-Methods": "GET, HEAD, POST, PUT, DELETE, OPTIONS, PATCH",
+          "Access-Control-Allow-Origin": "*",
+          "Content-Type": "application/json; charset=utf-8",
+          "Date": "Thu, 17 Jul 2025 10:11:34 GMT",
+          "Content-Length": "87"
+        },
+        "elapsed_ms": 0.905,
+        "timestamp": 1752747094.58419,
+        "request_id": 4,
+        "content": {
+          "code": 65535,
+          "message": "fail to get authorization from the md, authorization:[token]"
+        }
+      },
+      "method": "POST",
+      "url": "http://172.17.0.11:23210/v2/vectordb/roles/grant_privilege",
+      "headers": {
+        "Content-Type": "application/json",
+        "Authorization": "Bearer None",
+        "RequestId": "6b062fc8-62f6-11f0-8047-0242ac11000b"
+      },
+      "timestamp": 1752747094.5828168,
+      "request_id": 4,
+      "content": {
+        "roleName": "role_rfeorygI",
+        "objectType": "Global",
+        "objectName": "*",
+        "privilege": "CreateCollection"
+      }
+    }
+  ]
+}

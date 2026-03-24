@@ -1,0 +1,4 @@
+include README.md
+recursive-include vdbfuzz/getcov *.sh
+recursive-include vdbfuzz/keywords *.json
+include vdbfuzz/weaviate_keywords.json

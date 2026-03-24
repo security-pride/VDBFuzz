@@ -1,0 +1,181 @@
+{
+  "test_name": "allmilvus_log.TestInsertVector_test_insert_vector_with_simple_payload[prod-vector-url-128-1-2]_1752744128.json",
+  "vdb_type": "qdrant",
+  "requests": [
+    {
+      "response": {
+        "status_code": 200,
+        "headers": {
+          "Access-Control-Allow-Credentials": "true",
+          "Access-Control-Allow-Headers": "Content-Type, Content-Length, Accept-Encoding, X-CSRF-Token, Authorization, accept, origin, Cache-Control, X-Requested-With",
+          "Access-Control-Allow-Methods": "GET, HEAD, POST, PUT, DELETE, OPTIONS, PATCH",
+          "Access-Control-Allow-Origin": "*",
+          "Content-Type": "application/json; charset=utf-8",
+          "Date": "Thu, 17 Jul 2025 09:22:07 GMT",
+          "Content-Length": "22"
+        },
+        "elapsed_ms": 54.212999999999994,
+        "timestamp": 1752744127.9887621,
+        "request_id": 0,
+        "content": {
+          "code": 200,
+          "data": {}
+        }
+      },
+      "method": "POST",
+      "url": "http://172.17.0.11:23210/v1/vector/collections/create",
+      "headers": {
+        "Content-Type": "application/json",
+        "Authorization": "Bearer root:Milvus",
+        "RequestId": "82c80582-62ef-11f0-8b97-0242ac110005"
+      },
+      "timestamp": 1752744127.9339726,
+      "request_id": 0,
+      "content": {
+        "collectionName": "test_collection_2025_07_17_17_22_06_933665yRqOqBJh",
+        "dimension": 128,
+        "primaryField": "url",
+        "vectorField": "vector",
+        "autoID": true,
+        "dbName": "prod"
+      }
+    },
+    {
+      "response": {
+        "status_code": 200,
+        "headers": {
+          "Access-Control-Allow-Credentials": "true",
+          "Access-Control-Allow-Headers": "Content-Type, Content-Length, Accept-Encoding, X-CSRF-Token, Authorization, accept, origin, Cache-Control, X-Requested-With",
+          "Access-Control-Allow-Methods": "GET, HEAD, POST, PUT, DELETE, OPTIONS, PATCH",
+          "Access-Control-Allow-Origin": "*",
+          "Content-Type": "application/json; charset=utf-8",
+          "Date": "Thu, 17 Jul 2025 09:22:08 GMT",
+          "Content-Length": "70"
+        },
+        "elapsed_ms": 5.358,
+        "timestamp": 1752744128.0013468,
+        "request_id": 2,
+        "content": {
+          "code": 200,
+          "data": {
+            "insertCount": 1,
+            "insertIds": [
+              459470532653885619
+            ]
+          }
+        }
+      },
+      "method": "POST",
+      "url": "http://172.17.0.11:23210/v1/vector/insert",
+      "headers": {
+        "Content-Type": "application/json",
+        "Authorization": "Bearer root:Milvus",
+        "RequestId": "82d16473-62ef-11f0-9d5f-0242ac110005"
+      },
+      "timestamp": 1752744127.9954152,
+      "request_id": 2,
+      "content": {
+        "collectionName": "test_collection_2025_07_17_17_22_06_933665yRqOqBJh",
+        "data": [
+          {
+            "vector": "__FLOAT_ARRAY_DIM_128__",
+            "uid": 0,
+            "name": "Ryan Mason",
+            "address": "786 Jennifer Mount Apt. 143\nSouth Johnmouth, DC 24286",
+            "text": "Bring something kitchen fill source reason build. Modern very herself soon. Life follow job blue speech minute sure.",
+            "email": "jonathan14@example.com",
+            "phone_number": "382-268-2779x45169",
+            "array_int_dynamic": "__FLOAT_ARRAY_DIM_6__",
+            "array_varchar_dynamic": [
+              "Andrea Douglas",
+              "Christopher Rios",
+              "Chad Rodriguez",
+              "William Reynolds"
+            ],
+            "json": {
+              "name": "Zachary Roth",
+              "address": "218 James Crossing Apt. 196\nSouth Nicholasside, VA 44968"
+            },
+            "key94442": "value97869",
+            "key39094": "value45612",
+            "key96669": "value83826"
+          }
+        ],
+        "dbName": "prod"
+      }
+    },
+    {
+      "response": {
+        "status_code": 200,
+        "headers": {
+          "Access-Control-Allow-Credentials": "true",
+          "Access-Control-Allow-Headers": "Content-Type, Content-Length, Accept-Encoding, X-CSRF-Token, Authorization, accept, origin, Cache-Control, X-Requested-With",
+          "Access-Control-Allow-Methods": "GET, HEAD, POST, PUT, DELETE, OPTIONS, PATCH",
+          "Access-Control-Allow-Origin": "*",
+          "Content-Type": "application/json; charset=utf-8",
+          "Date": "Thu, 17 Jul 2025 09:22:08 GMT",
+          "Content-Length": "70"
+        },
+        "elapsed_ms": 2.489,
+        "timestamp": 1752744128.0083358,
+        "request_id": 3,
+        "content": {
+          "code": 200,
+          "data": {
+            "insertCount": 1,
+            "insertIds": [
+              459470532653885621
+            ]
+          }
+        }
+      },
+      "method": "POST",
+      "url": "http://172.17.0.11:23210/v1/vector/insert",
+      "headers": {
+        "Content-Type": "application/json",
+        "Authorization": "Bearer root:Milvus",
+        "RequestId": "82d2ddfc-62ef-11f0-b6aa-0242ac110005"
+      },
+      "timestamp": 1752744128.0052235,
+      "request_id": 3,
+      "content": {
+        "collectionName": "test_collection_2025_07_17_17_22_06_933665yRqOqBJh",
+        "data": [
+          {
+            "vector": "__FLOAT_ARRAY_DIM_128__",
+            "uid": 0,
+            "name": "Ana Wise",
+            "address": "535 Steven Ford Apt. 948\nArmstrongton, WA 42142",
+            "text": "Hour tonight beautiful resource change. Head white late artist begin.\nHistory rich head car. Send activity war word he now term care. When time apply worker.",
+            "email": "ilopez@example.net",
+            "phone_number": "(918)797-2218x14232",
+            "array_int_dynamic": [
+              65552
+            ],
+            "array_varchar_dynamic": [
+              "Jason Brown",
+              "Michael Thompson",
+              "Christopher Bryan",
+              "Alfred Gates",
+              "Mary Russell",
+              "Christine Gomez"
+            ],
+            "json": {
+              "name": "Tony Wilson",
+              "address": "1495 Sarah Circles\nSouth Alexander, MD 38113"
+            },
+            "key53732": "value95357",
+            "key31660": "value24784",
+            "key87540": "value37410",
+            "key94044": "value25687",
+            "key9194": "value42206",
+            "key37877": "value66113",
+            "key57214": "value8946",
+            "key6852": "value36613"
+          }
+        ],
+        "dbName": "prod"
+      }
+    }
+  ]
+}

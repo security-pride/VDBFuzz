@@ -1,0 +1,45 @@
+{
+  "test_name": "allmilvus_log.TestRestfulSdkCompatibility_test_collection_created_by_restful_describe_by_sdk[128-COSINE]_1752747027.json",
+  "vdb_type": "qdrant",
+  "requests": [
+    {
+      "response": {
+        "status_code": 200,
+        "headers": {
+          "Access-Control-Allow-Credentials": "true",
+          "Access-Control-Allow-Headers": "Content-Type, Content-Length, Accept-Encoding, X-CSRF-Token, Authorization, accept, origin, Cache-Control, X-Requested-With",
+          "Access-Control-Allow-Methods": "GET, HEAD, POST, PUT, DELETE, OPTIONS, PATCH",
+          "Access-Control-Allow-Origin": "*",
+          "Content-Type": "application/json; charset=utf-8",
+          "Date": "Thu, 17 Jul 2025 10:10:27 GMT",
+          "Content-Length": "20"
+        },
+        "elapsed_ms": 55.029,
+        "timestamp": 1752747027.0103989,
+        "request_id": 0,
+        "content": {
+          "code": 0,
+          "data": {}
+        }
+      },
+      "method": "POST",
+      "url": "http://172.17.0.11:23210/v2/vectordb/collections/create",
+      "headers": {
+        "Content-Type": "application/json",
+        "Authorization": "Bearer None",
+        "RequestId": "42222896-62f6-11f0-91de-0242ac11000b",
+        "Request-Timeout": "120"
+      },
+      "timestamp": 1752747026.9544992,
+      "request_id": 0,
+      "content": {
+        "collectionName": "test_collection_2025_07_17_18_10_25_953218SigDoaDu",
+        "dimension": 128,
+        "metricType": "COSINE",
+        "params": {
+          "consistencyLevel": "Strong"
+        }
+      }
+    }
+  ]
+}

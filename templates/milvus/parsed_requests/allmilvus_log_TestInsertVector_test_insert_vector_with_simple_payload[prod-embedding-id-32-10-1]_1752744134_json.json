@@ -1,0 +1,367 @@
+{
+  "test_name": "allmilvus_log.TestInsertVector_test_insert_vector_with_simple_payload[prod-embedding-id-32-10-1]_1752744134.json",
+  "vdb_type": "qdrant",
+  "requests": [
+    {
+      "response": {
+        "status_code": 200,
+        "headers": {
+          "Access-Control-Allow-Credentials": "true",
+          "Access-Control-Allow-Headers": "Content-Type, Content-Length, Accept-Encoding, X-CSRF-Token, Authorization, accept, origin, Cache-Control, X-Requested-With",
+          "Access-Control-Allow-Methods": "GET, HEAD, POST, PUT, DELETE, OPTIONS, PATCH",
+          "Access-Control-Allow-Origin": "*",
+          "Content-Type": "application/json; charset=utf-8",
+          "Date": "Thu, 17 Jul 2025 09:22:13 GMT",
+          "Content-Length": "22"
+        },
+        "elapsed_ms": 19.817999999999998,
+        "timestamp": 1752744133.9853451,
+        "request_id": 0,
+        "content": {
+          "code": 200,
+          "data": {}
+        }
+      },
+      "method": "POST",
+      "url": "http://172.17.0.11:23210/v1/vector/collections/create",
+      "headers": {
+        "Content-Type": "application/json",
+        "Authorization": "Bearer root:Milvus",
+        "RequestId": "86604785-62ef-11f0-abc3-0242ac110005"
+      },
+      "timestamp": 1752744133.9649386,
+      "request_id": 0,
+      "content": {
+        "collectionName": "test_collection_2025_07_17_17_22_12_964682xUsVnnYA",
+        "dimension": 32,
+        "primaryField": "id",
+        "vectorField": "embedding",
+        "autoID": true,
+        "dbName": "prod"
+      }
+    },
+    {
+      "response": {
+        "status_code": 200,
+        "headers": {
+          "Access-Control-Allow-Credentials": "true",
+          "Access-Control-Allow-Headers": "Content-Type, Content-Length, Accept-Encoding, X-CSRF-Token, Authorization, accept, origin, Cache-Control, X-Requested-With",
+          "Access-Control-Allow-Methods": "GET, HEAD, POST, PUT, DELETE, OPTIONS, PATCH",
+          "Access-Control-Allow-Origin": "*",
+          "Content-Type": "application/json; charset=utf-8",
+          "Date": "Thu, 17 Jul 2025 09:22:14 GMT",
+          "Content-Length": "242"
+        },
+        "elapsed_ms": 6.702999999999999,
+        "timestamp": 1752744134.017911,
+        "request_id": 2,
+        "content": {
+          "code": 200,
+          "data": {
+            "insertCount": 10,
+            "insertIds": [
+              459470532653885950,
+              459470532653885951,
+              459470532653885952,
+              459470532653885953,
+              459470532653885954,
+              459470532653885955,
+              459470532653885956,
+              459470532653885957,
+              459470532653885958,
+              459470532653885959
+            ]
+          }
+        }
+      },
+      "method": "POST",
+      "url": "http://172.17.0.11:23210/v1/vector/insert",
+      "headers": {
+        "Content-Type": "application/json",
+        "Authorization": "Bearer root:Milvus",
+        "RequestId": "86672c8e-62ef-11f0-8113-0242ac110005"
+      },
+      "timestamp": 1752744134.0104177,
+      "request_id": 2,
+      "content": {
+        "collectionName": "test_collection_2025_07_17_17_22_12_964682xUsVnnYA",
+        "data": [
+          {
+            "embedding": "__FLOAT_ARRAY_DIM_32__",
+            "uid": 0,
+            "name": "Dr. Jennifer Robertson",
+            "address": "6933 Angie Stream\nWest Tylerton, NC 73426",
+            "text": "Least traditional theory. Child but if seek drop community senior.\nCover us such. Guy close again scientist eight.",
+            "email": "monica89@example.org",
+            "phone_number": "001-325-978-8204x7246",
+            "array_int_dynamic": [
+              25941
+            ],
+            "array_varchar_dynamic": [
+              "Keith Parker"
+            ],
+            "json": {
+              "name": "Tina Gibson",
+              "address": "823 Gutierrez Plaza\nMillerfort, DE 28419"
+            },
+            "key98592": "value60861",
+            "key89661": "value51512",
+            "key86463": "value92656",
+            "key76259": "value13106",
+            "key99612": "value3564"
+          },
+          {
+            "embedding": "__FLOAT_ARRAY_DIM_32__",
+            "uid": 1,
+            "name": "Andrew Bailey",
+            "address": "05998 Ana Grove Apt. 369\nBowmantown, AZ 60293",
+            "text": "Table specific official strategy part condition. Approach because full various.",
+            "email": "daniel87@example.com",
+            "phone_number": "654.366.5822x146",
+            "array_int_dynamic": "__FLOAT_ARRAY_DIM_10__",
+            "array_varchar_dynamic": [
+              "Angela Hansen",
+              "John Le",
+              "Joshua Singh",
+              "Amy Smith MD",
+              "Amanda Craig",
+              "Angela Wu"
+            ],
+            "json": {
+              "name": "Christina James",
+              "address": "65685 Madison Road\nChoishire, RI 37423"
+            },
+            "key70035": "value9098",
+            "key42786": "value83449",
+            "key94712": "value6757",
+            "key94682": "value81915",
+            "key45426": "value20328",
+            "key29722": "value98284"
+          },
+          {
+            "embedding": "__FLOAT_ARRAY_DIM_32__",
+            "uid": 2,
+            "name": "Matthew Bailey",
+            "address": "840 Kimberly Pines Apt. 667\nColemanfort, MA 36940",
+            "text": "Focus end career guy center car.\nPlayer despite positive Republican both mention action. Subject success certainly. Morning over herself probably night.",
+            "email": "rachelrichards@example.org",
+            "phone_number": "001-246-538-3685x29885",
+            "array_int_dynamic": "__FLOAT_ARRAY_DIM_6__",
+            "array_varchar_dynamic": [
+              "Nancy Blackwell",
+              "Michael Johns",
+              "Billy Lewis",
+              "Danielle Lucas",
+              "Elizabeth Walker"
+            ],
+            "json": {
+              "name": "Patricia Reynolds",
+              "address": "USCGC Smith\nFPO AP 16602"
+            },
+            "key41092": "value73551",
+            "key69948": "value95407",
+            "key92839": "value61488",
+            "key83716": "value82626",
+            "key89543": "value46405"
+          },
+          {
+            "embedding": "__FLOAT_ARRAY_DIM_32__",
+            "uid": 3,
+            "name": "Matthew Benjamin",
+            "address": "6485 Kimberly Islands\nWest Thomas, FM 25332",
+            "text": "He record protect debate itself. Carry picture single about garden news. Heavy amount enter cup somebody.",
+            "email": "haleymartin@example.org",
+            "phone_number": "(840)836-9697",
+            "array_int_dynamic": "__FLOAT_ARRAY_DIM_7__",
+            "array_varchar_dynamic": [
+              "Elizabeth Collins",
+              "Cynthia Brown",
+              "Jerry Jenkins",
+              "Walter Russell",
+              "Selena Caldwell"
+            ],
+            "json": {
+              "name": "Jerry Sullivan",
+              "address": "200 Brown Harbors\nNathanton, DE 46625"
+            },
+            "key10269": "value69827",
+            "key91110": "value58547",
+            "key99259": "value8836",
+            "key12165": "value35268",
+            "key37560": "value98088"
+          },
+          {
+            "embedding": "__FLOAT_ARRAY_DIM_32__",
+            "uid": 4,
+            "name": "Ryan Morales",
+            "address": "482 Sarah Forge\nKennethview, CO 60491",
+            "text": "Middle prove treat cell election yourself particular. Bed director sister action behavior administration usually. Move executive everything debate story course.\nNote board majority your move weight.",
+            "email": "umoore@example.com",
+            "phone_number": "758-413-4864x2509",
+            "array_int_dynamic": "__FLOAT_ARRAY_DIM_4__",
+            "array_varchar_dynamic": [
+              "Danielle Kim",
+              "Ebony Carney",
+              "Peter Donaldson",
+              "Shawna Washington",
+              "Randy Vega"
+            ],
+            "json": {
+              "name": "Robert Hunter",
+              "address": "633 Paul Road\nMaxwellmouth, AL 35622"
+            },
+            "key17019": "value60424"
+          },
+          {
+            "embedding": "__FLOAT_ARRAY_DIM_32__",
+            "uid": 5,
+            "name": "Andrew Gilmore",
+            "address": "084 Raymond Roads Apt. 701\nNew Kimberly, ID 70461",
+            "text": "Article many nature. Because analysis management guess. Human shake really tough.\nMay conference issue suffer.",
+            "email": "isabel14@example.net",
+            "phone_number": "639-413-9935x80800",
+            "array_int_dynamic": [
+              53863
+            ],
+            "array_varchar_dynamic": [
+              "Jonathon Schmidt",
+              "Deborah Holt",
+              "Janet Navarro",
+              "Melissa Singleton",
+              "Teresa Thomas"
+            ],
+            "json": {
+              "name": "Darius Martinez",
+              "address": "68046 Kristin Fords\nJenniferburgh, ME 02535"
+            },
+            "key55449": "value34691",
+            "key73504": "value17141",
+            "key52509": "value17067",
+            "key75548": "value4873"
+          },
+          {
+            "embedding": "__FLOAT_ARRAY_DIM_32__",
+            "uid": 6,
+            "name": "Rhonda Collins",
+            "address": "3816 Courtney Skyway\nBellville, WA 50057",
+            "text": "Paper might adult shoulder. Dinner ability outside meeting someone on.\nQuickly answer really them audience state.",
+            "email": "prattmichael@example.com",
+            "phone_number": "(519)226-6328x4365",
+            "array_int_dynamic": "__FLOAT_ARRAY_DIM_7__",
+            "array_varchar_dynamic": [
+              "Julia Gomez",
+              "Benjamin Meyer",
+              "Lydia Mcneil",
+              "Lisa Rowe",
+              "Terry Chapman",
+              "Ashlee Short",
+              "Douglas Carlson",
+              "Rebekah Vega"
+            ],
+            "json": {
+              "name": "James Williamson",
+              "address": "265 Judy Ports\nSusanfort, AS 61095"
+            },
+            "key86814": "value70118",
+            "key65302": "value4175",
+            "key94955": "value21576",
+            "key85636": "value14749",
+            "key33435": "value94298",
+            "key20300": "value27",
+            "key97898": "value48325",
+            "key84360": "value32590",
+            "key5246": "value7122",
+            "key30102": "value24213"
+          },
+          {
+            "embedding": "__FLOAT_ARRAY_DIM_32__",
+            "uid": 7,
+            "name": "Jesus Wilson",
+            "address": "949 Bailey Common\nPagefurt, CO 90234",
+            "text": "Tree a method example because old. Many bit always air miss bag project.\nPut with place trip. Free few foreign book their catch explain. She fall have successful campaign modern.",
+            "email": "jfrazier@example.org",
+            "phone_number": "+1-664-751-2119x276",
+            "array_int_dynamic": "__FLOAT_ARRAY_DIM_8__",
+            "array_varchar_dynamic": [
+              "Darren Roberts",
+              "Richard Kim",
+              "Diana Ayers",
+              "Melissa Hart"
+            ],
+            "json": {
+              "name": "Thomas Butler",
+              "address": "Unit 4024 Box 0163\nDPO AE 75550"
+            },
+            "key14346": "value10031",
+            "key48491": "value20122",
+            "key7706": "value11253",
+            "key35677": "value8509",
+            "key37971": "value64747"
+          },
+          {
+            "embedding": "__FLOAT_ARRAY_DIM_32__",
+            "uid": 8,
+            "name": "Denise Gray",
+            "address": "2051 Ray Centers Suite 212\nKevinton, RI 64636",
+            "text": "Standard policy system real weight discussion institution serious. Base together it similar sell unit grow.",
+            "email": "shannonhernandez@example.org",
+            "phone_number": "(805)643-9987",
+            "array_int_dynamic": "__FLOAT_ARRAY_DIM_7__",
+            "array_varchar_dynamic": [
+              "Alexandra Williams",
+              "Justin Gonzalez",
+              "John Kim",
+              "John Espinoza",
+              "Stephanie Stanley",
+              "Dr. Joshua Snyder",
+              "Michael Rhodes",
+              "Michael Blake",
+              "Nathan Ritter",
+              "Joshua Fernandez"
+            ],
+            "json": {
+              "name": "James Nelson",
+              "address": "2858 Javier Rapids\nHarrellfurt, CO 94413"
+            },
+            "key62538": "value57595",
+            "key99012": "value45794",
+            "key58797": "value17210",
+            "key81733": "value96739",
+            "key84918": "value77677",
+            "key35813": "value982",
+            "key37837": "value14669",
+            "key75100": "value78694"
+          },
+          {
+            "embedding": "__FLOAT_ARRAY_DIM_32__",
+            "uid": 9,
+            "name": "Eric Marshall",
+            "address": "139 Ryan Plains\nPort Catherine, NV 46093",
+            "text": "Market me discuss article. Ground raise quickly they stock likely ago. Recent mission present system six activity. Up help under four various however science.",
+            "email": "weaverphillip@example.com",
+            "phone_number": "2804453387",
+            "array_int_dynamic": "__FLOAT_ARRAY_DIM_4__",
+            "array_varchar_dynamic": [
+              "Brittany Huang",
+              "Cynthia Jones",
+              "Jennifer Galvan",
+              "Charlene Reeves",
+              "Jennifer Robinson",
+              "David Cox Jr."
+            ],
+            "json": {
+              "name": "Steven Smith",
+              "address": "54164 Hooper Extensions\nMeltonfort, CT 82340"
+            },
+            "key75635": "value72713",
+            "key28875": "value11763",
+            "key1071": "value80332",
+            "key89793": "value27638",
+            "key39264": "value75738"
+          }
+        ],
+        "dbName": "prod"
+      }
+    }
+  ]
+}

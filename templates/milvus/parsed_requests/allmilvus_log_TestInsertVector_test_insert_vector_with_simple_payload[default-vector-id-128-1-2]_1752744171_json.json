@@ -1,0 +1,179 @@
+{
+  "test_name": "allmilvus_log.TestInsertVector_test_insert_vector_with_simple_payload[default-vector-id-128-1-2]_1752744171.json",
+  "vdb_type": "qdrant",
+  "requests": [
+    {
+      "response": {
+        "status_code": 200,
+        "headers": {
+          "Access-Control-Allow-Credentials": "true",
+          "Access-Control-Allow-Headers": "Content-Type, Content-Length, Accept-Encoding, X-CSRF-Token, Authorization, accept, origin, Cache-Control, X-Requested-With",
+          "Access-Control-Allow-Methods": "GET, HEAD, POST, PUT, DELETE, OPTIONS, PATCH",
+          "Access-Control-Allow-Origin": "*",
+          "Content-Type": "application/json; charset=utf-8",
+          "Date": "Thu, 17 Jul 2025 09:22:51 GMT",
+          "Content-Length": "22"
+        },
+        "elapsed_ms": 19.885,
+        "timestamp": 1752744171.8235683,
+        "request_id": 0,
+        "content": {
+          "code": 200,
+          "data": {}
+        }
+      },
+      "method": "POST",
+      "url": "http://172.17.0.11:23210/v1/vector/collections/create",
+      "headers": {
+        "Content-Type": "application/json",
+        "Authorization": "Bearer root:Milvus",
+        "RequestId": "9cede7db-62ef-11f0-89ad-0242ac110005"
+      },
+      "timestamp": 1752744171.8030062,
+      "request_id": 0,
+      "content": {
+        "collectionName": "test_collection_2025_07_17_17_22_50_802708xxnglfTy",
+        "dimension": 128,
+        "primaryField": "id",
+        "vectorField": "vector",
+        "autoID": true,
+        "dbName": "default"
+      }
+    },
+    {
+      "response": {
+        "status_code": 200,
+        "headers": {
+          "Access-Control-Allow-Credentials": "true",
+          "Access-Control-Allow-Headers": "Content-Type, Content-Length, Accept-Encoding, X-CSRF-Token, Authorization, accept, origin, Cache-Control, X-Requested-With",
+          "Access-Control-Allow-Methods": "GET, HEAD, POST, PUT, DELETE, OPTIONS, PATCH",
+          "Access-Control-Allow-Origin": "*",
+          "Content-Type": "application/json; charset=utf-8",
+          "Date": "Thu, 17 Jul 2025 09:22:51 GMT",
+          "Content-Length": "70"
+        },
+        "elapsed_ms": 4.865,
+        "timestamp": 1752744171.835456,
+        "request_id": 2,
+        "content": {
+          "code": 200,
+          "data": {
+            "insertCount": 1,
+            "insertIds": [
+              459470532653887671
+            ]
+          }
+        }
+      },
+      "method": "POST",
+      "url": "http://172.17.0.11:23210/v1/vector/insert",
+      "headers": {
+        "Content-Type": "application/json",
+        "Authorization": "Bearer root:Milvus",
+        "RequestId": "9cf206b3-62ef-11f0-a600-0242ac110005"
+      },
+      "timestamp": 1752744171.8300412,
+      "request_id": 2,
+      "content": {
+        "collectionName": "test_collection_2025_07_17_17_22_50_802708xxnglfTy",
+        "data": [
+          {
+            "vector": "__FLOAT_ARRAY_DIM_128__",
+            "uid": 0,
+            "name": "Michael Miller",
+            "address": "82618 Tony Corner\nNew Tracystad, WA 45207",
+            "text": "Enter everything ground pick finish. Cost ability concern back administration change green start.\nCulture street health stage sell attorney.",
+            "email": "alexandra97@example.net",
+            "phone_number": "+1-245-686-8414x774",
+            "array_int_dynamic": "__FLOAT_ARRAY_DIM_5__",
+            "array_varchar_dynamic": [
+              "Darin Lewis",
+              "Javier Simmons",
+              "Debra Perkins",
+              "Laurie Hines"
+            ],
+            "json": {
+              "name": "Dawn Nelson",
+              "address": "21066 Alison Burgs Apt. 349\nEast Elizabethfurt, TX 27962"
+            },
+            "key48417": "value48290",
+            "key16406": "value45372",
+            "key56346": "value43462",
+            "key58982": "value3495",
+            "key97834": "value37216"
+          }
+        ],
+        "dbName": "default"
+      }
+    },
+    {
+      "response": {
+        "status_code": 200,
+        "headers": {
+          "Access-Control-Allow-Credentials": "true",
+          "Access-Control-Allow-Headers": "Content-Type, Content-Length, Accept-Encoding, X-CSRF-Token, Authorization, accept, origin, Cache-Control, X-Requested-With",
+          "Access-Control-Allow-Methods": "GET, HEAD, POST, PUT, DELETE, OPTIONS, PATCH",
+          "Access-Control-Allow-Origin": "*",
+          "Content-Type": "application/json; charset=utf-8",
+          "Date": "Thu, 17 Jul 2025 09:22:51 GMT",
+          "Content-Length": "70"
+        },
+        "elapsed_ms": 2.11,
+        "timestamp": 1752744171.8413396,
+        "request_id": 3,
+        "content": {
+          "code": 200,
+          "data": {
+            "insertCount": 1,
+            "insertIds": [
+              459470532653887673
+            ]
+          }
+        }
+      },
+      "method": "POST",
+      "url": "http://172.17.0.11:23210/v1/vector/insert",
+      "headers": {
+        "Content-Type": "application/json",
+        "Authorization": "Bearer root:Milvus",
+        "RequestId": "9cf35a16-62ef-11f0-bc26-0242ac110005"
+      },
+      "timestamp": 1752744171.8387215,
+      "request_id": 3,
+      "content": {
+        "collectionName": "test_collection_2025_07_17_17_22_50_802708xxnglfTy",
+        "data": [
+          {
+            "vector": "__FLOAT_ARRAY_DIM_128__",
+            "uid": 0,
+            "name": "Michaela Jones",
+            "address": "3287 David Valleys\nKnoxmouth, MI 07979",
+            "text": "Yet another do push. Age local easy Democrat enjoy staff purpose. Last together instead price reason several career.",
+            "email": "ashley19@example.com",
+            "phone_number": "+1-944-721-0148x8879",
+            "array_int_dynamic": "__FLOAT_ARRAY_DIM_5__",
+            "array_varchar_dynamic": [
+              "Taylor Ortiz",
+              "Daniel Santana",
+              "Kimberly Escobar",
+              "Dr. Lynn Young",
+              "Joshua Woods",
+              "Christina Doyle",
+              "Donna Martin",
+              "Barbara Jones"
+            ],
+            "json": {
+              "name": "John Wheeler",
+              "address": "169 Sarah Green Apt. 767\nHaleyside, CO 75222"
+            },
+            "key72341": "value81715",
+            "key36710": "value36488",
+            "key79819": "value46753",
+            "key7425": "value44052"
+          }
+        ],
+        "dbName": "default"
+      }
+    }
+  ]
+}

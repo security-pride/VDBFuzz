@@ -1,0 +1,111 @@
+{
+  "test_name": "allmilvus_log.TestInsertVector_test_insert_vector_with_simple_payload[default-embedding-id-128-1-1]_1752744201.json",
+  "vdb_type": "qdrant",
+  "requests": [
+    {
+      "response": {
+        "status_code": 200,
+        "headers": {
+          "Access-Control-Allow-Credentials": "true",
+          "Access-Control-Allow-Headers": "Content-Type, Content-Length, Accept-Encoding, X-CSRF-Token, Authorization, accept, origin, Cache-Control, X-Requested-With",
+          "Access-Control-Allow-Methods": "GET, HEAD, POST, PUT, DELETE, OPTIONS, PATCH",
+          "Access-Control-Allow-Origin": "*",
+          "Content-Type": "application/json; charset=utf-8",
+          "Date": "Thu, 17 Jul 2025 09:23:21 GMT",
+          "Content-Length": "22"
+        },
+        "elapsed_ms": 18.776,
+        "timestamp": 1752744201.3849564,
+        "request_id": 0,
+        "content": {
+          "code": 200,
+          "data": {}
+        }
+      },
+      "method": "POST",
+      "url": "http://172.17.0.11:23210/v1/vector/collections/create",
+      "headers": {
+        "Content-Type": "application/json",
+        "Authorization": "Bearer root:Milvus",
+        "RequestId": "ae8ccb26-62ef-11f0-8d46-0242ac110005"
+      },
+      "timestamp": 1752744201.3655674,
+      "request_id": 0,
+      "content": {
+        "collectionName": "test_collection_2025_07_17_17_23_20_365252olqwWzKO",
+        "dimension": 128,
+        "primaryField": "id",
+        "vectorField": "embedding",
+        "autoID": true,
+        "dbName": "default"
+      }
+    },
+    {
+      "response": {
+        "status_code": 200,
+        "headers": {
+          "Access-Control-Allow-Credentials": "true",
+          "Access-Control-Allow-Headers": "Content-Type, Content-Length, Accept-Encoding, X-CSRF-Token, Authorization, accept, origin, Cache-Control, X-Requested-With",
+          "Access-Control-Allow-Methods": "GET, HEAD, POST, PUT, DELETE, OPTIONS, PATCH",
+          "Access-Control-Allow-Origin": "*",
+          "Content-Type": "application/json; charset=utf-8",
+          "Date": "Thu, 17 Jul 2025 09:23:21 GMT",
+          "Content-Length": "70"
+        },
+        "elapsed_ms": 5.507,
+        "timestamp": 1752744201.3975167,
+        "request_id": 2,
+        "content": {
+          "code": 200,
+          "data": {
+            "insertCount": 1,
+            "insertIds": [
+              459470532653889043
+            ]
+          }
+        }
+      },
+      "method": "POST",
+      "url": "http://172.17.0.11:23210/v1/vector/insert",
+      "headers": {
+        "Content-Type": "application/json",
+        "Authorization": "Bearer root:Milvus",
+        "RequestId": "ae90bccf-62ef-11f0-beba-0242ac110005"
+      },
+      "timestamp": 1752744201.3914413,
+      "request_id": 2,
+      "content": {
+        "collectionName": "test_collection_2025_07_17_17_23_20_365252olqwWzKO",
+        "data": [
+          {
+            "embedding": "__FLOAT_ARRAY_DIM_128__",
+            "uid": 0,
+            "name": "Greg Schneider",
+            "address": "723 Christina Divide Suite 805\nRichardfort, MN 99862",
+            "text": "Job care fish high carry arrive feeling determine. Player find level board south firm guess.\nGrow story scene who art free. Way red Mrs thing yes heavy.\nManagement team center suffer key model.",
+            "email": "matthewwright@example.net",
+            "phone_number": "880.557.9917",
+            "array_int_dynamic": [
+              7621
+            ],
+            "array_varchar_dynamic": [
+              "Steven James",
+              "Cynthia White",
+              "Larry Miller",
+              "Tanya Brown",
+              "Gina Clark"
+            ],
+            "json": {
+              "name": "Sherry Herrera",
+              "address": "559 Carney Port Apt. 008\nNew Annbury, FM 90458"
+            },
+            "key19083": "value67846",
+            "key24514": "value74931",
+            "key58237": "value65315"
+          }
+        ],
+        "dbName": "default"
+      }
+    }
+  ]
+}

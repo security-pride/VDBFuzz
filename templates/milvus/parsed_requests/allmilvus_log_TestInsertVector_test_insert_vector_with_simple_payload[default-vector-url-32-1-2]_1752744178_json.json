@@ -1,0 +1,180 @@
+{
+  "test_name": "allmilvus_log.TestInsertVector_test_insert_vector_with_simple_payload[default-vector-url-32-1-2]_1752744178.json",
+  "vdb_type": "qdrant",
+  "requests": [
+    {
+      "response": {
+        "status_code": 200,
+        "headers": {
+          "Access-Control-Allow-Credentials": "true",
+          "Access-Control-Allow-Headers": "Content-Type, Content-Length, Accept-Encoding, X-CSRF-Token, Authorization, accept, origin, Cache-Control, X-Requested-With",
+          "Access-Control-Allow-Methods": "GET, HEAD, POST, PUT, DELETE, OPTIONS, PATCH",
+          "Access-Control-Allow-Origin": "*",
+          "Content-Type": "application/json; charset=utf-8",
+          "Date": "Thu, 17 Jul 2025 09:22:58 GMT",
+          "Content-Length": "22"
+        },
+        "elapsed_ms": 21.686,
+        "timestamp": 1752744178.8998709,
+        "request_id": 0,
+        "content": {
+          "code": 200,
+          "data": {}
+        }
+      },
+      "method": "POST",
+      "url": "http://172.17.0.11:23210/v1/vector/collections/create",
+      "headers": {
+        "Content-Type": "application/json",
+        "Authorization": "Bearer root:Milvus",
+        "RequestId": "a1256149-62ef-11f0-bcfe-0242ac110005"
+      },
+      "timestamp": 1752744178.8774898,
+      "request_id": 0,
+      "content": {
+        "collectionName": "test_collection_2025_07_17_17_22_57_877139MBoEnkGA",
+        "dimension": 32,
+        "primaryField": "url",
+        "vectorField": "vector",
+        "autoID": true,
+        "dbName": "default"
+      }
+    },
+    {
+      "response": {
+        "status_code": 200,
+        "headers": {
+          "Access-Control-Allow-Credentials": "true",
+          "Access-Control-Allow-Headers": "Content-Type, Content-Length, Accept-Encoding, X-CSRF-Token, Authorization, accept, origin, Cache-Control, X-Requested-With",
+          "Access-Control-Allow-Methods": "GET, HEAD, POST, PUT, DELETE, OPTIONS, PATCH",
+          "Access-Control-Allow-Origin": "*",
+          "Content-Type": "application/json; charset=utf-8",
+          "Date": "Thu, 17 Jul 2025 09:22:58 GMT",
+          "Content-Length": "70"
+        },
+        "elapsed_ms": 4.715999999999999,
+        "timestamp": 1752744178.912049,
+        "request_id": 2,
+        "content": {
+          "code": 200,
+          "data": {
+            "insertCount": 1,
+            "insertIds": [
+              459470532653888013
+            ]
+          }
+        }
+      },
+      "method": "POST",
+      "url": "http://172.17.0.11:23210/v1/vector/insert",
+      "headers": {
+        "Content-Type": "application/json",
+        "Authorization": "Bearer root:Milvus",
+        "RequestId": "a129df86-62ef-11f0-bbef-0242ac110005"
+      },
+      "timestamp": 1752744178.906842,
+      "request_id": 2,
+      "content": {
+        "collectionName": "test_collection_2025_07_17_17_22_57_877139MBoEnkGA",
+        "data": [
+          {
+            "vector": "__FLOAT_ARRAY_DIM_32__",
+            "uid": 0,
+            "name": "Courtney Hall",
+            "address": "0517 Davis Ranch Apt. 281\nKristopherburgh, IA 34420",
+            "text": "Short minute man first.\nSister allow year year voice beyond month. Program follow of fly agency five important. Success term coach religious six.",
+            "email": "glendasullivan@example.com",
+            "phone_number": "321.842.9326",
+            "array_int_dynamic": "__FLOAT_ARRAY_DIM_6__",
+            "array_varchar_dynamic": [
+              "Evan Allen",
+              "Savannah Miranda",
+              "Jessica Mcdonald",
+              "Rebecca Rios",
+              "Jose Vasquez",
+              "Steven Lee",
+              "Patrick Smith",
+              "Kimberly Kirk"
+            ],
+            "json": {
+              "name": "Cynthia Garrett",
+              "address": "65067 Leonard Station\nPort Samantha, ND 43986"
+            },
+            "key72897": "value94508",
+            "key64212": "value86264",
+            "key36609": "value12897",
+            "key30471": "value67637",
+            "key72921": "value69732",
+            "key36227": "value93524",
+            "key71411": "value23506"
+          }
+        ],
+        "dbName": "default"
+      }
+    },
+    {
+      "response": {
+        "status_code": 200,
+        "headers": {
+          "Access-Control-Allow-Credentials": "true",
+          "Access-Control-Allow-Headers": "Content-Type, Content-Length, Accept-Encoding, X-CSRF-Token, Authorization, accept, origin, Cache-Control, X-Requested-With",
+          "Access-Control-Allow-Methods": "GET, HEAD, POST, PUT, DELETE, OPTIONS, PATCH",
+          "Access-Control-Allow-Origin": "*",
+          "Content-Type": "application/json; charset=utf-8",
+          "Date": "Thu, 17 Jul 2025 09:22:58 GMT",
+          "Content-Length": "70"
+        },
+        "elapsed_ms": 2.176,
+        "timestamp": 1752744178.9172883,
+        "request_id": 3,
+        "content": {
+          "code": 200,
+          "data": {
+            "insertCount": 1,
+            "insertIds": [
+              459470532653888015
+            ]
+          }
+        }
+      },
+      "method": "POST",
+      "url": "http://172.17.0.11:23210/v1/vector/insert",
+      "headers": {
+        "Content-Type": "application/json",
+        "Authorization": "Bearer root:Milvus",
+        "RequestId": "a12b1099-62ef-11f0-b9a7-0242ac110005"
+      },
+      "timestamp": 1752744178.9146426,
+      "request_id": 3,
+      "content": {
+        "collectionName": "test_collection_2025_07_17_17_22_57_877139MBoEnkGA",
+        "data": [
+          {
+            "vector": "__FLOAT_ARRAY_DIM_32__",
+            "uid": 0,
+            "name": "Andrea Lewis",
+            "address": "Unit 9938 Box 5246\nDPO AE 01174",
+            "text": "Present type interesting. Property deep major guess change race. Feeling now piece southern huge culture. Finally science speak interview detail great no option.",
+            "email": "kyle53@example.com",
+            "phone_number": "001-508-469-9626",
+            "array_int_dynamic": "__FLOAT_ARRAY_DIM_2__",
+            "array_varchar_dynamic": [
+              "Sean Dawson",
+              "Savannah Scott",
+              "Sarah Brown",
+              "Julie Smith",
+              "Angela Lopez",
+              "Donald Jones"
+            ],
+            "json": {
+              "name": "Dale Hayes",
+              "address": "927 Audrey Roads Apt. 046\nHamiltonshire, WI 91987"
+            },
+            "key59538": "value32135"
+          }
+        ],
+        "dbName": "default"
+      }
+    }
+  ]
+}

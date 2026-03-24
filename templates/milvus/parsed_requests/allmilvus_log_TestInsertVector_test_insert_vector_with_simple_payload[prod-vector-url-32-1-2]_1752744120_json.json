@@ -1,0 +1,176 @@
+{
+  "test_name": "allmilvus_log.TestInsertVector_test_insert_vector_with_simple_payload[prod-vector-url-32-1-2]_1752744120.json",
+  "vdb_type": "qdrant",
+  "requests": [
+    {
+      "response": {
+        "status_code": 200,
+        "headers": {
+          "Access-Control-Allow-Credentials": "true",
+          "Access-Control-Allow-Headers": "Content-Type, Content-Length, Accept-Encoding, X-CSRF-Token, Authorization, accept, origin, Cache-Control, X-Requested-With",
+          "Access-Control-Allow-Methods": "GET, HEAD, POST, PUT, DELETE, OPTIONS, PATCH",
+          "Access-Control-Allow-Origin": "*",
+          "Content-Type": "application/json; charset=utf-8",
+          "Date": "Thu, 17 Jul 2025 09:22:00 GMT",
+          "Content-Length": "22"
+        },
+        "elapsed_ms": 20.244000000000003,
+        "timestamp": 1752744120.7929125,
+        "request_id": 0,
+        "content": {
+          "code": 200,
+          "data": {}
+        }
+      },
+      "method": "POST",
+      "url": "http://172.17.0.11:23210/v1/vector/collections/create",
+      "headers": {
+        "Content-Type": "application/json",
+        "Authorization": "Bearer root:Milvus",
+        "RequestId": "7e833035-62ef-11f0-b791-0242ac110005"
+      },
+      "timestamp": 1752744120.771993,
+      "request_id": 0,
+      "content": {
+        "collectionName": "test_collection_2025_07_17_17_21_59_771676BtVClRKQ",
+        "dimension": 32,
+        "primaryField": "url",
+        "vectorField": "vector",
+        "autoID": true,
+        "dbName": "prod"
+      }
+    },
+    {
+      "response": {
+        "status_code": 200,
+        "headers": {
+          "Access-Control-Allow-Credentials": "true",
+          "Access-Control-Allow-Headers": "Content-Type, Content-Length, Accept-Encoding, X-CSRF-Token, Authorization, accept, origin, Cache-Control, X-Requested-With",
+          "Access-Control-Allow-Methods": "GET, HEAD, POST, PUT, DELETE, OPTIONS, PATCH",
+          "Access-Control-Allow-Origin": "*",
+          "Content-Type": "application/json; charset=utf-8",
+          "Date": "Thu, 17 Jul 2025 09:22:00 GMT",
+          "Content-Length": "70"
+        },
+        "elapsed_ms": 5.038,
+        "timestamp": 1752744120.8055573,
+        "request_id": 2,
+        "content": {
+          "code": 200,
+          "data": {
+            "insertCount": 1,
+            "insertIds": [
+              459470532653885277
+            ]
+          }
+        }
+      },
+      "method": "POST",
+      "url": "http://172.17.0.11:23210/v1/vector/insert",
+      "headers": {
+        "Content-Type": "application/json",
+        "Authorization": "Bearer root:Milvus",
+        "RequestId": "7e87765a-62ef-11f0-9283-0242ac110005"
+      },
+      "timestamp": 1752744120.7999423,
+      "request_id": 2,
+      "content": {
+        "collectionName": "test_collection_2025_07_17_17_21_59_771676BtVClRKQ",
+        "data": [
+          {
+            "vector": "__FLOAT_ARRAY_DIM_32__",
+            "uid": 0,
+            "name": "Katelyn Mcdaniel",
+            "address": "48867 Matthew Shore Suite 565\nJonathanborough, NC 83489",
+            "text": "Hope crime war management. Challenge picture southern myself camera up. Cell exactly side sure join.\nReally time north hotel. Head price risk as eye. Back should road.",
+            "email": "manningisabel@example.com",
+            "phone_number": "950-381-5412x2355",
+            "array_int_dynamic": [
+              9324
+            ],
+            "array_varchar_dynamic": [
+              "Karen Gates",
+              "Kelly Harrison",
+              "Tammy Walker",
+              "Jennifer Nguyen"
+            ],
+            "json": {
+              "name": "Jerry Oneal",
+              "address": "0193 Douglas Station\nCoreymouth, WV 53260"
+            },
+            "key99014": "value35117"
+          }
+        ],
+        "dbName": "prod"
+      }
+    },
+    {
+      "response": {
+        "status_code": 200,
+        "headers": {
+          "Access-Control-Allow-Credentials": "true",
+          "Access-Control-Allow-Headers": "Content-Type, Content-Length, Accept-Encoding, X-CSRF-Token, Authorization, accept, origin, Cache-Control, X-Requested-With",
+          "Access-Control-Allow-Methods": "GET, HEAD, POST, PUT, DELETE, OPTIONS, PATCH",
+          "Access-Control-Allow-Origin": "*",
+          "Content-Type": "application/json; charset=utf-8",
+          "Date": "Thu, 17 Jul 2025 09:22:00 GMT",
+          "Content-Length": "70"
+        },
+        "elapsed_ms": 2.249,
+        "timestamp": 1752744120.810928,
+        "request_id": 3,
+        "content": {
+          "code": 200,
+          "data": {
+            "insertCount": 1,
+            "insertIds": [
+              459470532653885279
+            ]
+          }
+        }
+      },
+      "method": "POST",
+      "url": "http://172.17.0.11:23210/v1/vector/insert",
+      "headers": {
+        "Content-Type": "application/json",
+        "Authorization": "Bearer root:Milvus",
+        "RequestId": "7e88b7e8-62ef-11f0-8658-0242ac110005"
+      },
+      "timestamp": 1752744120.8081634,
+      "request_id": 3,
+      "content": {
+        "collectionName": "test_collection_2025_07_17_17_21_59_771676BtVClRKQ",
+        "data": [
+          {
+            "vector": "__FLOAT_ARRAY_DIM_32__",
+            "uid": 0,
+            "name": "Kathy Williams",
+            "address": "1294 Carol Crest\nTimothyborough, TN 84175",
+            "text": "Expert computer three child fall ever outside stay.\nBack safe reveal prevent individual five. Star class happy stage sell simple should.",
+            "email": "lhenderson@example.org",
+            "phone_number": "532.913.1359x7224",
+            "array_int_dynamic": "__FLOAT_ARRAY_DIM_2__",
+            "array_varchar_dynamic": [
+              "Terry Pacheco",
+              "James Shaw",
+              "Sarah Zamora",
+              "Leonard Boone"
+            ],
+            "json": {
+              "name": "Kyle Schmidt",
+              "address": "33837 Lowe Extensions\nNorth Rebecca, MD 69244"
+            },
+            "key37949": "value5881",
+            "key37854": "value51146",
+            "key68236": "value50940",
+            "key87333": "value13929",
+            "key14523": "value68867",
+            "key64167": "value53693",
+            "key99478": "value36202"
+          }
+        ],
+        "dbName": "prod"
+      }
+    }
+  ]
+}

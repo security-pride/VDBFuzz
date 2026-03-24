@@ -1,0 +1,102 @@
+{
+  "vdb_type": "qdrant",
+  "version": "1.x",
+  
+  "keyword_mapping": {
+    "distance_metrics": [
+      "Cosine", "Euclid", "Dot", "Manhattan"
+    ],
+    "quantization_types": [
+      "scalar", "product", "binary"
+    ],
+    "scalar_quantization_types": [
+      "int8"
+    ],
+    "compression_ratios": [
+      "x4", "x8", "x16", "x32", "x64"
+    ],
+    "shard_transfer_methods": [
+      "stream_records", "snapshot", "wal_delta"
+    ],
+    "ordering": [
+      "weak", "medium", "strong"
+    ],
+    "on_disk_options": [
+      true, false
+    ],
+    "write_consistency_factor": [
+      1, 2, 3
+    ],
+    "read_consistency": [
+      "majority", "quorum", "all"
+    ],
+    "shard_number_options": [
+      1, 2, 4, 6, 8
+    ],
+    "replication_factor_options": [
+      1, 2, 3
+    ],
+    "hnsw_ef_options": [
+      16, 32, 64, 128, 256, 512
+    ],
+    "hnsw_m_options": [
+      4, 8, 16, 32, 64
+    ],
+    "indexing_threshold_options": [
+      1000, 5000, 10000, 20000, 50000
+    ],
+    "memmap_threshold_options": [
+      1000, 5000, 10000, 20000, 50000
+    ],
+    "payload_storage_type": [
+      "on_disk", "in_memory"
+    ],
+    "lookup_from_options": [
+      "collection", "shard"
+    ],
+    "direction_options": [
+      "asc", "desc"
+    ],
+    "fusion_options": [
+      "rrf", "dbsf"
+    ],
+    "rescore_options": [
+      true, false
+    ]
+  },
+  
+  "field_path_mapping": {
+    "distance": "distance_metrics",
+    "metric": "distance_metrics",
+    "quantization": "quantization_types",
+    "type": "scalar_quantization_types",
+    "compression": "compression_ratios",
+    "always_ram": "on_disk_options",
+    "on_disk": "on_disk_options",
+    "on_disk_payload": "on_disk_options",
+    "method": "shard_transfer_methods",
+    "ordering": "ordering",
+    "write_consistency_factor": "write_consistency_factor",
+    "read_consistency": "read_consistency",
+    "shard_number": "shard_number_options",
+    "replication_factor": "replication_factor_options",
+    "ef_construct": "hnsw_ef_options",
+    "ef": "hnsw_ef_options",
+    "m": "hnsw_m_options",
+    "indexing_threshold": "indexing_threshold_options",
+    "memmap_threshold": "memmap_threshold_options",
+    "payload_storage_type": "payload_storage_type",
+    "lookup_from": "lookup_from_options",
+    "direction": "direction_options",
+    "fusion": "fusion_options",
+    "rescore": "rescore_options"
+  },
+  
+  "excluded_data_fields": [
+    "collection", "collection_name", "name",
+    "vector", "vectors", "embedding", "embeddings",
+    "id", "ids", "uuid", "point_id",
+    "payload", "filter", "must", "should", "must_not",
+    "key", "value", "match", "range", "geo"
+  ]
+}

@@ -1,0 +1,484 @@
+{
+  "test_name": "allmilvus_log.TestDatabaseProperties_test_alter_database_properties_1752746467.json",
+  "vdb_type": "qdrant",
+  "requests": [
+    {
+      "response": {
+        "status_code": 200,
+        "headers": {
+          "Access-Control-Allow-Credentials": "true",
+          "Access-Control-Allow-Headers": "Content-Type, Content-Length, Accept-Encoding, X-CSRF-Token, Authorization, accept, origin, Cache-Control, X-Requested-With",
+          "Access-Control-Allow-Methods": "GET, HEAD, POST, PUT, DELETE, OPTIONS, PATCH",
+          "Access-Control-Allow-Origin": "*",
+          "Content-Type": "application/json; charset=utf-8",
+          "Date": "Thu, 17 Jul 2025 10:01:07 GMT",
+          "Content-Length": "20"
+        },
+        "elapsed_ms": 3.153,
+        "timestamp": 1752746467.1310308,
+        "request_id": 0,
+        "content": {
+          "code": 0,
+          "data": {}
+        }
+      },
+      "method": "POST",
+      "url": "http://172.17.0.11:23210/v2/vectordb/databases/create",
+      "headers": {
+        "Content-Type": "application/json",
+        "Authorization": "Bearer None"
+      },
+      "timestamp": 1752746467.1271362,
+      "request_id": 0,
+      "content": {
+        "dbName": "test_alter_props"
+      }
+    },
+    {
+      "response": {
+        "status_code": 200,
+        "headers": {
+          "Access-Control-Allow-Credentials": "true",
+          "Access-Control-Allow-Headers": "Content-Type, Content-Length, Accept-Encoding, X-CSRF-Token, Authorization, accept, origin, Cache-Control, X-Requested-With",
+          "Access-Control-Allow-Methods": "GET, HEAD, POST, PUT, DELETE, OPTIONS, PATCH",
+          "Access-Control-Allow-Origin": "*",
+          "Content-Type": "application/json; charset=utf-8",
+          "Date": "Thu, 17 Jul 2025 10:01:07 GMT",
+          "Content-Length": "20"
+        },
+        "elapsed_ms": 2.79,
+        "timestamp": 1752746467.1348193,
+        "request_id": 1,
+        "content": {
+          "code": 0,
+          "data": {}
+        }
+      },
+      "method": "POST",
+      "url": "http://172.17.0.11:23210/v2/vectordb/databases/alter",
+      "headers": {
+        "Content-Type": "application/json",
+        "Authorization": "Bearer None"
+      },
+      "timestamp": 1752746467.131442,
+      "request_id": 1,
+      "content": {
+        "dbName": "test_alter_props",
+        "properties": {
+          "mmap.enabled": true
+        }
+      }
+    },
+    {
+      "response": {
+        "status_code": 200,
+        "headers": {
+          "Access-Control-Allow-Credentials": "true",
+          "Access-Control-Allow-Headers": "Content-Type, Content-Length, Accept-Encoding, X-CSRF-Token, Authorization, accept, origin, Cache-Control, X-Requested-With",
+          "Access-Control-Allow-Methods": "GET, HEAD, POST, PUT, DELETE, OPTIONS, PATCH",
+          "Access-Control-Allow-Origin": "*",
+          "Content-Type": "application/json; charset=utf-8",
+          "Date": "Thu, 17 Jul 2025 10:01:07 GMT",
+          "Content-Length": "126"
+        },
+        "elapsed_ms": 1.5299999999999998,
+        "timestamp": 1752746467.1373262,
+        "request_id": 2,
+        "content": {
+          "code": 0,
+          "data": {
+            "dbID": 459470532655318949,
+            "dbName": "test_alter_props",
+            "properties": [
+              {
+                "key": "mmap.enabled",
+                "value": "true"
+              }
+            ]
+          }
+        }
+      },
+      "method": "POST",
+      "url": "http://172.17.0.11:23210/v2/vectordb/databases/describe",
+      "headers": {
+        "Content-Type": "application/json",
+        "Authorization": "Bearer None"
+      },
+      "timestamp": 1752746467.1351898,
+      "request_id": 2,
+      "content": {
+        "dbName": "test_alter_props"
+      }
+    },
+    {
+      "response": {
+        "status_code": 200,
+        "headers": {
+          "Access-Control-Allow-Credentials": "true",
+          "Access-Control-Allow-Headers": "Content-Type, Content-Length, Accept-Encoding, X-CSRF-Token, Authorization, accept, origin, Cache-Control, X-Requested-With",
+          "Access-Control-Allow-Methods": "GET, HEAD, POST, PUT, DELETE, OPTIONS, PATCH",
+          "Access-Control-Allow-Origin": "*",
+          "Content-Type": "application/json; charset=utf-8",
+          "Date": "Thu, 17 Jul 2025 10:01:07 GMT",
+          "Content-Length": "20"
+        },
+        "elapsed_ms": 2.7430000000000003,
+        "timestamp": 1752746467.1411004,
+        "request_id": 3,
+        "content": {
+          "code": 0,
+          "data": {}
+        }
+      },
+      "method": "POST",
+      "url": "http://172.17.0.11:23210/v2/vectordb/databases/alter",
+      "headers": {
+        "Content-Type": "application/json",
+        "Authorization": "Bearer None"
+      },
+      "timestamp": 1752746467.1377013,
+      "request_id": 3,
+      "content": {
+        "dbName": "test_alter_props",
+        "properties": {
+          "mmap.enabled": false
+        }
+      }
+    },
+    {
+      "response": {
+        "status_code": 200,
+        "headers": {
+          "Access-Control-Allow-Credentials": "true",
+          "Access-Control-Allow-Headers": "Content-Type, Content-Length, Accept-Encoding, X-CSRF-Token, Authorization, accept, origin, Cache-Control, X-Requested-With",
+          "Access-Control-Allow-Methods": "GET, HEAD, POST, PUT, DELETE, OPTIONS, PATCH",
+          "Access-Control-Allow-Origin": "*",
+          "Content-Type": "application/json; charset=utf-8",
+          "Date": "Thu, 17 Jul 2025 10:01:07 GMT",
+          "Content-Length": "127"
+        },
+        "elapsed_ms": 1.45,
+        "timestamp": 1752746467.14354,
+        "request_id": 4,
+        "content": {
+          "code": 0,
+          "data": {
+            "dbID": 459470532655318949,
+            "dbName": "test_alter_props",
+            "properties": [
+              {
+                "key": "mmap.enabled",
+                "value": "false"
+              }
+            ]
+          }
+        }
+      },
+      "method": "POST",
+      "url": "http://172.17.0.11:23210/v2/vectordb/databases/describe",
+      "headers": {
+        "Content-Type": "application/json",
+        "Authorization": "Bearer None"
+      },
+      "timestamp": 1752746467.141467,
+      "request_id": 4,
+      "content": {
+        "dbName": "test_alter_props"
+      }
+    },
+    {
+      "response": {
+        "status_code": 200,
+        "headers": {
+          "Access-Control-Allow-Credentials": "true",
+          "Access-Control-Allow-Headers": "Content-Type, Content-Length, Accept-Encoding, X-CSRF-Token, Authorization, accept, origin, Cache-Control, X-Requested-With",
+          "Access-Control-Allow-Methods": "GET, HEAD, POST, PUT, DELETE, OPTIONS, PATCH",
+          "Access-Control-Allow-Origin": "*",
+          "Content-Type": "application/json; charset=utf-8",
+          "Date": "Thu, 17 Jul 2025 10:01:07 GMT",
+          "Content-Length": "20"
+        },
+        "elapsed_ms": 2.579,
+        "timestamp": 1752746467.1471956,
+        "request_id": 5,
+        "content": {
+          "code": 0,
+          "data": {}
+        }
+      },
+      "method": "POST",
+      "url": "http://172.17.0.11:23210/v2/vectordb/databases/drop_properties",
+      "headers": {
+        "Content-Type": "application/json",
+        "Authorization": "Bearer None"
+      },
+      "timestamp": 1752746467.1439247,
+      "request_id": 5,
+      "content": {
+        "dbName": "test_alter_props",
+        "propertyKeys": [
+          "mmap.enabled"
+        ]
+      }
+    },
+    {
+      "response": {
+        "status_code": 200,
+        "headers": {
+          "Access-Control-Allow-Credentials": "true",
+          "Access-Control-Allow-Headers": "Content-Type, Content-Length, Accept-Encoding, X-CSRF-Token, Authorization, accept, origin, Cache-Control, X-Requested-With",
+          "Access-Control-Allow-Methods": "GET, HEAD, POST, PUT, DELETE, OPTIONS, PATCH",
+          "Access-Control-Allow-Origin": "*",
+          "Content-Type": "application/json; charset=utf-8",
+          "Date": "Thu, 17 Jul 2025 10:01:07 GMT",
+          "Content-Length": "89"
+        },
+        "elapsed_ms": 1.477,
+        "timestamp": 1752746467.1496444,
+        "request_id": 6,
+        "content": {
+          "code": 0,
+          "data": {
+            "dbID": 459470532655318949,
+            "dbName": "test_alter_props",
+            "properties": []
+          }
+        }
+      },
+      "method": "POST",
+      "url": "http://172.17.0.11:23210/v2/vectordb/databases/describe",
+      "headers": {
+        "Content-Type": "application/json",
+        "Authorization": "Bearer None"
+      },
+      "timestamp": 1752746467.1475885,
+      "request_id": 6,
+      "content": {
+        "dbName": "test_alter_props"
+      }
+    },
+    {
+      "response": {
+        "status_code": 200,
+        "headers": {
+          "Access-Control-Allow-Credentials": "true",
+          "Access-Control-Allow-Headers": "Content-Type, Content-Length, Accept-Encoding, X-CSRF-Token, Authorization, accept, origin, Cache-Control, X-Requested-With",
+          "Access-Control-Allow-Methods": "GET, HEAD, POST, PUT, DELETE, OPTIONS, PATCH",
+          "Access-Control-Allow-Origin": "*",
+          "Content-Type": "application/json; charset=utf-8",
+          "Date": "Thu, 17 Jul 2025 10:01:07 GMT",
+          "Content-Length": "20"
+        },
+        "elapsed_ms": 2.549,
+        "timestamp": 1752746467.153186,
+        "request_id": 7,
+        "content": {
+          "code": 0,
+          "data": {}
+        }
+      },
+      "method": "POST",
+      "url": "http://172.17.0.11:23210/v2/vectordb/databases/alter",
+      "headers": {
+        "Content-Type": "application/json",
+        "Authorization": "Bearer None"
+      },
+      "timestamp": 1752746467.150049,
+      "request_id": 7,
+      "content": {
+        "dbName": "test_alter_props",
+        "properties": {
+          "mmap.enabled": false
+        }
+      }
+    },
+    {
+      "response": {
+        "status_code": 200,
+        "headers": {
+          "Access-Control-Allow-Credentials": "true",
+          "Access-Control-Allow-Headers": "Content-Type, Content-Length, Accept-Encoding, X-CSRF-Token, Authorization, accept, origin, Cache-Control, X-Requested-With",
+          "Access-Control-Allow-Methods": "GET, HEAD, POST, PUT, DELETE, OPTIONS, PATCH",
+          "Access-Control-Allow-Origin": "*",
+          "Content-Type": "application/json; charset=utf-8",
+          "Date": "Thu, 17 Jul 2025 10:01:07 GMT",
+          "Content-Length": "127"
+        },
+        "elapsed_ms": 1.446,
+        "timestamp": 1752746467.1555786,
+        "request_id": 8,
+        "content": {
+          "code": 0,
+          "data": {
+            "dbID": 459470532655318949,
+            "dbName": "test_alter_props",
+            "properties": [
+              {
+                "key": "mmap.enabled",
+                "value": "false"
+              }
+            ]
+          }
+        }
+      },
+      "method": "POST",
+      "url": "http://172.17.0.11:23210/v2/vectordb/databases/describe",
+      "headers": {
+        "Content-Type": "application/json",
+        "Authorization": "Bearer None"
+      },
+      "timestamp": 1752746467.15356,
+      "request_id": 8,
+      "content": {
+        "dbName": "test_alter_props"
+      }
+    },
+    {
+      "response": {
+        "status_code": 200,
+        "headers": {
+          "Access-Control-Allow-Credentials": "true",
+          "Access-Control-Allow-Headers": "Content-Type, Content-Length, Accept-Encoding, X-CSRF-Token, Authorization, accept, origin, Cache-Control, X-Requested-With",
+          "Access-Control-Allow-Methods": "GET, HEAD, POST, PUT, DELETE, OPTIONS, PATCH",
+          "Access-Control-Allow-Origin": "*",
+          "Content-Type": "application/json; charset=utf-8",
+          "Date": "Thu, 17 Jul 2025 10:01:07 GMT",
+          "Content-Length": "20"
+        },
+        "elapsed_ms": 2.396,
+        "timestamp": 1752746467.1589239,
+        "request_id": 9,
+        "content": {
+          "code": 0,
+          "data": {}
+        }
+      },
+      "method": "POST",
+      "url": "http://172.17.0.11:23210/v2/vectordb/databases/alter",
+      "headers": {
+        "Content-Type": "application/json",
+        "Authorization": "Bearer None"
+      },
+      "timestamp": 1752746467.155959,
+      "request_id": 9,
+      "content": {
+        "dbName": "test_alter_props",
+        "properties": {
+          "mmap.enabled": true
+        }
+      }
+    },
+    {
+      "response": {
+        "status_code": 200,
+        "headers": {
+          "Access-Control-Allow-Credentials": "true",
+          "Access-Control-Allow-Headers": "Content-Type, Content-Length, Accept-Encoding, X-CSRF-Token, Authorization, accept, origin, Cache-Control, X-Requested-With",
+          "Access-Control-Allow-Methods": "GET, HEAD, POST, PUT, DELETE, OPTIONS, PATCH",
+          "Access-Control-Allow-Origin": "*",
+          "Content-Type": "application/json; charset=utf-8",
+          "Date": "Thu, 17 Jul 2025 10:01:07 GMT",
+          "Content-Length": "126"
+        },
+        "elapsed_ms": 1.374,
+        "timestamp": 1752746467.1612706,
+        "request_id": 10,
+        "content": {
+          "code": 0,
+          "data": {
+            "dbID": 459470532655318949,
+            "dbName": "test_alter_props",
+            "properties": [
+              {
+                "key": "mmap.enabled",
+                "value": "true"
+              }
+            ]
+          }
+        }
+      },
+      "method": "POST",
+      "url": "http://172.17.0.11:23210/v2/vectordb/databases/describe",
+      "headers": {
+        "Content-Type": "application/json",
+        "Authorization": "Bearer None"
+      },
+      "timestamp": 1752746467.1592994,
+      "request_id": 10,
+      "content": {
+        "dbName": "test_alter_props"
+      }
+    },
+    {
+      "response": {
+        "status_code": 200,
+        "headers": {
+          "Access-Control-Allow-Credentials": "true",
+          "Access-Control-Allow-Headers": "Content-Type, Content-Length, Accept-Encoding, X-CSRF-Token, Authorization, accept, origin, Cache-Control, X-Requested-With",
+          "Access-Control-Allow-Methods": "GET, HEAD, POST, PUT, DELETE, OPTIONS, PATCH",
+          "Access-Control-Allow-Origin": "*",
+          "Content-Type": "application/json; charset=utf-8",
+          "Date": "Thu, 17 Jul 2025 10:01:07 GMT",
+          "Content-Length": "20"
+        },
+        "elapsed_ms": 2.397,
+        "timestamp": 1752746467.1646054,
+        "request_id": 11,
+        "content": {
+          "code": 0,
+          "data": {}
+        }
+      },
+      "method": "POST",
+      "url": "http://172.17.0.11:23210/v2/vectordb/databases/drop_properties",
+      "headers": {
+        "Content-Type": "application/json",
+        "Authorization": "Bearer None"
+      },
+      "timestamp": 1752746467.1616418,
+      "request_id": 11,
+      "content": {
+        "dbName": "test_alter_props",
+        "propertyKeys": [
+          "mmap.enabled"
+        ]
+      }
+    },
+    {
+      "response": {
+        "status_code": 200,
+        "headers": {
+          "Access-Control-Allow-Credentials": "true",
+          "Access-Control-Allow-Headers": "Content-Type, Content-Length, Accept-Encoding, X-CSRF-Token, Authorization, accept, origin, Cache-Control, X-Requested-With",
+          "Access-Control-Allow-Methods": "GET, HEAD, POST, PUT, DELETE, OPTIONS, PATCH",
+          "Access-Control-Allow-Origin": "*",
+          "Content-Type": "application/json; charset=utf-8",
+          "Date": "Thu, 17 Jul 2025 10:01:07 GMT",
+          "Content-Length": "89"
+        },
+        "elapsed_ms": 1.601,
+        "timestamp": 1752746467.167176,
+        "request_id": 12,
+        "content": {
+          "code": 0,
+          "data": {
+            "dbID": 459470532655318949,
+            "dbName": "test_alter_props",
+            "properties": []
+          }
+        }
+      },
+      "method": "POST",
+      "url": "http://172.17.0.11:23210/v2/vectordb/databases/describe",
+      "headers": {
+        "Content-Type": "application/json",
+        "Authorization": "Bearer None"
+      },
+      "timestamp": 1752746467.1650033,
+      "request_id": 12,
+      "content": {
+        "dbName": "test_alter_props"
+      }
+    }
+  ]
+}

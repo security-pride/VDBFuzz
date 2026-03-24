@@ -1,0 +1,113 @@
+{
+  "test_name": "allmilvus_log.TestInsertVector_test_insert_vector_with_simple_payload[default-vector-id-32-1-1]_1752744165.json",
+  "vdb_type": "qdrant",
+  "requests": [
+    {
+      "response": {
+        "status_code": 200,
+        "headers": {
+          "Access-Control-Allow-Credentials": "true",
+          "Access-Control-Allow-Headers": "Content-Type, Content-Length, Accept-Encoding, X-CSRF-Token, Authorization, accept, origin, Cache-Control, X-Requested-With",
+          "Access-Control-Allow-Methods": "GET, HEAD, POST, PUT, DELETE, OPTIONS, PATCH",
+          "Access-Control-Allow-Origin": "*",
+          "Content-Type": "application/json; charset=utf-8",
+          "Date": "Thu, 17 Jul 2025 09:22:45 GMT",
+          "Content-Length": "22"
+        },
+        "elapsed_ms": 20.296000000000003,
+        "timestamp": 1752744165.5278203,
+        "request_id": 0,
+        "content": {
+          "code": 200,
+          "data": {}
+        }
+      },
+      "method": "POST",
+      "url": "http://172.17.0.11:23210/v1/vector/collections/create",
+      "headers": {
+        "Content-Type": "application/json",
+        "Authorization": "Bearer root:Milvus",
+        "RequestId": "992d31cf-62ef-11f0-8da7-0242ac110005"
+      },
+      "timestamp": 1752744165.5069027,
+      "request_id": 0,
+      "content": {
+        "collectionName": "test_collection_2025_07_17_17_22_44_506585uFfTOBIR",
+        "dimension": 32,
+        "primaryField": "id",
+        "vectorField": "vector",
+        "autoID": true,
+        "dbName": "default"
+      }
+    },
+    {
+      "response": {
+        "status_code": 200,
+        "headers": {
+          "Access-Control-Allow-Credentials": "true",
+          "Access-Control-Allow-Headers": "Content-Type, Content-Length, Accept-Encoding, X-CSRF-Token, Authorization, accept, origin, Cache-Control, X-Requested-With",
+          "Access-Control-Allow-Methods": "GET, HEAD, POST, PUT, DELETE, OPTIONS, PATCH",
+          "Access-Control-Allow-Origin": "*",
+          "Content-Type": "application/json; charset=utf-8",
+          "Date": "Thu, 17 Jul 2025 09:22:45 GMT",
+          "Content-Length": "70"
+        },
+        "elapsed_ms": 168.39000000000001,
+        "timestamp": 1752744165.703199,
+        "request_id": 2,
+        "content": {
+          "code": 200,
+          "data": {
+            "insertCount": 1,
+            "insertIds": [
+              459470532653887333
+            ]
+          }
+        }
+      },
+      "method": "POST",
+      "url": "http://172.17.0.11:23210/v1/vector/insert",
+      "headers": {
+        "Content-Type": "application/json",
+        "Authorization": "Bearer root:Milvus",
+        "RequestId": "99315f78-62ef-11f0-b918-0242ac110005"
+      },
+      "timestamp": 1752744165.5342276,
+      "request_id": 2,
+      "content": {
+        "collectionName": "test_collection_2025_07_17_17_22_44_506585uFfTOBIR",
+        "data": [
+          {
+            "vector": "__FLOAT_ARRAY_DIM_32__",
+            "uid": 0,
+            "name": "Keith Ayers",
+            "address": "92289 Michael Manors\nElizabethberg, MH 30835",
+            "text": "Her next you senior dinner table important wish. Any assume high pressure.\nVarious federal hour mission protect purpose opportunity. Institution along each couple defense.",
+            "email": "theresabauer@example.com",
+            "phone_number": "256.203.6715",
+            "array_int_dynamic": "__FLOAT_ARRAY_DIM_6__",
+            "array_varchar_dynamic": [
+              "Jeremy Smith",
+              "Amy Young",
+              "Julie Webb"
+            ],
+            "json": {
+              "name": "Michael Faulkner",
+              "address": "764 Austin Turnpike\nNorth Amyfurt, NE 68839"
+            },
+            "key92208": "value42780",
+            "key36552": "value17206",
+            "key65802": "value30819",
+            "key84981": "value55153",
+            "key60987": "value7298",
+            "key36563": "value29067",
+            "key82832": "value11226",
+            "key5073": "value84231",
+            "key18354": "value41776"
+          }
+        ],
+        "dbName": "default"
+      }
+    }
+  ]
+}

@@ -1,0 +1,181 @@
+{
+  "test_name": "allmilvus_log.TestInsertVector_test_insert_vector_with_simple_payload[prod-embedding-url-32-1-2]_1752744149.json",
+  "vdb_type": "qdrant",
+  "requests": [
+    {
+      "response": {
+        "status_code": 200,
+        "headers": {
+          "Access-Control-Allow-Credentials": "true",
+          "Access-Control-Allow-Headers": "Content-Type, Content-Length, Accept-Encoding, X-CSRF-Token, Authorization, accept, origin, Cache-Control, X-Requested-With",
+          "Access-Control-Allow-Methods": "GET, HEAD, POST, PUT, DELETE, OPTIONS, PATCH",
+          "Access-Control-Allow-Origin": "*",
+          "Content-Type": "application/json; charset=utf-8",
+          "Date": "Thu, 17 Jul 2025 09:22:29 GMT",
+          "Content-Length": "22"
+        },
+        "elapsed_ms": 211.804,
+        "timestamp": 1752744149.9654057,
+        "request_id": 0,
+        "content": {
+          "code": 200,
+          "data": {}
+        }
+      },
+      "method": "POST",
+      "url": "http://172.17.0.11:23210/v1/vector/collections/create",
+      "headers": {
+        "Content-Type": "application/json",
+        "Authorization": "Bearer root:Milvus",
+        "RequestId": "8fc95170-62ef-11f0-86f7-0242ac110005"
+      },
+      "timestamp": 1752744149.752879,
+      "request_id": 0,
+      "content": {
+        "collectionName": "test_collection_2025_07_17_17_22_28_752539AxCSUzhx",
+        "dimension": 32,
+        "primaryField": "url",
+        "vectorField": "embedding",
+        "autoID": true,
+        "dbName": "prod"
+      }
+    },
+    {
+      "response": {
+        "status_code": 200,
+        "headers": {
+          "Access-Control-Allow-Credentials": "true",
+          "Access-Control-Allow-Headers": "Content-Type, Content-Length, Accept-Encoding, X-CSRF-Token, Authorization, accept, origin, Cache-Control, X-Requested-With",
+          "Access-Control-Allow-Methods": "GET, HEAD, POST, PUT, DELETE, OPTIONS, PATCH",
+          "Access-Control-Allow-Origin": "*",
+          "Content-Type": "application/json; charset=utf-8",
+          "Date": "Thu, 17 Jul 2025 09:22:29 GMT",
+          "Content-Length": "70"
+        },
+        "elapsed_ms": 4.897,
+        "timestamp": 1752744149.9779832,
+        "request_id": 2,
+        "content": {
+          "code": 200,
+          "data": {
+            "insertCount": 1,
+            "insertIds": [
+              459470532653886645
+            ]
+          }
+        }
+      },
+      "method": "POST",
+      "url": "http://172.17.0.11:23210/v1/vector/insert",
+      "headers": {
+        "Content-Type": "application/json",
+        "Authorization": "Bearer root:Milvus",
+        "RequestId": "8fead612-62ef-11f0-9097-0242ac110005"
+      },
+      "timestamp": 1752744149.9724865,
+      "request_id": 2,
+      "content": {
+        "collectionName": "test_collection_2025_07_17_17_22_28_752539AxCSUzhx",
+        "data": [
+          {
+            "embedding": "__FLOAT_ARRAY_DIM_32__",
+            "uid": 0,
+            "name": "Daniel Williams",
+            "address": "7897 Robinson Walks Suite 683\nKylefurt, NV 31871",
+            "text": "Approach perform writer indicate staff brother kid so. Debate act card eat once. Street charge involve fund run whether.",
+            "email": "bryantmatthew@example.net",
+            "phone_number": "392-647-1745x8662",
+            "array_int_dynamic": "__FLOAT_ARRAY_DIM_6__",
+            "array_varchar_dynamic": [
+              "Jacob Peters",
+              "Ryan Nelson",
+              "Michael Scott",
+              "Terry Peterson",
+              "Steven Freeman",
+              "Samantha Nielsen",
+              "Amber Rogers",
+              "Michael Martinez",
+              "Jonathan Bell"
+            ],
+            "json": {
+              "name": "Allison Perez",
+              "address": "875 Lamb Stravenue\nSouth Sheriside, OR 49841"
+            },
+            "key55358": "value39588",
+            "key74946": "value69144",
+            "key92963": "value98537"
+          }
+        ],
+        "dbName": "prod"
+      }
+    },
+    {
+      "response": {
+        "status_code": 200,
+        "headers": {
+          "Access-Control-Allow-Credentials": "true",
+          "Access-Control-Allow-Headers": "Content-Type, Content-Length, Accept-Encoding, X-CSRF-Token, Authorization, accept, origin, Cache-Control, X-Requested-With",
+          "Access-Control-Allow-Methods": "GET, HEAD, POST, PUT, DELETE, OPTIONS, PATCH",
+          "Access-Control-Allow-Origin": "*",
+          "Content-Type": "application/json; charset=utf-8",
+          "Date": "Thu, 17 Jul 2025 09:22:29 GMT",
+          "Content-Length": "70"
+        },
+        "elapsed_ms": 2.277,
+        "timestamp": 1752744149.9829621,
+        "request_id": 3,
+        "content": {
+          "code": 200,
+          "data": {
+            "insertCount": 1,
+            "insertIds": [
+              459470532653886647
+            ]
+          }
+        }
+      },
+      "method": "POST",
+      "url": "http://172.17.0.11:23210/v1/vector/insert",
+      "headers": {
+        "Content-Type": "application/json",
+        "Authorization": "Bearer root:Milvus",
+        "RequestId": "8fec0487-62ef-11f0-9214-0242ac110005"
+      },
+      "timestamp": 1752744149.9801946,
+      "request_id": 3,
+      "content": {
+        "collectionName": "test_collection_2025_07_17_17_22_28_752539AxCSUzhx",
+        "data": [
+          {
+            "embedding": "__FLOAT_ARRAY_DIM_32__",
+            "uid": 0,
+            "name": "Brian Smith",
+            "address": "504 Allison Ville\nGreenberg, NH 34166",
+            "text": "Conference media year skill. Environment throw culture against camera expert.",
+            "email": "john07@example.net",
+            "phone_number": "221.408.5584x490",
+            "array_int_dynamic": "__FLOAT_ARRAY_DIM_6__",
+            "array_varchar_dynamic": [
+              "Darryl Hernandez"
+            ],
+            "json": {
+              "name": "Mrs. Jennifer Graham",
+              "address": "54636 Zimmerman Island\nWest Michaelbury, FM 24996"
+            },
+            "key72740": "value29226",
+            "key32643": "value89684",
+            "key87697": "value68943",
+            "key10532": "value20756",
+            "key20198": "value58674",
+            "key61130": "value29389",
+            "key59676": "value33625",
+            "key57239": "value5995",
+            "key40436": "value85112",
+            "key23540": "value29648"
+          }
+        ],
+        "dbName": "prod"
+      }
+    }
+  ]
+}

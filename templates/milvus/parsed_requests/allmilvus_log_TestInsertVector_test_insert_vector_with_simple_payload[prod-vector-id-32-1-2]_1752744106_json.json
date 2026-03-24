@@ -1,0 +1,165 @@
+{
+  "test_name": "allmilvus_log.TestInsertVector_test_insert_vector_with_simple_payload[prod-vector-id-32-1-2]_1752744106.json",
+  "vdb_type": "qdrant",
+  "requests": [
+    {
+      "response": {
+        "status_code": 200,
+        "headers": {
+          "Access-Control-Allow-Credentials": "true",
+          "Access-Control-Allow-Headers": "Content-Type, Content-Length, Accept-Encoding, X-CSRF-Token, Authorization, accept, origin, Cache-Control, X-Requested-With",
+          "Access-Control-Allow-Methods": "GET, HEAD, POST, PUT, DELETE, OPTIONS, PATCH",
+          "Access-Control-Allow-Origin": "*",
+          "Content-Type": "application/json; charset=utf-8",
+          "Date": "Thu, 17 Jul 2025 09:21:46 GMT",
+          "Content-Length": "22"
+        },
+        "elapsed_ms": 19.201,
+        "timestamp": 1752744106.4314334,
+        "request_id": 0,
+        "content": {
+          "code": 200,
+          "data": {}
+        }
+      },
+      "method": "POST",
+      "url": "http://172.17.0.11:23210/v1/vector/collections/create",
+      "headers": {
+        "Content-Type": "application/json",
+        "Authorization": "Bearer root:Milvus",
+        "RequestId": "75f3f5eb-62ef-11f0-9e6e-0242ac110005"
+      },
+      "timestamp": 1752744106.4115758,
+      "request_id": 0,
+      "content": {
+        "collectionName": "test_collection_2025_07_17_17_21_45_411235npaaDuqx",
+        "dimension": 32,
+        "primaryField": "id",
+        "vectorField": "vector",
+        "autoID": true,
+        "dbName": "prod"
+      }
+    },
+    {
+      "response": {
+        "status_code": 200,
+        "headers": {
+          "Access-Control-Allow-Credentials": "true",
+          "Access-Control-Allow-Headers": "Content-Type, Content-Length, Accept-Encoding, X-CSRF-Token, Authorization, accept, origin, Cache-Control, X-Requested-With",
+          "Access-Control-Allow-Methods": "GET, HEAD, POST, PUT, DELETE, OPTIONS, PATCH",
+          "Access-Control-Allow-Origin": "*",
+          "Content-Type": "application/json; charset=utf-8",
+          "Date": "Thu, 17 Jul 2025 09:21:46 GMT",
+          "Content-Length": "70"
+        },
+        "elapsed_ms": 10.477,
+        "timestamp": 1752744106.4486554,
+        "request_id": 2,
+        "content": {
+          "code": 200,
+          "data": {
+            "insertCount": 1,
+            "insertIds": [
+              459470532653884593
+            ]
+          }
+        }
+      },
+      "method": "POST",
+      "url": "http://172.17.0.11:23210/v1/vector/insert",
+      "headers": {
+        "Content-Type": "application/json",
+        "Authorization": "Bearer root:Milvus",
+        "RequestId": "75f7f360-62ef-11f0-ac93-0242ac110005"
+      },
+      "timestamp": 1752744106.4376414,
+      "request_id": 2,
+      "content": {
+        "collectionName": "test_collection_2025_07_17_17_21_45_411235npaaDuqx",
+        "data": [
+          {
+            "vector": "__FLOAT_ARRAY_DIM_32__",
+            "uid": 0,
+            "name": "Christopher Heath",
+            "address": "18976 Morris Forges\nWaltersland, NC 32275",
+            "text": "Accept himself buy full up.\nNext floor lose sense try. News walk question source.\nReflect himself statement growth body nice program. Build professor say until option.",
+            "email": "jharris@example.com",
+            "phone_number": "(983)485-5796x95518",
+            "array_int_dynamic": "__FLOAT_ARRAY_DIM_8__",
+            "array_varchar_dynamic": [
+              "Elizabeth Johnson",
+              "Jodi Coleman",
+              "Miguel Thompson PhD"
+            ],
+            "json": {
+              "name": "Tiffany Martinez",
+              "address": "558 Melissa Way Apt. 792\nZacharybury, DE 24382"
+            },
+            "key51104": "value48077"
+          }
+        ],
+        "dbName": "prod"
+      }
+    },
+    {
+      "response": {
+        "status_code": 200,
+        "headers": {
+          "Access-Control-Allow-Credentials": "true",
+          "Access-Control-Allow-Headers": "Content-Type, Content-Length, Accept-Encoding, X-CSRF-Token, Authorization, accept, origin, Cache-Control, X-Requested-With",
+          "Access-Control-Allow-Methods": "GET, HEAD, POST, PUT, DELETE, OPTIONS, PATCH",
+          "Access-Control-Allow-Origin": "*",
+          "Content-Type": "application/json; charset=utf-8",
+          "Date": "Thu, 17 Jul 2025 09:21:46 GMT",
+          "Content-Length": "70"
+        },
+        "elapsed_ms": 2.337,
+        "timestamp": 1752744106.4540615,
+        "request_id": 3,
+        "content": {
+          "code": 200,
+          "data": {
+            "insertCount": 1,
+            "insertIds": [
+              459470532653884595
+            ]
+          }
+        }
+      },
+      "method": "POST",
+      "url": "http://172.17.0.11:23210/v1/vector/insert",
+      "headers": {
+        "Content-Type": "application/json",
+        "Authorization": "Bearer root:Milvus",
+        "RequestId": "75fa044b-62ef-11f0-b268-0242ac110005"
+      },
+      "timestamp": 1752744106.4511828,
+      "request_id": 3,
+      "content": {
+        "collectionName": "test_collection_2025_07_17_17_21_45_411235npaaDuqx",
+        "data": [
+          {
+            "vector": "__FLOAT_ARRAY_DIM_32__",
+            "uid": 0,
+            "name": "Matthew Valenzuela",
+            "address": "USCGC Powers\nFPO AE 65515",
+            "text": "Nor protect either challenge. Truth image product use federal alone.\nI stage establish question mouth it. True near explain most mouth population dark. Sit provide door still whether land spend.",
+            "email": "robertamendez@example.com",
+            "phone_number": "001-549-655-5199",
+            "array_int_dynamic": "__FLOAT_ARRAY_DIM_2__",
+            "array_varchar_dynamic": [
+              "Mary Torres",
+              "Latasha Morales"
+            ],
+            "json": {
+              "name": "Mr. Sean Chen",
+              "address": "10486 Fuller Rapids\nSouth Kayleemouth, OR 31577"
+            },
+            "key86446": "value4845"
+          }
+        ],
+        "dbName": "prod"
+      }
+    }
+  ]
+}

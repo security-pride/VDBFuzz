@@ -1,0 +1,190 @@
+{
+  "test_name": "allmilvus_log.TestInsertVector_test_insert_vector_with_simple_payload[default-vector-id-32-1-2]_1752744164.json",
+  "vdb_type": "qdrant",
+  "requests": [
+    {
+      "response": {
+        "status_code": 200,
+        "headers": {
+          "Access-Control-Allow-Credentials": "true",
+          "Access-Control-Allow-Headers": "Content-Type, Content-Length, Accept-Encoding, X-CSRF-Token, Authorization, accept, origin, Cache-Control, X-Requested-With",
+          "Access-Control-Allow-Methods": "GET, HEAD, POST, PUT, DELETE, OPTIONS, PATCH",
+          "Access-Control-Allow-Origin": "*",
+          "Content-Type": "application/json; charset=utf-8",
+          "Date": "Thu, 17 Jul 2025 09:22:44 GMT",
+          "Content-Length": "22"
+        },
+        "elapsed_ms": 19.401000000000003,
+        "timestamp": 1752744164.443987,
+        "request_id": 0,
+        "content": {
+          "code": 200,
+          "data": {}
+        }
+      },
+      "method": "POST",
+      "url": "http://172.17.0.11:23210/v1/vector/collections/create",
+      "headers": {
+        "Content-Type": "application/json",
+        "Authorization": "Bearer root:Milvus",
+        "RequestId": "9887f002-62ef-11f0-a4a3-0242ac110005"
+      },
+      "timestamp": 1752744164.4238935,
+      "request_id": 0,
+      "content": {
+        "collectionName": "test_collection_2025_07_17_17_22_43_423484mCCgfQiN",
+        "dimension": 32,
+        "primaryField": "id",
+        "vectorField": "vector",
+        "autoID": true,
+        "dbName": "default"
+      }
+    },
+    {
+      "response": {
+        "status_code": 200,
+        "headers": {
+          "Access-Control-Allow-Credentials": "true",
+          "Access-Control-Allow-Headers": "Content-Type, Content-Length, Accept-Encoding, X-CSRF-Token, Authorization, accept, origin, Cache-Control, X-Requested-With",
+          "Access-Control-Allow-Methods": "GET, HEAD, POST, PUT, DELETE, OPTIONS, PATCH",
+          "Access-Control-Allow-Origin": "*",
+          "Content-Type": "application/json; charset=utf-8",
+          "Date": "Thu, 17 Jul 2025 09:22:44 GMT",
+          "Content-Length": "70"
+        },
+        "elapsed_ms": 37.977,
+        "timestamp": 1752744164.4894094,
+        "request_id": 2,
+        "content": {
+          "code": 200,
+          "data": {
+            "insertCount": 1,
+            "insertIds": [
+              459470532653887329
+            ]
+          }
+        }
+      },
+      "method": "POST",
+      "url": "http://172.17.0.11:23210/v1/vector/insert",
+      "headers": {
+        "Content-Type": "application/json",
+        "Authorization": "Bearer root:Milvus",
+        "RequestId": "988c118d-62ef-11f0-9973-0242ac110005"
+      },
+      "timestamp": 1752744164.4508862,
+      "request_id": 2,
+      "content": {
+        "collectionName": "test_collection_2025_07_17_17_22_43_423484mCCgfQiN",
+        "data": [
+          {
+            "vector": "__FLOAT_ARRAY_DIM_32__",
+            "uid": 0,
+            "name": "Matthew Randall",
+            "address": "7826 Justin Streets\nPort Monica, MO 52798",
+            "text": "Measure blue strategy Democrat world talk record. Scene tax to. Air raise enough idea fear Mr.\nMiss small deep whose cost. Situation issue draw miss Mrs.",
+            "email": "williamsmariah@example.net",
+            "phone_number": "+1-559-804-4007",
+            "array_int_dynamic": "__FLOAT_ARRAY_DIM_4__",
+            "array_varchar_dynamic": [
+              "Natasha Ross",
+              "Whitney Aguilar",
+              "Robin Andrade",
+              "Anthony Parker",
+              "Samantha Guerra MD",
+              "Clayton Alexander",
+              "Christopher Jones"
+            ],
+            "json": {
+              "name": "Cody Wood",
+              "address": "260 Bailey Mills\nNorth Kimberlyfurt, IL 61095"
+            },
+            "key31371": "value85836",
+            "key68839": "value24741",
+            "key18146": "value75835",
+            "key83204": "value26107",
+            "key93023": "value76783",
+            "key21161": "value31198",
+            "key87484": "value7428",
+            "key91470": "value11090",
+            "key37833": "value21039"
+          }
+        ],
+        "dbName": "default"
+      }
+    },
+    {
+      "response": {
+        "status_code": 200,
+        "headers": {
+          "Access-Control-Allow-Credentials": "true",
+          "Access-Control-Allow-Headers": "Content-Type, Content-Length, Accept-Encoding, X-CSRF-Token, Authorization, accept, origin, Cache-Control, X-Requested-With",
+          "Access-Control-Allow-Methods": "GET, HEAD, POST, PUT, DELETE, OPTIONS, PATCH",
+          "Access-Control-Allow-Origin": "*",
+          "Content-Type": "application/json; charset=utf-8",
+          "Date": "Thu, 17 Jul 2025 09:22:44 GMT",
+          "Content-Length": "70"
+        },
+        "elapsed_ms": 2.678,
+        "timestamp": 1752744164.495349,
+        "request_id": 3,
+        "content": {
+          "code": 200,
+          "data": {
+            "insertCount": 1,
+            "insertIds": [
+              459470532653887331
+            ]
+          }
+        }
+      },
+      "method": "POST",
+      "url": "http://172.17.0.11:23210/v1/vector/insert",
+      "headers": {
+        "Content-Type": "application/json",
+        "Authorization": "Bearer root:Milvus",
+        "RequestId": "98925d4d-62ef-11f0-b29c-0242ac110005"
+      },
+      "timestamp": 1752744164.4921367,
+      "request_id": 3,
+      "content": {
+        "collectionName": "test_collection_2025_07_17_17_22_43_423484mCCgfQiN",
+        "data": [
+          {
+            "vector": "__FLOAT_ARRAY_DIM_32__",
+            "uid": 0,
+            "name": "Melissa Bond",
+            "address": "2913 Tammy Burg Apt. 979\nHooverfort, DC 80246",
+            "text": "Down whose song. Individual drop along.\nWonder whose moment. Ahead small local safe name message.",
+            "email": "angela90@example.com",
+            "phone_number": "742.534.1512x356",
+            "array_int_dynamic": [
+              70595
+            ],
+            "array_varchar_dynamic": [
+              "Brett Hunter",
+              "Kyle Roy",
+              "Sandra Murray",
+              "Mary Turner"
+            ],
+            "json": {
+              "name": "Justin Sanchez",
+              "address": "31581 Melanie Ville Apt. 137\nEast Crystalchester, SD 75340"
+            },
+            "key2921": "value13998",
+            "key10806": "value59536",
+            "key20163": "value86387",
+            "key64017": "value67461",
+            "key54044": "value13057",
+            "key5": "value7896",
+            "key48086": "value67569",
+            "key34865": "value9298",
+            "key75313": "value62382",
+            "key31890": "value61547"
+          }
+        ],
+        "dbName": "default"
+      }
+    }
+  ]
+}

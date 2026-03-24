@@ -1,0 +1,615 @@
+{
+  "test_name": "allmilvus_log.TestInsertVectorNegative_test_insert_vector_with_invalid_database_name_1752747396.json",
+  "vdb_type": "qdrant",
+  "requests": [
+    {
+      "response": {
+        "status_code": 200,
+        "headers": {
+          "Access-Control-Allow-Credentials": "true",
+          "Access-Control-Allow-Headers": "Content-Type, Content-Length, Accept-Encoding, X-CSRF-Token, Authorization, accept, origin, Cache-Control, X-Requested-With",
+          "Access-Control-Allow-Methods": "GET, HEAD, POST, PUT, DELETE, OPTIONS, PATCH",
+          "Access-Control-Allow-Origin": "*",
+          "Content-Type": "application/json; charset=utf-8",
+          "Date": "Thu, 17 Jul 2025 10:16:35 GMT",
+          "Content-Length": "20"
+        },
+        "elapsed_ms": 33.416000000000004,
+        "timestamp": 1752747395.4677346,
+        "request_id": 0,
+        "content": {
+          "code": 0,
+          "data": {}
+        }
+      },
+      "method": "POST",
+      "url": "http://172.17.0.11:23210/v2/vectordb/collections/create",
+      "headers": {
+        "Content-Type": "application/json",
+        "Authorization": "Bearer None",
+        "RequestId": "1dc392b8-62f7-11f0-85c3-0242ac11000b",
+        "Request-Timeout": "120"
+      },
+      "timestamp": 1752747395.433651,
+      "request_id": 0,
+      "content": {
+        "collectionName": "test_collection_2025_07_17_18_16_34_432460ASEuQlPu",
+        "dimension": 128,
+        "params": {
+          "consistencyLevel": "Strong"
+        }
+      }
+    },
+    {
+      "response": {
+        "status_code": 200,
+        "headers": {
+          "Access-Control-Allow-Credentials": "true",
+          "Access-Control-Allow-Headers": "Content-Type, Content-Length, Accept-Encoding, X-CSRF-Token, Authorization, accept, origin, Cache-Control, X-Requested-With",
+          "Access-Control-Allow-Methods": "GET, HEAD, POST, PUT, DELETE, OPTIONS, PATCH",
+          "Access-Control-Allow-Origin": "*",
+          "Content-Type": "application/json; charset=utf-8",
+          "Date": "Thu, 17 Jul 2025 10:16:35 GMT",
+          "Content-Length": "759"
+        },
+        "elapsed_ms": 3.0599999999999996,
+        "timestamp": 1752747395.4720395,
+        "request_id": 1,
+        "content": {
+          "code": 0,
+          "data": {
+            "aliases": [],
+            "autoId": false,
+            "collectionID": 459470532655537441,
+            "collectionName": "test_collection_2025_07_17_18_16_34_432460ASEuQlPu",
+            "consistencyLevel": "Strong",
+            "description": "",
+            "enableDynamicField": true,
+            "fields": [
+              {
+                "autoId": false,
+                "clusteringKey": false,
+                "description": "",
+                "id": 100,
+                "name": "id",
+                "nullable": false,
+                "partitionKey": false,
+                "primaryKey": true,
+                "type": "Int64"
+              },
+              {
+                "autoId": false,
+                "clusteringKey": false,
+                "description": "",
+                "id": 101,
+                "name": "vector",
+                "nullable": false,
+                "params": [
+                  {
+                    "key": "dim",
+                    "value": "128"
+                  }
+                ],
+                "partitionKey": false,
+                "primaryKey": false,
+                "type": "FloatVector"
+              }
+            ],
+            "functions": [],
+            "indexes": [
+              {
+                "fieldName": "vector",
+                "indexName": "vector",
+                "metricType": "COSINE"
+              }
+            ],
+            "load": "LoadStateLoading",
+            "partitionsNum": 1,
+            "properties": [],
+            "shardsNum": 1
+          },
+          "message": ""
+        }
+      },
+      "method": "POST",
+      "url": "http://172.17.0.11:23210/v2/vectordb/collections/describe",
+      "headers": {
+        "Content-Type": "application/json",
+        "Authorization": "Bearer None",
+        "RequestId": "1dc392b8-62f7-11f0-85c3-0242ac11000b",
+        "Request-Timeout": "120"
+      },
+      "timestamp": 1752747395.4682953,
+      "request_id": 1,
+      "content": {
+        "collectionName": "test_collection_2025_07_17_18_16_34_432460ASEuQlPu"
+      }
+    },
+    {
+      "response": {
+        "status_code": 200,
+        "headers": {
+          "Access-Control-Allow-Credentials": "true",
+          "Access-Control-Allow-Headers": "Content-Type, Content-Length, Accept-Encoding, X-CSRF-Token, Authorization, accept, origin, Cache-Control, X-Requested-With",
+          "Access-Control-Allow-Methods": "GET, HEAD, POST, PUT, DELETE, OPTIONS, PATCH",
+          "Access-Control-Allow-Origin": "*",
+          "Content-Type": "application/json; charset=utf-8",
+          "Date": "Thu, 17 Jul 2025 10:16:35 GMT",
+          "Content-Length": "70"
+        },
+        "elapsed_ms": 2.44,
+        "timestamp": 1752747395.4915802,
+        "request_id": 2,
+        "content": {
+          "code": 800,
+          "message": "database not found[database=invalid_database]"
+        }
+      },
+      "method": "POST",
+      "url": "http://172.17.0.11:23210/v2/vectordb/entities/insert",
+      "headers": {
+        "Content-Type": "application/json",
+        "Authorization": "Bearer None",
+        "Accept-Type-Allow-Int64": "true",
+        "RequestId": "1dc392b8-62f7-11f0-85c3-0242ac11000b",
+        "Request-Timeout": "120"
+      },
+      "timestamp": 1752747395.4881313,
+      "request_id": 2,
+      "content": {
+        "collectionName": "test_collection_2025_07_17_18_16_34_432460ASEuQlPu",
+        "data": [
+          {
+            "id": 17527473954725,
+            "vector": "__FLOAT_ARRAY_DIM_128__",
+            "uid": 0,
+            "name": "Lynn Johnson",
+            "address": "53876 Joshua Pike\nCherylport, KS 64749",
+            "text": "Local pass of now go concern. Bag material say. Four capital skill dream maybe.\nRoad bar hand Mr father.\nCup way brother next make he focus. Term close quite help suggest but.",
+            "email": "vdunlap@example.org",
+            "phone_number": "449-588-3320x71912",
+            "json": {
+              "name": "Mary Edwards",
+              "address": "5712 Ramirez Mission Apt. 085\nTiffanymouth, PA 93542"
+            },
+            "key18304": "value98857",
+            "key54350": "value20038",
+            "key91236": "value34679",
+            "key70258": "value89522",
+            "key63974": "value67492"
+          },
+          {
+            "id": 17527473954742,
+            "vector": "__FLOAT_ARRAY_DIM_128__",
+            "uid": 1,
+            "name": "Aaron Ryan",
+            "address": "26873 Morrison Route Apt. 275\nWest Kimberlychester, ND 24755",
+            "text": "Local most bring least number order order foot.\nLine at very reach face read model increase. Month toward pull call price.\nProvide seven ready car. Why any hotel southern chair event.",
+            "email": "reyesmelvin@example.net",
+            "phone_number": "(464)270-9926x55139",
+            "json": {
+              "name": "Robert Bruce",
+              "address": "06604 Crystal Orchard\nKarenland, PR 70456"
+            },
+            "key61573": "value28626",
+            "key77966": "value63995",
+            "key70961": "value5898",
+            "key64017": "value61558",
+            "key6105": "value24117"
+          },
+          {
+            "id": 17527473954758,
+            "vector": "__FLOAT_ARRAY_DIM_128__",
+            "uid": 2,
+            "name": "Anthony Dunlap",
+            "address": "USCGC Wilkerson\nFPO AP 99607",
+            "text": "Middle there night safe finally election. Decision policy west human.\nQuite final page career economic. Draw huge throw key social way value.",
+            "email": "oholland@example.net",
+            "phone_number": "(340)294-9853",
+            "json": {
+              "name": "Nancy Clark",
+              "address": "279 Clayton Plaza Apt. 390\nKimmouth, IN 55513"
+            },
+            "key38721": "value2966",
+            "key50273": "value76069",
+            "key28933": "value87898",
+            "key6855": "value63026",
+            "key49205": "value23072",
+            "key51606": "value46913",
+            "key34410": "value91686",
+            "key73075": "value78211"
+          },
+          {
+            "id": 17527473954770,
+            "vector": "__FLOAT_ARRAY_DIM_128__",
+            "uid": 3,
+            "name": "Kristen Bass",
+            "address": "70386 James Radial\nNew Albert, OR 15491",
+            "text": "One analysis language road. Conference happy section space. Break assume thought affect.\nTable reveal in call mention adult. Listen family relate on cut.",
+            "email": "richardmurray@example.com",
+            "phone_number": "001-403-590-4021x7746",
+            "json": {
+              "name": "Amber Anderson",
+              "address": "PSC 3139, Box 2047\nAPO AA 24458"
+            },
+            "key87559": "value53872",
+            "key24616": "value54928",
+            "key86966": "value38015",
+            "key19541": "value91616",
+            "key35677": "value95028",
+            "key3962": "value8649",
+            "key35082": "value39335",
+            "key76479": "value13836"
+          },
+          {
+            "id": 17527473954782,
+            "vector": "__FLOAT_ARRAY_DIM_128__",
+            "uid": 4,
+            "name": "Phillip Brewer",
+            "address": "71474 Anderson Keys\nLake Lori, RI 15797",
+            "text": "Democrat major generation movement. Close rather population trial leave. Condition car kid us if. Language challenge stand raise off.",
+            "email": "harrisonmichelle@example.net",
+            "phone_number": "+1-974-734-5103x43129",
+            "json": {
+              "name": "Angela Mathis",
+              "address": "52971 Matthew Trail\nJoelborough, AS 64685"
+            },
+            "key668": "value73645",
+            "key93641": "value74285",
+            "key55141": "value40960",
+            "key17894": "value79862"
+          },
+          {
+            "id": 17527473954796,
+            "vector": "__FLOAT_ARRAY_DIM_128__",
+            "uid": 5,
+            "name": "Michael Decker",
+            "address": "502 Wood Garden Apt. 773\nAdamland, FL 07591",
+            "text": "Probably along son. Old shoulder police appear then nor. Hundred however even successful market hard floor.\nAvoid major similar. Daughter store official produce form. Wide to term bill.",
+            "email": "morenocassandra@example.org",
+            "phone_number": "849.268.9898",
+            "json": {
+              "name": "Patricia Cook",
+              "address": "519 Phillips Prairie Apt. 729\nRothfort, MH 46703"
+            },
+            "key54480": "value23476",
+            "key91265": "value69869",
+            "key64040": "value39373",
+            "key72011": "value40466",
+            "key71799": "value38615"
+          },
+          {
+            "id": 17527473954811,
+            "vector": "__FLOAT_ARRAY_DIM_128__",
+            "uid": 6,
+            "name": "Julie Nash",
+            "address": "04518 Laura Station Apt. 739\nJohnstad, MD 91676",
+            "text": "One many likely hotel wife even music. Stay cup tree.\nAgree always walk us five yet. Full main such current exactly model like beat.",
+            "email": "philiplee@example.org",
+            "phone_number": "880.877.5471x286",
+            "json": {
+              "name": "Justin Nash",
+              "address": "93539 Chad Lock Apt. 402\nSouth Alishamouth, HI 10767"
+            },
+            "key78748": "value75645",
+            "key31778": "value40387"
+          },
+          {
+            "id": 17527473954824,
+            "vector": "__FLOAT_ARRAY_DIM_128__",
+            "uid": 7,
+            "name": "Ryan Owens",
+            "address": "4677 Cynthia Orchard Apt. 646\nLake Jocelyn, VT 74991",
+            "text": "Our now than participant happy. Affect west structure water.\nOwn television politics sing represent true rise. Once low term story. Prevent shake how hotel certainly special test.",
+            "email": "mcintyrekayla@example.net",
+            "phone_number": "7003417317",
+            "json": {
+              "name": "Melissa Evans",
+              "address": "429 Michelle Plaza Apt. 395\nPort Dawnside, CO 91060"
+            },
+            "key77193": "value61931",
+            "key13951": "value46658",
+            "key79178": "value80989",
+            "key48278": "value901",
+            "key36822": "value18354",
+            "key8737": "value73475",
+            "key62487": "value81907",
+            "key63210": "value4622",
+            "key61667": "value8863"
+          },
+          {
+            "id": 17527473954836,
+            "vector": "__FLOAT_ARRAY_DIM_128__",
+            "uid": 8,
+            "name": "Jeffrey Robinson",
+            "address": "57132 Pamela Radial Apt. 558\nAnnechester, GA 21737",
+            "text": "Heart trade true worker oil. Whatever economic rock culture not drug onto.",
+            "email": "bradley88@example.org",
+            "phone_number": "536-998-4811x95063",
+            "json": {
+              "name": "Patrick Graham",
+              "address": "0464 Cook Ville\nLake Michellefurt, AL 45445"
+            },
+            "key29471": "value64729",
+            "key56598": "value83019",
+            "key23938": "value70620",
+            "key9590": "value32706",
+            "key31534": "value762",
+            "key56809": "value79694",
+            "key71292": "value74757"
+          },
+          {
+            "id": 17527473954848,
+            "vector": "__FLOAT_ARRAY_DIM_128__",
+            "uid": 9,
+            "name": "Grant Herrera",
+            "address": "69817 Brown Road\nLake Allen, RI 33520",
+            "text": "Blue maintain way interest yourself. Role right top entire generation. From black enter green site.\nDirector however think article air. Plant option recent scene nation.",
+            "email": "julie90@example.com",
+            "phone_number": "+1-867-595-4479",
+            "json": {
+              "name": "Kevin Allen",
+              "address": "65541 Richardson Station Apt. 624\nCooperburgh, CO 44088"
+            },
+            "key52370": "value47444",
+            "key45049": "value43126",
+            "key32750": "value54639",
+            "key62198": "value80506",
+            "key97508": "value5043",
+            "key35204": "value78404"
+          }
+        ],
+        "dbName": "invalid_database"
+      }
+    },
+    {
+      "response": {
+        "status_code": 200,
+        "headers": {
+          "Access-Control-Allow-Credentials": "true",
+          "Access-Control-Allow-Headers": "Content-Type, Content-Length, Accept-Encoding, X-CSRF-Token, Authorization, accept, origin, Cache-Control, X-Requested-With",
+          "Access-Control-Allow-Methods": "GET, HEAD, POST, PUT, DELETE, OPTIONS, PATCH",
+          "Access-Control-Allow-Origin": "*",
+          "Content-Type": "application/json; charset=utf-8",
+          "Date": "Thu, 17 Jul 2025 10:16:35 GMT",
+          "Transfer-Encoding": "chunked"
+        },
+        "elapsed_ms": 1.625,
+        "timestamp": 1752747395.5002477,
+        "request_id": 3,
+        "content": {
+          "code": 0,
+          "data": [
+            "test_collection_2025_07_17_17_17_15_678004pyREebDu",
+            "test_collection_2025_07_17_17_19_49_012253YNUgLNVU",
+            "test_collection_2025_07_17_17_19_44_812841DunLmJNO",
+            "test_collection_2025_07_17_15_24_11_175416XosHLEdz",
+            "test_collection_2025_07_17_17_23_05_072715YpNvNBld",
+            "test_collection_2025_07_17_15_24_03_903710zdSUvroA",
+            "test_collection_2025_07_17_17_22_43_423484mCCgfQiN",
+            "test_collection_2025_07_17_17_23_19_309471RpVHVQMs",
+            "test_collection_2025_07_17_17_19_56_336434hIpBBqFz",
+            "test_collection_2025_07_17_17_19_47_975918OKJxRQcV",
+            "test_collection_2025_07_17_15_24_05_988265SeFDVnQT",
+            "test_collection_2025_07_17_17_22_47_301352DogZUnDe",
+            "test_collection_2025_07_17_17_23_27_420601ueNUweLH",
+            "test_collection_2025_07_17_17_23_57_057923IBgxFtAX",
+            "Testtest_collection_2025_07_17_15_27_37_440411ScvRPtgi",
+            "test_collection_2025_07_17_17_17_21_946399jTpybDOT",
+            "test_collection_2025_07_17_15_35_18_520934NLgyEQRn",
+            "test_collection_2025_07_17_17_19_53_229287ioYrRRWm",
+            "test_collection_2025_07_17_17_22_56_795420XFokPOIG",
+            "test_collection_2025_07_17_17_20_09_822388RRZOIJUK",
+            "test_collection_2025_07_17_17_22_38_501153ONZaZzUv",
+            "test_collection_2025_07_17_17_22_49_729737JQpsdlex",
+            "test_collection_2025_07_17_18_10_29_234388vOcgCrit",
+            "test_collection_2025_07_17_15_24_24_649761ZjScvdKIs",
+            "test_collection_2025_07_17_17_17_18_851467TeyWnmNj",
+            "test_collection_2025_07_17_17_23_31_390218zbNckKsF",
+            "test_collection_2025_07_17_17_20_01_516188AvjIeFux",
+            "test_collection_2025_07_17_15_23_43_074872tMEKPOXS",
+            "test_collection_2025_07_17_17_16_04_537889mdmjpgvT",
+            "test_collection_2025_07_17_17_19_33_400833ycuAOAdx",
+            "test_collection_2025_07_17_17_19_50_117474xJJHkYka",
+            "test_collection_2025_07_17_18_10_31_895086KEnvmmyf",
+            "test_collection_2025_07_17_15_24_10_136640RIBEQHEX",
+            "test_collection_2025_07_17_17_23_11_021213aEZaKtIC",
+            "test_collection_2025_07_17_18_16_34_432460ASEuQlPu",
+            "test_collection_2025_07_17_17_23_07_170917DLaMeQIz",
+            "test_collection_2025_07_17_17_23_21_408923oxaiNDYg",
+            "test_collection_2025_07_17_17_23_34_626024HcJZexUL",
+            "test_collection_2025_07_17_15_23_42_042430VLxUleHf",
+            "test_collection_2025_07_17_17_23_33_568147WnSrnbhV",
+            "test_collection_2025_07_17_18_10_30_797459wbzZEfef",
+            "test_collection_2025_07_17_17_18_11_777965RMoQLuLg",
+            "test_collection_2025_07_17_15_23_36_865054CCHJLHbY",
+            "test_collection_2025_07_17_15_24_24_649761ZjScvdKIClass",
+            "test_collection_2025_07_17_18_10_21_377855cdwWUKLY",
+            "test_collection_2025_07_17_17_17_25_060439rSvMkCGw",
+            "test_collection_2025_07_17_17_23_18_232822zbXHsxNb",
+            "test_collection_2025_07_17_15_23_38_942827skPFQwFe",
+            "test_collection_2025_07_17_17_22_39_995246QFxpUaeH",
+            "test_collection_2025_07_17_18_10_21_246598vIPVOSot",
+            "test_collection_2025_07_17_17_19_51_157573nOSaupSp",
+            "test_collection_2025_07_17_15_23_35_823575aupLEqWTs",
+            "test_collection_2025_07_17_17_17_55_477524mOjawodx",
+            "test_collection_2025_07_17_17_17_15_743944daMlhuOX",
+            "test_collection_2025_07_17_17_20_06_708697nErpeGpP",
+            "test_collection_2025_07_17_15_24_09_100019nvhiIVWL",
+            "test_collection_2025_07_17_17_17_32_824883GqCchHbE",
+            "test_collection_2025_07_17_18_10_33_102872ZZmIhjUj",
+            "test_collection_2025_07_17_17_20_02_552131IdgfmvOP",
+            "test_collection_2025_07_17_15_23_45_177659LswNemSq",
+            "test_collection_2025_07_17_17_23_30_073061wOpNnPKz",
+            "test_collection_2025_07_17_15_27_37_440411ScvRPtgis",
+            "test_collection_2025_07_17_17_53_02_809776hqfVVJzI",
+            "test_collection_2025_07_17_18_10_35_823063wxckqyzt",
+            "test_collection_2025_07_17_18_11_21_073875urihgSUn",
+            "Test_collection_2025_07_17_15_24_24_649761zjscvdki",
+            "test_collection_2025_07_17_15_23_46_212085MriFiuSQ",
+            "test_collection_2025_07_17_17_23_55_869975dnIXnMUi",
+            "test_collection_2025_07_17_17_22_54_408088kLvnDbRx",
+            "test_collection_2025_07_17_15_24_35_689798tyAOBPAe",
+            "Test_collection_2025_07_17_15_27_37_440411scvrptgi",
+            "test_collection_2025_07_17_17_20_03_586749hiciCJPX",
+            "test_collection_2025_07_17_17_20_05_660781sDbWdSCv",
+            "test_collection_2025_07_17_17_23_32_499955NIBKGdXn",
+            "test_collection_2025_07_17_18_10_28_032379ZhHAyest",
+            "test_collection_2025_07_17_17_23_58_392508BpCyLbMu",
+            "test_collection_2025_07_17_17_23_15_783350VPObBDGN",
+            "test_collection_2025_07_17_17_17_15_581328WoFBSnrj",
+            "test_collection_2025_07_17_17_19_55_298896FWCNaITo",
+            "test_collection_2025_07_17_17_22_45_713937MVfOiivb",
+            "test_collection_2025_07_17_17_23_25_273651lbikbfrH",
+            "test_collection_2025_07_17_17_23_35_672541qxsZYpMv",
+            "test_collection_2025_07_17_17_22_48_621231sEaBffPs",
+            "test_collection_2025_07_17_17_23_14_175023kmBnywSI",
+            "test_collection_2025_07_17_15_27_37_440411ScvRPtgi",
+            "test_collection_2025_07_17_17_22_59_969660BfUHIyqM",
+            "test_collection_2025_07_17_17_20_21_322167ciWVKMKi",
+            "test_collection_2025_07_17_17_17_30_871309rsoLPTGN",
+            "test_collection_2025_07_17_15_27_37_440411ScvRPtgiClass",
+            "test_collection_2025_07_17_17_19_45_873972IMTKKlKz",
+            "test_collection_2025_07_17_17_17_17_825159toJxQJcq",
+            "test_collection_2025_07_17_17_19_57_369971LGAMLVzK",
+            "test_collection_2025_07_17_17_22_44_506585uFfTOBIR",
+            "test_collection_2025_07_17_17_19_40_657243dBmKvuUS",
+            "test_collection_2025_07_17_17_19_46_927461bezCEJMQ",
+            "test_collection_2025_07_17_17_23_17_123815ZiMdNQSX",
+            "test_collection_2025_07_17_17_23_26_368356WTSuncTf",
+            "test_collection_2025_07_17_15_23_50_396358PGhgwblp",
+            "Testtest_collection_2025_07_17_15_24_24_649761ZjScvdKI",
+            "test_collection_2025_07_17_17_17_25_802625XUfEoiEh",
+            "test_collection_2025_07_17_17_19_58_410895FtkwMmCD",
+            "test_collection_2025_07_17_15_23_53_514193CyozLQNb",
+            "test_collection_2025_07_17_17_23_20_365252olqwWzKO",
+            "test_collection_2025_07_17_17_17_15_610671PbJXiBrF",
+            "test_collection_2025_07_17_17_17_16_795139opZfFDzs",
+            "test_collection_2025_07_17_17_20_00_480820pqcLkjNk",
+            "test_collection_2025_07_17_17_20_32_364591AeRVoeDe",
+            "test_collection_2025_07_17_17_19_59_445699hVKiidrS",
+            "test_collection_2025_07_17_17_17_15_557159zCEITuHZ",
+            "test_collection_2025_07_17_17_23_13_132368TmpzGyjH",
+            "test_collection_2025_07_17_17_22_55_682779UMJxbCzP",
+            "test_collection_2025_07_17_17_23_01_565257KfNJvyOM",
+            "test_collection_2025_07_17_17_17_15_702379CLAjLIKj",
+            "test_collection_2025_07_17_17_22_52_906772ZrPxLgqT",
+            "test_collection_2025_07_17_18_10_21_489488pgnUxLGh",
+            "test_collection_2025_07_17_15_23_48_324612dyEdAhCt",
+            "test_collection_2025_07_17_17_17_44_176106wAiIwJFc",
+            "test_collection_2025_07_17_17_19_32_364057VmJAaAJs",
+            "test_collection_2025_07_17_17_23_12_082304bILqTvse",
+            "test_collection_2025_07_17_17_17_15_633275zqBCKdrD",
+            "test_collection_2025_07_17_17_19_42_740635wrKDAkWl",
+            "test_collection_2025_07_17_17_20_08_782896mPhdtQNy",
+            "test_collection_2025_07_17_17_23_03_990501gQdzEqsC",
+            "test_collection_2025_07_17_17_22_57_877139MBoEnkGA",
+            "test_collection_2025_07_17_17_19_36_511601IAjAclCY",
+            "test_collection_2025_07_17_17_19_37_545787NrmWFVoD",
+            "test_collection_2025_07_17_15_24_04_937929mazXhSWT",
+            "test_collection_2025_07_17_17_17_22_973268CuKDKKyJ",
+            "test_collection_2025_07_17_17_17_24_531720ByxdqyyL",
+            "test_collection_2025_07_17_15_23_52_468483lGVQFhXS",
+            "test_collection_2025_07_17_15_24_12_213017gcavPWeT",
+            "test_collection_2025_07_17_15_23_35_823575aupLEqWT",
+            "test_collection_2025_07_17_18_10_21_075114DLPyvJBF",
+            "test_collection_2025_07_17_17_19_52_191876RKbQMvSN",
+            "test_collection_2025_07_17_17_22_51_852398rOlZfgzG",
+            "test_collection_2025_07_17_18_10_21_205573AdjDjBFM",
+            "test_collection_2025_07_17_17_19_38_585854wTWmyGKU",
+            "test_collection_2025_07_17_15_24_24_649761ZjScvdKI",
+            "test_collection_2025_07_17_15_23_41_008685vgmzFpeU",
+            "test_collection_2025_07_17_18_10_28_628598TpNEPOYl",
+            "test_collection_2025_07_17_17_20_04_624427fWBmOnyk",
+            "test_collection_2025_07_17_15_23_51_433823GlhEPGHL",
+            "test_collection_2025_07_17_17_23_22_918158jVsgKEQk",
+            "test_collection_2025_07_17_15_24_13_281491rHReAMhI",
+            "test_collection_2025_07_17_17_23_24_179206odnjerhM",
+            "test_collection_2025_07_17_17_17_28_924109oPnbNUFo",
+            "test_collection_2025_07_17_15_23_39_976542NqaJWoIp",
+            "test_collection_2025_07_17_17_22_41_264840ahpMFXkL",
+            "test_collection_2025_07_17_17_23_59_464583qHgiJHZl",
+            "test_collection_2025_07_17_17_19_43_778572mwpLKuZH",
+            "test_collection_2025_07_17_17_17_15_766714EUUkMHAr",
+            "test_collection_2025_07_17_17_23_28_466539PEpORUdD",
+            "test_collection_2025_07_17_17_19_35_473224QvvwddaN",
+            "test_collection_2025_07_17_15_23_47_262993QBSHHFCE",
+            "test_collection_2025_07_17_17_19_54_264605BltyIYuU",
+            "test_collection_2025_07_17_17_20_07_743542ggBEWcHw",
+            "test_collection_2025_07_17_17_17_19_878043UhgFdJHR",
+            "test_collection_2025_07_17_17_19_41_701971sssjmXWD",
+            "test_collection_2025_07_17_15_23_37_910686jHCGwKxN",
+            "test_collection_2025_07_17_15_23_44_108686OLyJouuw",
+            "test_collection_2025_07_17_17_17_26_773377SzoHtdYH",
+            "test_collection_2025_07_17_18_11_41_790432tuNLHgTM",
+            "test_collection_2025_07_17_18_10_20_997649gWTRopWV",
+            "test_collection_2025_07_17_17_17_24_004255DxrXmYOR",
+            "test_collection_2025_07_17_17_19_39_620897FLcwKlQh",
+            "test_collection_2025_07_17_17_23_06_124148AVujeQKw",
+            "Test_collection_2025_07_17_15_23_35_823575aupleqwt",
+            "test_collection_2025_07_17_17_22_42_356647cXYhKKBP",
+            "test_collection_2025_07_17_17_23_09_930317lVjmBZYn",
+            "test_collection_2025_07_17_17_19_34_437932WFWgaZfz",
+            "test_collection_2025_07_17_17_23_08_676552gnywgoUA",
+            "test_collection_2025_07_17_18_10_21_303992TPMYLgmh",
+            "test_collection_2025_07_17_15_24_07_022945fMJUfNVT",
+            "test_collection_2025_07_17_17_23_02_883274nixaUvuF",
+            "test_collection_2025_07_17_18_10_21_141531DyjWhmVY",
+            "test_collection_2025_07_17_15_23_49_360357zEQEZQJp",
+            "test_collection_2025_07_17_17_22_50_802708xxnglfTy",
+            "test_collection_2025_07_17_17_22_58_927923kZdajmOw",
+            "test_collection_2025_07_17_17_17_20_916610gjaKfjUS",
+            "NonExistentClass",
+            "test_collection_2025_07_17_17_17_15_654858BUiIHmiU"
+          ]
+        }
+      },
+      "method": "POST",
+      "url": "http://172.17.0.11:23210/v2/vectordb/collections/list",
+      "headers": {
+        "Content-Type": "application/json",
+        "Authorization": "Bearer None",
+        "RequestId": "1dc392b8-62f7-11f0-85c3-0242ac11000b",
+        "Request-Timeout": "120"
+      },
+      "timestamp": 1752747395.4980187,
+      "request_id": 3,
+      "content": "null"
+    },
+    {
+      "response": {
+        "status_code": 200,
+        "headers": {
+          "Access-Control-Allow-Credentials": "true",
+          "Access-Control-Allow-Headers": "Content-Type, Content-Length, Accept-Encoding, X-CSRF-Token, Authorization, accept, origin, Cache-Control, X-Requested-With",
+          "Access-Control-Allow-Methods": "GET, HEAD, POST, PUT, DELETE, OPTIONS, PATCH",
+          "Access-Control-Allow-Origin": "*",
+          "Content-Type": "application/json; charset=utf-8",
+          "Date": "Thu, 17 Jul 2025 10:16:36 GMT",
+          "Content-Length": "20"
+        },
+        "elapsed_ms": 5.835,
+        "timestamp": 1752747396.5083895,
+        "request_id": 4,
+        "content": {
+          "code": 0,
+          "data": {}
+        }
+      },
+      "method": "POST",
+      "url": "http://172.17.0.11:23210/v2/vectordb/collections/drop",
+      "headers": {
+        "Content-Type": "application/json",
+        "Authorization": "Bearer None",
+        "RequestId": "1dc392b8-62f7-11f0-85c3-0242ac11000b",
+        "Request-Timeout": "120"
+      },
+      "timestamp": 1752747396.501815,
+      "request_id": 4,
+      "content": {
+        "collectionName": "test_collection_2025_07_17_18_16_34_432460ASEuQlPu",
+        "dbName": "default"
+      }
+    }
+  ]
+}

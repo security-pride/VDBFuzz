@@ -1,0 +1,177 @@
+{
+  "test_name": "allmilvus_log.TestInsertVector_test_insert_vector_with_simple_payload[default-embedding-url-128-1-2]_1752744214.json",
+  "vdb_type": "qdrant",
+  "requests": [
+    {
+      "response": {
+        "status_code": 200,
+        "headers": {
+          "Access-Control-Allow-Credentials": "true",
+          "Access-Control-Allow-Headers": "Content-Type, Content-Length, Accept-Encoding, X-CSRF-Token, Authorization, accept, origin, Cache-Control, X-Requested-With",
+          "Access-Control-Allow-Methods": "GET, HEAD, POST, PUT, DELETE, OPTIONS, PATCH",
+          "Access-Control-Allow-Origin": "*",
+          "Content-Type": "application/json; charset=utf-8",
+          "Date": "Thu, 17 Jul 2025 09:23:34 GMT",
+          "Content-Length": "22"
+        },
+        "elapsed_ms": 25.791,
+        "timestamp": 1752744214.594796,
+        "request_id": 0,
+        "content": {
+          "code": 200,
+          "data": {}
+        }
+      },
+      "method": "POST",
+      "url": "http://172.17.0.11:23210/v1/vector/collections/create",
+      "headers": {
+        "Content-Type": "application/json",
+        "Authorization": "Bearer root:Milvus",
+        "RequestId": "b66b64c1-62ef-11f0-9c0c-0242ac110005"
+      },
+      "timestamp": 1752744214.568442,
+      "request_id": 0,
+      "content": {
+        "collectionName": "test_collection_2025_07_17_17_23_33_568147WnSrnbhV",
+        "dimension": 128,
+        "primaryField": "url",
+        "vectorField": "embedding",
+        "autoID": true,
+        "dbName": "default"
+      }
+    },
+    {
+      "response": {
+        "status_code": 200,
+        "headers": {
+          "Access-Control-Allow-Credentials": "true",
+          "Access-Control-Allow-Headers": "Content-Type, Content-Length, Accept-Encoding, X-CSRF-Token, Authorization, accept, origin, Cache-Control, X-Requested-With",
+          "Access-Control-Allow-Methods": "GET, HEAD, POST, PUT, DELETE, OPTIONS, PATCH",
+          "Access-Control-Allow-Origin": "*",
+          "Content-Type": "application/json; charset=utf-8",
+          "Date": "Thu, 17 Jul 2025 09:23:34 GMT",
+          "Content-Length": "70"
+        },
+        "elapsed_ms": 5.738,
+        "timestamp": 1752744214.6090965,
+        "request_id": 2,
+        "content": {
+          "code": 200,
+          "data": {
+            "insertCount": 1,
+            "insertIds": [
+              459470532653889723
+            ]
+          }
+        }
+      },
+      "method": "POST",
+      "url": "http://172.17.0.11:23210/v1/vector/insert",
+      "headers": {
+        "Content-Type": "application/json",
+        "Authorization": "Bearer root:Milvus",
+        "RequestId": "b670a124-62ef-11f0-bc50-0242ac110005"
+      },
+      "timestamp": 1752744214.6027906,
+      "request_id": 2,
+      "content": {
+        "collectionName": "test_collection_2025_07_17_17_23_33_568147WnSrnbhV",
+        "data": [
+          {
+            "embedding": "__FLOAT_ARRAY_DIM_128__",
+            "uid": 0,
+            "name": "Howard Juarez",
+            "address": "311 Morrow Mission\nMatthewside, AS 19647",
+            "text": "Sing lawyer should eye prepare. Management per operation use. As center purpose property high.\nAnswer wear though morning continue. Factor run affect herself sometimes friend.",
+            "email": "bwilliams@example.org",
+            "phone_number": "873-656-3639",
+            "array_int_dynamic": "__FLOAT_ARRAY_DIM_9__",
+            "array_varchar_dynamic": [
+              "Billy Lee",
+              "Jason Levine",
+              "Melissa Greene",
+              "Denise Schmidt",
+              "Lisa Cobb"
+            ],
+            "json": {
+              "name": "Jared Warren DVM",
+              "address": "203 Scott Points Apt. 764\nChoiborough, CO 12821"
+            },
+            "key90343": "value69683",
+            "key70033": "value11762",
+            "key12641": "value74160",
+            "key65353": "value22557",
+            "key66283": "value58019"
+          }
+        ],
+        "dbName": "default"
+      }
+    },
+    {
+      "response": {
+        "status_code": 200,
+        "headers": {
+          "Access-Control-Allow-Credentials": "true",
+          "Access-Control-Allow-Headers": "Content-Type, Content-Length, Accept-Encoding, X-CSRF-Token, Authorization, accept, origin, Cache-Control, X-Requested-With",
+          "Access-Control-Allow-Methods": "GET, HEAD, POST, PUT, DELETE, OPTIONS, PATCH",
+          "Access-Control-Allow-Origin": "*",
+          "Content-Type": "application/json; charset=utf-8",
+          "Date": "Thu, 17 Jul 2025 09:23:34 GMT",
+          "Content-Length": "70"
+        },
+        "elapsed_ms": 2.408,
+        "timestamp": 1752744214.6149993,
+        "request_id": 3,
+        "content": {
+          "code": 200,
+          "data": {
+            "insertCount": 1,
+            "insertIds": [
+              459470532653889725
+            ]
+          }
+        }
+      },
+      "method": "POST",
+      "url": "http://172.17.0.11:23210/v1/vector/insert",
+      "headers": {
+        "Content-Type": "application/json",
+        "Authorization": "Bearer root:Milvus",
+        "RequestId": "b6720c22-62ef-11f0-8b1a-0242ac110005"
+      },
+      "timestamp": 1752744214.6120696,
+      "request_id": 3,
+      "content": {
+        "collectionName": "test_collection_2025_07_17_17_23_33_568147WnSrnbhV",
+        "data": [
+          {
+            "embedding": "__FLOAT_ARRAY_DIM_128__",
+            "uid": 0,
+            "name": "Alexander Garcia",
+            "address": "3892 Moore Lock Apt. 028\nKarenchester, NV 06034",
+            "text": "New expect wife south happen already especially.\nGuy billion specific special land bit. Nature brother serious that condition reflect bring. Seven hospital study hold treat natural next stock.",
+            "email": "mwall@example.com",
+            "phone_number": "680.909.4266",
+            "array_int_dynamic": "__FLOAT_ARRAY_DIM_3__",
+            "array_varchar_dynamic": [
+              "William Deleon",
+              "Gregory Hall",
+              "Jacob Hernandez",
+              "Karen Evans",
+              "Michael Gonzalez",
+              "Jose Stephenson"
+            ],
+            "json": {
+              "name": "Amy Williams",
+              "address": "USNV Coffey\nFPO AA 11059"
+            },
+            "key91829": "value18743",
+            "key79238": "value66780",
+            "key32916": "value84754"
+          }
+        ],
+        "dbName": "default"
+      }
+    }
+  ]
+}

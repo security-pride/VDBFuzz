@@ -1,0 +1,118 @@
+{
+  "test_name": "allmilvus_log.TestInsertVector_test_insert_vector_with_simple_payload[prod-vector-id-32-1-1]_1752744107.json",
+  "vdb_type": "qdrant",
+  "requests": [
+    {
+      "response": {
+        "status_code": 200,
+        "headers": {
+          "Access-Control-Allow-Credentials": "true",
+          "Access-Control-Allow-Headers": "Content-Type, Content-Length, Accept-Encoding, X-CSRF-Token, Authorization, accept, origin, Cache-Control, X-Requested-With",
+          "Access-Control-Allow-Methods": "GET, HEAD, POST, PUT, DELETE, OPTIONS, PATCH",
+          "Access-Control-Allow-Origin": "*",
+          "Content-Type": "application/json; charset=utf-8",
+          "Date": "Thu, 17 Jul 2025 09:21:47 GMT",
+          "Content-Length": "22"
+        },
+        "elapsed_ms": 59.873000000000005,
+        "timestamp": 1752744107.5257845,
+        "request_id": 0,
+        "content": {
+          "code": 200,
+          "data": {}
+        }
+      },
+      "method": "POST",
+      "url": "http://172.17.0.11:23210/v1/vector/collections/create",
+      "headers": {
+        "Content-Type": "application/json",
+        "Authorization": "Bearer root:Milvus",
+        "RequestId": "7694c095-62ef-11f0-b7a9-0242ac110005"
+      },
+      "timestamp": 1752744107.4653203,
+      "request_id": 0,
+      "content": {
+        "collectionName": "test_collection_2025_07_17_17_21_46_465007TLaPncKy",
+        "dimension": 32,
+        "primaryField": "id",
+        "vectorField": "vector",
+        "autoID": true,
+        "dbName": "prod"
+      }
+    },
+    {
+      "response": {
+        "status_code": 200,
+        "headers": {
+          "Access-Control-Allow-Credentials": "true",
+          "Access-Control-Allow-Headers": "Content-Type, Content-Length, Accept-Encoding, X-CSRF-Token, Authorization, accept, origin, Cache-Control, X-Requested-With",
+          "Access-Control-Allow-Methods": "GET, HEAD, POST, PUT, DELETE, OPTIONS, PATCH",
+          "Access-Control-Allow-Origin": "*",
+          "Content-Type": "application/json; charset=utf-8",
+          "Date": "Thu, 17 Jul 2025 09:21:47 GMT",
+          "Content-Length": "70"
+        },
+        "elapsed_ms": 5.746,
+        "timestamp": 1752744107.5388222,
+        "request_id": 2,
+        "content": {
+          "code": 200,
+          "data": {
+            "insertCount": 1,
+            "insertIds": [
+              459470532653884597
+            ]
+          }
+        }
+      },
+      "method": "POST",
+      "url": "http://172.17.0.11:23210/v1/vector/insert",
+      "headers": {
+        "Content-Type": "application/json",
+        "Authorization": "Bearer root:Milvus",
+        "RequestId": "769f0514-62ef-11f0-aee3-0242ac110005"
+      },
+      "timestamp": 1752744107.5325673,
+      "request_id": 2,
+      "content": {
+        "collectionName": "test_collection_2025_07_17_17_21_46_465007TLaPncKy",
+        "data": [
+          {
+            "vector": "__FLOAT_ARRAY_DIM_32__",
+            "uid": 0,
+            "name": "Lynn Mitchell",
+            "address": "7546 Lewis Plain Apt. 596\nCampbellhaven, VI 39415",
+            "text": "About wish never church defense. Table happen student left.\nIncrease available though quality. Ask charge where agency gas free. Ago he how social result southern human.",
+            "email": "nhale@example.com",
+            "phone_number": "278.386.3367x048",
+            "array_int_dynamic": "__FLOAT_ARRAY_DIM_7__",
+            "array_varchar_dynamic": [
+              "John Scott",
+              "Samuel Evans",
+              "Jessica Weber",
+              "Joseph Smith",
+              "Alicia Payne",
+              "Julie Bennett",
+              "Timothy Ross"
+            ],
+            "json": {
+              "name": "Trevor Weaver",
+              "address": "838 Charles Road\nWatsonbury, AS 82818"
+            },
+            "key2600": "value38868",
+            "key80117": "value12458",
+            "key85601": "value30841",
+            "key66259": "value85764",
+            "key76750": "value4565",
+            "key84971": "value67149",
+            "key93750": "value13787",
+            "key64291": "value58097",
+            "key4297": "value5362",
+            "key17729": "value603"
+          }
+        ],
+        "dbName": "prod"
+      }
+    }
+  ]
+}

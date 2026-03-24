@@ -1,0 +1,105 @@
+{
+  "test_name": "allmilvus_log.TestInsertVector_test_insert_vector_with_simple_payload[prod-vector-url-32-1-1]_1752744121.json",
+  "vdb_type": "qdrant",
+  "requests": [
+    {
+      "response": {
+        "status_code": 200,
+        "headers": {
+          "Access-Control-Allow-Credentials": "true",
+          "Access-Control-Allow-Headers": "Content-Type, Content-Length, Accept-Encoding, X-CSRF-Token, Authorization, accept, origin, Cache-Control, X-Requested-With",
+          "Access-Control-Allow-Methods": "GET, HEAD, POST, PUT, DELETE, OPTIONS, PATCH",
+          "Access-Control-Allow-Origin": "*",
+          "Content-Type": "application/json; charset=utf-8",
+          "Date": "Thu, 17 Jul 2025 09:22:01 GMT",
+          "Content-Length": "22"
+        },
+        "elapsed_ms": 19.433,
+        "timestamp": 1752744121.8418713,
+        "request_id": 0,
+        "content": {
+          "code": 200,
+          "data": {}
+        }
+      },
+      "method": "POST",
+      "url": "http://172.17.0.11:23210/v1/vector/collections/create",
+      "headers": {
+        "Content-Type": "application/json",
+        "Authorization": "Bearer root:Milvus",
+        "RequestId": "7f235d32-62ef-11f0-bff0-0242ac110005"
+      },
+      "timestamp": 1752744121.8217394,
+      "request_id": 0,
+      "content": {
+        "collectionName": "test_collection_2025_07_17_17_22_00_821404pzqspiBm",
+        "dimension": 32,
+        "primaryField": "url",
+        "vectorField": "vector",
+        "autoID": true,
+        "dbName": "prod"
+      }
+    },
+    {
+      "response": {
+        "status_code": 200,
+        "headers": {
+          "Access-Control-Allow-Credentials": "true",
+          "Access-Control-Allow-Headers": "Content-Type, Content-Length, Accept-Encoding, X-CSRF-Token, Authorization, accept, origin, Cache-Control, X-Requested-With",
+          "Access-Control-Allow-Methods": "GET, HEAD, POST, PUT, DELETE, OPTIONS, PATCH",
+          "Access-Control-Allow-Origin": "*",
+          "Content-Type": "application/json; charset=utf-8",
+          "Date": "Thu, 17 Jul 2025 09:22:01 GMT",
+          "Content-Length": "70"
+        },
+        "elapsed_ms": 4.562,
+        "timestamp": 1752744121.8529146,
+        "request_id": 2,
+        "content": {
+          "code": 200,
+          "data": {
+            "insertCount": 1,
+            "insertIds": [
+              459470532653885281
+            ]
+          }
+        }
+      },
+      "method": "POST",
+      "url": "http://172.17.0.11:23210/v1/vector/insert",
+      "headers": {
+        "Content-Type": "application/json",
+        "Authorization": "Bearer root:Milvus",
+        "RequestId": "7f275db5-62ef-11f0-a0bb-0242ac110005"
+      },
+      "timestamp": 1752744121.8478708,
+      "request_id": 2,
+      "content": {
+        "collectionName": "test_collection_2025_07_17_17_22_00_821404pzqspiBm",
+        "data": [
+          {
+            "vector": "__FLOAT_ARRAY_DIM_32__",
+            "uid": 0,
+            "name": "Michael Wall",
+            "address": "04824 Richard Fork\nJennifermouth, WV 41442",
+            "text": "Want send wide smile couple wait. Key situation play land. Area world real although growth.\nHealth more born threat area.",
+            "email": "walterrichardson@example.net",
+            "phone_number": "(834)913-2945",
+            "array_int_dynamic": "__FLOAT_ARRAY_DIM_8__",
+            "array_varchar_dynamic": [
+              "Summer Stevens",
+              "Victoria Barnes",
+              "Paula Blake"
+            ],
+            "json": {
+              "name": "Tina Duran",
+              "address": "30632 Campbell Trafficway\nEast Lauraville, NM 77138"
+            },
+            "key32537": "value67522"
+          }
+        ],
+        "dbName": "prod"
+      }
+    }
+  ]
+}

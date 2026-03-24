@@ -1,0 +1,82 @@
+{
+  "test_name": "allmilvus_log.TestRestfulSdkCompatibility_test_collection_create_by_sdk_search_vector_by_restful_1752743850.json",
+  "vdb_type": "qdrant",
+  "requests": [
+    {
+      "response": {
+        "status_code": 200,
+        "headers": {
+          "Access-Control-Allow-Credentials": "true",
+          "Access-Control-Allow-Headers": "Content-Type, Content-Length, Accept-Encoding, X-CSRF-Token, Authorization, accept, origin, Cache-Control, X-Requested-With",
+          "Access-Control-Allow-Methods": "GET, HEAD, POST, PUT, DELETE, OPTIONS, PATCH",
+          "Access-Control-Allow-Origin": "*",
+          "Content-Type": "application/json; charset=utf-8",
+          "Date": "Thu, 17 Jul 2025 09:17:30 GMT",
+          "Content-Length": "330"
+        },
+        "elapsed_ms": 3.5170000000000003,
+        "timestamp": 1752743850.8622658,
+        "request_id": 0,
+        "content": {
+          "code": 200,
+          "data": [
+            {
+              "distance": 15.164192,
+              "id": 77
+            },
+            {
+              "distance": 15.2902355,
+              "id": 53
+            },
+            {
+              "distance": 16.286545,
+              "id": 54
+            },
+            {
+              "distance": 16.617548,
+              "id": 24
+            },
+            {
+              "distance": 16.73934,
+              "id": 80
+            },
+            {
+              "distance": 16.802721,
+              "id": 75
+            },
+            {
+              "distance": 16.95195,
+              "id": 5
+            },
+            {
+              "distance": 16.985226,
+              "id": 20
+            },
+            {
+              "distance": 17.496082,
+              "id": 88
+            },
+            {
+              "distance": 17.517563,
+              "id": 59
+            }
+          ]
+        }
+      },
+      "method": "POST",
+      "url": "http://172.17.0.11:23210/v1/vector/search",
+      "headers": {
+        "Content-Type": "application/json",
+        "Authorization": "Bearer root:Milvus",
+        "RequestId": "dda1971a-62ee-11f0-a79e-0242ac110005"
+      },
+      "timestamp": 1752743850.8581219,
+      "request_id": 0,
+      "content": {
+        "collectionName": "test_collection_2025_07_17_17_17_28_924109oPnbNUFo",
+        "vector": "__FLOAT_ARRAY_DIM_128__",
+        "limit": 10
+      }
+    }
+  ]
+}

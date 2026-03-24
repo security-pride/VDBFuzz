@@ -1,0 +1,117 @@
+{
+  "test_name": "allmilvus_log.TestInsertVector_test_insert_vector_with_simple_payload[prod-vector-id-128-1-1]_1752744114.json",
+  "vdb_type": "qdrant",
+  "requests": [
+    {
+      "response": {
+        "status_code": 200,
+        "headers": {
+          "Access-Control-Allow-Credentials": "true",
+          "Access-Control-Allow-Headers": "Content-Type, Content-Length, Accept-Encoding, X-CSRF-Token, Authorization, accept, origin, Cache-Control, X-Requested-With",
+          "Access-Control-Allow-Methods": "GET, HEAD, POST, PUT, DELETE, OPTIONS, PATCH",
+          "Access-Control-Allow-Origin": "*",
+          "Content-Type": "application/json; charset=utf-8",
+          "Date": "Thu, 17 Jul 2025 09:21:54 GMT",
+          "Content-Length": "22"
+        },
+        "elapsed_ms": 20.682,
+        "timestamp": 1752744114.6923065,
+        "request_id": 0,
+        "content": {
+          "code": 200,
+          "data": {}
+        }
+      },
+      "method": "POST",
+      "url": "http://172.17.0.11:23210/v1/vector/collections/create",
+      "headers": {
+        "Content-Type": "application/json",
+        "Authorization": "Bearer root:Milvus",
+        "RequestId": "7ae040ed-62ef-11f0-9a8c-0242ac110005"
+      },
+      "timestamp": 1752744114.6710124,
+      "request_id": 0,
+      "content": {
+        "collectionName": "test_collection_2025_07_17_17_21_53_670696gOrnLcyi",
+        "dimension": 128,
+        "primaryField": "id",
+        "vectorField": "vector",
+        "autoID": true,
+        "dbName": "prod"
+      }
+    },
+    {
+      "response": {
+        "status_code": 200,
+        "headers": {
+          "Access-Control-Allow-Credentials": "true",
+          "Access-Control-Allow-Headers": "Content-Type, Content-Length, Accept-Encoding, X-CSRF-Token, Authorization, accept, origin, Cache-Control, X-Requested-With",
+          "Access-Control-Allow-Methods": "GET, HEAD, POST, PUT, DELETE, OPTIONS, PATCH",
+          "Access-Control-Allow-Origin": "*",
+          "Content-Type": "application/json; charset=utf-8",
+          "Date": "Thu, 17 Jul 2025 09:21:54 GMT",
+          "Content-Length": "70"
+        },
+        "elapsed_ms": 5.213,
+        "timestamp": 1752744114.7050006,
+        "request_id": 2,
+        "content": {
+          "code": 200,
+          "data": {
+            "insertCount": 1,
+            "insertIds": [
+              459470532653884939
+            ]
+          }
+        }
+      },
+      "method": "POST",
+      "url": "http://172.17.0.11:23210/v1/vector/insert",
+      "headers": {
+        "Content-Type": "application/json",
+        "Authorization": "Bearer root:Milvus",
+        "RequestId": "7ae48d32-62ef-11f0-b9e2-0242ac110005"
+      },
+      "timestamp": 1752744114.6991932,
+      "request_id": 2,
+      "content": {
+        "collectionName": "test_collection_2025_07_17_17_21_53_670696gOrnLcyi",
+        "data": [
+          {
+            "vector": "__FLOAT_ARRAY_DIM_128__",
+            "uid": 0,
+            "name": "Jake Callahan",
+            "address": "7387 Willis Via Apt. 091\nContrerasmouth, RI 50750",
+            "text": "Church officer finally control.\nBegin store let painting industry road industry. Reveal television finally adult appear force.",
+            "email": "aellison@example.com",
+            "phone_number": "001-488-785-5398x067",
+            "array_int_dynamic": "__FLOAT_ARRAY_DIM_8__",
+            "array_varchar_dynamic": [
+              "Nathaniel Hahn",
+              "Laurie Burke",
+              "David Hickman",
+              "Peter Figueroa",
+              "Connie Espinoza",
+              "Diana Gardner"
+            ],
+            "json": {
+              "name": "Terry Brown",
+              "address": "16694 Robinson Manor\nLake Williamport, UT 56916"
+            },
+            "key96827": "value76103",
+            "key61233": "value37412",
+            "key17732": "value47707",
+            "key76707": "value84966",
+            "key58735": "value53878",
+            "key14943": "value95178",
+            "key62735": "value91976",
+            "key50213": "value29670",
+            "key95216": "value75618",
+            "key91656": "value46417"
+          }
+        ],
+        "dbName": "prod"
+      }
+    }
+  ]
+}

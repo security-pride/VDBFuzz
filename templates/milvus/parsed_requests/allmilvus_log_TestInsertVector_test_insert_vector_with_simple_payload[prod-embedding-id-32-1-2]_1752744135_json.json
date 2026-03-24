@@ -1,0 +1,172 @@
+{
+  "test_name": "allmilvus_log.TestInsertVector_test_insert_vector_with_simple_payload[prod-embedding-id-32-1-2]_1752744135.json",
+  "vdb_type": "qdrant",
+  "requests": [
+    {
+      "response": {
+        "status_code": 200,
+        "headers": {
+          "Access-Control-Allow-Credentials": "true",
+          "Access-Control-Allow-Headers": "Content-Type, Content-Length, Accept-Encoding, X-CSRF-Token, Authorization, accept, origin, Cache-Control, X-Requested-With",
+          "Access-Control-Allow-Methods": "GET, HEAD, POST, PUT, DELETE, OPTIONS, PATCH",
+          "Access-Control-Allow-Origin": "*",
+          "Content-Type": "application/json; charset=utf-8",
+          "Date": "Thu, 17 Jul 2025 09:22:15 GMT",
+          "Content-Length": "22"
+        },
+        "elapsed_ms": 19.737000000000002,
+        "timestamp": 1752744135.0512602,
+        "request_id": 0,
+        "content": {
+          "code": 200,
+          "data": {}
+        }
+      },
+      "method": "POST",
+      "url": "http://172.17.0.11:23210/v1/vector/collections/create",
+      "headers": {
+        "Content-Type": "application/json",
+        "Authorization": "Bearer root:Milvus",
+        "RequestId": "8702e412-62ef-11f0-895e-0242ac110005"
+      },
+      "timestamp": 1752744135.0307238,
+      "request_id": 0,
+      "content": {
+        "collectionName": "test_collection_2025_07_17_17_22_14_030352qzbYzmss",
+        "dimension": 32,
+        "primaryField": "id",
+        "vectorField": "embedding",
+        "autoID": true,
+        "dbName": "prod"
+      }
+    },
+    {
+      "response": {
+        "status_code": 200,
+        "headers": {
+          "Access-Control-Allow-Credentials": "true",
+          "Access-Control-Allow-Headers": "Content-Type, Content-Length, Accept-Encoding, X-CSRF-Token, Authorization, accept, origin, Cache-Control, X-Requested-With",
+          "Access-Control-Allow-Methods": "GET, HEAD, POST, PUT, DELETE, OPTIONS, PATCH",
+          "Access-Control-Allow-Origin": "*",
+          "Content-Type": "application/json; charset=utf-8",
+          "Date": "Thu, 17 Jul 2025 09:22:15 GMT",
+          "Content-Length": "70"
+        },
+        "elapsed_ms": 5.138,
+        "timestamp": 1752744135.0640361,
+        "request_id": 2,
+        "content": {
+          "code": 200,
+          "data": {
+            "insertCount": 1,
+            "insertIds": [
+              459470532653885961
+            ]
+          }
+        }
+      },
+      "method": "POST",
+      "url": "http://172.17.0.11:23210/v1/vector/insert",
+      "headers": {
+        "Content-Type": "application/json",
+        "Authorization": "Bearer root:Milvus",
+        "RequestId": "87071ef7-62ef-11f0-a9bd-0242ac110005"
+      },
+      "timestamp": 1752744135.0583367,
+      "request_id": 2,
+      "content": {
+        "collectionName": "test_collection_2025_07_17_17_22_14_030352qzbYzmss",
+        "data": [
+          {
+            "embedding": "__FLOAT_ARRAY_DIM_32__",
+            "uid": 0,
+            "name": "Tanya Carr",
+            "address": "475 Emily Manor Suite 216\nAutumntown, KY 78153",
+            "text": "Military reflect attack change it evening. Back billion happy ask many.\nDo cell time many. Area exactly almost plan eye by. Pick fish product top investment ten.",
+            "email": "ypittman@example.org",
+            "phone_number": "2407851125",
+            "array_int_dynamic": "__FLOAT_ARRAY_DIM_5__",
+            "array_varchar_dynamic": [
+              "Lauren Allen",
+              "Timothy Thompson",
+              "Kristie Baker",
+              "Justin Jones",
+              "Rick Ellis",
+              "Lauren Scott",
+              "Denise Sherman",
+              "Kimberly Lopez"
+            ],
+            "json": {
+              "name": "Kaitlyn Gomez",
+              "address": "2671 Patricia Junction Apt. 410\nEast Matthew, OR 54540"
+            },
+            "key99766": "value89084",
+            "key80814": "value28109"
+          }
+        ],
+        "dbName": "prod"
+      }
+    },
+    {
+      "response": {
+        "status_code": 200,
+        "headers": {
+          "Access-Control-Allow-Credentials": "true",
+          "Access-Control-Allow-Headers": "Content-Type, Content-Length, Accept-Encoding, X-CSRF-Token, Authorization, accept, origin, Cache-Control, X-Requested-With",
+          "Access-Control-Allow-Methods": "GET, HEAD, POST, PUT, DELETE, OPTIONS, PATCH",
+          "Access-Control-Allow-Origin": "*",
+          "Content-Type": "application/json; charset=utf-8",
+          "Date": "Thu, 17 Jul 2025 09:22:15 GMT",
+          "Content-Length": "70"
+        },
+        "elapsed_ms": 2.198,
+        "timestamp": 1752744135.0691164,
+        "request_id": 3,
+        "content": {
+          "code": 200,
+          "data": {
+            "insertCount": 1,
+            "insertIds": [
+              459470532653885963
+            ]
+          }
+        }
+      },
+      "method": "POST",
+      "url": "http://172.17.0.11:23210/v1/vector/insert",
+      "headers": {
+        "Content-Type": "application/json",
+        "Authorization": "Bearer root:Milvus",
+        "RequestId": "8708593c-62ef-11f0-bc50-0242ac110005"
+      },
+      "timestamp": 1752744135.066377,
+      "request_id": 3,
+      "content": {
+        "collectionName": "test_collection_2025_07_17_17_22_14_030352qzbYzmss",
+        "data": [
+          {
+            "embedding": "__FLOAT_ARRAY_DIM_32__",
+            "uid": 0,
+            "name": "Rebecca Hicks",
+            "address": "PSC 6637, Box 4531\nAPO AE 74836",
+            "text": "Key high upon leave seek oil go. Responsibility set PM everything. Example few single particularly sit piece fear.",
+            "email": "perezjulie@example.org",
+            "phone_number": "(258)677-8016",
+            "array_int_dynamic": "__FLOAT_ARRAY_DIM_9__",
+            "array_varchar_dynamic": [
+              "Carla Knapp",
+              "Erin Pierce",
+              "Debbie Webb"
+            ],
+            "json": {
+              "name": "Annette Gonzalez",
+              "address": "Unit 6140 Box 5551\nDPO AA 09672"
+            },
+            "key19121": "value66135"
+          }
+        ],
+        "dbName": "prod"
+      }
+    }
+  ]
+}

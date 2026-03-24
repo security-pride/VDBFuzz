@@ -1,0 +1,144 @@
+{
+  "test_name": "allmilvus_log.TestIndexProperties_test_alter_index_properties_with_invalid_properties[invalid_property1]_1752746730.json",
+  "vdb_type": "qdrant",
+  "requests": [
+    {
+      "response": {
+        "status_code": 200,
+        "headers": {
+          "Access-Control-Allow-Credentials": "true",
+          "Access-Control-Allow-Headers": "Content-Type, Content-Length, Accept-Encoding, X-CSRF-Token, Authorization, accept, origin, Cache-Control, X-Requested-With",
+          "Access-Control-Allow-Methods": "GET, HEAD, POST, PUT, DELETE, OPTIONS, PATCH",
+          "Access-Control-Allow-Origin": "*",
+          "Content-Type": "application/json; charset=utf-8",
+          "Date": "Thu, 17 Jul 2025 10:05:30 GMT",
+          "Content-Length": "20"
+        },
+        "elapsed_ms": 12.263,
+        "timestamp": 1752746730.9326231,
+        "request_id": 0,
+        "content": {
+          "code": 0,
+          "data": {}
+        }
+      },
+      "method": "POST",
+      "url": "http://172.17.0.11:23210/v2/vectordb/collections/create",
+      "headers": {
+        "Content-Type": "application/json",
+        "Authorization": "Bearer None",
+        "RequestId": "91ae977e-62f5-11f0-80c9-0242ac11000b",
+        "Request-Timeout": "120"
+      },
+      "timestamp": 1752746730.9195614,
+      "request_id": 0,
+      "content": {
+        "collectionName": "test_collection_2025_07_17_18_05_29_918262VpXSywtD",
+        "schema": {
+          "fields": [
+            {
+              "fieldName": "book_id",
+              "dataType": "Int64",
+              "isPrimary": true,
+              "elementTypeParams": {}
+            },
+            {
+              "fieldName": "my_vector",
+              "dataType": "FloatVector",
+              "elementTypeParams": {
+                "dim": 128
+              }
+            }
+          ]
+        },
+        "params": {
+          "consistencyLevel": "Strong"
+        }
+      }
+    },
+    {
+      "response": {
+        "status_code": 200,
+        "headers": {
+          "Access-Control-Allow-Credentials": "true",
+          "Access-Control-Allow-Headers": "Content-Type, Content-Length, Accept-Encoding, X-CSRF-Token, Authorization, accept, origin, Cache-Control, X-Requested-With",
+          "Access-Control-Allow-Methods": "GET, HEAD, POST, PUT, DELETE, OPTIONS, PATCH",
+          "Access-Control-Allow-Origin": "*",
+          "Content-Type": "application/json; charset=utf-8",
+          "Date": "Thu, 17 Jul 2025 10:05:30 GMT",
+          "Content-Length": "20"
+        },
+        "elapsed_ms": 10.137,
+        "timestamp": 1752746730.9440525,
+        "request_id": 1,
+        "content": {
+          "code": 0,
+          "data": {}
+        }
+      },
+      "method": "POST",
+      "url": "http://172.17.0.11:23210/v2/vectordb/indexes/create",
+      "headers": {
+        "Content-Type": "application/json",
+        "Authorization": "Bearer None",
+        "RequestId": "91ae977e-62f5-11f0-80c9-0242ac11000b",
+        "Request-Timeout": "120"
+      },
+      "timestamp": 1752746730.9332266,
+      "request_id": 1,
+      "content": {
+        "collectionName": "test_collection_2025_07_17_18_05_29_918262VpXSywtD",
+        "indexParams": [
+          {
+            "fieldName": "my_vector",
+            "indexName": "my_vector",
+            "indexType": "IVF_SQ8",
+            "metricType": "L2",
+            "params": {
+              "nlist": 128
+            }
+          }
+        ],
+        "dbName": "default"
+      }
+    },
+    {
+      "response": {
+        "status_code": 200,
+        "headers": {
+          "Access-Control-Allow-Credentials": "true",
+          "Access-Control-Allow-Headers": "Content-Type, Content-Length, Accept-Encoding, X-CSRF-Token, Authorization, accept, origin, Cache-Control, X-Requested-With",
+          "Access-Control-Allow-Methods": "GET, HEAD, POST, PUT, DELETE, OPTIONS, PATCH",
+          "Access-Control-Allow-Origin": "*",
+          "Content-Type": "application/json; charset=utf-8",
+          "Date": "Thu, 17 Jul 2025 10:05:30 GMT",
+          "Content-Length": "136"
+        },
+        "elapsed_ms": 4.432,
+        "timestamp": 1752746730.9497824,
+        "request_id": 2,
+        "content": {
+          "code": 1100,
+          "message": "invalid mmap index params: invalid mmap.enabled value: invalid_value, expected: true, false: invalid parameter"
+        }
+      },
+      "method": "POST",
+      "url": "http://172.17.0.11:23210/v2/vectordb/indexes/alter_properties",
+      "headers": {
+        "Content-Type": "application/json",
+        "Authorization": "Bearer None",
+        "RequestId": "91ae977e-62f5-11f0-80c9-0242ac11000b",
+        "Request-Timeout": "120"
+      },
+      "timestamp": 1752746730.9446359,
+      "request_id": 2,
+      "content": {
+        "collectionName": "test_collection_2025_07_17_18_05_29_918262VpXSywtD",
+        "indexName": "my_vector",
+        "properties": {
+          "mmap.enabled": "invalid_value"
+        }
+      }
+    }
+  ]
+}

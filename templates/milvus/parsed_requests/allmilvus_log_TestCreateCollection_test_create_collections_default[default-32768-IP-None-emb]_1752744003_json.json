@@ -1,0 +1,43 @@
+{
+  "test_name": "allmilvus_log.TestCreateCollection_test_create_collections_default[default-32768-IP-None-emb]_1752744003.json",
+  "vdb_type": "qdrant",
+  "requests": [
+    {
+      "response": {
+        "status_code": 200,
+        "headers": {
+          "Access-Control-Allow-Credentials": "true",
+          "Access-Control-Allow-Headers": "Content-Type, Content-Length, Accept-Encoding, X-CSRF-Token, Authorization, accept, origin, Cache-Control, X-Requested-With",
+          "Access-Control-Allow-Methods": "GET, HEAD, POST, PUT, DELETE, OPTIONS, PATCH",
+          "Access-Control-Allow-Origin": "*",
+          "Content-Type": "application/json; charset=utf-8",
+          "Date": "Thu, 17 Jul 2025 09:20:03 GMT",
+          "Content-Length": "22"
+        },
+        "elapsed_ms": 18.927,
+        "timestamp": 1752744003.5720742,
+        "request_id": 0,
+        "content": {
+          "code": 200,
+          "data": {}
+        }
+      },
+      "method": "POST",
+      "url": "http://172.17.0.11:23210/v1/vector/collections/create",
+      "headers": {
+        "Content-Type": "application/json",
+        "Authorization": "Bearer root:Milvus",
+        "RequestId": "38a4e80d-62ef-11f0-9516-0242ac110005"
+      },
+      "timestamp": 1752744003.552473,
+      "request_id": 0,
+      "content": {
+        "collectionName": "test_collection_2025_07_17_17_20_02_552131IdgfmvOP",
+        "dimension": 128,
+        "metricType": "IP",
+        "vectorField": "emb",
+        "dbName": "default"
+      }
+    }
+  ]
+}

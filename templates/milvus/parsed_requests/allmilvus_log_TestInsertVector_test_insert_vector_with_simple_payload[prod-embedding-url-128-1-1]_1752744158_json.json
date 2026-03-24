@@ -1,0 +1,119 @@
+{
+  "test_name": "allmilvus_log.TestInsertVector_test_insert_vector_with_simple_payload[prod-embedding-url-128-1-1]_1752744158.json",
+  "vdb_type": "qdrant",
+  "requests": [
+    {
+      "response": {
+        "status_code": 200,
+        "headers": {
+          "Access-Control-Allow-Credentials": "true",
+          "Access-Control-Allow-Headers": "Content-Type, Content-Length, Accept-Encoding, X-CSRF-Token, Authorization, accept, origin, Cache-Control, X-Requested-With",
+          "Access-Control-Allow-Methods": "GET, HEAD, POST, PUT, DELETE, OPTIONS, PATCH",
+          "Access-Control-Allow-Origin": "*",
+          "Content-Type": "application/json; charset=utf-8",
+          "Date": "Thu, 17 Jul 2025 09:22:38 GMT",
+          "Content-Length": "22"
+        },
+        "elapsed_ms": 22.053,
+        "timestamp": 1752744158.476734,
+        "request_id": 0,
+        "content": {
+          "code": 200,
+          "data": {}
+        }
+      },
+      "method": "POST",
+      "url": "http://172.17.0.11:23210/v1/vector/collections/create",
+      "headers": {
+        "Content-Type": "application/json",
+        "Authorization": "Bearer root:Milvus",
+        "RequestId": "94f903ba-62ef-11f0-b0ec-0242ac110005"
+      },
+      "timestamp": 1752744158.454061,
+      "request_id": 0,
+      "content": {
+        "collectionName": "test_collection_2025_07_17_17_22_37_453730VsTBSJrf",
+        "dimension": 128,
+        "primaryField": "url",
+        "vectorField": "embedding",
+        "autoID": true,
+        "dbName": "prod"
+      }
+    },
+    {
+      "response": {
+        "status_code": 200,
+        "headers": {
+          "Access-Control-Allow-Credentials": "true",
+          "Access-Control-Allow-Headers": "Content-Type, Content-Length, Accept-Encoding, X-CSRF-Token, Authorization, accept, origin, Cache-Control, X-Requested-With",
+          "Access-Control-Allow-Methods": "GET, HEAD, POST, PUT, DELETE, OPTIONS, PATCH",
+          "Access-Control-Allow-Origin": "*",
+          "Content-Type": "application/json; charset=utf-8",
+          "Date": "Thu, 17 Jul 2025 09:22:38 GMT",
+          "Content-Length": "70"
+        },
+        "elapsed_ms": 5.292,
+        "timestamp": 1752744158.4903066,
+        "request_id": 2,
+        "content": {
+          "code": 200,
+          "data": {
+            "insertCount": 1,
+            "insertIds": [
+              459470532653886991
+            ]
+          }
+        }
+      },
+      "method": "POST",
+      "url": "http://172.17.0.11:23210/v1/vector/insert",
+      "headers": {
+        "Content-Type": "application/json",
+        "Authorization": "Bearer root:Milvus",
+        "RequestId": "94fda518-62ef-11f0-be07-0242ac110005"
+      },
+      "timestamp": 1752744158.4844167,
+      "request_id": 2,
+      "content": {
+        "collectionName": "test_collection_2025_07_17_17_22_37_453730VsTBSJrf",
+        "data": [
+          {
+            "embedding": "__FLOAT_ARRAY_DIM_128__",
+            "uid": 0,
+            "name": "Megan Flowers",
+            "address": "185 Brenda Corners Apt. 065\nWest John, OK 76371",
+            "text": "Simple daughter but risk hot born increase Congress. Just serious remember. American plant particularly again deal perform. Investment whatever human physical sing.",
+            "email": "gavinfields@example.org",
+            "phone_number": "(449)929-0452",
+            "array_int_dynamic": "__FLOAT_ARRAY_DIM_6__",
+            "array_varchar_dynamic": [
+              "Christopher Jensen",
+              "Matthew Fowler",
+              "Kimberly Jenkins",
+              "Shannon Ellis",
+              "Steven Barnes",
+              "Alexander Allen",
+              "Michael Freeman",
+              "Jenny Vasquez",
+              "Mark Richardson",
+              "Lindsay Flores"
+            ],
+            "json": {
+              "name": "Susan Parks",
+              "address": "576 Elizabeth Ridge Apt. 594\nWest Dianeborough, WY 62558"
+            },
+            "key26994": "value57723",
+            "key20788": "value24248",
+            "key45800": "value87334",
+            "key83665": "value1990",
+            "key86253": "value9938",
+            "key30194": "value6778",
+            "key11489": "value55551",
+            "key66808": "value22940"
+          }
+        ],
+        "dbName": "prod"
+      }
+    }
+  ]
+}

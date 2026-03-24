@@ -1,0 +1,40 @@
+{
+  "test_name": "allmilvus_log.TestGetImportJobProgressNegative_test_list_job_with_new_user_1752747004.json",
+  "vdb_type": "qdrant",
+  "requests": [
+    {
+      "response": {
+        "status_code": 200,
+        "headers": {
+          "Access-Control-Allow-Credentials": "true",
+          "Access-Control-Allow-Headers": "Content-Type, Content-Length, Accept-Encoding, X-CSRF-Token, Authorization, accept, origin, Cache-Control, X-Requested-With",
+          "Access-Control-Allow-Methods": "GET, HEAD, POST, PUT, DELETE, OPTIONS, PATCH",
+          "Access-Control-Allow-Origin": "*",
+          "Content-Type": "application/json; charset=utf-8",
+          "Date": "Thu, 17 Jul 2025 10:10:04 GMT",
+          "Content-Length": "57"
+        },
+        "elapsed_ms": 2.879,
+        "timestamp": 1752747004.9412322,
+        "request_id": 0,
+        "content": {
+          "code": 65535,
+          "message": "user already exists: test_user"
+        }
+      },
+      "method": "POST",
+      "url": "http://172.17.0.11:23210/v2/vectordb/users/create",
+      "headers": {
+        "Content-Type": "application/json",
+        "Authorization": "Bearer None",
+        "RequestId": "359b8c16-62f6-11f0-b651-0242ac11000b"
+      },
+      "timestamp": 1752747004.9378338,
+      "request_id": 0,
+      "content": {
+        "userName": "test_user",
+        "password": "12345678"
+      }
+    }
+  ]
+}

@@ -1,0 +1,44 @@
+{
+  "test_name": "allmilvus_log.TestCreateCollectionNegative_test_create_collections_with_invalid_collection_name[ ]_1752746460.json",
+  "vdb_type": "qdrant",
+  "requests": [
+    {
+      "response": {
+        "status_code": 200,
+        "headers": {
+          "Access-Control-Allow-Credentials": "true",
+          "Access-Control-Allow-Headers": "Content-Type, Content-Length, Accept-Encoding, X-CSRF-Token, Authorization, accept, origin, Cache-Control, X-Requested-With",
+          "Access-Control-Allow-Methods": "GET, HEAD, POST, PUT, DELETE, OPTIONS, PATCH",
+          "Access-Control-Allow-Origin": "*",
+          "Content-Type": "application/json; charset=utf-8",
+          "Date": "Thu, 17 Jul 2025 10:01:00 GMT",
+          "Content-Length": "80"
+        },
+        "elapsed_ms": 2.94,
+        "timestamp": 1752746460.151317,
+        "request_id": 0,
+        "content": {
+          "code": 1100,
+          "message": "collection name should not be empty: invalid parameter"
+        }
+      },
+      "method": "POST",
+      "url": "http://172.17.0.11:23210/v2/vectordb/collections/create",
+      "headers": {
+        "Content-Type": "application/json",
+        "Authorization": "Bearer None",
+        "RequestId": "f04a2808-62f4-11f0-b9df-0242ac11000b",
+        "Request-Timeout": "120"
+      },
+      "timestamp": 1752746460.1473532,
+      "request_id": 0,
+      "content": {
+        "collectionName": " ",
+        "dimension": 128,
+        "params": {
+          "consistencyLevel": "Strong"
+        }
+      }
+    }
+  ]
+}

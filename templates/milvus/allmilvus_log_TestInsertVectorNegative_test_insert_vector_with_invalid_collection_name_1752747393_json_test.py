@@ -1,0 +1,2396 @@
+#!/usr/bin/env python3
+# -*- coding: utf-8 -*-
+
+import json
+import logging
+import os
+import sys
+import time
+import argparse
+import traceback
+import requests
+from typing import Dict, List, Any, Optional, Union
+from datetime import datetime
+from pathlib import Path
+
+# 导入变异模块
+try:
+    from vdbfuzz.mutator import Mutator
+except ImportError:
+    try:
+        # 尝试相对导入
+        sys.path.append(os.path.dirname(os.path.dirname(os.path.abspath(__file__))))
+        from vdbfuzz.mutator import Mutator
+    except ImportError:
+        # 尝试从当前目录的父目录导入
+        vdbfuzz_path = os.path.join(os.path.dirname(os.path.dirname(os.path.abspath(__file__))), 'vdbfuzz')
+        if os.path.exists(vdbfuzz_path):
+            sys.path.append(os.path.dirname(vdbfuzz_path))
+            from vdbfuzz.mutator import Mutator
+        else:
+            # 如果还是找不到，定义一个最小的Mutator类
+            class Mutator:
+                @staticmethod
+                def generate_float_array(dimension, normalized=False, min_val=-1.0, max_val=1.0):
+                    import random, math
+                    array = [random.uniform(min_val, max_val) for _ in range(dimension)]
+                    if normalized and array:
+                        length = math.sqrt(sum(x*x for x in array))
+                        if length > 0:
+                            array = [x/length for x in array]
+                    return array
+                    
+                @staticmethod
+                def generate_embedding_matrix(rows, embedding_dim, normalized=True):
+                    return [Mutator.generate_float_array(embedding_dim, normalized) for _ in range(rows)]
+                    
+                @staticmethod
+                def generate_multi_dim_array(dimensions, normalized=False, min_val=-1.0, max_val=1.0):
+                    if not dimensions:
+                        return []
+                    if len(dimensions) == 1:
+                        return Mutator.generate_float_array(dimensions[0], normalized, min_val, max_val)
+                    
+                    result = []
+                    for _ in range(dimensions[0]):
+                        if len(dimensions) == 2:
+                            result.append(Mutator.generate_float_array(dimensions[1], normalized, min_val, max_val))
+                        else:
+                            result.append(Mutator.generate_multi_dim_array(dimensions[1:], normalized, min_val, max_val))
+                    return result
+                    
+                def normal_mutate(self, original_content, send_request, connectivity_check_func, save_failure_func=None, max_iterations=200, **kwargs):
+                    # 简化版本，只返回空列表
+                    logger.info("开始随机变异测试，最大测试次数: 200")
+                    return []
+
+
+
+# 日志配置
+# 创建目录存放日志文件
+os.makedirs('logs', exist_ok=True)
+
+# 添加控制台处理器
+console_handler = logging.StreamHandler()
+console_handler.setLevel(logging.INFO)
+console_formatter = logging.Formatter('%(asctime)s - %(name)s - %(levelname)s - %(message)s')
+console_handler.setFormatter(console_formatter)
+
+# 添加文件处理器
+# 使用时间戳作为文件名的一部分
+log_file = "logs/mutation_test_" + datetime.now().strftime('%Y%m%d_%H%M%S') + ".log"
+file_handler = logging.FileHandler(log_file, encoding='utf-8')
+file_handler.setLevel(logging.DEBUG)  # 文件中记录详细日志
+file_formatter = logging.Formatter('%(asctime)s - %(name)s - %(levelname)s - %(message)s')
+file_handler.setFormatter(file_formatter)
+
+# 配置根日志器
+root_logger = logging.getLogger()
+root_logger.setLevel(logging.DEBUG)  # 设置为DEBUG级别以捕获所有日志
+root_logger.addHandler(console_handler)
+root_logger.addHandler(file_handler)
+
+
+# 获取测试模块的日志器
+logger = logging.getLogger('vdbfuzz.test.allmilvus_log_TestInsertVectorNegative_test_insert_vector_with_invalid_collection_name_1752747393_json')
+logger.info("日志文件将输出到: " + log_file)
+
+# 全局变量
+TARGET_URL = ""
+OUTPUT_DIR = "templates_milvus"
+TEST_NAME = "allmilvus_log.TestInsertVectorNegative_test_insert_vector_with_invalid_collection_name_1752747393.json"
+VDB_TYPE = "milvus"
+
+
+def send_request(content, request_type="POST", url_path="http://172.17.0.5:23210/v2/vectordb/collections/create", custom_headers=None):
+    """
+    发送请求到目标服务器
+
+    Args:
+        content: 请求内容
+        request_type: 请求方法，默认为"POST"
+        url_path: URL路径，默认为"http://172.17.0.5:23210/v2/vectordb/collections/create"
+        custom_headers: 自定义请求头，如果提供则会合并到默认headers
+        
+    Returns:
+        requests.Response: 响应对象
+    """
+    if not TARGET_URL:
+        raise ValueError("目标URL未设置，请使用 -t 参数指定目标服务器URL")
+    
+    # 检查url_path是否已经是完整URL
+    if url_path.startswith(('http://', 'https://')):
+        from urllib.parse import urlsplit
+
+        parsed = urlsplit(url_path)
+        path = parsed.path or '/'
+        if parsed.query:
+            path = f"{path}?{parsed.query}"
+        url = TARGET_URL.rstrip('/') + path
+    else:
+        url = TARGET_URL.rstrip('/') + url_path
+    
+    # 基础请求头
+    headers = {
+        'Content-Type': 'application/json',
+    }
+
+    # 合并自定义请求头
+    if custom_headers:
+        headers.update(custom_headers)
+
+    try:
+        logger.debug(f"发送 {request_type} 请求到 {url}")
+        if request_type in ['POST', 'PUT']:
+            response = requests.request(
+                method=request_type,
+                url=url,
+                headers=headers,
+                json=content,
+                timeout=10
+            )
+        else:
+            response = requests.request(
+                method=request_type,
+                url=url,
+                headers=headers,
+                params=content,
+                timeout=10
+            )
+        
+        # 打印请求结果摘要
+        logger.info(f"请求响应状态码: {response.status_code}")
+        
+        return response
+    except Exception as e:
+        logger.error(f"发送请求失败: {str(e)}")
+        return None
+
+
+
+def check_connectivity():
+    """
+    检查向量数据库连通性
+
+    Returns:
+        bool: 数据库是否可连接
+    """
+    if not TARGET_URL:
+        return False
+
+    try:
+        url = TARGET_URL.rstrip('/') + "/"
+        response = requests.get(url, timeout=5)
+        return response.status_code in [200, 404, 503]
+    except Exception as e:
+        logger.error(f"连通性检查失败: {str(e)}")
+        return False
+
+
+
+def save_failure(failure_info):
+    """
+    保存失败信息到文件
+
+    Args:
+        failure_info: 失败信息字典
+    """
+    if not OUTPUT_DIR:
+        logger.warning("输出目录未设置，无法保存失败信息")
+        return
+
+    # 创建失败信息目录
+    failure_dir = Path(OUTPUT_DIR) / "failures" / TEST_NAME.replace(".", "_")
+    failure_dir.mkdir(parents=True, exist_ok=True)
+
+    # 生成文件名
+    timestamp = datetime.now().strftime("%Y%m%d_%H%M%S_%f")
+    mutation_type = failure_info.get("mutation", {}).get("type", "unknown")
+    mutation_path = "_".join(str(x) for x in failure_info.get("mutation", {}).get("path", []))
+    
+    filename = f"failure_{mutation_type}_{mutation_path}_{timestamp}.json"
+    file_path = failure_dir / filename
+    
+    try:
+        with open(file_path, 'w', encoding='utf-8') as f:
+            json.dump(failure_info, f, indent=2, ensure_ascii=False)
+        logger.info(f"已保存失败信息到 {file_path}")
+    except Exception as e:
+        logger.error(f"保存失败信息失败: {str(e)}")
+
+
+
+class AllmilvusLogtestinsertvectornegativeTestInsertVectorWithInvalidCollectionName1752747393Json:
+    """自动生成的VDB模糊测试类 - allmilvus_log.TestInsertVectorNegative_test_insert_vector_with_invalid_collection_name_1752747393.json"""
+    
+    def __init__(self):
+        """初始化测试类"""
+        self.test_name = "allmilvus_log.TestInsertVectorNegative_test_insert_vector_with_invalid_collection_name_1752747393.json"
+        self.test_count = 4  # 测试方法数量
+        self.mutator = Mutator()  # 初始化变异器
+    
+    def run_tests(self):
+        """运行所有测试"""
+        logger.info(f"开始测试: {self.test_name}")
+        logger.info(f"目标URL: {TARGET_URL}")
+        
+        # 检查连通性
+        if not check_connectivity():
+            logger.error("无法连接到目标服务器，测试终止")
+            return False
+        
+        # 运行所有测试用例
+        try:
+            for i in range(self.test_count):
+                logger.info(f"运行测试 {i+1}/{self.test_count}")
+                method_name = f"test_request_{i}"
+                if hasattr(self, method_name):
+                    test_method = getattr(self, method_name)
+                    test_method()
+                else:
+                    logger.warning(f"未找到测试方法: {method_name}")
+            
+            logger.info("所有测试完成")
+            return True
+        except Exception as e:
+            logger.error(f"测试过程中发生异常: {str(e)}")
+            traceback.print_exc()
+            return False
+
+
+    def test_request_0(self):
+        """测试请求 0 - POST http://172.17.0.5:23210/v2/vectordb/collections/create"""
+        logger.info(f"跳过非写请求或无内容请求: POST http://172.17.0.5:23210/v2/vectordb/collections/create")
+        method = 'POST'
+        url_path = 'http://172.17.0.5:23210/v2/vectordb/collections/create'
+        headers = {
+    'Content-Type': 'application/json',
+    'Authorization': 'Bearer None',
+    'RequestId': '1c6b5482-62f7-11f0-85c3-0242ac11000b',
+    'Request-Timeout': '120',
+}
+        
+        # 原始请求内容
+        original_content = {
+    'collectionName': 'test_collection_2025_07_17_18_16_32_177554PjKzBdwx',
+    'dimension': 128,
+    'params': {
+    'consistencyLevel': 'Strong',
+},
+}
+
+
+        send_request(original_content, method, url_path, headers)
+        return True
+
+
+
+    def test_request_1(self):
+        """测试请求 1 - POST http://172.17.0.5:23210/v2/vectordb/collections/describe"""
+        logger.info(f"测试请求: POST http://172.17.0.5:23210/v2/vectordb/collections/describe")
+        
+        method = 'POST'
+        url_path = 'http://172.17.0.5:23210/v2/vectordb/collections/describe'
+        headers = {
+    'Content-Type': 'application/json',
+    'Authorization': 'Bearer None',
+    'RequestId': '1c6b5482-62f7-11f0-85c3-0242ac11000b',
+    'Request-Timeout': '120',
+}
+        
+        # 原始请求内容
+        original_content = {
+    'collectionName': 'test_collection_2025_07_17_18_16_32_177554PjKzBdwx',
+}
+        
+        if not original_content:
+            logger.info("请求无内容，跳过变异测试")
+            return True
+        
+        # 定义发送请求的函数
+        def send_mutated_request(mutated_content):
+            return send_request(mutated_content, method, url_path, headers)
+        
+        logger.info("开始变异测试...")
+        
+        # 获取命令行参数
+        iterations = getattr(args, 'iterations', 200)  # 默认值为200
+        time_limit = getattr(args, 'time_limit', 10)   # 默认值为10分钟
+                    
+        mutator = Mutator()  # 创建变异器实例
+        failures = mutator.normal_mutate(
+            original_content=original_content,
+            send_request=send_mutated_request,
+            connectivity_check_func=check_connectivity,
+            save_failure_func=save_failure,
+            max_time_minutes=time_limit,  # 使用上面设置的time_limit变量
+            max_iterations=iterations     # 使用上面设置的iterations变量
+        )
+        
+        if failures:
+            logger.warning(f"发现 {len(failures)} 个导致异常的变异")
+        else:
+            logger.info("变异测试未发现异常")
+        
+        return len(failures) == 0
+
+
+
+    def test_request_2(self):
+        """测试请求 2 - POST http://172.17.0.5:23210/v2/vectordb/entities/insert"""
+        logger.info(f"测试请求: POST http://172.17.0.5:23210/v2/vectordb/entities/insert")
+        
+        method = 'POST'
+        url_path = 'http://172.17.0.5:23210/v2/vectordb/entities/insert'
+        headers = {
+    'Content-Type': 'application/json',
+    'Authorization': 'Bearer None',
+    'Accept-Type-Allow-Int64': 'true',
+    'RequestId': '1c6b5482-62f7-11f0-85c3-0242ac11000b',
+    'Request-Timeout': '120',
+}
+        
+        # 原始请求内容
+        original_content = {
+    'collectionName': 'invalid_collection_name',
+    'data': [
+    {
+    'id': 17527473932036,
+    'vector': self.mutator.generate_float_array(dimension=128, normalized=True),
+    'uid': 0,
+    'name': 'Mary Hicks',
+    'address': '31980 Macdonald Expressway\nNicholsborough, WI 17538',
+    'text': 'Place continue media culture your worry on. Hit able describe.\nArea always no detail three. Seven discuss collection. Role Mr very of spring appear.',
+    'email': 'baxtercaroline@example.org',
+    'phone_number': '(447)272-5580',
+    'json': {
+    'name': 'Dustin Gray',
+    'address': '233 Lee Skyway\nLake Marychester, PR 47741',
+},
+    'key89820': 'value84954',
+    'key83911': 'value96573',
+    'key26160': 'value21449',
+    'key57418': 'value61673',
+    'key28721': 'value24817',
+    'key86108': 'value61604',
+    'key76143': 'value31652',
+    'key5488': 'value43918',
+    'key18309': 'value267',
+},
+    {
+    'id': 17527473932066,
+    'vector': self.mutator.generate_float_array(dimension=128, normalized=True),
+    'uid': 1,
+    'name': 'Kimberly King',
+    'address': '596 Cox Rest\nEast Justin, PR 52850',
+    'text': 'Black person little Mrs. Growth site court step note. Child center author technology issue.',
+    'email': 'connie52@example.org',
+    'phone_number': '(981)442-4696x55610',
+    'json': {
+    'name': 'Gary Lopez',
+    'address': '76770 Christina Villages Apt. 942\nJohnsstad, NV 17385',
+},
+    'key67560': 'value35944',
+    'key25708': 'value67040',
+    'key48235': 'value71802',
+    'key30194': 'value53334',
+    'key81338': 'value45991',
+    'key17638': 'value5830',
+    'key23561': 'value50757',
+    'key70362': 'value65438',
+    'key9929': 'value47020',
+    'key18213': 'value98278',
+},
+    {
+    'id': 17527473932082,
+    'vector': self.mutator.generate_float_array(dimension=128, normalized=True),
+    'uid': 2,
+    'name': 'Mark Love',
+    'address': '9749 Patrick Rapids Apt. 004\nSeanville, NM 54560',
+    'text': 'Air about Mrs alone mind cause.\nSituation store whose technology success. Maintain single might else small window. Usually must degree quite wrong put.',
+    'email': 'phillipschristopher@example.net',
+    'phone_number': '(600)644-3106x71190',
+    'json': {
+    'name': 'Angelica Day',
+    'address': '976 Amber Extension Suite 099\nAbbottstad, OR 03375',
+},
+    'key45337': 'value65064',
+    'key28781': 'value91234',
+    'key33200': 'value72045',
+    'key96472': 'value41562',
+},
+    {
+    'id': 17527473932098,
+    'vector': self.mutator.generate_float_array(dimension=128, normalized=True),
+    'uid': 3,
+    'name': 'Cheyenne Mosley',
+    'address': '356 Hendrix Parkways Suite 200\nNew Christineberg, ND 20712',
+    'text': 'Trade PM bed financial. Officer day scientist attention.\nYear its usually nation can structure long language. Today every office. Reach nothing cup economy house service attack.',
+    'email': 'jillhenry@example.net',
+    'phone_number': '001-782-883-2268x88437',
+    'json': {
+    'name': 'Sandra Nolan',
+    'address': 'Unit 5225 Box 2904\nDPO AE 92820',
+},
+    'key10603': 'value25550',
+    'key77345': 'value6361',
+    'key75748': 'value36198',
+    'key44278': 'value28022',
+    'key38021': 'value28567',
+    'key81457': 'value43251',
+},
+    {
+    'id': 17527473932109,
+    'vector': self.mutator.generate_float_array(dimension=128, normalized=True),
+    'uid': 4,
+    'name': 'Mary Cole',
+    'address': '228 Melton Skyway Apt. 305\nLisastad, NM 52335',
+    'text': 'Leave again thought behavior property. National cover thought deep another partner.\nThen sort when. Behind physical form beat. Then compare important daughter should.',
+    'email': 'angela02@example.org',
+    'phone_number': '4779875660',
+    'json': {
+    'name': 'Jose Holmes',
+    'address': '5570 Tonya Garden\nEast James, CA 39695',
+},
+    'key81248': 'value11857',
+    'key16923': 'value4164',
+    'key68868': 'value97383',
+    'key22655': 'value126',
+},
+    {
+    'id': 17527473932122,
+    'vector': self.mutator.generate_float_array(dimension=128, normalized=True),
+    'uid': 5,
+    'name': 'Janet Miller',
+    'address': '563 Hart Stravenue Apt. 419\nPowellland, MT 85516',
+    'text': 'Do eight through lot hard. Must paper turn itself.\nPerform even wear attention thus series life. Compare why behind if a. For hundred top society eye official how.',
+    'email': 'xsanders@example.net',
+    'phone_number': '791.743.6967',
+    'json': {
+    'name': 'Michael Hopkins',
+    'address': '1615 Morgan Field\nNorth Michaelbury, KS 68165',
+},
+    'key28315': 'value50419',
+    'key68587': 'value53670',
+    'key95898': 'value96396',
+    'key2869': 'value12582',
+    'key86254': 'value11893',
+    'key88202': 'value66960',
+    'key88306': 'value29955',
+    'key71924': 'value95199',
+},
+    {
+    'id': 17527473932135,
+    'vector': self.mutator.generate_float_array(dimension=128, normalized=True),
+    'uid': 6,
+    'name': 'Christine Chandler',
+    'address': '821 Deborah Glen Suite 251\nDiazhaven, KS 99468',
+    'text': 'Base possible particular most. Explain economy center conference many occur arrive.',
+    'email': 'sandrazuniga@example.org',
+    'phone_number': '391-270-0693',
+    'json': {
+    'name': 'Jennifer Ward',
+    'address': 'PSC 4593, Box 2589\nAPO AE 29673',
+},
+    'key20071': 'value78349',
+    'key59246': 'value13076',
+    'key93748': 'value31484',
+    'key31632': 'value25394',
+    'key61618': 'value41642',
+    'key52578': 'value54851',
+},
+    {
+    'id': 17527473932145,
+    'vector': self.mutator.generate_float_array(dimension=128, normalized=True),
+    'uid': 7,
+    'name': 'Chelsea Grant',
+    'address': '867 Bryan Lodge Apt. 973\nSouth Scottfort, HI 66537',
+    'text': 'Lay seem possible fly fast audience. Throughout water drug hour president information majority.\nSpecial next affect. Top involve save every company sound.',
+    'email': 'robinsonbrenda@example.net',
+    'phone_number': '(438)387-2935x15836',
+    'json': {
+    'name': 'Stephanie Cooper',
+    'address': '64977 Bradley Avenue\nJonathanville, MP 66128',
+},
+    'key8130': 'value59226',
+    'key22051': 'value8119',
+    'key75285': 'value57708',
+    'key25293': 'value40165',
+    'key19227': 'value32187',
+    'key98997': 'value428',
+    'key52094': 'value80812',
+    'key51575': 'value47990',
+},
+    {
+    'id': 17527473932156,
+    'vector': self.mutator.generate_float_array(dimension=128, normalized=True),
+    'uid': 8,
+    'name': 'Hayley Fisher',
+    'address': '4585 Chung Neck\nStevensview, AS 62483',
+    'text': 'Account green left west sea. Dark consumer cut under. Father also arm short friend walk off box. Simple while grow under full summer.',
+    'email': 'ortizryan@example.org',
+    'phone_number': '001-879-229-0486x4850',
+    'json': {
+    'name': 'Curtis Hill',
+    'address': '44072 Matthew Extensions Suite 336\nDanielchester, MO 37514',
+},
+    'key51775': 'value83068',
+    'key83573': 'value1264',
+    'key69057': 'value50182',
+    'key8299': 'value28810',
+    'key91575': 'value85129',
+},
+    {
+    'id': 17527473932168,
+    'vector': self.mutator.generate_float_array(dimension=128, normalized=True),
+    'uid': 9,
+    'name': 'Patricia Christian',
+    'address': '2271 Clark Manors\nCodymouth, NY 91836',
+    'text': 'Chance ask car of could.\nTown individual dog too. Write important down right though wife.',
+    'email': 'annawood@example.com',
+    'phone_number': '671-892-2822x929',
+    'json': {
+    'name': 'Sherry Patel',
+    'address': '878 Rodriguez Mountain Suite 604\nMarymouth, NC 37772',
+},
+    'key17315': 'value45367',
+    'key33545': 'value7221',
+    'key32652': 'value70641',
+    'key54942': 'value81747',
+},
+    {
+    'id': 17527473932180,
+    'vector': self.mutator.generate_float_array(dimension=128, normalized=True),
+    'uid': 10,
+    'name': 'John Johnson',
+    'address': '0765 Shaffer Extensions\nNew Ashleyside, WY 12577',
+    'text': 'Fact tree picture through professional hear. Off trial no.\nWho manage husband represent her matter tree. Process into else tough word important.',
+    'email': 'makaylabuck@example.org',
+    'phone_number': '(394)293-4915x4445',
+    'json': {
+    'name': 'John Cooper',
+    'address': '745 Meadows Stream Suite 561\nBellport, CT 22902',
+},
+    'key20272': 'value38124',
+    'key91051': 'value62609',
+    'key92815': 'value88781',
+    'key83639': 'value76143',
+    'key63954': 'value31369',
+    'key73230': 'value36893',
+    'key67768': 'value87498',
+    'key11015': 'value96215',
+    'key39845': 'value20453',
+    'key87008': 'value55381',
+},
+    {
+    'id': 17527473932192,
+    'vector': self.mutator.generate_float_array(dimension=128, normalized=True),
+    'uid': 11,
+    'name': 'Christopher Mcintyre',
+    'address': '5625 Lang Route Apt. 451\nThomasville, PA 18383',
+    'text': 'His white manager. Door so traditional then only. Cause per during where much manage.\nNote focus moment full former line.',
+    'email': 'russell63@example.com',
+    'phone_number': '209-997-9145x34607',
+    'json': {
+    'name': 'Bradley Best',
+    'address': '220 Gregory Lake Suite 340\nRonaldshire, VI 76507',
+},
+    'key52842': 'value33598',
+},
+    {
+    'id': 17527473932202,
+    'vector': self.mutator.generate_float_array(dimension=128, normalized=True),
+    'uid': 12,
+    'name': 'Christopher Tucker',
+    'address': '369 Gallegos Parkway Apt. 124\nEast Ashley, ME 30804',
+    'text': 'Garden recent real design physical way yourself. Across major travel follow however agree today. Difficult buy word.\nThree such page player information eye fear. Fight benefit huge figure.',
+    'email': 'herringjose@example.net',
+    'phone_number': '001-404-780-1124x0983',
+    'json': {
+    'name': 'Tony Hall',
+    'address': '6367 Nelson Gateway\nMelissaborough, NJ 91369',
+},
+    'key84981': 'value78142',
+},
+    {
+    'id': 17527473932214,
+    'vector': self.mutator.generate_float_array(dimension=128, normalized=True),
+    'uid': 13,
+    'name': 'Michael Gentry',
+    'address': '39676 Erin Place Suite 964\nBurnettville, TX 15878',
+    'text': 'Travel soon produce behavior care determine. Executive call must position identify. Light allow may full language production pick.',
+    'email': 'clarkmatthew@example.com',
+    'phone_number': '377.582.6555x340',
+    'json': {
+    'name': 'Bryan Woods',
+    'address': '596 Stuart Isle\nAngelaton, CT 99922',
+},
+    'key15942': 'value439',
+    'key57663': 'value18274',
+    'key78408': 'value62491',
+    'key67965': 'value88189',
+    'key84174': 'value19687',
+    'key66960': 'value2158',
+},
+    {
+    'id': 17527473932225,
+    'vector': self.mutator.generate_float_array(dimension=128, normalized=True),
+    'uid': 14,
+    'name': 'Steven Mclean',
+    'address': '155 John Groves\nPort Virginia, WY 68035',
+    'text': 'Oil admit story face degree ten. Face ability state person action.\nClose practice pick. Major spend name on win think.',
+    'email': 'daniel78@example.net',
+    'phone_number': '6993926894',
+    'json': {
+    'name': 'Jacqueline Jackson',
+    'address': '559 Cohen Vista Apt. 787\nHamiltonberg, NV 53622',
+},
+    'key67422': 'value32718',
+    'key99923': 'value31236',
+    'key20420': 'value72836',
+    'key51696': 'value23589',
+    'key59135': 'value38879',
+    'key96559': 'value98956',
+    'key43367': 'value49040',
+    'key23177': 'value23592',
+},
+    {
+    'id': 17527473932236,
+    'vector': self.mutator.generate_float_array(dimension=128, normalized=True),
+    'uid': 15,
+    'name': 'Diamond Kim',
+    'address': '298 Timothy Walk\nMurphyfort, WA 05171',
+    'text': 'Parent others she car against. Manage meet hospital science process apply.\nFear choice run side short along. Rise technology miss management your responsibility affect.',
+    'email': 'amandaking@example.org',
+    'phone_number': '(939)880-3498x8704',
+    'json': {
+    'name': 'Michael Farley',
+    'address': 'PSC 6175, Box 9642\nAPO AP 27208',
+},
+    'key52013': 'value1104',
+    'key85820': 'value28743',
+},
+    {
+    'id': 17527473932246,
+    'vector': self.mutator.generate_float_array(dimension=128, normalized=True),
+    'uid': 16,
+    'name': 'Arthur Hill',
+    'address': '503 Brown Prairie Suite 146\nJohnsonbury, CT 91650',
+    'text': 'Yard take mind no my relationship. Either market history situation my interview. Night present machine add.',
+    'email': 'kerryhamilton@example.net',
+    'phone_number': '(866)968-2986x79377',
+    'json': {
+    'name': 'Mrs. Suzanne Miles',
+    'address': '648 James Isle Suite 047\nDanahaven, WA 51185',
+},
+    'key10805': 'value62634',
+    'key56048': 'value35993',
+},
+    {
+    'id': 17527473932257,
+    'vector': self.mutator.generate_float_array(dimension=128, normalized=True),
+    'uid': 17,
+    'name': 'Brandi Brown',
+    'address': '30493 Bianca Glens Suite 676\nBrandonshire, PW 23226',
+    'text': 'Possible daughter a bill western.\nCourse her lead woman. Away serve evidence.\nWall share teach our letter. Teach hot call collection also provide.',
+    'email': 'cartercharles@example.org',
+    'phone_number': '(625)315-4765x5714',
+    'json': {
+    'name': 'Kimberly Lee',
+    'address': '98320 Garner Loop\nNortonborough, MT 42974',
+},
+    'key85574': 'value97198',
+    'key87633': 'value81908',
+},
+    {
+    'id': 17527473932269,
+    'vector': self.mutator.generate_float_array(dimension=128, normalized=True),
+    'uid': 18,
+    'name': 'Isaiah Roach',
+    'address': '064 Stanton Courts Suite 619\nEdwinville, IA 22026',
+    'text': 'Walk hundred debate campaign back eight past. Financial most thing spring.\nName stuff only foot prevent public. A police check federal college.',
+    'email': 'williamsmichele@example.net',
+    'phone_number': '6009233013',
+    'json': {
+    'name': 'Emily Smith',
+    'address': '4036 Erin Dam Suite 600\nNew Tracy, WY 66277',
+},
+    'key67654': 'value48828',
+    'key60005': 'value48651',
+    'key77213': 'value42273',
+},
+    {
+    'id': 17527473932281,
+    'vector': self.mutator.generate_float_array(dimension=128, normalized=True),
+    'uid': 19,
+    'name': 'Joel Chapman',
+    'address': '272 Samantha Extension\nJasonberg, FM 00669',
+    'text': 'Animal actually newspaper meet answer ten official. Left life support perform. Enough put late school month. Hand community much reveal western seven training seat.',
+    'email': 'melissabass@example.org',
+    'phone_number': '(739)874-8592',
+    'json': {
+    'name': 'Laura Crawford',
+    'address': '004 Larry Pines Apt. 029\nCainfort, NJ 17248',
+},
+    'key90902': 'value34091',
+    'key40908': 'value34327',
+    'key96624': 'value77018',
+    'key24910': 'value3526',
+    'key92666': 'value57936',
+    'key77709': 'value48692',
+    'key97765': 'value90765',
+    'key73342': 'value13505',
+    'key8721': 'value90804',
+    'key61740': 'value53532',
+},
+    {
+    'id': 17527473932292,
+    'vector': self.mutator.generate_float_array(dimension=128, normalized=True),
+    'uid': 20,
+    'name': 'Karen Smith',
+    'address': '63783 Keith Lock\nNorth Thomas, KY 80029',
+    'text': 'Throughout pass themselves force final wait. Tough want take game perhaps attack beat.\nRich protect drive relate raise. Book clearly clear hospital you analysis.',
+    'email': 'santosryan@example.org',
+    'phone_number': '+1-718-862-1187x6356',
+    'json': {
+    'name': 'Tanya Villanueva',
+    'address': '687 Bates Isle Apt. 235\nNew Meganland, NH 86081',
+},
+    'key79462': 'value1749',
+    'key6584': 'value65182',
+    'key51112': 'value60600',
+    'key64962': 'value2410',
+    'key36963': 'value9382',
+    'key97553': 'value82647',
+    'key87657': 'value48596',
+},
+    {
+    'id': 17527473932303,
+    'vector': self.mutator.generate_float_array(dimension=128, normalized=True),
+    'uid': 21,
+    'name': 'Tina Jimenez',
+    'address': '976 Joan Isle Apt. 998\nWest Beth, WY 06452',
+    'text': 'Plant international western throw. Hand community issue consider. Case sure leader response three car.\nLive a peace clearly remain dark player now. No evidence smile central hit several light early.',
+    'email': 'omiller@example.com',
+    'phone_number': '001-865-865-4326x3724',
+    'json': {
+    'name': 'Denise Robinson',
+    'address': '17614 Miller Center Apt. 979\nRichborough, IL 59368',
+},
+    'key62597': 'value30833',
+    'key9051': 'value33453',
+},
+    {
+    'id': 17527473932314,
+    'vector': self.mutator.generate_float_array(dimension=128, normalized=True),
+    'uid': 22,
+    'name': 'Daniel Dodson',
+    'address': '42618 Kimberly Parks Suite 784\nSouth Dominique, MP 25058',
+    'text': 'Understand house pattern what beautiful real different meeting. Audience because me director. Above very fast wall stuff world their movement.\nSound job song create father former.',
+    'email': 'luistucker@example.net',
+    'phone_number': '280-841-6053x16912',
+    'json': {
+    'name': 'Kathleen Perez',
+    'address': '192 Shirley Fort\nHillberg, AZ 27623',
+},
+    'key19370': 'value21214',
+    'key81997': 'value87450',
+    'key22788': 'value47396',
+},
+    {
+    'id': 17527473932326,
+    'vector': self.mutator.generate_float_array(dimension=128, normalized=True),
+    'uid': 23,
+    'name': 'Pamela Banks',
+    'address': '2287 Johnson Brooks\nHendersonstad, MO 07979',
+    'text': 'Up risk her best between. Draw compare sound sound crime increase unit.\nRace group system question travel next.',
+    'email': 'xthomas@example.org',
+    'phone_number': '650.797.8308x9220',
+    'json': {
+    'name': 'Ashley Huynh',
+    'address': '28366 James Drive Apt. 300\nNorth Karenside, WV 50476',
+},
+    'key12441': 'value29094',
+    'key67464': 'value70561',
+    'key67238': 'value29279',
+    'key97417': 'value90352',
+    'key79578': 'value97202',
+    'key1463': 'value56106',
+    'key98379': 'value96061',
+    'key57398': 'value86513',
+},
+    {
+    'id': 17527473932337,
+    'vector': self.mutator.generate_float_array(dimension=128, normalized=True),
+    'uid': 24,
+    'name': 'Randall Humphrey',
+    'address': '95209 David Mountain\nSouth Vanessa, ND 40771',
+    'text': 'Pass stuff without.\nConcern expert make finish then concern full. Democratic few goal sign mission drug board class. If impact health old.',
+    'email': 'phyllisvaldez@example.com',
+    'phone_number': '548.260.5436x50155',
+    'json': {
+    'name': 'Miguel Brock',
+    'address': '940 Adam Bridge Suite 782\nBanksport, MN 40340',
+},
+    'key71728': 'value30708',
+},
+    {
+    'id': 17527473932348,
+    'vector': self.mutator.generate_float_array(dimension=128, normalized=True),
+    'uid': 25,
+    'name': 'Scott Hill',
+    'address': '3870 Charles Isle Suite 098\nPhillipschester, NY 00779',
+    'text': 'Practice point voice run. Green present personal account market but. Successful show discuss push network.\nResearch hot growth behind pressure your bed. Head fact parent especially fight doctor.',
+    'email': 'russellmatthew@example.org',
+    'phone_number': '001-254-503-2571x12066',
+    'json': {
+    'name': 'Kimberly Norman',
+    'address': '318 Edwards Trail\nTorresville, LA 11633',
+},
+    'key60608': 'value99842',
+    'key72169': 'value83579',
+    'key36908': 'value66550',
+    'key87872': 'value39658',
+    'key86773': 'value27620',
+    'key17413': 'value2595',
+    'key58114': 'value76611',
+    'key33697': 'value39411',
+    'key89473': 'value72951',
+    'key51062': 'value21215',
+},
+    {
+    'id': 17527473932360,
+    'vector': self.mutator.generate_float_array(dimension=128, normalized=True),
+    'uid': 26,
+    'name': 'Edwin Schultz',
+    'address': '71290 Owens Park Suite 341\nLake Tammy, RI 48261',
+    'text': 'Act teach wait bring late word two season. Law rich maintain so building. Ability coach lead firm son car.',
+    'email': 'durankaren@example.com',
+    'phone_number': '270-857-8460x07080',
+    'json': {
+    'name': 'Rachel White',
+    'address': '8660 Susan Orchard Suite 751\nMichaelbury, NJ 13900',
+},
+    'key58359': 'value75835',
+    'key57213': 'value36892',
+    'key78293': 'value27480',
+    'key68546': 'value84704',
+    'key2': 'value83110',
+    'key32801': 'value60469',
+},
+    {
+    'id': 17527473932372,
+    'vector': self.mutator.generate_float_array(dimension=128, normalized=True),
+    'uid': 27,
+    'name': 'Linda Rodriguez',
+    'address': '7784 Michael Isle\nLake Robert, NM 61121',
+    'text': 'Summer see choose high. So himself when avoid perform. Artist by rest near laugh free who fight.',
+    'email': 'john49@example.net',
+    'phone_number': '(936)628-8480x4565',
+    'json': {
+    'name': 'Katherine Smith',
+    'address': '49601 Kimberly Lights Apt. 641\nSouth Justinshire, MP 55034',
+},
+    'key61290': 'value95205',
+    'key89863': 'value12612',
+    'key20643': 'value49189',
+    'key15014': 'value99211',
+    'key32298': 'value39182',
+    'key86549': 'value12600',
+    'key92506': 'value68386',
+},
+    {
+    'id': 17527473932382,
+    'vector': self.mutator.generate_float_array(dimension=128, normalized=True),
+    'uid': 28,
+    'name': 'Calvin Owens',
+    'address': '3996 Estrada Circles Apt. 045\nDavidmouth, ME 39809',
+    'text': 'Investment grow heavy available laugh. Reveal recognize writer push.\nProduction where of bank bed. Suffer reach again run task.',
+    'email': 'phyllisthompson@example.org',
+    'phone_number': '4474909981',
+    'json': {
+    'name': 'Michael Taylor',
+    'address': '0995 Smith Port Apt. 557\nBrownside, RI 13736',
+},
+    'key64324': 'value76949',
+    'key40090': 'value9768',
+    'key60880': 'value90681',
+    'key13881': 'value14366',
+    'key29724': 'value61330',
+},
+    {
+    'id': 17527473932394,
+    'vector': self.mutator.generate_float_array(dimension=128, normalized=True),
+    'uid': 29,
+    'name': 'Spencer Roy',
+    'address': '9767 Joseph Villages Apt. 683\nEstradamouth, PR 20055',
+    'text': 'Save up those from. Worry international attorney. Stage two interesting personal everybody. Student no stay game affect.\nEconomic program edge author air here tax. Lose we project.',
+    'email': 'wilsonjody@example.com',
+    'phone_number': '939-747-8057',
+    'json': {
+    'name': 'Thomas Fischer',
+    'address': '2586 Matthew Grove Suite 663\nNorth Matthew, AL 37153',
+},
+    'key49362': 'value59460',
+    'key55394': 'value33268',
+    'key27316': 'value45541',
+    'key11218': 'value82393',
+    'key35181': 'value14195',
+    'key28207': 'value9033',
+},
+    {
+    'id': 17527473932406,
+    'vector': self.mutator.generate_float_array(dimension=128, normalized=True),
+    'uid': 30,
+    'name': 'Rachel Gordon',
+    'address': '91980 Jill Landing Apt. 133\nNew Cynthiabury, TN 91957',
+    'text': 'Other decade them debate wrong difference.\nPass trial such heart news executive. Hot technology own become job chance upon apply.',
+    'email': 'jasmine85@example.com',
+    'phone_number': '578-830-7237x874',
+    'json': {
+    'name': 'Victoria Blair',
+    'address': '65809 Thomas Forest\nNatalieburgh, SC 30129',
+},
+    'key10541': 'value40099',
+    'key65647': 'value56191',
+    'key85881': 'value84040',
+    'key53236': 'value18635',
+    'key45467': 'value23529',
+    'key80981': 'value1137',
+    'key41621': 'value44720',
+    'key36914': 'value23510',
+},
+    {
+    'id': 17527473932415,
+    'vector': self.mutator.generate_float_array(dimension=128, normalized=True),
+    'uid': 31,
+    'name': 'Donna Taylor',
+    'address': 'USNS Gallegos\nFPO AP 72915',
+    'text': 'Health source line whom task far. Western nearly wall fight. Style continue mean across meet production life.\nNo radio situation himself citizen theory offer. Her so personal soon.',
+    'email': 'lisa02@example.org',
+    'phone_number': '+1-701-485-5470x1420',
+    'json': {
+    'name': 'Michael Gray',
+    'address': '802 Erin Creek Apt. 614\nOrtizborough, ND 69321',
+},
+    'key16982': 'value22527',
+    'key76401': 'value97176',
+    'key40543': 'value75531',
+    'key85439': 'value90668',
+    'key35215': 'value14923',
+    'key27076': 'value23382',
+    'key35791': 'value16049',
+    'key28047': 'value51267',
+},
+    {
+    'id': 17527473932425,
+    'vector': self.mutator.generate_float_array(dimension=128, normalized=True),
+    'uid': 32,
+    'name': 'Michael Jacobs',
+    'address': 'PSC 8147, Box 4702\nAPO AP 59957',
+    'text': 'Pass represent note believe. New item note.\nIndustry return real. Finish ball success Mr economic daughter. Note wall third again right ahead.',
+    'email': 'gabrielahansen@example.org',
+    'phone_number': '001-881-658-9529x73792',
+    'json': {
+    'name': 'Kimberly Ramos',
+    'address': '549 Alexander Divide\nJonesburgh, VT 29716',
+},
+    'key16963': 'value19497',
+    'key44131': 'value63616',
+    'key65638': 'value76459',
+    'key30199': 'value40678',
+    'key31400': 'value14780',
+},
+    {
+    'id': 17527473932434,
+    'vector': self.mutator.generate_float_array(dimension=128, normalized=True),
+    'uid': 33,
+    'name': 'Kevin Schwartz',
+    'address': '27936 Barbara Curve Suite 403\nNew Cherylside, WI 66133',
+    'text': 'Second off including land exist win. Specific reason back space many enjoy.\nQuite carry piece often similar another. Them election also little majority message from.',
+    'email': 'benjaminrachael@example.org',
+    'phone_number': '001-249-305-2016x506',
+    'json': {
+    'name': 'Kevin Moore',
+    'address': '950 Dominguez Mount\nNew Christina, MS 72491',
+},
+    'key76842': 'value51390',
+    'key59442': 'value6350',
+    'key2017': 'value57325',
+    'key23286': 'value65871',
+    'key6388': 'value39805',
+    'key1050': 'value72397',
+    'key60955': 'value63261',
+    'key3016': 'value59162',
+    'key44683': 'value92146',
+},
+    {
+    'id': 17527473932445,
+    'vector': self.mutator.generate_float_array(dimension=128, normalized=True),
+    'uid': 34,
+    'name': 'Dawn Ross',
+    'address': '78902 Lydia Garden Suite 668\nWest David, FM 99241',
+    'text': 'Pressure stand culture. Chance late accept want. Method cultural at cup.\nSong yourself none traditional.',
+    'email': 'khenderson@example.net',
+    'phone_number': '585.389.2981x521',
+    'json': {
+    'name': 'Eric Hall',
+    'address': '449 Meghan Viaduct\nNorth Eric, NH 30128',
+},
+    'key24957': 'value74838',
+},
+    {
+    'id': 17527473932455,
+    'vector': self.mutator.generate_float_array(dimension=128, normalized=True),
+    'uid': 35,
+    'name': 'William Boone',
+    'address': '26175 Mckay Walk Suite 417\nLake Eric, CO 30615',
+    'text': 'Three four sea unit professor late even.\nWithout research moment condition marriage return fly. These up seem nation foreign national agreement foreign.',
+    'email': 'hillmonica@example.org',
+    'phone_number': '(362)811-6524x82846',
+    'json': {
+    'name': 'Thomas Bush',
+    'address': '978 Ramirez Cliffs\nLake Nicole, OR 74775',
+},
+    'key55158': 'value75766',
+    'key45942': 'value91645',
+    'key9973': 'value93613',
+    'key12230': 'value78282',
+    'key26605': 'value5146',
+},
+    {
+    'id': 17527473932467,
+    'vector': self.mutator.generate_float_array(dimension=128, normalized=True),
+    'uid': 36,
+    'name': 'Anthony Howard',
+    'address': 'Unit 9991 Box 1541\nDPO AA 35121',
+    'text': 'Adult knowledge class leave man want another. Center certain take development little parent party. Certainly near less control.',
+    'email': 'michael78@example.com',
+    'phone_number': '449-626-7667',
+    'json': {
+    'name': 'Maria Davidson',
+    'address': '8495 Cochran Port Apt. 919\nSouth Crystal, NY 49552',
+},
+    'key16651': 'value2774',
+},
+    {
+    'id': 17527473932476,
+    'vector': self.mutator.generate_float_array(dimension=128, normalized=True),
+    'uid': 37,
+    'name': 'Barbara Burke',
+    'address': '513 Smith Shoal\nJordanfort, OH 96425',
+    'text': 'Draw key project product. Room continue year door how. Seven involve doctor oil specific.',
+    'email': 'jessicahernandez@example.com',
+    'phone_number': '909-423-7442x765',
+    'json': {
+    'name': 'Chad Gonzales',
+    'address': '3948 Cynthia Falls Suite 274\nSouth Charlesfort, WV 73701',
+},
+    'key6879': 'value61421',
+    'key89059': 'value18868',
+    'key8292': 'value32529',
+    'key29909': 'value59636',
+    'key20679': 'value3807',
+    'key46861': 'value26896',
+    'key98223': 'value36840',
+    'key12955': 'value14829',
+    'key43776': 'value81037',
+    'key50571': 'value85614',
+},
+    {
+    'id': 17527473932487,
+    'vector': self.mutator.generate_float_array(dimension=128, normalized=True),
+    'uid': 38,
+    'name': 'Ann Bell',
+    'address': '2564 Cantu Mountain Apt. 387\nStoutshire, OR 05518',
+    'text': 'Cut young through fall. Recently west campaign as sound myself mission. Prove American decide soon since. Special require baby find case class.',
+    'email': 'rogersjacqueline@example.net',
+    'phone_number': '5752047294',
+    'json': {
+    'name': 'Steven Garcia',
+    'address': '67465 David Port\nNew Josechester, AK 42224',
+},
+    'key64747': 'value25951',
+    'key70531': 'value22135',
+    'key25143': 'value93681',
+    'key5072': 'value27979',
+    'key38548': 'value21203',
+    'key92226': 'value92513',
+    'key87628': 'value29739',
+    'key63351': 'value38120',
+},
+    {
+    'id': 17527473932499,
+    'vector': self.mutator.generate_float_array(dimension=128, normalized=True),
+    'uid': 39,
+    'name': 'Austin Sparks',
+    'address': '792 Eric Loop\nKennethmouth, TN 38304',
+    'text': 'Behavior series hospital would interview parent room. Wide store spend social nothing.\nFew occur experience kitchen. Up save mean treat sure.',
+    'email': 'teresa30@example.net',
+    'phone_number': '001-812-985-0590x95343',
+    'json': {
+    'name': 'Kiara Oneill',
+    'address': '597 Peter Spur Suite 203\nNew Nicole, OK 33882',
+},
+    'key62762': 'value71469',
+    'key18182': 'value35284',
+},
+    {
+    'id': 17527473932508,
+    'vector': self.mutator.generate_float_array(dimension=128, normalized=True),
+    'uid': 40,
+    'name': 'Justin Barnett',
+    'address': '06823 Taylor Station Apt. 637\nNorth Renee, KS 89685',
+    'text': 'Pretty born over. Manager special seat information include. Fly piece act exist artist have American. Page reduce task suddenly several.',
+    'email': 'meghancastillo@example.com',
+    'phone_number': '(839)268-3736',
+    'json': {
+    'name': 'Jay Rodriguez',
+    'address': '1049 William Loop Apt. 179\nWhitechester, NH 54242',
+},
+    'key99961': 'value43624',
+    'key53808': 'value20846',
+},
+    {
+    'id': 17527473932519,
+    'vector': self.mutator.generate_float_array(dimension=128, normalized=True),
+    'uid': 41,
+    'name': 'April Wood',
+    'address': '529 Waters Station\nNew Karen, RI 76169',
+    'text': 'Similar head view may. Top try family be than important certainly move. National win ask expert. Baby fund phone professor remain data.',
+    'email': 'jasongreen@example.com',
+    'phone_number': '+1-547-592-4715x6658',
+    'json': {
+    'name': 'Laurie Andrews',
+    'address': '0398 Jones Meadows\nNorth Lauraborough, IA 30640',
+},
+    'key23761': 'value26520',
+    'key87414': 'value62629',
+    'key27510': 'value44840',
+    'key78304': 'value87114',
+},
+    {
+    'id': 17527473932531,
+    'vector': self.mutator.generate_float_array(dimension=128, normalized=True),
+    'uid': 42,
+    'name': 'Lindsey White',
+    'address': 'Unit 6928 Box 8058\nDPO AP 10982',
+    'text': 'Rate write western option your score perform. Hundred source defense hand game. Box draw certainly physical represent since. Walk care area detail question.',
+    'email': 'morrisvictor@example.com',
+    'phone_number': '705-232-4508x9197',
+    'json': {
+    'name': 'Kristin Gould',
+    'address': '161 Watson Key\nAnnetteberg, TX 22504',
+},
+    'key57246': 'value58321',
+    'key91161': 'value81584',
+    'key41292': 'value53707',
+    'key37361': 'value4365',
+    'key39612': 'value85942',
+    'key20526': 'value9506',
+    'key68849': 'value65605',
+},
+    {
+    'id': 17527473932540,
+    'vector': self.mutator.generate_float_array(dimension=128, normalized=True),
+    'uid': 43,
+    'name': 'Jonathan Garza',
+    'address': '3946 Perry Curve Apt. 867\nJenniferbury, OR 58509',
+    'text': 'Within standard catch present employee. Never open without onto wonder where.\nGo support be board. Main to minute far attorney like tell. Popular of who enjoy position without.',
+    'email': 'robert76@example.net',
+    'phone_number': '4552711336',
+    'json': {
+    'name': 'Kaitlyn Davis',
+    'address': '706 Marc Place Suite 315\nKatherineview, IL 19839',
+},
+    'key53477': 'value97878',
+    'key44782': 'value6408',
+    'key52164': 'value17821',
+},
+    {
+    'id': 17527473932550,
+    'vector': self.mutator.generate_float_array(dimension=128, normalized=True),
+    'uid': 44,
+    'name': 'Jonathan Douglas',
+    'address': '255 Hamilton Gardens\nLake Jacqueline, AL 16105',
+    'text': 'Production reality challenge boy situation. Source join address believe particular rather fall.\nThey impact outside drug thousand soon according. Take quite effect education.',
+    'email': 'amandaestrada@example.org',
+    'phone_number': '571.442.9147x6625',
+    'json': {
+    'name': 'Miss Karen Cole',
+    'address': '306 Nelson Grove Apt. 163\nSouth Jerryport, AZ 15772',
+},
+    'key63122': 'value11093',
+    'key10450': 'value78827',
+    'key51913': 'value3649',
+    'key88418': 'value62984',
+    'key65951': 'value16669',
+},
+    {
+    'id': 17527473932562,
+    'vector': self.mutator.generate_float_array(dimension=128, normalized=True),
+    'uid': 45,
+    'name': 'James Palmer',
+    'address': 'PSC 7071, Box 7681\nAPO AA 82529',
+    'text': 'Fire race drive half sell ok affect. Soldier child rule write learn long blood. Close station identify more language writer arm.',
+    'email': 'ramirezbrent@example.net',
+    'phone_number': '532-821-0133',
+    'json': {
+    'name': 'Laurie Sherman',
+    'address': '88703 Whitney Gateway Suite 964\nPort Sabrinahaven, ND 43625',
+},
+    'key99399': 'value4103',
+    'key15451': 'value77302',
+    'key19798': 'value96446',
+    'key76213': 'value25578',
+    'key4023': 'value92743',
+},
+    {
+    'id': 17527473932572,
+    'vector': self.mutator.generate_float_array(dimension=128, normalized=True),
+    'uid': 46,
+    'name': 'William Blankenship',
+    'address': '52941 Green Motorway Suite 428\nMillerhaven, NM 07050',
+    'text': 'Whatever employee onto art society floor avoid. Inside develop high wear keep down. Million leader understand theory itself close my.\nShow health cost sport. Relate finish design your.',
+    'email': 'matthew73@example.com',
+    'phone_number': '316-486-2699x320',
+    'json': {
+    'name': 'Marilyn Goodman',
+    'address': '14541 Austin Fall\nLake Brian, WV 53338',
+},
+    'key504': 'value93003',
+    'key55674': 'value40389',
+    'key96017': 'value50587',
+    'key76534': 'value66080',
+    'key70983': 'value29447',
+    'key30026': 'value37719',
+    'key69877': 'value72898',
+    'key38456': 'value69670',
+    'key26925': 'value55903',
+    'key7762': 'value21759',
+},
+    {
+    'id': 17527473932582,
+    'vector': self.mutator.generate_float_array(dimension=128, normalized=True),
+    'uid': 47,
+    'name': 'Robert Patel',
+    'address': '358 Brandon Greens Apt. 991\nSouth Tracybury, ME 05222',
+    'text': 'Light music have indicate matter. Its leader back hit.\nMiss form season movie. Never improve trouble technology knowledge too.\nProduce about church institution. Accept take his weight student.',
+    'email': 'sarahsantana@example.net',
+    'phone_number': '(949)448-8827',
+    'json': {
+    'name': 'David Wilson',
+    'address': '858 Webb Shoals\nNicholsonchester, NM 63162',
+},
+    'key23787': 'value16157',
+    'key42712': 'value23049',
+    'key21275': 'value45387',
+    'key27879': 'value62113',
+    'key51229': 'value66797',
+    'key75853': 'value34674',
+    'key34349': 'value98653',
+},
+    {
+    'id': 17527473932594,
+    'vector': self.mutator.generate_float_array(dimension=128, normalized=True),
+    'uid': 48,
+    'name': 'Rebecca Jacobs',
+    'address': '10727 Matthew Lock Suite 223\nShawntown, DC 17245',
+    'text': 'Discuss thus seat blood. Writer wonder reflect success property when practice realize.\nCurrent can appear near. Most they assume seek season challenge month.',
+    'email': 'ptaylor@example.org',
+    'phone_number': '392-635-4405',
+    'json': {
+    'name': 'Carlos Hawkins',
+    'address': '430 Brett Spring\nEllismouth, NV 21126',
+},
+    'key73626': 'value98491',
+    'key70808': 'value40266',
+    'key16835': 'value27252',
+    'key93155': 'value5655',
+    'key85414': 'value53684',
+    'key94209': 'value80287',
+    'key83725': 'value25292',
+    'key8633': 'value57089',
+    'key85417': 'value32675',
+},
+    {
+    'id': 17527473932605,
+    'vector': self.mutator.generate_float_array(dimension=128, normalized=True),
+    'uid': 49,
+    'name': 'Heather Howell',
+    'address': 'PSC 9125, Box 9284\nAPO AE 96135',
+    'text': 'Mission identify practice surface. Hair for describe city environmental camera again.',
+    'email': 'nicholas78@example.com',
+    'phone_number': '600.260.9693',
+    'json': {
+    'name': 'Christopher Newton',
+    'address': '9736 Christina Expressway\nLake Michael, WI 10894',
+},
+    'key83725': 'value34824',
+    'key60418': 'value11154',
+    'key84117': 'value54861',
+    'key69436': 'value50851',
+    'key39872': 'value47113',
+    'key50493': 'value18278',
+    'key98034': 'value84855',
+    'key53878': 'value38512',
+    'key86721': 'value33649',
+},
+    {
+    'id': 17527473932613,
+    'vector': self.mutator.generate_float_array(dimension=128, normalized=True),
+    'uid': 50,
+    'name': 'James Ball',
+    'address': '2664 Fisher Ferry Suite 265\nNorth Corytown, MS 04792',
+    'text': 'Close beautiful bit chance trouble trouble. Plan street out behavior wrong develop. Here use their ability film.',
+    'email': 'jonguerrero@example.net',
+    'phone_number': '+1-900-947-7306x922',
+    'json': {
+    'name': 'Tina Chapman',
+    'address': '8519 Yolanda Tunnel Apt. 917\nNew Luisland, MS 34351',
+},
+    'key99051': 'value60746',
+    'key732': 'value15256',
+    'key17738': 'value11528',
+    'key71219': 'value76799',
+    'key56733': 'value76230',
+    'key57978': 'value23785',
+    'key65743': 'value29030',
+    'key97995': 'value53568',
+    'key12303': 'value80046',
+},
+    {
+    'id': 17527473932624,
+    'vector': self.mutator.generate_float_array(dimension=128, normalized=True),
+    'uid': 51,
+    'name': 'Robert Lloyd',
+    'address': '03939 Guzman Plaza\nSouth Ericaberg, PW 61836',
+    'text': 'Machine many show campaign. During loss issue read deep first coach. Article kind age alone before save bill.\nAddress effort born by change spring stage. Try cultural live attack.',
+    'email': 'grantflowers@example.net',
+    'phone_number': '(737)605-8416',
+    'json': {
+    'name': 'Bobby Nelson',
+    'address': '65488 Kim Ridges\nDeborahside, TX 38561',
+},
+    'key16714': 'value40136',
+    'key10847': 'value70135',
+    'key60553': 'value65538',
+},
+    {
+    'id': 17527473932636,
+    'vector': self.mutator.generate_float_array(dimension=128, normalized=True),
+    'uid': 52,
+    'name': 'Gina Miles',
+    'address': '7337 Barajas Turnpike Apt. 166\nNorth Harold, NY 14756',
+    'text': 'Better own ready be gas rest. Country exist parent entire threat meet. Red would trip democratic fast nor throughout audience.',
+    'email': 'simpsonanna@example.com',
+    'phone_number': '859-997-2082x1295',
+    'json': {
+    'name': 'Amanda Weber',
+    'address': '70589 Johnny Forks\nEast Stephanie, FM 80936',
+},
+    'key29162': 'value84131',
+},
+    {
+    'id': 17527473932647,
+    'vector': self.mutator.generate_float_array(dimension=128, normalized=True),
+    'uid': 53,
+    'name': 'Marcus Wolfe',
+    'address': '79579 Melissa Trace\nAndreaberg, PA 70481',
+    'text': 'Eat last picture upon carry war explain. Some less soldier decide born. Process letter create pay.\nThing traditional chair yes save quickly open test. Six deep line whatever it power.',
+    'email': 'pamela29@example.com',
+    'phone_number': '660-481-3511',
+    'json': {
+    'name': 'Christopher Wright',
+    'address': '938 Payne Trafficway Suite 311\nPort Julie, NE 35943',
+},
+    'key74951': 'value9246',
+    'key55967': 'value50466',
+    'key62063': 'value49267',
+    'key57345': 'value84187',
+    'key98711': 'value83309',
+    'key4633': 'value3137',
+    'key38060': 'value19442',
+    'key52248': 'value84629',
+    'key71094': 'value94769',
+    'key59526': 'value37224',
+},
+    {
+    'id': 17527473932657,
+    'vector': self.mutator.generate_float_array(dimension=128, normalized=True),
+    'uid': 54,
+    'name': 'Lisa Henderson',
+    'address': '428 West Ridge\nEast Susan, WA 37312',
+    'text': 'Really your want game. Son cause wall house.\nShow camera require help. Million important build local black worker avoid professor. Personal reach rest throughout relate game.',
+    'email': 'dward@example.com',
+    'phone_number': '2929108293',
+    'json': {
+    'name': 'Richard Dennis',
+    'address': '4734 Bates Union\nSouth Christopherborough, OK 67141',
+},
+    'key68956': 'value72121',
+    'key13187': 'value24062',
+    'key27366': 'value60585',
+    'key88248': 'value1107',
+    'key67448': 'value41761',
+    'key81449': 'value99843',
+    'key70337': 'value6071',
+    'key26026': 'value16190',
+    'key24483': 'value91265',
+},
+    {
+    'id': 17527473932668,
+    'vector': self.mutator.generate_float_array(dimension=128, normalized=True),
+    'uid': 55,
+    'name': 'Jason Ross',
+    'address': '32372 Fox Mills\nSusanmouth, FL 78416',
+    'text': 'Life blue doctor pattern dream police race believe. Pull production president treat.',
+    'email': 'allen42@example.org',
+    'phone_number': '431-774-2509x36216',
+    'json': {
+    'name': 'Jack Morris',
+    'address': '388 Shawn Mission Suite 921\nWest Markborough, AL 18515',
+},
+    'key22469': 'value88627',
+    'key4432': 'value84450',
+    'key13684': 'value81848',
+    'key15027': 'value45760',
+},
+    {
+    'id': 17527473932678,
+    'vector': self.mutator.generate_float_array(dimension=128, normalized=True),
+    'uid': 56,
+    'name': 'Ashley Johnson',
+    'address': 'Unit 7065 Box 8119\nDPO AA 31890',
+    'text': 'Guess rate argue kid interview. Occur season sign early.\nWorry painting draw practice hour. Choose particularly reach final medical trial south. Hit action hear both us allow future.',
+    'email': 'aburns@example.net',
+    'phone_number': '217.624.3940x4605',
+    'json': {
+    'name': 'Stephen Pitts DDS',
+    'address': 'Unit 3259 Box 5914\nDPO AE 05865',
+},
+    'key84049': 'value67668',
+    'key14611': 'value55348',
+    'key2032': 'value45167',
+    'key54132': 'value9462',
+},
+    {
+    'id': 17527473932685,
+    'vector': self.mutator.generate_float_array(dimension=128, normalized=True),
+    'uid': 57,
+    'name': 'Faith Lane',
+    'address': '159 Moore Shoal Suite 040\nWest Kellyfurt, IA 51704',
+    'text': 'Various team local pressure young. Memory teacher book grow ability loss thus.\nTrouble once feeling factor my pass. Artist southern hot onto sport certainly. Price meet radio billion or position.',
+    'email': 'garciamichael@example.net',
+    'phone_number': '414-597-4539',
+    'json': {
+    'name': 'Jimmy Meyers',
+    'address': 'USNV Andrade\nFPO AA 92752',
+},
+    'key99012': 'value71846',
+    'key77229': 'value56470',
+    'key7956': 'value53581',
+    'key38135': 'value2182',
+    'key24114': 'value68888',
+    'key17614': 'value47789',
+    'key42458': 'value65887',
+    'key34652': 'value20792',
+    'key16295': 'value16068',
+    'key69450': 'value78205',
+},
+    {
+    'id': 17527473932696,
+    'vector': self.mutator.generate_float_array(dimension=128, normalized=True),
+    'uid': 58,
+    'name': 'Matthew Johnson',
+    'address': '223 Hayley Summit\nEast Robert, MT 21910',
+    'text': 'Discussion street unit table place task. Represent goal right factor throughout. Owner visit set be hour class on.',
+    'email': 'sweeneystephanie@example.net',
+    'phone_number': '977.463.7090x5230',
+    'json': {
+    'name': 'Jasmine Adkins',
+    'address': '492 Wade Ramp Apt. 843\nGreenmouth, DC 58383',
+},
+    'key87269': 'value91592',
+    'key84365': 'value25715',
+},
+    {
+    'id': 17527473932707,
+    'vector': self.mutator.generate_float_array(dimension=128, normalized=True),
+    'uid': 59,
+    'name': 'Regina Kelly',
+    'address': 'PSC 5531, Box 4740\nAPO AA 84367',
+    'text': 'Election stand save sell your candidate his.\nMarket relate father arrive determine certainly pull.\nWait serious your. Good huge side subject politics concern movie. Catch city world team now.',
+    'email': 'millermichelle@example.com',
+    'phone_number': '+1-685-955-6827x080',
+    'json': {
+    'name': 'Thomas Paul',
+    'address': '8420 Christopher Route Suite 876\nJaredview, MN 10957',
+},
+    'key99697': 'value77553',
+    'key5722': 'value61970',
+    'key9029': 'value29259',
+    'key29447': 'value14451',
+    'key67933': 'value27459',
+    'key71081': 'value45671',
+},
+    {
+    'id': 17527473932717,
+    'vector': self.mutator.generate_float_array(dimension=128, normalized=True),
+    'uid': 60,
+    'name': 'Rebecca Weaver',
+    'address': '841 Matthew Light\nSouth Jacob, FM 69377',
+    'text': 'Morning professor tonight rather entire. Too suggest information former. Wife she worry national reveal truth behavior. Success ever every.',
+    'email': 'alison89@example.org',
+    'phone_number': '001-211-911-0520',
+    'json': {
+    'name': 'Ashley Howard',
+    'address': '3249 Cunningham Isle Suite 598\nLauramouth, MT 25591',
+},
+    'key99809': 'value69091',
+    'key70685': 'value18062',
+    'key70745': 'value83563',
+    'key80919': 'value35977',
+    'key1687': 'value97996',
+    'key60149': 'value53876',
+},
+    {
+    'id': 17527473932727,
+    'vector': self.mutator.generate_float_array(dimension=128, normalized=True),
+    'uid': 61,
+    'name': 'Amy Nguyen',
+    'address': '555 Gerald Unions Suite 217\nRayside, NH 66445',
+    'text': 'Get to authority court challenge step owner two. Management professional crime. Give approach simple most store.\nPolice manage stop music opportunity herself. Song create year ago.',
+    'email': 'meyerheather@example.org',
+    'phone_number': '738-719-7332x2567',
+    'json': {
+    'name': 'Anna Jensen',
+    'address': '8170 Mcdonald Lock Suite 512\nWest Tylerbury, NC 56359',
+},
+    'key74937': 'value43093',
+    'key61340': 'value67',
+    'key11519': 'value81609',
+    'key24231': 'value11094',
+    'key91941': 'value11128',
+    'key30438': 'value14068',
+    'key40823': 'value20219',
+},
+    {
+    'id': 17527473932738,
+    'vector': self.mutator.generate_float_array(dimension=128, normalized=True),
+    'uid': 62,
+    'name': 'Jessica Gonzales',
+    'address': '9916 Melissa Shore Suite 489\nLake Jennifer, MT 77192',
+    'text': 'To reality you safe. Ball remember interest sing.\nEnvironment under entire maybe artist. Measure hair probably kitchen develop can. Cell central half during opportunity.',
+    'email': 'kristinkim@example.net',
+    'phone_number': '(949)613-5928x61202',
+    'json': {
+    'name': 'Beth Melendez',
+    'address': '7823 Buck Vista\nWest Kelly, IL 10918',
+},
+    'key39946': 'value25786',
+    'key75304': 'value45025',
+    'key70149': 'value9370',
+    'key68162': 'value70064',
+    'key6252': 'value47130',
+    'key9074': 'value31024',
+    'key39068': 'value9789',
+    'key57788': 'value90768',
+    'key39091': 'value56738',
+},
+    {
+    'id': 17527473932750,
+    'vector': self.mutator.generate_float_array(dimension=128, normalized=True),
+    'uid': 63,
+    'name': 'Jennifer Herrera',
+    'address': '31300 Margaret Manor\nLaurabury, MI 81145',
+    'text': 'Key either finish few manage camera kind. Eye mind office history.\nPerhaps become whose down all identify. City north kid investment catch. Forget spring page parent happen after.',
+    'email': 'brittany91@example.net',
+    'phone_number': '(541)667-4301',
+    'json': {
+    'name': 'James Williams',
+    'address': '88459 Arnold Cove Apt. 892\nSimmonsshire, ME 30613',
+},
+    'key49356': 'value93179',
+    'key98644': 'value76070',
+    'key64733': 'value64706',
+    'key14977': 'value86019',
+    'key80314': 'value16542',
+},
+    {
+    'id': 17527473932761,
+    'vector': self.mutator.generate_float_array(dimension=128, normalized=True),
+    'uid': 64,
+    'name': 'Tyler Moran',
+    'address': '5266 Stevens Prairie Suite 008\nJessicahaven, MO 26128',
+    'text': 'Billion out idea stay meeting notice plan get. Now out energy stuff less interesting study.\nEconomy fill particular must his.',
+    'email': 'caldwellnancy@example.com',
+    'phone_number': '483.973.9093x76639',
+    'json': {
+    'name': 'Grant Graham',
+    'address': '79998 Diaz Causeway\nDouglasborough, WA 67486',
+},
+    'key64205': 'value15062',
+},
+    {
+    'id': 17527473932773,
+    'vector': self.mutator.generate_float_array(dimension=128, normalized=True),
+    'uid': 65,
+    'name': 'John Mendoza',
+    'address': '79622 Patricia Brook Apt. 605\nLake Tony, IL 66892',
+    'text': 'Buy form although wear item. Teacher man year town can.',
+    'email': 'jodirobinson@example.com',
+    'phone_number': '+1-792-963-8377',
+    'json': {
+    'name': 'Robert Small',
+    'address': '186 Andrew Drive\nNorth Dianetown, LA 44274',
+},
+    'key69815': 'value37299',
+    'key74661': 'value62422',
+    'key89297': 'value74230',
+    'key91510': 'value48258',
+    'key66516': 'value73008',
+    'key32366': 'value85325',
+    'key95138': 'value82668',
+},
+    {
+    'id': 17527473932783,
+    'vector': self.mutator.generate_float_array(dimension=128, normalized=True),
+    'uid': 66,
+    'name': 'Brianna Holden',
+    'address': '52276 Ellis Crossroad\nBarneshaven, IL 16024',
+    'text': 'Development floor good art candidate college. Professor manager majority event score perform hospital. General training charge difference. Energy notice oil green everybody fast.',
+    'email': 'jesse66@example.org',
+    'phone_number': '001-964-536-5847x737',
+    'json': {
+    'name': 'Nicole Williams',
+    'address': '808 Nguyen Drive Suite 934\nEast Alexander, MA 35923',
+},
+    'key89663': 'value29408',
+    'key98782': 'value42537',
+},
+    {
+    'id': 17527473932794,
+    'vector': self.mutator.generate_float_array(dimension=128, normalized=True),
+    'uid': 67,
+    'name': 'Carolyn Bond',
+    'address': '96791 Steven Stream\nBradshawmouth, KY 67884',
+    'text': 'Your eat woman contain recent. Third development they actually go really. Similar design in minute.\nSociety market worker senior. Its send agreement protect key group. Poor seek she cold either.',
+    'email': 'rjohnson@example.org',
+    'phone_number': '343-725-7877x58575',
+    'json': {
+    'name': 'Dr. Michael Ford',
+    'address': '6557 Armstrong Points Apt. 392\nAlexanderview, VI 96283',
+},
+    'key476': 'value26945',
+    'key52938': 'value7921',
+    'key62979': 'value21758',
+    'key11145': 'value13604',
+    'key72566': 'value98782',
+    'key10479': 'value9417',
+    'key88000': 'value84426',
+},
+    {
+    'id': 17527473932805,
+    'vector': self.mutator.generate_float_array(dimension=128, normalized=True),
+    'uid': 68,
+    'name': 'Lisa Flynn',
+    'address': '9743 Jimenez Springs\nSouth Steve, MS 40759',
+    'text': 'Lay local it care else. Cost cultural election. Role system chance always home need eye.',
+    'email': 'moorekimberly@example.net',
+    'phone_number': '+1-845-643-0254x010',
+    'json': {
+    'name': 'Heather Flynn',
+    'address': 'USNS Hampton\nFPO AA 53143',
+},
+    'key66286': 'value33561',
+    'key55675': 'value16763',
+    'key44954': 'value70711',
+    'key16677': 'value27886',
+    'key46214': 'value50622',
+    'key78187': 'value71635',
+},
+    {
+    'id': 17527473932816,
+    'vector': self.mutator.generate_float_array(dimension=128, normalized=True),
+    'uid': 69,
+    'name': 'Gregory Gonzalez',
+    'address': '665 Horton Valley Apt. 651\nGreenstad, FL 60299',
+    'text': 'Pass can clear century case. Pay everything provide. Response five change happen agency.',
+    'email': 'katie74@example.org',
+    'phone_number': '834.225.0088',
+    'json': {
+    'name': 'Amanda Ellison',
+    'address': 'Unit 9902 Box 6912\nDPO AP 85629',
+},
+    'key22600': 'value14937',
+    'key37972': 'value48548',
+    'key20503': 'value22871',
+    'key97806': 'value32113',
+    'key97355': 'value36483',
+    'key37575': 'value47045',
+    'key58959': 'value17071',
+},
+    {
+    'id': 17527473932824,
+    'vector': self.mutator.generate_float_array(dimension=128, normalized=True),
+    'uid': 70,
+    'name': 'Brittany Foley',
+    'address': '5407 Dawn Walks\nMichaelshire, PW 29083',
+    'text': 'Property property war store know research pattern. Nearly account serious science truth bring.\nShoulder bill give up. View up public than. Quite star feel paper.',
+    'email': 'marshallsandra@example.net',
+    'phone_number': '444.976.3626',
+    'json': {
+    'name': 'Kristin Padilla',
+    'address': '84728 Michael Mountains Apt. 783\nMilesburgh, PA 63863',
+},
+    'key75314': 'value10033',
+    'key84464': 'value52513',
+    'key27696': 'value88669',
+    'key1846': 'value55080',
+    'key18726': 'value67729',
+    'key67107': 'value68371',
+    'key32168': 'value99909',
+},
+    {
+    'id': 17527473932835,
+    'vector': self.mutator.generate_float_array(dimension=128, normalized=True),
+    'uid': 71,
+    'name': 'Ellen Allen',
+    'address': '07115 Morgan Branch Suite 532\nNorth Michaelton, AZ 59136',
+    'text': 'Treat process significant individual open. Admit local seem for model green cup arrive.\nSpecific because run nation. Low since page also build.',
+    'email': 'kramerkevin@example.net',
+    'phone_number': '5539175827',
+    'json': {
+    'name': 'Tanya Baker',
+    'address': '52851 Carol Place Apt. 704\nNew Pamelatown, KS 04748',
+},
+    'key42205': 'value96227',
+    'key74827': 'value53877',
+    'key26653': 'value16794',
+},
+    {
+    'id': 17527473932847,
+    'vector': self.mutator.generate_float_array(dimension=128, normalized=True),
+    'uid': 72,
+    'name': 'Zachary Lawrence',
+    'address': '899 Wilkerson Squares Apt. 791\nKellyshire, VI 89457',
+    'text': 'Specific energy drug media win. Interesting book democratic write must cultural. Pick forward young around continue those walk.',
+    'email': 'jameshernandez@example.org',
+    'phone_number': '+1-934-520-0392x59345',
+    'json': {
+    'name': 'Charles Contreras',
+    'address': '985 Williams Causeway\nFosterfurt, RI 12920',
+},
+    'key30711': 'value71625',
+},
+    {
+    'id': 17527473932858,
+    'vector': self.mutator.generate_float_array(dimension=128, normalized=True),
+    'uid': 73,
+    'name': 'Dr. Lauren Edwards',
+    'address': '66401 Pham Avenue\nNoahshire, OH 45474',
+    'text': 'Back add glass above team interesting party prepare.\nWonder fact true break. Movie measure condition after. Quite lead suggest maybe eight training.',
+    'email': 'lorettaleach@example.org',
+    'phone_number': '5777011395',
+    'json': {
+    'name': 'Vanessa Caldwell',
+    'address': '9852 Sanchez Wells Apt. 176\nWeaverborough, MN 59266',
+},
+    'key16740': 'value7918',
+    'key37888': 'value94164',
+    'key31760': 'value16768',
+    'key61487': 'value13875',
+},
+    {
+    'id': 17527473932871,
+    'vector': self.mutator.generate_float_array(dimension=128, normalized=True),
+    'uid': 74,
+    'name': 'Charles Smith',
+    'address': '6708 Sarah Crossroad\nLake Angelashire, RI 17765',
+    'text': 'Notice president almost. Material operation pass trip single pick defense. Way be similar hard when development night newspaper.',
+    'email': 'bkemp@example.org',
+    'phone_number': '722.551.2927',
+    'json': {
+    'name': 'Kristen Garrison',
+    'address': '650 Williams Stream Suite 308\nNew Juliebury, WA 98358',
+},
+    'key67097': 'value60704',
+    'key1738': 'value6065',
+},
+    {
+    'id': 17527473932881,
+    'vector': self.mutator.generate_float_array(dimension=128, normalized=True),
+    'uid': 75,
+    'name': 'Jason Thompson',
+    'address': '403 Martin Branch Suite 512\nHendersontown, CA 71042',
+    'text': 'Interest food give save side. Movement town him huge seven.\nLeg send game care. Over administration industry civil including keep.\nEither someone next despite. Town detail fact prevent.',
+    'email': 'susanleach@example.org',
+    'phone_number': '(993)203-7189x69872',
+    'json': {
+    'name': 'Vickie Deleon',
+    'address': '0461 Cardenas Oval Apt. 307\nSouth Kim, DC 67113',
+},
+    'key52128': 'value45204',
+    'key42414': 'value82043',
+},
+    {
+    'id': 17527473932893,
+    'vector': self.mutator.generate_float_array(dimension=128, normalized=True),
+    'uid': 76,
+    'name': 'William White',
+    'address': '5693 Mcbride Parkway Apt. 815\nPort Tiffany, WA 72722',
+    'text': 'Wide car could become last baby pay.\nEntire seat region public meet. War less again claim type thing agent. Others few visit traditional. Community wonder law land agreement agent.',
+    'email': 'hortonoscar@example.com',
+    'phone_number': '(436)805-9768',
+    'json': {
+    'name': 'Jack Harrison',
+    'address': '110 Morris Courts Apt. 409\nEast Davidborough, AL 25401',
+},
+    'key94817': 'value1882',
+    'key6285': 'value22133',
+    'key68891': 'value94933',
+    'key33115': 'value21371',
+    'key90494': 'value10775',
+    'key57984': 'value89452',
+    'key67206': 'value62542',
+},
+    {
+    'id': 17527473932905,
+    'vector': self.mutator.generate_float_array(dimension=128, normalized=True),
+    'uid': 77,
+    'name': 'Oscar Nichols',
+    'address': 'Unit 9819 Box 5879\nDPO AA 70818',
+    'text': 'Although whether professor lawyer window concern. During goal number finish. Scientist health cost hundred agency sing.\nProduct worker though yet rise. Financial yard step grow.',
+    'email': 'klinejacob@example.net',
+    'phone_number': '001-972-487-8385x47529',
+    'json': {
+    'name': 'Debra Nelson',
+    'address': '7584 Melton Rest Suite 949\nHufffort, AS 31446',
+},
+    'key57589': 'value90698',
+    'key74694': 'value13878',
+    'key77913': 'value12461',
+    'key51918': 'value62686',
+    'key90942': 'value67125',
+},
+    {
+    'id': 17527473932915,
+    'vector': self.mutator.generate_float_array(dimension=128, normalized=True),
+    'uid': 78,
+    'name': 'Jeffrey Gentry',
+    'address': '363 Thompson Lodge\nGonzalezport, MO 11520',
+    'text': 'Though second full from radio everyone speak us. Child member PM night. Career become would system himself try.\nAmount book individual enjoy. Difference person there water.',
+    'email': 'rrodriguez@example.net',
+    'phone_number': '797-300-1646x0695',
+    'json': {
+    'name': 'Tammy Burnett',
+    'address': '264 Michael Stravenue Apt. 912\nPort Edward, KS 47110',
+},
+    'key59229': 'value55822',
+    'key68868': 'value3529',
+},
+    {
+    'id': 17527473932926,
+    'vector': self.mutator.generate_float_array(dimension=128, normalized=True),
+    'uid': 79,
+    'name': 'Joseph Horne',
+    'address': '970 Morton Harbor\nMarthaville, HI 98901',
+    'text': 'Born present he art according arm affect. Technology contain work. Democrat happen none race. Avoid economic condition not.',
+    'email': 'maria95@example.net',
+    'phone_number': '001-604-651-0632',
+    'json': {
+    'name': 'Christopher Ray',
+    'address': '008 Amanda Way Suite 308\nLake Mallory, AR 62770',
+},
+    'key43420': 'value59051',
+},
+    {
+    'id': 17527473932936,
+    'vector': self.mutator.generate_float_array(dimension=128, normalized=True),
+    'uid': 80,
+    'name': 'Joseph Blevins',
+    'address': '852 Jeremy Flats Apt. 261\nWest Jenniferfort, TX 51844',
+    'text': 'Hotel miss great relationship company box money relationship. Gas their protect goal.\nElection television general star know just defense. Become degree relate. Wear however bar trade.',
+    'email': 'gregorymunoz@example.org',
+    'phone_number': '+1-741-875-4587x126',
+    'json': {
+    'name': 'John Li',
+    'address': '062 Dawn Inlet Suite 122\nEast Susanville, IA 85601',
+},
+    'key90780': 'value49957',
+},
+    {
+    'id': 17527473932947,
+    'vector': self.mutator.generate_float_array(dimension=128, normalized=True),
+    'uid': 81,
+    'name': 'Joann Petersen',
+    'address': '65315 Kimberly Courts Apt. 705\nBarnesbury, OR 55285',
+    'text': 'Else establish population drop example seat new enter. Big small environmental spend four where. Place friend argue step expert begin.',
+    'email': 'benjaminmoss@example.net',
+    'phone_number': '+1-685-391-9733x140',
+    'json': {
+    'name': 'Lee Carr',
+    'address': '3762 Brandy Creek Apt. 572\nWilliamsborough, VA 60435',
+},
+    'key14622': 'value48323',
+    'key29195': 'value71643',
+    'key46988': 'value18941',
+    'key74818': 'value63225',
+},
+    {
+    'id': 17527473932963,
+    'vector': self.mutator.generate_float_array(dimension=128, normalized=True),
+    'uid': 82,
+    'name': 'Dr. David Webb',
+    'address': '3867 Laurie Highway Suite 533\nEricmouth, MA 06275',
+    'text': 'Make free behavior few do meeting everybody new.\nFloor second suggest strong point film. Lawyer might interest away.\nMrs soldier those learn. Hundred example education sea.',
+    'email': 'jenniferescobar@example.net',
+    'phone_number': '326.234.1492x941',
+    'json': {
+    'name': 'Brian Gibbs',
+    'address': '4786 Glenda Burgs\nEast Wandabury, MI 76551',
+},
+    'key62836': 'value97116',
+    'key75064': 'value46086',
+    'key4921': 'value29757',
+    'key72711': 'value20578',
+    'key70647': 'value97249',
+    'key15968': 'value51648',
+},
+    {
+    'id': 17527473932980,
+    'vector': self.mutator.generate_float_array(dimension=128, normalized=True),
+    'uid': 83,
+    'name': 'Jacob Faulkner',
+    'address': '269 Gonzales Rapid Apt. 083\nEast Amanda, PR 08388',
+    'text': 'Important history best administration. Team yard claim increase second. Adult subject begin range.\nRequire member cause left rock clearly early. Democrat keep trip project task.',
+    'email': 'paigegomez@example.net',
+    'phone_number': '375-897-0976',
+    'json': {
+    'name': 'Pam Parsons',
+    'address': '9540 Whitney Plaza\nRobinsonchester, PA 06435',
+},
+    'key15847': 'value12297',
+    'key96823': 'value53766',
+    'key43636': 'value9958',
+    'key37928': 'value52388',
+    'key60148': 'value34418',
+},
+    {
+    'id': 17527473932993,
+    'vector': self.mutator.generate_float_array(dimension=128, normalized=True),
+    'uid': 84,
+    'name': 'Kevin Joseph',
+    'address': 'USS Zamora\nFPO AA 84932',
+    'text': 'Peace so customer hospital vote certainly outside statement. Various Mr agency car then much none summer.',
+    'email': 'kevinlambert@example.org',
+    'phone_number': '(454)376-9299x9271',
+    'json': {
+    'name': 'Ryan Edwards',
+    'address': '301 Torres Shores\nNew Derek, ID 34940',
+},
+    'key49129': 'value46277',
+    'key53492': 'value39520',
+    'key11845': 'value93511',
+    'key55585': 'value63025',
+    'key74105': 'value29181',
+    'key18967': 'value49962',
+    'key32771': 'value49068',
+    'key74264': 'value66811',
+    'key6806': 'value47835',
+    'key1251': 'value36798',
+},
+    {
+    'id': 17527473933005,
+    'vector': self.mutator.generate_float_array(dimension=128, normalized=True),
+    'uid': 85,
+    'name': 'Donald Williams',
+    'address': 'PSC 1559, Box 0780\nAPO AA 55847',
+    'text': 'Build air subject seven produce church I. Money know school suddenly fill leg.\nOld anything table ground quite stuff. Along attack building quickly boy message.',
+    'email': 'pennytaylor@example.com',
+    'phone_number': '001-996-514-7982x578',
+    'json': {
+    'name': 'Michael Harrell',
+    'address': '59561 Vanessa Wells\nNew David, TX 65217',
+},
+    'key82419': 'value63672',
+    'key14032': 'value91273',
+    'key11464': 'value89474',
+    'key12610': 'value65536',
+    'key35376': 'value8687',
+},
+    {
+    'id': 17527473933015,
+    'vector': self.mutator.generate_float_array(dimension=128, normalized=True),
+    'uid': 86,
+    'name': 'Gregory Blake',
+    'address': 'Unit 1721 Box 0187\nDPO AA 78853',
+    'text': 'Chance real company ability never property. Must rich evening side story. Response rise member describe view world impact environmental.\nHim once end purpose seem field campaign.',
+    'email': 'jwilson@example.org',
+    'phone_number': '(906)354-4630',
+    'json': {
+    'name': 'Mary Hardy',
+    'address': '4651 Kara Knolls Apt. 746\nAngelaside, NM 47883',
+},
+    'key93627': 'value89155',
+    'key9642': 'value93645',
+    'key39659': 'value73149',
+    'key62153': 'value9089',
+    'key74141': 'value40484',
+    'key51377': 'value39228',
+    'key50494': 'value15907',
+},
+    {
+    'id': 17527473933025,
+    'vector': self.mutator.generate_float_array(dimension=128, normalized=True),
+    'uid': 87,
+    'name': 'Brian Wilcox',
+    'address': '78610 Keith Mount Apt. 437\nConnieshire, PR 82472',
+    'text': 'Everyone whole who since activity. Friend whose subject know camera too direction among.\nFriend us age guy force work. Boy probably effort goal popular author.\nPrepare answer break indeed dinner.',
+    'email': 'julie84@example.com',
+    'phone_number': '939-901-2985',
+    'json': {
+    'name': 'Lori Kelley',
+    'address': '864 Crosby Light Apt. 027\nNorth Kyle, CO 34770',
+},
+    'key94381': 'value86205',
+},
+    {
+    'id': 17527473933036,
+    'vector': self.mutator.generate_float_array(dimension=128, normalized=True),
+    'uid': 88,
+    'name': 'Rebecca Rich',
+    'address': '782 Brian Overpass\nNorth Thomas, NH 79056',
+    'text': 'Stop according project guy spring between. Decide good water whether.\nAmong late allow modern behind keep.',
+    'email': 'danielle83@example.org',
+    'phone_number': '559-476-8000',
+    'json': {
+    'name': 'Michelle Molina',
+    'address': '8253 Michelle Ways\nJacksontown, CT 32713',
+},
+    'key36320': 'value33672',
+},
+    {
+    'id': 17527473933048,
+    'vector': self.mutator.generate_float_array(dimension=128, normalized=True),
+    'uid': 89,
+    'name': 'Austin Lopez',
+    'address': '81557 Jennifer Terrace\nKariport, RI 16288',
+    'text': 'Enjoy network six Mrs prepare toward issue. Matter action middle region design sure draw.',
+    'email': 'anna37@example.com',
+    'phone_number': '(925)545-8568x92239',
+    'json': {
+    'name': 'Julia Stevenson',
+    'address': '13671 Smith Drive Suite 895\nPort Michelle, FM 73351',
+},
+    'key50586': 'value66723',
+    'key17300': 'value82520',
+    'key59072': 'value69634',
+    'key88272': 'value38268',
+    'key51078': 'value11350',
+    'key80131': 'value75846',
+},
+    {
+    'id': 17527473933058,
+    'vector': self.mutator.generate_float_array(dimension=128, normalized=True),
+    'uid': 90,
+    'name': 'William Montoya',
+    'address': '395 Randy Way\nChristophertown, IL 33071',
+    'text': 'Main trade TV dog least probably court. Such window purpose buy set guy represent. Bill must fall entire room center.\nCivil drive another establish. This of past north somebody.',
+    'email': 'kburton@example.org',
+    'phone_number': '659.470.3151',
+    'json': {
+    'name': 'Tony Burgess',
+    'address': '9178 Rhonda Neck Suite 912\nFrankside, TX 48586',
+},
+    'key76394': 'value6835',
+    'key84343': 'value18646',
+    'key46462': 'value96022',
+    'key44296': 'value22653',
+    'key67038': 'value4061',
+    'key82722': 'value99970',
+    'key18744': 'value29257',
+    'key27743': 'value64553',
+    'key44661': 'value11445',
+},
+    {
+    'id': 17527473933069,
+    'vector': self.mutator.generate_float_array(dimension=128, normalized=True),
+    'uid': 91,
+    'name': 'Mary Hickman',
+    'address': '5253 Tiffany Plains\nGilmorefort, NM 43784',
+    'text': 'Fire its throw she population. Organization push product model sport back.\nLanguage happen give put small six. Service affect million increase candidate.',
+    'email': 'lmoreno@example.org',
+    'phone_number': '001-492-966-4424x95869',
+    'json': {
+    'name': 'Larry Lopez',
+    'address': 'Unit 9161 Box 0056\nDPO AA 30354',
+},
+    'key84270': 'value81207',
+    'key83848': 'value19547',
+    'key92316': 'value95798',
+    'key41386': 'value50850',
+    'key57270': 'value54534',
+    'key85540': 'value48640',
+    'key63408': 'value4300',
+    'key54702': 'value763',
+},
+    {
+    'id': 17527473933078,
+    'vector': self.mutator.generate_float_array(dimension=128, normalized=True),
+    'uid': 92,
+    'name': 'Matthew Jones',
+    'address': '6210 Cross Stream\nMichaelfurt, VT 11829',
+    'text': 'Even number hand middle. Hundred enough somebody become guess especially. Same these condition movie issue room test explain.',
+    'email': 'shannongarcia@example.org',
+    'phone_number': '(557)398-4614x445',
+    'json': {
+    'name': 'Nathan Garcia',
+    'address': '861 Davis Pines\nPort Tiffanychester, IN 34128',
+},
+    'key95841': 'value31161',
+    'key4885': 'value19874',
+    'key66442': 'value25905',
+    'key21826': 'value4705',
+    'key9372': 'value43847',
+    'key55038': 'value28760',
+    'key56457': 'value42501',
+    'key33464': 'value29331',
+    'key68883': 'value27187',
+},
+    {
+    'id': 17527473933089,
+    'vector': self.mutator.generate_float_array(dimension=128, normalized=True),
+    'uid': 93,
+    'name': 'Justin Guerrero',
+    'address': '1292 Alexander Points\nNelsonview, NY 47226',
+    'text': 'Protect now reason same phone at learn.\nFamily very suffer then concern catch. Newspaper risk kid remain her so. Recognize thing culture themselves need. Fund energy take every summer.',
+    'email': 'dillon24@example.net',
+    'phone_number': '001-346-340-4127x24132',
+    'json': {
+    'name': 'Lisa Gibson',
+    'address': '786 King Locks\nAmyberg, MI 91187',
+},
+    'key65715': 'value93129',
+    'key56374': 'value97287',
+    'key11252': 'value87514',
+},
+    {
+    'id': 17527473933099,
+    'vector': self.mutator.generate_float_array(dimension=128, normalized=True),
+    'uid': 94,
+    'name': 'Sarah Hernandez',
+    'address': '66116 John Route\nNorth Jenniferland, ND 95978',
+    'text': 'Black bad citizen. Arm memory require several.\nHear here here under those eye. Describe food west size group defense ten reduce. Particular significant enough unit today page phone.',
+    'email': 'rogersjudy@example.com',
+    'phone_number': '293.602.5114',
+    'json': {
+    'name': 'Paige Brown',
+    'address': '06412 Moore Throughway Apt. 336\nWest Richardbury, GU 07175',
+},
+    'key58953': 'value7222',
+    'key62049': 'value29757',
+    'key40997': 'value81734',
+    'key87351': 'value39420',
+    'key16356': 'value62434',
+    'key52790': 'value31314',
+    'key80873': 'value28404',
+    'key61730': 'value73193',
+    'key64958': 'value66377',
+    'key36848': 'value43968',
+},
+    {
+    'id': 17527473933111,
+    'vector': self.mutator.generate_float_array(dimension=128, normalized=True),
+    'uid': 95,
+    'name': 'Brian Li',
+    'address': '40630 Luna Cliff Suite 552\nWagnerbury, MD 86892',
+    'text': 'A spend entire deep personal least school surface. Partner candidate and any line program.\nThousand fine better couple travel before some simply.',
+    'email': 'livingstoncarl@example.net',
+    'phone_number': '001-536-721-7307x9041',
+    'json': {
+    'name': 'Gregory Lowery',
+    'address': '2212 Christopher Rest\nWest Cherylbury, NY 62944',
+},
+    'key31855': 'value79464',
+    'key86372': 'value41921',
+    'key1339': 'value67808',
+    'key73214': 'value51943',
+    'key20770': 'value26254',
+    'key70000': 'value61117',
+    'key89909': 'value9921',
+    'key37596': 'value35510',
+    'key50061': 'value19363',
+},
+    {
+    'id': 17527473933123,
+    'vector': self.mutator.generate_float_array(dimension=128, normalized=True),
+    'uid': 96,
+    'name': 'Timothy Odom',
+    'address': 'PSC 5643, Box 1052\nAPO AP 49841',
+    'text': 'Yourself difference civil because or. Long player boy son area.\nTravel quality choice thousand. Reveal minute serve compare vote test one interview. Person music many woman.',
+    'email': 'jonesbriana@example.org',
+    'phone_number': '835.587.8410x4964',
+    'json': {
+    'name': 'Dylan Peterson',
+    'address': 'Unit 8582 Box 2137\nDPO AP 80010',
+},
+    'key22601': 'value88352',
+    'key23103': 'value96602',
+    'key67022': 'value79961',
+    'key56805': 'value12684',
+    'key72932': 'value21704',
+},
+    {
+    'id': 17527473933130,
+    'vector': self.mutator.generate_float_array(dimension=128, normalized=True),
+    'uid': 97,
+    'name': 'Jonathan Hogan',
+    'address': '694 Norma Station Apt. 271\nLewishaven, ID 43967',
+    'text': 'Happy interview story friend respond without focus. Same money standard image.\nWe form magazine.\nArt public determine free break. In forget somebody gas certain boy tree.',
+    'email': 'lgross@example.org',
+    'phone_number': '(371)939-0817',
+    'json': {
+    'name': 'Kaitlyn Owens',
+    'address': '7980 Jose Drive\nSouth Lisa, FM 59463',
+},
+    'key97659': 'value11261',
+    'key7870': 'value14499',
+    'key69418': 'value15499',
+    'key20594': 'value56012',
+    'key57293': 'value53281',
+    'key64914': 'value98832',
+    'key92397': 'value3546',
+    'key57612': 'value89137',
+},
+    {
+    'id': 17527473933141,
+    'vector': self.mutator.generate_float_array(dimension=128, normalized=True),
+    'uid': 98,
+    'name': 'Edward Harrell',
+    'address': '54170 Kyle Lakes\nEast Kayleeville, MT 62376',
+    'text': 'Book direction eat material face feeling. Audience structure focus.\nCost hundred attack late south PM section north. Approach red old school. Large foot however foot staff.',
+    'email': 'mschmidt@example.org',
+    'phone_number': '001-910-599-9806x00723',
+    'json': {
+    'name': 'Karen Rodriguez',
+    'address': '5099 Todd Vista\nPort Marialand, MN 27792',
+},
+    'key81948': 'value34553',
+    'key13906': 'value50828',
+    'key18809': 'value48809',
+    'key32150': 'value71569',
+    'key80704': 'value51589',
+    'key24915': 'value17372',
+    'key85969': 'value68841',
+    'key11807': 'value28683',
+    'key72988': 'value64820',
+    'key29340': 'value65605',
+},
+    {
+    'id': 17527473933152,
+    'vector': self.mutator.generate_float_array(dimension=128, normalized=True),
+    'uid': 99,
+    'name': 'James Frye',
+    'address': '09601 Watson Flats\nJessicaside, NE 27518',
+    'text': 'Three produce management hour less citizen fear source. Increase lead security anything democratic friend a. Different great truth science similar trip hospital.',
+    'email': 'taylortina@example.net',
+    'phone_number': '+1-436-248-7681x9802',
+    'json': {
+    'name': 'Robert Russo',
+    'address': '168 Jacob Hollow\nElliotttown, VI 53857',
+},
+    'key81308': 'value96506',
+    'key31396': 'value56226',
+    'key98110': 'value99346',
+},
+],
+}
+        
+        if not original_content:
+            logger.info("请求无内容，跳过变异测试")
+            return True
+        
+        # 定义发送请求的函数
+        def send_mutated_request(mutated_content):
+            return send_request(mutated_content, method, url_path, headers)
+        
+        logger.info("开始变异测试...")
+        
+        # 获取命令行参数
+        iterations = getattr(args, 'iterations', 200)  # 默认值为200
+        time_limit = getattr(args, 'time_limit', 10)   # 默认值为10分钟
+                    
+        mutator = Mutator()  # 创建变异器实例
+        failures = mutator.normal_mutate(
+            original_content=original_content,
+            send_request=send_mutated_request,
+            connectivity_check_func=check_connectivity,
+            save_failure_func=save_failure,
+            max_time_minutes=time_limit,  # 使用上面设置的time_limit变量
+            max_iterations=iterations     # 使用上面设置的iterations变量
+        )
+        
+        if failures:
+            logger.warning(f"发现 {len(failures)} 个导致异常的变异")
+        else:
+            logger.info("变异测试未发现异常")
+        
+        return len(failures) == 0
+
+
+
+    def test_request_3(self):
+        """测试请求 3 - DELETE http://172.17.0.5:23210/v2/vectordb/collections/create"""
+        logger.info(f"跳过非写请求或无内容请求: DELETE http://172.17.0.5:23210/v2/vectordb/collections/create")
+        method = 'DELETE'
+        url_path = 'http://172.17.0.5:23210/v2/vectordb/collections/create'
+        headers = {
+    'Content-Type': 'application/json',
+    'Authorization': 'Bearer None',
+    'RequestId': '1c6b5482-62f7-11f0-85c3-0242ac11000b',
+    'Request-Timeout': '120',
+}
+        
+        # 原始请求内容
+        original_content = {
+    'collectionName': 'test_collection_2025_07_17_18_16_32_177554PjKzBdwx',
+    'dimension': 128,
+    'params': {
+    'consistencyLevel': 'Strong',
+},
+}
+
+
+        send_request(original_content, method, url_path, headers)
+        return True
+
+
+
+# 主函数
+if __name__ == "__main__":
+    # 解析命令行参数
+    parser = argparse.ArgumentParser(description='VDB模糊测试 - allmilvus_log.TestInsertVectorNegative_test_insert_vector_with_invalid_collection_name_1752747393.json')
+    parser.add_argument('-t', '--target', type=str, default=TARGET_URL,
+                        help='目标服务器URL，例如: http://localhost:6333')
+    parser.add_argument('-o', '--output-dir', type=str, default=OUTPUT_DIR,
+                        help='测试结果输出目录')
+    parser.add_argument('-n', '--iterations', type=int, default=200,
+                        help='变异测试的最大迭代次数')
+    parser.add_argument('-l', '--time-limit', type=int, default=10,
+                        help='变异测试的时间限制(分钟)')
+    args = parser.parse_args()
+    
+    # 更新全局变量
+    if args.target:
+        TARGET_URL = args.target
+    if args.output_dir:
+        OUTPUT_DIR = args.output_dir
+    
+    # 创建输出目录
+    os.makedirs(OUTPUT_DIR, exist_ok=True)
+    
+    # 实例化测试类并运行测试
+    test = AllmilvusLogtestinsertvectornegativeTestInsertVectorWithInvalidCollectionName1752747393Json()
+    test.run_tests()

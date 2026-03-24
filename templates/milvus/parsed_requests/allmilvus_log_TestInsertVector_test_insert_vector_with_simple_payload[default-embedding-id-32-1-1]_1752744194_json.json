@@ -1,0 +1,116 @@
+{
+  "test_name": "allmilvus_log.TestInsertVector_test_insert_vector_with_simple_payload[default-embedding-id-32-1-1]_1752744194.json",
+  "vdb_type": "qdrant",
+  "requests": [
+    {
+      "response": {
+        "status_code": 200,
+        "headers": {
+          "Access-Control-Allow-Credentials": "true",
+          "Access-Control-Allow-Headers": "Content-Type, Content-Length, Accept-Encoding, X-CSRF-Token, Authorization, accept, origin, Cache-Control, X-Requested-With",
+          "Access-Control-Allow-Methods": "GET, HEAD, POST, PUT, DELETE, OPTIONS, PATCH",
+          "Access-Control-Allow-Origin": "*",
+          "Content-Type": "application/json; charset=utf-8",
+          "Date": "Thu, 17 Jul 2025 09:23:14 GMT",
+          "Content-Length": "22"
+        },
+        "elapsed_ms": 19.578000000000003,
+        "timestamp": 1752744194.1529267,
+        "request_id": 0,
+        "content": {
+          "code": 200,
+          "data": {}
+        }
+      },
+      "method": "POST",
+      "url": "http://172.17.0.11:23210/v1/vector/collections/create",
+      "headers": {
+        "Content-Type": "application/json",
+        "Authorization": "Bearer root:Milvus",
+        "RequestId": "aa3d2499-62ef-11f0-9024-0242ac110005"
+      },
+      "timestamp": 1752744194.1326947,
+      "request_id": 0,
+      "content": {
+        "collectionName": "test_collection_2025_07_17_17_23_13_132368TmpzGyjH",
+        "dimension": 32,
+        "primaryField": "id",
+        "vectorField": "embedding",
+        "autoID": true,
+        "dbName": "default"
+      }
+    },
+    {
+      "response": {
+        "status_code": 200,
+        "headers": {
+          "Access-Control-Allow-Credentials": "true",
+          "Access-Control-Allow-Headers": "Content-Type, Content-Length, Accept-Encoding, X-CSRF-Token, Authorization, accept, origin, Cache-Control, X-Requested-With",
+          "Access-Control-Allow-Methods": "GET, HEAD, POST, PUT, DELETE, OPTIONS, PATCH",
+          "Access-Control-Allow-Origin": "*",
+          "Content-Type": "application/json; charset=utf-8",
+          "Date": "Thu, 17 Jul 2025 09:23:14 GMT",
+          "Content-Length": "70"
+        },
+        "elapsed_ms": 4.4799999999999995,
+        "timestamp": 1752744194.1646411,
+        "request_id": 2,
+        "content": {
+          "code": 200,
+          "data": {
+            "insertCount": 1,
+            "insertIds": [
+              459470532653888701
+            ]
+          }
+        }
+      },
+      "method": "POST",
+      "url": "http://172.17.0.11:23210/v1/vector/insert",
+      "headers": {
+        "Content-Type": "application/json",
+        "Authorization": "Bearer root:Milvus",
+        "RequestId": "aa414562-62ef-11f0-8642-0242ac110005"
+      },
+      "timestamp": 1752744194.1596706,
+      "request_id": 2,
+      "content": {
+        "collectionName": "test_collection_2025_07_17_17_23_13_132368TmpzGyjH",
+        "data": [
+          {
+            "embedding": "__FLOAT_ARRAY_DIM_32__",
+            "uid": 0,
+            "name": "Heather West",
+            "address": "Unit 3733 Box 7609\nDPO AE 33700",
+            "text": "Grow mind life available. Republican drop happen.\nSong nothing stay left program. Ability seat will build take. Popular film front with.",
+            "email": "jonesmelinda@example.com",
+            "phone_number": "518.378.3197",
+            "array_int_dynamic": "__FLOAT_ARRAY_DIM_5__",
+            "array_varchar_dynamic": [
+              "Jacob Bailey",
+              "Jackson Bautista",
+              "Joseph Velazquez",
+              "Melinda Stephens",
+              "Gina Johnson",
+              "Maria Brown",
+              "Billy Herring",
+              "David Sellers",
+              "Michael Rice",
+              "Eric Delgado"
+            ],
+            "json": {
+              "name": "Kayla Wright",
+              "address": "65108 Alex Creek\nReginaldview, SC 41453"
+            },
+            "key60360": "value11236",
+            "key4998": "value23060",
+            "key84612": "value81747",
+            "key87709": "value57339",
+            "key76857": "value13175"
+          }
+        ],
+        "dbName": "default"
+      }
+    }
+  ]
+}

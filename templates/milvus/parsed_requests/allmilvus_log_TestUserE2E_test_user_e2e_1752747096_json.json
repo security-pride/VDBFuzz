@@ -1,0 +1,278 @@
+{
+  "test_name": "allmilvus_log.TestUserE2E_test_user_e2e_1752747096.json",
+  "vdb_type": "qdrant",
+  "requests": [
+    {
+      "response": {
+        "status_code": 200,
+        "headers": {
+          "Access-Control-Allow-Credentials": "true",
+          "Access-Control-Allow-Headers": "Content-Type, Content-Length, Accept-Encoding, X-CSRF-Token, Authorization, accept, origin, Cache-Control, X-Requested-With",
+          "Access-Control-Allow-Methods": "GET, HEAD, POST, PUT, DELETE, OPTIONS, PATCH",
+          "Access-Control-Allow-Origin": "*",
+          "Content-Type": "application/json; charset=utf-8",
+          "Date": "Thu, 17 Jul 2025 10:11:36 GMT",
+          "Content-Length": "38"
+        },
+        "elapsed_ms": 2.227,
+        "timestamp": 1752747096.7349555,
+        "request_id": 0,
+        "content": {
+          "code": 0,
+          "data": [
+            "root",
+            "test_user"
+          ]
+        }
+      },
+      "method": "POST",
+      "url": "http://172.17.0.11:23210/v2/vectordb/users/list",
+      "headers": {
+        "Content-Type": "application/json",
+        "Authorization": "Bearer None",
+        "RequestId": "6c501934-62f6-11f0-a47a-0242ac11000b"
+      },
+      "timestamp": 1752747096.7314193,
+      "request_id": 0,
+      "content": "null"
+    },
+    {
+      "response": {
+        "status_code": 200,
+        "headers": {
+          "Access-Control-Allow-Credentials": "true",
+          "Access-Control-Allow-Headers": "Content-Type, Content-Length, Accept-Encoding, X-CSRF-Token, Authorization, accept, origin, Cache-Control, X-Requested-With",
+          "Access-Control-Allow-Methods": "GET, HEAD, POST, PUT, DELETE, OPTIONS, PATCH",
+          "Access-Control-Allow-Origin": "*",
+          "Content-Type": "application/json; charset=utf-8",
+          "Date": "Thu, 17 Jul 2025 10:11:36 GMT",
+          "Content-Length": "20"
+        },
+        "elapsed_ms": 4.5440000000000005,
+        "timestamp": 1752747096.7408743,
+        "request_id": 1,
+        "content": {
+          "code": 0,
+          "data": {}
+        }
+      },
+      "method": "POST",
+      "url": "http://172.17.0.11:23210/v2/vectordb/users/create",
+      "headers": {
+        "Content-Type": "application/json",
+        "Authorization": "Bearer None",
+        "RequestId": "6c501934-62f6-11f0-a47a-0242ac11000b"
+      },
+      "timestamp": 1752747096.7356017,
+      "request_id": 1,
+      "content": {
+        "userName": "user_uLmJAxPZ",
+        "password": "1234578"
+      }
+    },
+    {
+      "response": {
+        "status_code": 200,
+        "headers": {
+          "Access-Control-Allow-Credentials": "true",
+          "Access-Control-Allow-Headers": "Content-Type, Content-Length, Accept-Encoding, X-CSRF-Token, Authorization, accept, origin, Cache-Control, X-Requested-With",
+          "Access-Control-Allow-Methods": "GET, HEAD, POST, PUT, DELETE, OPTIONS, PATCH",
+          "Access-Control-Allow-Origin": "*",
+          "Content-Type": "application/json; charset=utf-8",
+          "Date": "Thu, 17 Jul 2025 10:11:36 GMT",
+          "Content-Length": "54"
+        },
+        "elapsed_ms": 1.2349999999999999,
+        "timestamp": 1752747096.7429867,
+        "request_id": 2,
+        "content": {
+          "code": 0,
+          "data": [
+            "test_user",
+            "user_uLmJAxPZ",
+            "root"
+          ]
+        }
+      },
+      "method": "POST",
+      "url": "http://172.17.0.11:23210/v2/vectordb/users/list",
+      "headers": {
+        "Content-Type": "application/json",
+        "Authorization": "Bearer None",
+        "RequestId": "6c501934-62f6-11f0-a47a-0242ac11000b"
+      },
+      "timestamp": 1752747096.7412362,
+      "request_id": 2,
+      "content": "null"
+    },
+    {
+      "response": {
+        "status_code": 200,
+        "headers": {
+          "Access-Control-Allow-Credentials": "true",
+          "Access-Control-Allow-Headers": "Content-Type, Content-Length, Accept-Encoding, X-CSRF-Token, Authorization, accept, origin, Cache-Control, X-Requested-With",
+          "Access-Control-Allow-Methods": "GET, HEAD, POST, PUT, DELETE, OPTIONS, PATCH",
+          "Access-Control-Allow-Origin": "*",
+          "Content-Type": "application/json; charset=utf-8",
+          "Date": "Thu, 17 Jul 2025 10:11:36 GMT",
+          "Content-Length": "20"
+        },
+        "elapsed_ms": 1.6720000000000002,
+        "timestamp": 1752747096.7454467,
+        "request_id": 3,
+        "content": {
+          "code": 0,
+          "data": []
+        }
+      },
+      "method": "POST",
+      "url": "http://172.17.0.11:23210/v2/vectordb/users/describe",
+      "headers": {
+        "Content-Type": "application/json",
+        "Authorization": "Bearer None",
+        "RequestId": "6c501934-62f6-11f0-a47a-0242ac11000b"
+      },
+      "timestamp": 1752747096.743292,
+      "request_id": 3,
+      "content": {
+        "userName": "user_uLmJAxPZ"
+      }
+    },
+    {
+      "response": {
+        "status_code": 200,
+        "headers": {
+          "Access-Control-Allow-Credentials": "true",
+          "Access-Control-Allow-Headers": "Content-Type, Content-Length, Accept-Encoding, X-CSRF-Token, Authorization, accept, origin, Cache-Control, X-Requested-With",
+          "Access-Control-Allow-Methods": "GET, HEAD, POST, PUT, DELETE, OPTIONS, PATCH",
+          "Access-Control-Allow-Origin": "*",
+          "Content-Type": "application/json; charset=utf-8",
+          "Date": "Thu, 17 Jul 2025 10:11:36 GMT",
+          "Content-Length": "20"
+        },
+        "elapsed_ms": 3.386,
+        "timestamp": 1752747096.7496061,
+        "request_id": 4,
+        "content": {
+          "code": 0,
+          "data": {}
+        }
+      },
+      "method": "POST",
+      "url": "http://172.17.0.11:23210/v2/vectordb/users/update_password",
+      "headers": {
+        "Content-Type": "application/json",
+        "Authorization": "Bearer None",
+        "RequestId": "6c501934-62f6-11f0-a47a-0242ac11000b"
+      },
+      "timestamp": 1752747096.745741,
+      "request_id": 4,
+      "content": {
+        "userName": "user_uLmJAxPZ",
+        "password": "1234578",
+        "newPassword": "87654321"
+      }
+    },
+    {
+      "response": {
+        "status_code": 200,
+        "headers": {
+          "Access-Control-Allow-Credentials": "true",
+          "Access-Control-Allow-Headers": "Content-Type, Content-Length, Accept-Encoding, X-CSRF-Token, Authorization, accept, origin, Cache-Control, X-Requested-With",
+          "Access-Control-Allow-Methods": "GET, HEAD, POST, PUT, DELETE, OPTIONS, PATCH",
+          "Access-Control-Allow-Origin": "*",
+          "Content-Type": "application/json; charset=utf-8",
+          "Date": "Thu, 17 Jul 2025 10:11:36 GMT",
+          "Content-Length": "20"
+        },
+        "elapsed_ms": 1.9120000000000001,
+        "timestamp": 1752747096.7523081,
+        "request_id": 5,
+        "content": {
+          "code": 0,
+          "data": {}
+        }
+      },
+      "method": "POST",
+      "url": "http://172.17.0.11:23210/v2/vectordb/users/drop",
+      "headers": {
+        "Content-Type": "application/json",
+        "Authorization": "Bearer None",
+        "RequestId": "6c501934-62f6-11f0-a47a-0242ac11000b"
+      },
+      "timestamp": 1752747096.7499146,
+      "request_id": 5,
+      "content": {
+        "userName": "user_uLmJAxPZ"
+      }
+    },
+    {
+      "response": {
+        "status_code": 200,
+        "headers": {
+          "Access-Control-Allow-Credentials": "true",
+          "Access-Control-Allow-Headers": "Content-Type, Content-Length, Accept-Encoding, X-CSRF-Token, Authorization, accept, origin, Cache-Control, X-Requested-With",
+          "Access-Control-Allow-Methods": "GET, HEAD, POST, PUT, DELETE, OPTIONS, PATCH",
+          "Access-Control-Allow-Origin": "*",
+          "Content-Type": "application/json; charset=utf-8",
+          "Date": "Thu, 17 Jul 2025 10:11:36 GMT",
+          "Content-Length": "38"
+        },
+        "elapsed_ms": 1.167,
+        "timestamp": 1752747096.7542896,
+        "request_id": 6,
+        "content": {
+          "code": 0,
+          "data": [
+            "root",
+            "test_user"
+          ]
+        }
+      },
+      "method": "POST",
+      "url": "http://172.17.0.11:23210/v2/vectordb/users/list",
+      "headers": {
+        "Content-Type": "application/json",
+        "Authorization": "Bearer None",
+        "RequestId": "6c501934-62f6-11f0-a47a-0242ac11000b"
+      },
+      "timestamp": 1752747096.7526257,
+      "request_id": 6,
+      "content": "null"
+    },
+    {
+      "response": {
+        "status_code": 200,
+        "headers": {
+          "Access-Control-Allow-Credentials": "true",
+          "Access-Control-Allow-Headers": "Content-Type, Content-Length, Accept-Encoding, X-CSRF-Token, Authorization, accept, origin, Cache-Control, X-Requested-With",
+          "Access-Control-Allow-Methods": "GET, HEAD, POST, PUT, DELETE, OPTIONS, PATCH",
+          "Access-Control-Allow-Origin": "*",
+          "Content-Type": "application/json; charset=utf-8",
+          "Date": "Thu, 17 Jul 2025 10:11:36 GMT",
+          "Content-Length": "36"
+        },
+        "elapsed_ms": 1.201,
+        "timestamp": 1752747096.7577262,
+        "request_id": 7,
+        "content": {
+          "code": 0,
+          "data": [
+            "admin",
+            "public"
+          ]
+        }
+      },
+      "method": "POST",
+      "url": "http://172.17.0.11:23210/v2/vectordb/roles/list",
+      "headers": {
+        "Content-Type": "application/json",
+        "Authorization": "Bearer None",
+        "RequestId": "6c501934-62f6-11f0-a47a-0242ac11000b"
+      },
+      "timestamp": 1752747096.7559967,
+      "request_id": 7,
+      "content": "null"
+    }
+  ]
+}

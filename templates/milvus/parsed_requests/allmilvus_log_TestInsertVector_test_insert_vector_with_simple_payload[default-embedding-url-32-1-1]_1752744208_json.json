@@ -1,0 +1,112 @@
+{
+  "test_name": "allmilvus_log.TestInsertVector_test_insert_vector_with_simple_payload[default-embedding-url-32-1-1]_1752744208.json",
+  "vdb_type": "qdrant",
+  "requests": [
+    {
+      "response": {
+        "status_code": 200,
+        "headers": {
+          "Access-Control-Allow-Credentials": "true",
+          "Access-Control-Allow-Headers": "Content-Type, Content-Length, Accept-Encoding, X-CSRF-Token, Authorization, accept, origin, Cache-Control, X-Requested-With",
+          "Access-Control-Allow-Methods": "GET, HEAD, POST, PUT, DELETE, OPTIONS, PATCH",
+          "Access-Control-Allow-Origin": "*",
+          "Content-Type": "application/json; charset=utf-8",
+          "Date": "Thu, 17 Jul 2025 09:23:28 GMT",
+          "Content-Length": "22"
+        },
+        "elapsed_ms": 22.834,
+        "timestamp": 1752744208.444287,
+        "request_id": 0,
+        "content": {
+          "code": 200,
+          "data": {}
+        }
+      },
+      "method": "POST",
+      "url": "http://172.17.0.11:23210/v1/vector/collections/create",
+      "headers": {
+        "Content-Type": "application/json",
+        "Authorization": "Bearer root:Milvus",
+        "RequestId": "b2c15a89-62ef-11f0-9d49-0242ac110005"
+      },
+      "timestamp": 1752744208.4208968,
+      "request_id": 0,
+      "content": {
+        "collectionName": "test_collection_2025_07_17_17_23_27_420601ueNUweLH",
+        "dimension": 32,
+        "primaryField": "url",
+        "vectorField": "embedding",
+        "autoID": true,
+        "dbName": "default"
+      }
+    },
+    {
+      "response": {
+        "status_code": 200,
+        "headers": {
+          "Access-Control-Allow-Credentials": "true",
+          "Access-Control-Allow-Headers": "Content-Type, Content-Length, Accept-Encoding, X-CSRF-Token, Authorization, accept, origin, Cache-Control, X-Requested-With",
+          "Access-Control-Allow-Methods": "GET, HEAD, POST, PUT, DELETE, OPTIONS, PATCH",
+          "Access-Control-Allow-Origin": "*",
+          "Content-Type": "application/json; charset=utf-8",
+          "Date": "Thu, 17 Jul 2025 09:23:28 GMT",
+          "Content-Length": "70"
+        },
+        "elapsed_ms": 4.637,
+        "timestamp": 1752744208.4566154,
+        "request_id": 2,
+        "content": {
+          "code": 200,
+          "data": {
+            "insertCount": 1,
+            "insertIds": [
+              459470532653889385
+            ]
+          }
+        }
+      },
+      "method": "POST",
+      "url": "http://172.17.0.11:23210/v1/vector/insert",
+      "headers": {
+        "Content-Type": "application/json",
+        "Authorization": "Bearer root:Milvus",
+        "RequestId": "b2c60542-62ef-11f0-a7eb-0242ac110005"
+      },
+      "timestamp": 1752744208.4514532,
+      "request_id": 2,
+      "content": {
+        "collectionName": "test_collection_2025_07_17_17_23_27_420601ueNUweLH",
+        "data": [
+          {
+            "embedding": "__FLOAT_ARRAY_DIM_32__",
+            "uid": 0,
+            "name": "Angela Hartman",
+            "address": "03013 Wright Street Apt. 357\nLake Timothy, OK 40979",
+            "text": "Employee whose us. Expert be audience responsibility. Mouth kid them there simply no arm.\nHope tend official indicate. Address technology dog oil. Item lose section who fast industry.",
+            "email": "upham@example.com",
+            "phone_number": "001-878-646-8039x56503",
+            "array_int_dynamic": "__FLOAT_ARRAY_DIM_9__",
+            "array_varchar_dynamic": [
+              "Whitney Vaughn",
+              "Ricky Yu",
+              "James Miller",
+              "Charles Green",
+              "Joseph Acosta",
+              "Kirk Gomez",
+              "Douglas Foster",
+              "Diana Ferguson",
+              "Kelsey Li"
+            ],
+            "json": {
+              "name": "Elaine Carter",
+              "address": "0495 Mcintyre Street Suite 965\nEast Brandon, NC 02363"
+            },
+            "key23562": "value30823",
+            "key98175": "value75040"
+          }
+        ],
+        "dbName": "default"
+      }
+    }
+  ]
+}

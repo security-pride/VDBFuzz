@@ -1,0 +1,112 @@
+{
+  "test_name": "allmilvus_log.TestInsertVector_test_insert_vector_with_simple_payload[prod-embedding-url-32-1-1]_1752744151.json",
+  "vdb_type": "qdrant",
+  "requests": [
+    {
+      "response": {
+        "status_code": 200,
+        "headers": {
+          "Access-Control-Allow-Credentials": "true",
+          "Access-Control-Allow-Headers": "Content-Type, Content-Length, Accept-Encoding, X-CSRF-Token, Authorization, accept, origin, Cache-Control, X-Requested-With",
+          "Access-Control-Allow-Methods": "GET, HEAD, POST, PUT, DELETE, OPTIONS, PATCH",
+          "Access-Control-Allow-Origin": "*",
+          "Content-Type": "application/json; charset=utf-8",
+          "Date": "Thu, 17 Jul 2025 09:22:31 GMT",
+          "Content-Length": "22"
+        },
+        "elapsed_ms": 71.372,
+        "timestamp": 1752744151.0661697,
+        "request_id": 0,
+        "content": {
+          "code": 200,
+          "data": {}
+        }
+      },
+      "method": "POST",
+      "url": "http://172.17.0.11:23210/v1/vector/collections/create",
+      "headers": {
+        "Content-Type": "application/json",
+        "Authorization": "Bearer root:Milvus",
+        "RequestId": "9086b84c-62ef-11f0-9355-0242ac110005"
+      },
+      "timestamp": 1752744150.9941192,
+      "request_id": 0,
+      "content": {
+        "collectionName": "test_collection_2025_07_17_17_22_29_993792fHShjvXE",
+        "dimension": 32,
+        "primaryField": "url",
+        "vectorField": "embedding",
+        "autoID": true,
+        "dbName": "prod"
+      }
+    },
+    {
+      "response": {
+        "status_code": 200,
+        "headers": {
+          "Access-Control-Allow-Credentials": "true",
+          "Access-Control-Allow-Headers": "Content-Type, Content-Length, Accept-Encoding, X-CSRF-Token, Authorization, accept, origin, Cache-Control, X-Requested-With",
+          "Access-Control-Allow-Methods": "GET, HEAD, POST, PUT, DELETE, OPTIONS, PATCH",
+          "Access-Control-Allow-Origin": "*",
+          "Content-Type": "application/json; charset=utf-8",
+          "Date": "Thu, 17 Jul 2025 09:22:31 GMT",
+          "Content-Length": "70"
+        },
+        "elapsed_ms": 4.9719999999999995,
+        "timestamp": 1752744151.0780902,
+        "request_id": 2,
+        "content": {
+          "code": 200,
+          "data": {
+            "insertCount": 1,
+            "insertIds": [
+              459470532653886649
+            ]
+          }
+        }
+      },
+      "method": "POST",
+      "url": "http://172.17.0.11:23210/v1/vector/insert",
+      "headers": {
+        "Content-Type": "application/json",
+        "Authorization": "Bearer root:Milvus",
+        "RequestId": "9092b339-62ef-11f0-9965-0242ac110005"
+      },
+      "timestamp": 1752744151.0725741,
+      "request_id": 2,
+      "content": {
+        "collectionName": "test_collection_2025_07_17_17_22_29_993792fHShjvXE",
+        "data": [
+          {
+            "embedding": "__FLOAT_ARRAY_DIM_32__",
+            "uid": 0,
+            "name": "Sherry Wright",
+            "address": "PSC 0829, Box 1487\nAPO AA 95065",
+            "text": "Thing worry reason. Hold watch husband employee standard outside. Others hit popular increase little.\nFree summer window hold alone stuff relate affect. Performance glass spring eight.",
+            "email": "justin94@example.com",
+            "phone_number": "(313)414-7210",
+            "array_int_dynamic": "__FLOAT_ARRAY_DIM_4__",
+            "array_varchar_dynamic": [
+              "Steven Suarez",
+              "Kyle Johnson",
+              "Lisa Maddox",
+              "Michelle Morgan"
+            ],
+            "json": {
+              "name": "Mark Woods",
+              "address": "5015 Miller Plaza Apt. 755\nSandovalmouth, ND 58378"
+            },
+            "key97950": "value24424",
+            "key32121": "value37648",
+            "key43099": "value56443",
+            "key5535": "value53173",
+            "key37556": "value87260",
+            "key8169": "value70622",
+            "key6775": "value13046"
+          }
+        ],
+        "dbName": "prod"
+      }
+    }
+  ]
+}

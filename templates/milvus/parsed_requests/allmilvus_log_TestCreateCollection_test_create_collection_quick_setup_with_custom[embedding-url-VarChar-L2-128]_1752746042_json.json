@@ -1,0 +1,140 @@
+{
+  "test_name": "allmilvus_log.TestCreateCollection_test_create_collection_quick_setup_with_custom[embedding-url-VarChar-L2-128]_1752746042.json",
+  "vdb_type": "qdrant",
+  "requests": [
+    {
+      "response": {
+        "status_code": 200,
+        "headers": {
+          "Access-Control-Allow-Credentials": "true",
+          "Access-Control-Allow-Headers": "Content-Type, Content-Length, Accept-Encoding, X-CSRF-Token, Authorization, accept, origin, Cache-Control, X-Requested-With",
+          "Access-Control-Allow-Methods": "GET, HEAD, POST, PUT, DELETE, OPTIONS, PATCH",
+          "Access-Control-Allow-Origin": "*",
+          "Content-Type": "application/json; charset=utf-8",
+          "Date": "Thu, 17 Jul 2025 09:54:02 GMT",
+          "Content-Length": "20"
+        },
+        "elapsed_ms": 22.835,
+        "timestamp": 1752746042.5551043,
+        "request_id": 0,
+        "content": {
+          "code": 0,
+          "data": {}
+        }
+      },
+      "method": "POST",
+      "url": "http://172.17.0.11:23210/v2/vectordb/collections/create",
+      "headers": {
+        "Content-Type": "application/json",
+        "Authorization": "Bearer None",
+        "RequestId": "f75ef23c-62f3-11f0-b9df-0242ac11000b",
+        "Request-Timeout": "120"
+      },
+      "timestamp": 1752746042.5313146,
+      "request_id": 0,
+      "content": {
+        "collectionName": "test_collection_2025_07_17_17_54_01_530039YaRYqhyr",
+        "dimension": 128,
+        "metricType": "L2",
+        "primaryFieldName": "url",
+        "vectorFieldName": "embedding",
+        "idType": "VarChar",
+        "params": {
+          "max_length": "256",
+          "consistencyLevel": "Strong"
+        }
+      }
+    },
+    {
+      "response": {
+        "status_code": 200,
+        "headers": {
+          "Access-Control-Allow-Credentials": "true",
+          "Access-Control-Allow-Headers": "Content-Type, Content-Length, Accept-Encoding, X-CSRF-Token, Authorization, accept, origin, Cache-Control, X-Requested-With",
+          "Access-Control-Allow-Methods": "GET, HEAD, POST, PUT, DELETE, OPTIONS, PATCH",
+          "Access-Control-Allow-Origin": "*",
+          "Content-Type": "application/json; charset=utf-8",
+          "Date": "Thu, 17 Jul 2025 09:54:02 GMT",
+          "Content-Length": "813"
+        },
+        "elapsed_ms": 3.162,
+        "timestamp": 1752746042.5597177,
+        "request_id": 1,
+        "content": {
+          "code": 0,
+          "data": {
+            "aliases": [],
+            "autoId": false,
+            "collectionID": 459470532655313314,
+            "collectionName": "test_collection_2025_07_17_17_54_01_530039YaRYqhyr",
+            "consistencyLevel": "Strong",
+            "description": "",
+            "enableDynamicField": true,
+            "fields": [
+              {
+                "autoId": false,
+                "clusteringKey": false,
+                "description": "",
+                "id": 100,
+                "name": "url",
+                "nullable": false,
+                "params": [
+                  {
+                    "key": "max_length",
+                    "value": "256"
+                  }
+                ],
+                "partitionKey": false,
+                "primaryKey": true,
+                "type": "VarChar"
+              },
+              {
+                "autoId": false,
+                "clusteringKey": false,
+                "description": "",
+                "id": 101,
+                "name": "embedding",
+                "nullable": false,
+                "params": [
+                  {
+                    "key": "dim",
+                    "value": "128"
+                  }
+                ],
+                "partitionKey": false,
+                "primaryKey": false,
+                "type": "FloatVector"
+              }
+            ],
+            "functions": [],
+            "indexes": [
+              {
+                "fieldName": "embedding",
+                "indexName": "embedding",
+                "metricType": "L2"
+              }
+            ],
+            "load": "LoadStateLoading",
+            "partitionsNum": 1,
+            "properties": [],
+            "shardsNum": 1
+          },
+          "message": ""
+        }
+      },
+      "method": "POST",
+      "url": "http://172.17.0.11:23210/v2/vectordb/collections/describe",
+      "headers": {
+        "Content-Type": "application/json",
+        "Authorization": "Bearer None",
+        "RequestId": "f75ef23c-62f3-11f0-b9df-0242ac11000b",
+        "Request-Timeout": "120"
+      },
+      "timestamp": 1752746042.5557783,
+      "request_id": 1,
+      "content": {
+        "collectionName": "test_collection_2025_07_17_17_54_01_530039YaRYqhyr"
+      }
+    }
+  ]
+}

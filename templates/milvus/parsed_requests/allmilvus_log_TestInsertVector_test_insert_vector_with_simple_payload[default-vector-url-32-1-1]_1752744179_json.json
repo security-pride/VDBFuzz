@@ -1,0 +1,111 @@
+{
+  "test_name": "allmilvus_log.TestInsertVector_test_insert_vector_with_simple_payload[default-vector-url-32-1-1]_1752744179.json",
+  "vdb_type": "qdrant",
+  "requests": [
+    {
+      "response": {
+        "status_code": 200,
+        "headers": {
+          "Access-Control-Allow-Credentials": "true",
+          "Access-Control-Allow-Headers": "Content-Type, Content-Length, Accept-Encoding, X-CSRF-Token, Authorization, accept, origin, Cache-Control, X-Requested-With",
+          "Access-Control-Allow-Methods": "GET, HEAD, POST, PUT, DELETE, OPTIONS, PATCH",
+          "Access-Control-Allow-Origin": "*",
+          "Content-Type": "application/json; charset=utf-8",
+          "Date": "Thu, 17 Jul 2025 09:22:59 GMT",
+          "Content-Length": "22"
+        },
+        "elapsed_ms": 18.522000000000002,
+        "timestamp": 1752744179.9474459,
+        "request_id": 0,
+        "content": {
+          "code": 200,
+          "data": {}
+        }
+      },
+      "method": "POST",
+      "url": "http://172.17.0.11:23210/v1/vector/collections/create",
+      "headers": {
+        "Content-Type": "application/json",
+        "Authorization": "Bearer root:Milvus",
+        "RequestId": "a1c5b6f9-62ef-11f0-b572-0242ac110005"
+      },
+      "timestamp": 1752744179.928232,
+      "request_id": 0,
+      "content": {
+        "collectionName": "test_collection_2025_07_17_17_22_58_927923kZdajmOw",
+        "dimension": 32,
+        "primaryField": "url",
+        "vectorField": "vector",
+        "autoID": true,
+        "dbName": "default"
+      }
+    },
+    {
+      "response": {
+        "status_code": 200,
+        "headers": {
+          "Access-Control-Allow-Credentials": "true",
+          "Access-Control-Allow-Headers": "Content-Type, Content-Length, Accept-Encoding, X-CSRF-Token, Authorization, accept, origin, Cache-Control, X-Requested-With",
+          "Access-Control-Allow-Methods": "GET, HEAD, POST, PUT, DELETE, OPTIONS, PATCH",
+          "Access-Control-Allow-Origin": "*",
+          "Content-Type": "application/json; charset=utf-8",
+          "Date": "Thu, 17 Jul 2025 09:22:59 GMT",
+          "Content-Length": "70"
+        },
+        "elapsed_ms": 4.825,
+        "timestamp": 1752744179.9591923,
+        "request_id": 2,
+        "content": {
+          "code": 200,
+          "data": {
+            "insertCount": 1,
+            "insertIds": [
+              459470532653888017
+            ]
+          }
+        }
+      },
+      "method": "POST",
+      "url": "http://172.17.0.11:23210/v1/vector/insert",
+      "headers": {
+        "Content-Type": "application/json",
+        "Authorization": "Bearer root:Milvus",
+        "RequestId": "a1c9a301-62ef-11f0-adf6-0242ac110005"
+      },
+      "timestamp": 1752744179.9538674,
+      "request_id": 2,
+      "content": {
+        "collectionName": "test_collection_2025_07_17_17_22_58_927923kZdajmOw",
+        "data": [
+          {
+            "vector": "__FLOAT_ARRAY_DIM_32__",
+            "uid": 0,
+            "name": "Melissa Thompson",
+            "address": "6930 William Stravenue Suite 842\nLake Shawnstad, FM 73947",
+            "text": "Evidence ahead free type political. Program light other spring. Democratic tend here out benefit letter character ahead.",
+            "email": "nhughes@example.net",
+            "phone_number": "+1-706-864-1766x48814",
+            "array_int_dynamic": "__FLOAT_ARRAY_DIM_7__",
+            "array_varchar_dynamic": [
+              "John Booker",
+              "Stephen Ford",
+              "Zoe Morgan",
+              "Samuel Rivas",
+              "Karen Landry",
+              "Matthew Maldonado"
+            ],
+            "json": {
+              "name": "Sharon Ross",
+              "address": "Unit 4696 Box 2764\nDPO AE 67333"
+            },
+            "key47480": "value19961",
+            "key6939": "value82702",
+            "key14970": "value93540",
+            "key84316": "value9221"
+          }
+        ],
+        "dbName": "default"
+      }
+    }
+  ]
+}

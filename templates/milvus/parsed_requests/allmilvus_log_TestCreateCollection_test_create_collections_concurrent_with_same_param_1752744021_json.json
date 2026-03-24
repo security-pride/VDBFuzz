@@ -1,0 +1,356 @@
+{
+  "test_name": "allmilvus_log.TestCreateCollection_test_create_collections_concurrent_with_same_param_1752744021.json",
+  "vdb_type": "qdrant",
+  "requests": [
+    {
+      "response": {
+        "status_code": 200,
+        "headers": {
+          "Access-Control-Allow-Credentials": "true",
+          "Access-Control-Allow-Headers": "Content-Type, Content-Length, Accept-Encoding, X-CSRF-Token, Authorization, accept, origin, Cache-Control, X-Requested-With",
+          "Access-Control-Allow-Methods": "GET, HEAD, POST, PUT, DELETE, OPTIONS, PATCH",
+          "Access-Control-Allow-Origin": "*",
+          "Content-Type": "application/json; charset=utf-8",
+          "Date": "Thu, 17 Jul 2025 09:20:11 GMT",
+          "Content-Length": "22"
+        },
+        "elapsed_ms": 476.74699999999996,
+        "timestamp": 1752744011.3007498,
+        "request_id": 0,
+        "content": {
+          "code": 200,
+          "data": {}
+        }
+      },
+      "method": "POST",
+      "url": "http://172.17.0.11:23210/v1/vector/collections/create",
+      "headers": {
+        "Content-Type": "application/json",
+        "Authorization": "Bearer root:Milvus",
+        "RequestId": "3cfa4980-62ef-11f0-9b94-0242ac110005"
+      },
+      "timestamp": 1752744010.823071,
+      "request_id": 0,
+      "content": {
+        "collectionName": "test_collection_2025_07_17_17_20_09_822388RRZOIJUK",
+        "dimension": 128,
+        "metricType": "L2"
+      }
+    },
+    {
+      "response": {
+        "status_code": 200,
+        "headers": {
+          "Access-Control-Allow-Credentials": "true",
+          "Access-Control-Allow-Headers": "Content-Type, Content-Length, Accept-Encoding, X-CSRF-Token, Authorization, accept, origin, Cache-Control, X-Requested-With",
+          "Access-Control-Allow-Methods": "GET, HEAD, POST, PUT, DELETE, OPTIONS, PATCH",
+          "Access-Control-Allow-Origin": "*",
+          "Content-Type": "application/json; charset=utf-8",
+          "Date": "Thu, 17 Jul 2025 09:20:11 GMT",
+          "Content-Length": "22"
+        },
+        "elapsed_ms": 476.19,
+        "timestamp": 1752744011.3011596,
+        "request_id": 1,
+        "content": {
+          "code": 200,
+          "data": {}
+        }
+      },
+      "method": "POST",
+      "url": "http://172.17.0.11:23210/v1/vector/collections/create",
+      "headers": {
+        "Content-Type": "application/json",
+        "Authorization": "Bearer root:Milvus",
+        "RequestId": "3cfa4fef-62ef-11f0-a369-0242ac110005"
+      },
+      "timestamp": 1752744010.8232367,
+      "request_id": 1,
+      "content": {
+        "collectionName": "test_collection_2025_07_17_17_20_09_822388RRZOIJUK",
+        "dimension": 128,
+        "metricType": "L2"
+      }
+    },
+    {
+      "response": {
+        "status_code": 200,
+        "headers": {
+          "Access-Control-Allow-Credentials": "true",
+          "Access-Control-Allow-Headers": "Content-Type, Content-Length, Accept-Encoding, X-CSRF-Token, Authorization, accept, origin, Cache-Control, X-Requested-With",
+          "Access-Control-Allow-Methods": "GET, HEAD, POST, PUT, DELETE, OPTIONS, PATCH",
+          "Access-Control-Allow-Origin": "*",
+          "Content-Type": "application/json; charset=utf-8",
+          "Date": "Thu, 17 Jul 2025 09:20:11 GMT",
+          "Content-Length": "22"
+        },
+        "elapsed_ms": 472.134,
+        "timestamp": 1752744011.2993083,
+        "request_id": 2,
+        "content": {
+          "code": 200,
+          "data": {}
+        }
+      },
+      "method": "POST",
+      "url": "http://172.17.0.11:23210/v1/vector/collections/create",
+      "headers": {
+        "Content-Type": "application/json",
+        "Authorization": "Bearer root:Milvus",
+        "RequestId": "3cfa63f0-62ef-11f0-9032-0242ac110005"
+      },
+      "timestamp": 1752744010.8244047,
+      "request_id": 2,
+      "content": {
+        "collectionName": "test_collection_2025_07_17_17_20_09_822388RRZOIJUK",
+        "dimension": 128,
+        "metricType": "L2"
+      }
+    },
+    {
+      "response": {
+        "status_code": 200,
+        "headers": {
+          "Access-Control-Allow-Credentials": "true",
+          "Access-Control-Allow-Headers": "Content-Type, Content-Length, Accept-Encoding, X-CSRF-Token, Authorization, accept, origin, Cache-Control, X-Requested-With",
+          "Access-Control-Allow-Methods": "GET, HEAD, POST, PUT, DELETE, OPTIONS, PATCH",
+          "Access-Control-Allow-Origin": "*",
+          "Content-Type": "application/json; charset=utf-8",
+          "Date": "Thu, 17 Jul 2025 09:20:11 GMT",
+          "Content-Length": "22"
+        },
+        "elapsed_ms": 473.558,
+        "timestamp": 1752744011.302744,
+        "request_id": 3,
+        "content": {
+          "code": 200,
+          "data": {}
+        }
+      },
+      "method": "POST",
+      "url": "http://172.17.0.11:23210/v1/vector/collections/create",
+      "headers": {
+        "Content-Type": "application/json",
+        "Authorization": "Bearer root:Milvus",
+        "RequestId": "3cfaaaa7-62ef-11f0-af2a-0242ac110005"
+      },
+      "timestamp": 1752744010.8254564,
+      "request_id": 3,
+      "content": {
+        "collectionName": "test_collection_2025_07_17_17_20_09_822388RRZOIJUK",
+        "dimension": 128,
+        "metricType": "L2"
+      }
+    },
+    {
+      "response": {
+        "status_code": 200,
+        "headers": {
+          "Access-Control-Allow-Credentials": "true",
+          "Access-Control-Allow-Headers": "Content-Type, Content-Length, Accept-Encoding, X-CSRF-Token, Authorization, accept, origin, Cache-Control, X-Requested-With",
+          "Access-Control-Allow-Methods": "GET, HEAD, POST, PUT, DELETE, OPTIONS, PATCH",
+          "Access-Control-Allow-Origin": "*",
+          "Content-Type": "application/json; charset=utf-8",
+          "Date": "Thu, 17 Jul 2025 09:20:10 GMT",
+          "Content-Length": "22"
+        },
+        "elapsed_ms": 18.0,
+        "timestamp": 1752744010.845765,
+        "request_id": 4,
+        "content": {
+          "code": 200,
+          "data": {}
+        }
+      },
+      "method": "POST",
+      "url": "http://172.17.0.11:23210/v1/vector/collections/create",
+      "headers": {
+        "Content-Type": "application/json",
+        "Authorization": "Bearer root:Milvus",
+        "RequestId": "3cfa8de8-62ef-11f0-b1c7-0242ac110005"
+      },
+      "timestamp": 1752744010.825704,
+      "request_id": 4,
+      "content": {
+        "collectionName": "test_collection_2025_07_17_17_20_09_822388RRZOIJUK",
+        "dimension": 128,
+        "metricType": "L2"
+      }
+    },
+    {
+      "response": {
+        "status_code": 200,
+        "headers": {
+          "Access-Control-Allow-Credentials": "true",
+          "Access-Control-Allow-Headers": "Content-Type, Content-Length, Accept-Encoding, X-CSRF-Token, Authorization, accept, origin, Cache-Control, X-Requested-With",
+          "Access-Control-Allow-Methods": "GET, HEAD, POST, PUT, DELETE, OPTIONS, PATCH",
+          "Access-Control-Allow-Origin": "*",
+          "Content-Type": "application/json; charset=utf-8",
+          "Date": "Thu, 17 Jul 2025 09:20:11 GMT",
+          "Content-Length": "22"
+        },
+        "elapsed_ms": 473.74699999999996,
+        "timestamp": 1752744011.3003001,
+        "request_id": 5,
+        "content": {
+          "code": 200,
+          "data": {}
+        }
+      },
+      "method": "POST",
+      "url": "http://172.17.0.11:23210/v1/vector/collections/create",
+      "headers": {
+        "Content-Type": "application/json",
+        "Authorization": "Bearer root:Milvus",
+        "RequestId": "3cfa86fb-62ef-11f0-be0f-0242ac110005"
+      },
+      "timestamp": 1752744010.8260407,
+      "request_id": 5,
+      "content": {
+        "collectionName": "test_collection_2025_07_17_17_20_09_822388RRZOIJUK",
+        "dimension": 128,
+        "metricType": "L2"
+      }
+    },
+    {
+      "response": {
+        "status_code": 200,
+        "headers": {
+          "Access-Control-Allow-Credentials": "true",
+          "Access-Control-Allow-Headers": "Content-Type, Content-Length, Accept-Encoding, X-CSRF-Token, Authorization, accept, origin, Cache-Control, X-Requested-With",
+          "Access-Control-Allow-Methods": "GET, HEAD, POST, PUT, DELETE, OPTIONS, PATCH",
+          "Access-Control-Allow-Origin": "*",
+          "Content-Type": "application/json; charset=utf-8",
+          "Date": "Thu, 17 Jul 2025 09:20:11 GMT",
+          "Content-Length": "22"
+        },
+        "elapsed_ms": 473.383,
+        "timestamp": 1752744011.30198,
+        "request_id": 6,
+        "content": {
+          "code": 200,
+          "data": {}
+        }
+      },
+      "method": "POST",
+      "url": "http://172.17.0.11:23210/v1/vector/collections/create",
+      "headers": {
+        "Content-Type": "application/json",
+        "Authorization": "Bearer root:Milvus",
+        "RequestId": "3cfa6739-62ef-11f0-aa7d-0242ac110005"
+      },
+      "timestamp": 1752744010.826731,
+      "request_id": 6,
+      "content": {
+        "collectionName": "test_collection_2025_07_17_17_20_09_822388RRZOIJUK",
+        "dimension": 128,
+        "metricType": "L2"
+      }
+    },
+    {
+      "response": {
+        "status_code": 200,
+        "headers": {
+          "Access-Control-Allow-Credentials": "true",
+          "Access-Control-Allow-Headers": "Content-Type, Content-Length, Accept-Encoding, X-CSRF-Token, Authorization, accept, origin, Cache-Control, X-Requested-With",
+          "Access-Control-Allow-Methods": "GET, HEAD, POST, PUT, DELETE, OPTIONS, PATCH",
+          "Access-Control-Allow-Origin": "*",
+          "Content-Type": "application/json; charset=utf-8",
+          "Date": "Thu, 17 Jul 2025 09:20:11 GMT",
+          "Content-Length": "22"
+        },
+        "elapsed_ms": 468.715,
+        "timestamp": 1752744011.2997625,
+        "request_id": 7,
+        "content": {
+          "code": 200,
+          "data": {}
+        }
+      },
+      "method": "POST",
+      "url": "http://172.17.0.11:23210/v1/vector/collections/create",
+      "headers": {
+        "Content-Type": "application/json",
+        "Authorization": "Bearer root:Milvus",
+        "RequestId": "3cfab727-62ef-11f0-86b2-0242ac110005"
+      },
+      "timestamp": 1752744010.8280716,
+      "request_id": 7,
+      "content": {
+        "collectionName": "test_collection_2025_07_17_17_20_09_822388RRZOIJUK",
+        "dimension": 128,
+        "metricType": "L2"
+      }
+    },
+    {
+      "response": {
+        "status_code": 200,
+        "headers": {
+          "Access-Control-Allow-Credentials": "true",
+          "Access-Control-Allow-Headers": "Content-Type, Content-Length, Accept-Encoding, X-CSRF-Token, Authorization, accept, origin, Cache-Control, X-Requested-With",
+          "Access-Control-Allow-Methods": "GET, HEAD, POST, PUT, DELETE, OPTIONS, PATCH",
+          "Access-Control-Allow-Origin": "*",
+          "Content-Type": "application/json; charset=utf-8",
+          "Date": "Thu, 17 Jul 2025 09:20:11 GMT",
+          "Content-Length": "22"
+        },
+        "elapsed_ms": 472.028,
+        "timestamp": 1752744011.3023555,
+        "request_id": 8,
+        "content": {
+          "code": 200,
+          "data": {}
+        }
+      },
+      "method": "POST",
+      "url": "http://172.17.0.11:23210/v1/vector/collections/create",
+      "headers": {
+        "Content-Type": "application/json",
+        "Authorization": "Bearer root:Milvus",
+        "RequestId": "3cfa53ae-62ef-11f0-968a-0242ac110005"
+      },
+      "timestamp": 1752744010.8281188,
+      "request_id": 8,
+      "content": {
+        "collectionName": "test_collection_2025_07_17_17_20_09_822388RRZOIJUK",
+        "dimension": 128,
+        "metricType": "L2"
+      }
+    },
+    {
+      "response": {
+        "status_code": 200,
+        "headers": {
+          "Access-Control-Allow-Credentials": "true",
+          "Access-Control-Allow-Headers": "Content-Type, Content-Length, Accept-Encoding, X-CSRF-Token, Authorization, accept, origin, Cache-Control, X-Requested-With",
+          "Access-Control-Allow-Methods": "GET, HEAD, POST, PUT, DELETE, OPTIONS, PATCH",
+          "Access-Control-Allow-Origin": "*",
+          "Content-Type": "application/json; charset=utf-8",
+          "Date": "Thu, 17 Jul 2025 09:20:11 GMT",
+          "Content-Length": "22"
+        },
+        "elapsed_ms": 469.417,
+        "timestamp": 1752744011.30155,
+        "request_id": 9,
+        "content": {
+          "code": 200,
+          "data": {}
+        }
+      },
+      "method": "POST",
+      "url": "http://172.17.0.11:23210/v1/vector/collections/create",
+      "headers": {
+        "Content-Type": "application/json",
+        "Authorization": "Bearer root:Milvus",
+        "RequestId": "3cfab312-62ef-11f0-bc37-0242ac110005"
+      },
+      "timestamp": 1752744010.830536,
+      "request_id": 9,
+      "content": {
+        "collectionName": "test_collection_2025_07_17_17_20_09_822388RRZOIJUK",
+        "dimension": 128,
+        "metricType": "L2"
+      }
+    }
+  ]
+}

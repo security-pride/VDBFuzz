@@ -1,0 +1,170 @@
+{
+  "test_name": "allmilvus_log.TestInsertVectorNegative_test_insert_vector_with_mismatch_dim_1752747397.json",
+  "vdb_type": "qdrant",
+  "requests": [
+    {
+      "response": {
+        "status_code": 200,
+        "headers": {
+          "Access-Control-Allow-Credentials": "true",
+          "Access-Control-Allow-Headers": "Content-Type, Content-Length, Accept-Encoding, X-CSRF-Token, Authorization, accept, origin, Cache-Control, X-Requested-With",
+          "Access-Control-Allow-Methods": "GET, HEAD, POST, PUT, DELETE, OPTIONS, PATCH",
+          "Access-Control-Allow-Origin": "*",
+          "Content-Type": "application/json; charset=utf-8",
+          "Date": "Thu, 17 Jul 2025 10:16:37 GMT",
+          "Content-Length": "20"
+        },
+        "elapsed_ms": 32.802,
+        "timestamp": 1752747397.5544257,
+        "request_id": 0,
+        "content": {
+          "code": 0,
+          "data": {}
+        }
+      },
+      "method": "POST",
+      "url": "http://172.17.0.11:23210/v2/vectordb/collections/create",
+      "headers": {
+        "Content-Type": "application/json",
+        "Authorization": "Bearer None",
+        "RequestId": "1f02126c-62f7-11f0-85c3-0242ac11000b",
+        "Request-Timeout": "120"
+      },
+      "timestamp": 1752747397.520971,
+      "request_id": 0,
+      "content": {
+        "collectionName": "test_collection_2025_07_17_18_16_36_519787gnKmgmJx",
+        "dimension": 32,
+        "params": {
+          "consistencyLevel": "Strong"
+        }
+      }
+    },
+    {
+      "response": {
+        "status_code": 200,
+        "headers": {
+          "Access-Control-Allow-Credentials": "true",
+          "Access-Control-Allow-Headers": "Content-Type, Content-Length, Accept-Encoding, X-CSRF-Token, Authorization, accept, origin, Cache-Control, X-Requested-With",
+          "Access-Control-Allow-Methods": "GET, HEAD, POST, PUT, DELETE, OPTIONS, PATCH",
+          "Access-Control-Allow-Origin": "*",
+          "Content-Type": "application/json; charset=utf-8",
+          "Date": "Thu, 17 Jul 2025 10:16:37 GMT",
+          "Content-Length": "758"
+        },
+        "elapsed_ms": 2.7520000000000002,
+        "timestamp": 1752747397.55835,
+        "request_id": 1,
+        "content": {
+          "code": 0,
+          "data": {
+            "aliases": [],
+            "autoId": false,
+            "collectionID": 459470532655537474,
+            "collectionName": "test_collection_2025_07_17_18_16_36_519787gnKmgmJx",
+            "consistencyLevel": "Strong",
+            "description": "",
+            "enableDynamicField": true,
+            "fields": [
+              {
+                "autoId": false,
+                "clusteringKey": false,
+                "description": "",
+                "id": 100,
+                "name": "id",
+                "nullable": false,
+                "partitionKey": false,
+                "primaryKey": true,
+                "type": "Int64"
+              },
+              {
+                "autoId": false,
+                "clusteringKey": false,
+                "description": "",
+                "id": 101,
+                "name": "vector",
+                "nullable": false,
+                "params": [
+                  {
+                    "key": "dim",
+                    "value": "32"
+                  }
+                ],
+                "partitionKey": false,
+                "primaryKey": false,
+                "type": "FloatVector"
+              }
+            ],
+            "functions": [],
+            "indexes": [
+              {
+                "fieldName": "vector",
+                "indexName": "vector",
+                "metricType": "COSINE"
+              }
+            ],
+            "load": "LoadStateLoading",
+            "partitionsNum": 1,
+            "properties": [],
+            "shardsNum": 1
+          },
+          "message": ""
+        }
+      },
+      "method": "POST",
+      "url": "http://172.17.0.11:23210/v2/vectordb/collections/describe",
+      "headers": {
+        "Content-Type": "application/json",
+        "Authorization": "Bearer None",
+        "RequestId": "1f02126c-62f7-11f0-85c3-0242ac11000b",
+        "Request-Timeout": "120"
+      },
+      "timestamp": 1752747397.5549583,
+      "request_id": 1,
+      "content": {
+        "collectionName": "test_collection_2025_07_17_18_16_36_519787gnKmgmJx"
+      }
+    },
+    {
+      "response": {
+        "status_code": 200,
+        "headers": {
+          "Access-Control-Allow-Credentials": "true",
+          "Access-Control-Allow-Headers": "Content-Type, Content-Length, Accept-Encoding, X-CSRF-Token, Authorization, accept, origin, Cache-Control, X-Requested-With",
+          "Access-Control-Allow-Methods": "GET, HEAD, POST, PUT, DELETE, OPTIONS, PATCH",
+          "Access-Control-Allow-Origin": "*",
+          "Content-Type": "application/json; charset=utf-8",
+          "Date": "Thu, 17 Jul 2025 10:16:37 GMT",
+          "Content-Length": "132"
+        },
+        "elapsed_ms": 1.441,
+        "timestamp": 1752747397.5609837,
+        "request_id": 2,
+        "content": {
+          "code": 1804,
+          "message": "fail to deal the insert data, error: []float32 size 33 doesn't equal to vector dimension 32 of FloatVector"
+        }
+      },
+      "method": "POST",
+      "url": "http://172.17.0.11:23210/v2/vectordb/entities/insert",
+      "headers": {
+        "Content-Type": "application/json",
+        "Authorization": "Bearer None",
+        "Accept-Type-Allow-Int64": "true",
+        "RequestId": "1f02126c-62f7-11f0-85c3-0242ac11000b",
+        "Request-Timeout": "120"
+      },
+      "timestamp": 1752747397.5589519,
+      "request_id": 2,
+      "content": {
+        "collectionName": "test_collection_2025_07_17_18_16_36_519787gnKmgmJx",
+        "data": [
+          {
+            "id": 0,
+            "vector": "__FLOAT_ARRAY_DIM_33__"
+          }
+        ]
+      }
+    }
+  ]
+}

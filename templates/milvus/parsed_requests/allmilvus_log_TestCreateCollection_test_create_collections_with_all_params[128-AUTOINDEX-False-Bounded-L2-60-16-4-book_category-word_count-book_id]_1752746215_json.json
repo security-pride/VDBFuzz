@@ -1,0 +1,348 @@
+{
+  "test_name": "allmilvus_log.TestCreateCollection_test_create_collections_with_all_params[128-AUTOINDEX-False-Bounded-L2-60-16-4-book_category-word_count-book_id]_1752746215.json",
+  "vdb_type": "qdrant",
+  "requests": [
+    {
+      "response": {
+        "status_code": 200,
+        "headers": {
+          "Access-Control-Allow-Credentials": "true",
+          "Access-Control-Allow-Headers": "Content-Type, Content-Length, Accept-Encoding, X-CSRF-Token, Authorization, accept, origin, Cache-Control, X-Requested-With",
+          "Access-Control-Allow-Methods": "GET, HEAD, POST, PUT, DELETE, OPTIONS, PATCH",
+          "Access-Control-Allow-Origin": "*",
+          "Content-Type": "application/json; charset=utf-8",
+          "Date": "Thu, 17 Jul 2025 09:56:55 GMT",
+          "Content-Length": "20"
+        },
+        "elapsed_ms": 299.65799999999996,
+        "timestamp": 1752746215.2877252,
+        "request_id": 0,
+        "content": {
+          "code": 0,
+          "data": {}
+        }
+      },
+      "method": "POST",
+      "url": "http://172.17.0.11:23210/v2/vectordb/collections/create",
+      "headers": {
+        "Content-Type": "application/json",
+        "Authorization": "Bearer None",
+        "RequestId": "5e296bd2-62f4-11f0-b9df-0242ac11000b",
+        "Request-Timeout": "120"
+      },
+      "timestamp": 1752746214.9867682,
+      "request_id": 0,
+      "content": {
+        "collectionName": "test_collection_2025_07_17_17_56_53_985243JQhiVfHg",
+        "params": {
+          "shardsNum": "4",
+          "partitionsNum": "16",
+          "consistencyLevel": "Bounded",
+          "ttlSeconds": "60"
+        },
+        "schema": {
+          "enableDynamicField": false,
+          "fields": [
+            {
+              "fieldName": "user_id",
+              "dataType": "Int64",
+              "elementTypeParams": {}
+            },
+            {
+              "fieldName": "book_id",
+              "dataType": "Int64",
+              "isPrimary": true,
+              "elementTypeParams": {}
+            },
+            {
+              "fieldName": "word_count",
+              "dataType": "Int64",
+              "isPartitionKey": true,
+              "isClusteringKey": false,
+              "elementTypeParams": {}
+            },
+            {
+              "fieldName": "book_category",
+              "dataType": "Int64",
+              "isPartitionKey": false,
+              "isClusteringKey": true,
+              "elementTypeParams": {}
+            },
+            {
+              "fieldName": "book_describe",
+              "dataType": "VarChar",
+              "elementTypeParams": {
+                "max_length": "256"
+              }
+            },
+            {
+              "fieldName": "document_content",
+              "dataType": "VarChar",
+              "elementTypeParams": {
+                "max_length": "1000",
+                "enable_analyzer": true,
+                "analyzer_params": {
+                  "tokenizer": "standard"
+                },
+                "enable_match": true
+              }
+            },
+            {
+              "fieldName": "json",
+              "dataType": "JSON",
+              "elementTypeParams": {}
+            },
+            {
+              "fieldName": "int_array",
+              "dataType": "Array",
+              "elementDataType": "Int64",
+              "elementTypeParams": {
+                "max_capacity": "1024"
+              }
+            },
+            {
+              "fieldName": "book_intro",
+              "dataType": "FloatVector",
+              "elementTypeParams": {
+                "dim": "128"
+              }
+            },
+            {
+              "fieldName": "sparse_vector",
+              "dataType": "SparseFloatVector"
+            }
+          ],
+          "functions": [
+            {
+              "name": "bm25_fn",
+              "type": "BM25",
+              "inputFieldNames": [
+                "document_content"
+              ],
+              "outputFieldNames": [
+                "sparse_vector"
+              ],
+              "params": {}
+            }
+          ]
+        },
+        "indexParams": [
+          {
+            "fieldName": "book_intro",
+            "indexName": "book_intro_vector",
+            "metricType": "L2",
+            "indexType": "AUTOINDEX",
+            "params": {}
+          },
+          {
+            "fieldName": "sparse_vector",
+            "indexName": "sparse_vector_index",
+            "metricType": "BM25",
+            "indexType": "SPARSE_INVERTED_INDEX",
+            "params": {
+              "bm25_k1": 0.5,
+              "bm25_b": 0.5
+            }
+          }
+        ]
+      }
+    },
+    {
+      "response": {
+        "status_code": 200,
+        "headers": {
+          "Access-Control-Allow-Credentials": "true",
+          "Access-Control-Allow-Headers": "Content-Type, Content-Length, Accept-Encoding, X-CSRF-Token, Authorization, accept, origin, Cache-Control, X-Requested-With",
+          "Access-Control-Allow-Methods": "GET, HEAD, POST, PUT, DELETE, OPTIONS, PATCH",
+          "Access-Control-Allow-Origin": "*",
+          "Content-Type": "application/json; charset=utf-8",
+          "Date": "Thu, 17 Jul 2025 09:56:55 GMT",
+          "Transfer-Encoding": "chunked"
+        },
+        "elapsed_ms": 2.2920000000000003,
+        "timestamp": 1752746215.2918189,
+        "request_id": 1,
+        "content": {
+          "code": 0,
+          "data": [
+            "Test_collection_2025_07_17_15_27_37_440411scvrptgi",
+            "test_collection_2025_07_17_17_19_35_473224QvvwddaN",
+            "test_collection_2025_07_17_17_20_03_586749hiciCJPX",
+            "test_collection_2025_07_17_17_20_05_660781sDbWdSCv",
+            "test_collection_2025_07_17_15_23_47_262993QBSHHFCE",
+            "test_collection_2025_07_17_17_19_54_264605BltyIYuU",
+            "test_collection_2025_07_17_17_20_07_743542ggBEWcHw",
+            "test_collection_2025_07_17_17_23_32_499955NIBKGdXn",
+            "test_collection_2025_07_17_17_17_19_878043UhgFdJHR",
+            "test_collection_2025_07_17_17_23_58_392508BpCyLbMu",
+            "test_collection_2025_07_17_17_19_41_701971sssjmXWD",
+            "test_collection_2025_07_17_15_23_37_910686jHCGwKxN",
+            "test_collection_2025_07_17_15_23_44_108686OLyJouuw",
+            "test_collection_2025_07_17_17_23_15_783350VPObBDGN",
+            "test_collection_2025_07_17_17_17_26_773377SzoHtdYH",
+            "test_collection_2025_07_17_17_17_15_581328WoFBSnrj",
+            "test_collection_2025_07_17_17_19_55_298896FWCNaITo",
+            "test_collection_2025_07_17_17_22_45_713937MVfOiivb",
+            "test_collection_2025_07_17_17_23_25_273651lbikbfrH",
+            "test_collection_2025_07_17_17_23_35_672541qxsZYpMv",
+            "test_collection_2025_07_17_17_17_24_004255DxrXmYOR",
+            "test_collection_2025_07_17_17_22_48_621231sEaBffPs",
+            "test_collection_2025_07_17_17_23_14_175023kmBnywSI",
+            "test_collection_2025_07_17_15_27_37_440411ScvRPtgi",
+            "test_collection_2025_07_17_17_19_39_620897FLcwKlQh",
+            "test_collection_2025_07_17_17_22_59_969660BfUHIyqM",
+            "test_collection_2025_07_17_17_23_06_124148AVujeQKw",
+            "Test_collection_2025_07_17_15_23_35_823575aupleqwt",
+            "test_collection_2025_07_17_17_20_21_322167ciWVKMKi",
+            "test_collection_2025_07_17_17_22_42_356647cXYhKKBP",
+            "test_collection_2025_07_17_17_23_09_930317lVjmBZYn",
+            "test_collection_2025_07_17_17_19_34_437932WFWgaZfz",
+            "test_collection_2025_07_17_17_17_30_871309rsoLPTGN",
+            "test_collection_2025_07_17_17_23_08_676552gnywgoUA",
+            "test_collection_2025_07_17_15_27_37_440411ScvRPtgiClass",
+            "test_collection_2025_07_17_17_19_45_873972IMTKKlKz",
+            "test_collection_2025_07_17_15_24_07_022945fMJUfNVT",
+            "test_collection_2025_07_17_17_17_17_825159toJxQJcq",
+            "test_collection_2025_07_17_17_19_57_369971LGAMLVzK",
+            "test_collection_2025_07_17_17_22_44_506585uFfTOBIR",
+            "test_collection_2025_07_17_17_23_02_883274nixaUvuF",
+            "test_collection_2025_07_17_15_23_49_360357zEQEZQJp",
+            "test_collection_2025_07_17_17_22_50_802708xxnglfTy",
+            "test_collection_2025_07_17_17_22_58_927923kZdajmOw",
+            "test_collection_2025_07_17_17_17_20_916610gjaKfjUS",
+            "test_collection_2025_07_17_17_19_40_657243dBmKvuUS",
+            "test_collection_2025_07_17_17_19_46_927461bezCEJMQ",
+            "test_collection_2025_07_17_17_23_17_123815ZiMdNQSX",
+            "test_collection_2025_07_17_17_23_26_368356WTSuncTf",
+            "NonExistentClass",
+            "test_collection_2025_07_17_15_23_50_396358PGhgwblp",
+            "Testtest_collection_2025_07_17_15_24_24_649761ZjScvdKI",
+            "test_collection_2025_07_17_17_17_15_654858BUiIHmiU",
+            "test_collection_2025_07_17_17_17_25_802625XUfEoiEh",
+            "test_collection_2025_07_17_17_19_58_410895FtkwMmCD",
+            "test_collection_2025_07_17_15_23_53_514193CyozLQNb",
+            "test_collection_2025_07_17_17_17_15_610671PbJXiBrF",
+            "test_collection_2025_07_17_17_17_15_678004pyREebDu",
+            "test_collection_2025_07_17_17_17_16_795139opZfFDzs",
+            "test_collection_2025_07_17_17_20_00_480820pqcLkjNk",
+            "test_collection_2025_07_17_17_23_20_365252olqwWzKO",
+            "test_collection_2025_07_17_17_19_49_012253YNUgLNVU",
+            "test_collection_2025_07_17_17_20_32_364591AeRVoeDe",
+            "test_collection_2025_07_17_17_19_44_812841DunLmJNO",
+            "test_collection_2025_07_17_15_24_11_175416XosHLEdz",
+            "test_collection_2025_07_17_17_23_05_072715YpNvNBld",
+            "test_collection_2025_07_17_15_24_03_903710zdSUvroA",
+            "test_collection_2025_07_17_17_22_43_423484mCCgfQiN",
+            "test_collection_2025_07_17_17_23_19_309471RpVHVQMs",
+            "test_collection_2025_07_17_17_19_56_336434hIpBBqFz",
+            "test_collection_2025_07_17_17_19_47_975918OKJxRQcV",
+            "test_collection_2025_07_17_17_19_59_445699hVKiidrS",
+            "test_collection_2025_07_17_15_24_05_988265SeFDVnQT",
+            "test_collection_2025_07_17_17_22_47_301352DogZUnDe",
+            "test_collection_2025_07_17_17_23_27_420601ueNUweLH",
+            "test_collection_2025_07_17_17_23_57_057923IBgxFtAX",
+            "test_collection_2025_07_17_17_17_15_557159zCEITuHZ",
+            "test_collection_2025_07_17_17_23_13_132368TmpzGyjH",
+            "test_collection_2025_07_17_17_22_55_682779UMJxbCzP",
+            "Testtest_collection_2025_07_17_15_27_37_440411ScvRPtgi",
+            "test_collection_2025_07_17_17_17_21_946399jTpybDOT",
+            "test_collection_2025_07_17_15_35_18_520934NLgyEQRn",
+            "test_collection_2025_07_17_17_19_53_229287ioYrRRWm",
+            "test_collection_2025_07_17_17_22_56_795420XFokPOIG",
+            "test_collection_2025_07_17_17_20_09_822388RRZOIJUK",
+            "test_collection_2025_07_17_17_22_38_501153ONZaZzUv",
+            "test_collection_2025_07_17_17_22_49_729737JQpsdlex",
+            "test_collection_2025_07_17_17_23_01_565257KfNJvyOM",
+            "test_collection_2025_07_17_15_24_24_649761ZjScvdKIs",
+            "test_collection_2025_07_17_17_17_18_851467TeyWnmNj",
+            "test_collection_2025_07_17_17_23_31_390218zbNckKsF",
+            "test_collection_2025_07_17_17_20_01_516188AvjIeFux",
+            "test_collection_2025_07_17_17_17_15_702379CLAjLIKj",
+            "test_collection_2025_07_17_15_23_43_074872tMEKPOXS",
+            "test_collection_2025_07_17_17_22_52_906772ZrPxLgqT",
+            "test_collection_2025_07_17_17_16_04_537889mdmjpgvT",
+            "test_collection_2025_07_17_17_19_33_400833ycuAOAdx",
+            "test_collection_2025_07_17_17_19_50_117474xJJHkYka",
+            "test_collection_2025_07_17_15_23_48_324612dyEdAhCt",
+            "test_collection_2025_07_17_17_17_44_176106wAiIwJFc",
+            "test_collection_2025_07_17_17_19_32_364057VmJAaAJs",
+            "test_collection_2025_07_17_15_24_10_136640RIBEQHEX",
+            "test_collection_2025_07_17_17_23_11_021213aEZaKtIC",
+            "test_collection_2025_07_17_17_23_12_082304bILqTvse",
+            "test_collection_2025_07_17_17_17_15_633275zqBCKdrD",
+            "test_collection_2025_07_17_17_19_42_740635wrKDAkWl",
+            "test_collection_2025_07_17_17_20_08_782896mPhdtQNy",
+            "test_collection_2025_07_17_17_23_03_990501gQdzEqsC",
+            "test_collection_2025_07_17_17_23_07_170917DLaMeQIz",
+            "test_collection_2025_07_17_17_23_21_408923oxaiNDYg",
+            "test_collection_2025_07_17_17_23_34_626024HcJZexUL",
+            "test_collection_2025_07_17_17_22_57_877139MBoEnkGA",
+            "test_collection_2025_07_17_15_23_42_042430VLxUleHf",
+            "test_collection_2025_07_17_17_23_33_568147WnSrnbhV",
+            "test_collection_2025_07_17_17_18_11_777965RMoQLuLg",
+            "test_collection_2025_07_17_17_19_36_511601IAjAclCY",
+            "test_collection_2025_07_17_17_19_37_545787NrmWFVoD",
+            "test_collection_2025_07_17_15_23_36_865054CCHJLHbY",
+            "test_collection_2025_07_17_15_24_04_937929mazXhSWT",
+            "test_collection_2025_07_17_15_24_24_649761ZjScvdKIClass",
+            "test_collection_2025_07_17_17_17_22_973268CuKDKKyJ",
+            "test_collection_2025_07_17_17_17_24_531720ByxdqyyL",
+            "test_collection_2025_07_17_17_17_25_060439rSvMkCGw",
+            "test_collection_2025_07_17_15_23_52_468483lGVQFhXS",
+            "test_collection_2025_07_17_15_24_12_213017gcavPWeT",
+            "test_collection_2025_07_17_17_23_18_232822zbXHsxNb",
+            "test_collection_2025_07_17_15_23_35_823575aupLEqWT",
+            "test_collection_2025_07_17_17_19_52_191876RKbQMvSN",
+            "test_collection_2025_07_17_15_23_38_942827skPFQwFe",
+            "test_collection_2025_07_17_17_22_39_995246QFxpUaeH",
+            "test_collection_2025_07_17_17_22_51_852398rOlZfgzG",
+            "test_collection_2025_07_17_17_56_53_985243JQhiVfHg",
+            "test_collection_2025_07_17_17_19_51_157573nOSaupSp",
+            "test_collection_2025_07_17_15_23_35_823575aupLEqWTs",
+            "test_collection_2025_07_17_17_17_55_477524mOjawodx",
+            "test_collection_2025_07_17_17_19_38_585854wTWmyGKU",
+            "test_collection_2025_07_17_17_17_15_743944daMlhuOX",
+            "test_collection_2025_07_17_17_20_06_708697nErpeGpP",
+            "test_collection_2025_07_17_15_24_24_649761ZjScvdKI",
+            "test_collection_2025_07_17_15_24_09_100019nvhiIVWL",
+            "test_collection_2025_07_17_17_17_32_824883GqCchHbE",
+            "test_collection_2025_07_17_15_23_41_008685vgmzFpeU",
+            "test_collection_2025_07_17_17_20_02_552131IdgfmvOP",
+            "test_collection_2025_07_17_17_20_04_624427fWBmOnyk",
+            "test_collection_2025_07_17_15_23_45_177659LswNemSq",
+            "test_collection_2025_07_17_15_23_51_433823GlhEPGHL",
+            "test_collection_2025_07_17_17_23_22_918158jVsgKEQk",
+            "test_collection_2025_07_17_15_27_37_440411ScvRPtgis",
+            "test_collection_2025_07_17_15_24_13_281491rHReAMhI",
+            "test_collection_2025_07_17_17_23_24_179206odnjerhM",
+            "test_collection_2025_07_17_17_23_30_073061wOpNnPKz",
+            "test_collection_2025_07_17_17_53_02_809776hqfVVJzI",
+            "Test_collection_2025_07_17_15_24_24_649761zjscvdki",
+            "test_collection_2025_07_17_17_17_28_924109oPnbNUFo",
+            "test_collection_2025_07_17_15_23_39_976542NqaJWoIp",
+            "test_collection_2025_07_17_17_22_41_264840ahpMFXkL",
+            "test_collection_2025_07_17_17_23_59_464583qHgiJHZl",
+            "test_collection_2025_07_17_17_19_43_778572mwpLKuZH",
+            "test_collection_2025_07_17_15_23_46_212085MriFiuSQ",
+            "test_collection_2025_07_17_17_23_55_869975dnIXnMUi",
+            "test_collection_2025_07_17_17_22_54_408088kLvnDbRx",
+            "test_collection_2025_07_17_17_17_15_766714EUUkMHAr",
+            "test_collection_2025_07_17_17_23_28_466539PEpORUdD",
+            "test_collection_2025_07_17_15_24_35_689798tyAOBPAe"
+          ]
+        }
+      },
+      "method": "POST",
+      "url": "http://172.17.0.11:23210/v2/vectordb/collections/list",
+      "headers": {
+        "Content-Type": "application/json",
+        "Authorization": "Bearer None",
+        "RequestId": "5e296bd2-62f4-11f0-b9df-0242ac11000b",
+        "Request-Timeout": "120"
+      },
+      "timestamp": 1752746215.2887013,
+      "request_id": 1,
+      "content": "null"
+    }
+  ]
+}

@@ -1,0 +1,193 @@
+{
+  "test_name": "allmilvus_log.TestInsertVector_test_insert_vector_with_simple_payload[prod-vector-id-128-1-2]_1752744113.json",
+  "vdb_type": "qdrant",
+  "requests": [
+    {
+      "response": {
+        "status_code": 200,
+        "headers": {
+          "Access-Control-Allow-Credentials": "true",
+          "Access-Control-Allow-Headers": "Content-Type, Content-Length, Accept-Encoding, X-CSRF-Token, Authorization, accept, origin, Cache-Control, X-Requested-With",
+          "Access-Control-Allow-Methods": "GET, HEAD, POST, PUT, DELETE, OPTIONS, PATCH",
+          "Access-Control-Allow-Origin": "*",
+          "Content-Type": "application/json; charset=utf-8",
+          "Date": "Thu, 17 Jul 2025 09:21:53 GMT",
+          "Content-Length": "22"
+        },
+        "elapsed_ms": 19.289,
+        "timestamp": 1752744113.6403153,
+        "request_id": 0,
+        "content": {
+          "code": 200,
+          "data": {}
+        }
+      },
+      "method": "POST",
+      "url": "http://172.17.0.11:23210/v1/vector/collections/create",
+      "headers": {
+        "Content-Type": "application/json",
+        "Authorization": "Bearer root:Milvus",
+        "RequestId": "7a3ff50d-62ef-11f0-917b-0242ac110005"
+      },
+      "timestamp": 1752744113.6204717,
+      "request_id": 0,
+      "content": {
+        "collectionName": "test_collection_2025_07_17_17_21_52_620187TUZNWAAq",
+        "dimension": 128,
+        "primaryField": "id",
+        "vectorField": "vector",
+        "autoID": true,
+        "dbName": "prod"
+      }
+    },
+    {
+      "response": {
+        "status_code": 200,
+        "headers": {
+          "Access-Control-Allow-Credentials": "true",
+          "Access-Control-Allow-Headers": "Content-Type, Content-Length, Accept-Encoding, X-CSRF-Token, Authorization, accept, origin, Cache-Control, X-Requested-With",
+          "Access-Control-Allow-Methods": "GET, HEAD, POST, PUT, DELETE, OPTIONS, PATCH",
+          "Access-Control-Allow-Origin": "*",
+          "Content-Type": "application/json; charset=utf-8",
+          "Date": "Thu, 17 Jul 2025 09:21:53 GMT",
+          "Content-Length": "70"
+        },
+        "elapsed_ms": 5.224,
+        "timestamp": 1752744113.6528978,
+        "request_id": 2,
+        "content": {
+          "code": 200,
+          "data": {
+            "insertCount": 1,
+            "insertIds": [
+              459470532653884935
+            ]
+          }
+        }
+      },
+      "method": "POST",
+      "url": "http://172.17.0.11:23210/v1/vector/insert",
+      "headers": {
+        "Content-Type": "application/json",
+        "Authorization": "Bearer root:Milvus",
+        "RequestId": "7a44038d-62ef-11f0-b0f6-0242ac110005"
+      },
+      "timestamp": 1752744113.6470969,
+      "request_id": 2,
+      "content": {
+        "collectionName": "test_collection_2025_07_17_17_21_52_620187TUZNWAAq",
+        "data": [
+          {
+            "vector": "__FLOAT_ARRAY_DIM_128__",
+            "uid": 0,
+            "name": "Kayla Mosley",
+            "address": "81086 Smith Loaf\nEast Dawnhaven, MS 50522",
+            "text": "Practice imagine ask of executive child. College of glass.\nLine run half cultural. Send community great small.\nNearly control current newspaper should.",
+            "email": "smithbrett@example.net",
+            "phone_number": "(780)934-5494",
+            "array_int_dynamic": "__FLOAT_ARRAY_DIM_3__",
+            "array_varchar_dynamic": [
+              "Meagan Stevenson",
+              "Kathy Davis",
+              "Jacob Hansen",
+              "Norman Mcgrath",
+              "Alan Garcia",
+              "Aaron Marquez",
+              "Dr. Brian Hodge",
+              "Ms. Sherry Carr",
+              "Mr. Jason Garcia DDS"
+            ],
+            "json": {
+              "name": "Kimberly Harris",
+              "address": "PSC 9283, Box 9161\nAPO AE 23006"
+            },
+            "key20168": "value24446",
+            "key52725": "value35931",
+            "key82355": "value62869",
+            "key50049": "value11703",
+            "key88510": "value78465",
+            "key75158": "value87912",
+            "key10060": "value11325",
+            "key21980": "value36980",
+            "key73857": "value38795"
+          }
+        ],
+        "dbName": "prod"
+      }
+    },
+    {
+      "response": {
+        "status_code": 200,
+        "headers": {
+          "Access-Control-Allow-Credentials": "true",
+          "Access-Control-Allow-Headers": "Content-Type, Content-Length, Accept-Encoding, X-CSRF-Token, Authorization, accept, origin, Cache-Control, X-Requested-With",
+          "Access-Control-Allow-Methods": "GET, HEAD, POST, PUT, DELETE, OPTIONS, PATCH",
+          "Access-Control-Allow-Origin": "*",
+          "Content-Type": "application/json; charset=utf-8",
+          "Date": "Thu, 17 Jul 2025 09:21:53 GMT",
+          "Content-Length": "70"
+        },
+        "elapsed_ms": 2.5509999999999997,
+        "timestamp": 1752744113.6593328,
+        "request_id": 3,
+        "content": {
+          "code": 200,
+          "data": {
+            "insertCount": 1,
+            "insertIds": [
+              459470532653884937
+            ]
+          }
+        }
+      },
+      "method": "POST",
+      "url": "http://172.17.0.11:23210/v1/vector/insert",
+      "headers": {
+        "Content-Type": "application/json",
+        "Authorization": "Bearer root:Milvus",
+        "RequestId": "7a4566af-62ef-11f0-b3b3-0242ac110005"
+      },
+      "timestamp": 1752744113.6562,
+      "request_id": 3,
+      "content": {
+        "collectionName": "test_collection_2025_07_17_17_21_52_620187TUZNWAAq",
+        "data": [
+          {
+            "vector": "__FLOAT_ARRAY_DIM_128__",
+            "uid": 0,
+            "name": "Gregory Herman",
+            "address": "PSC 4998, Box 0285\nAPO AE 53284",
+            "text": "Third show story include price. Election trip hit black. Save protect raise benefit.\nLikely firm after ago. Possible move school hold money live senior financial.",
+            "email": "bmyers@example.org",
+            "phone_number": "662-924-3672x1696",
+            "array_int_dynamic": "__FLOAT_ARRAY_DIM_6__",
+            "array_varchar_dynamic": [
+              "Eric Stone",
+              "Stephanie Leblanc",
+              "Stephen Russell",
+              "Carrie Butler",
+              "Katherine Robinson",
+              "Nicholas Espinoza",
+              "Paul Rose"
+            ],
+            "json": {
+              "name": "James Hernandez",
+              "address": "5187 Nicole Turnpike\nWest Jeremyville, VA 67692"
+            },
+            "key56133": "value26734",
+            "key82173": "value27185",
+            "key68234": "value37512",
+            "key25825": "value4798",
+            "key94149": "value35688",
+            "key72655": "value83782",
+            "key67573": "value93649",
+            "key78485": "value16569",
+            "key59000": "value3119",
+            "key35921": "value68735"
+          }
+        ],
+        "dbName": "prod"
+      }
+    }
+  ]
+}

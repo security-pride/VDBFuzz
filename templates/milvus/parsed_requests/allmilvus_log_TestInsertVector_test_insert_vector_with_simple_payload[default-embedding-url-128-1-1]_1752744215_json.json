@@ -1,0 +1,118 @@
+{
+  "test_name": "allmilvus_log.TestInsertVector_test_insert_vector_with_simple_payload[default-embedding-url-128-1-1]_1752744215.json",
+  "vdb_type": "qdrant",
+  "requests": [
+    {
+      "response": {
+        "status_code": 200,
+        "headers": {
+          "Access-Control-Allow-Credentials": "true",
+          "Access-Control-Allow-Headers": "Content-Type, Content-Length, Accept-Encoding, X-CSRF-Token, Authorization, accept, origin, Cache-Control, X-Requested-With",
+          "Access-Control-Allow-Methods": "GET, HEAD, POST, PUT, DELETE, OPTIONS, PATCH",
+          "Access-Control-Allow-Origin": "*",
+          "Content-Type": "application/json; charset=utf-8",
+          "Date": "Thu, 17 Jul 2025 09:23:35 GMT",
+          "Content-Length": "22"
+        },
+        "elapsed_ms": 23.336,
+        "timestamp": 1752744215.650315,
+        "request_id": 0,
+        "content": {
+          "code": 200,
+          "data": {}
+        }
+      },
+      "method": "POST",
+      "url": "http://172.17.0.11:23210/v1/vector/collections/create",
+      "headers": {
+        "Content-Type": "application/json",
+        "Authorization": "Bearer root:Milvus",
+        "RequestId": "b70cd002-62ef-11f0-b39e-0242ac110005"
+      },
+      "timestamp": 1752744215.6263297,
+      "request_id": 0,
+      "content": {
+        "collectionName": "test_collection_2025_07_17_17_23_34_626024HcJZexUL",
+        "dimension": 128,
+        "primaryField": "url",
+        "vectorField": "embedding",
+        "autoID": true,
+        "dbName": "default"
+      }
+    },
+    {
+      "response": {
+        "status_code": 200,
+        "headers": {
+          "Access-Control-Allow-Credentials": "true",
+          "Access-Control-Allow-Headers": "Content-Type, Content-Length, Accept-Encoding, X-CSRF-Token, Authorization, accept, origin, Cache-Control, X-Requested-With",
+          "Access-Control-Allow-Methods": "GET, HEAD, POST, PUT, DELETE, OPTIONS, PATCH",
+          "Access-Control-Allow-Origin": "*",
+          "Content-Type": "application/json; charset=utf-8",
+          "Date": "Thu, 17 Jul 2025 09:23:35 GMT",
+          "Content-Length": "70"
+        },
+        "elapsed_ms": 4.801,
+        "timestamp": 1752744215.6630223,
+        "request_id": 2,
+        "content": {
+          "code": 200,
+          "data": {
+            "insertCount": 1,
+            "insertIds": [
+              459470532653889727
+            ]
+          }
+        }
+      },
+      "method": "POST",
+      "url": "http://172.17.0.11:23210/v1/vector/insert",
+      "headers": {
+        "Content-Type": "application/json",
+        "Authorization": "Bearer root:Milvus",
+        "RequestId": "b71190cb-62ef-11f0-a249-0242ac110005"
+      },
+      "timestamp": 1752744215.6575017,
+      "request_id": 2,
+      "content": {
+        "collectionName": "test_collection_2025_07_17_17_23_34_626024HcJZexUL",
+        "data": [
+          {
+            "embedding": "__FLOAT_ARRAY_DIM_128__",
+            "uid": 0,
+            "name": "Kimberly James",
+            "address": "80673 Christina Inlet Suite 403\nThomasville, LA 98300",
+            "text": "War street if herself maybe play. Ability model create six cup not guy think.\nFocus investment language memory environmental term. Dark where mission old late. Glass audience surface.",
+            "email": "juliewebb@example.com",
+            "phone_number": "(341)743-4525x4609",
+            "array_int_dynamic": "__FLOAT_ARRAY_DIM_5__",
+            "array_varchar_dynamic": [
+              "Kathryn James",
+              "Matthew Vega",
+              "Lisa Clements",
+              "Cynthia Meyer",
+              "Jacob Perry",
+              "Emily Boyd",
+              "David Rivers"
+            ],
+            "json": {
+              "name": "Kaylee Rojas",
+              "address": "26467 Carlson Camp Apt. 998\nNorth Abigailville, WI 58315"
+            },
+            "key3019": "value83517",
+            "key25107": "value79656",
+            "key50256": "value9791",
+            "key23661": "value78080",
+            "key88164": "value41794",
+            "key46040": "value20144",
+            "key94335": "value26846",
+            "key25582": "value85237",
+            "key99155": "value50545",
+            "key16058": "value20968"
+          }
+        ],
+        "dbName": "default"
+      }
+    }
+  ]
+}

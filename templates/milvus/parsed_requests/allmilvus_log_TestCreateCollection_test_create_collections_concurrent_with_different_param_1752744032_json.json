@@ -1,0 +1,356 @@
+{
+  "test_name": "allmilvus_log.TestCreateCollection_test_create_collections_concurrent_with_different_param_1752744032.json",
+  "vdb_type": "qdrant",
+  "requests": [
+    {
+      "response": {
+        "status_code": 200,
+        "headers": {
+          "Access-Control-Allow-Credentials": "true",
+          "Access-Control-Allow-Headers": "Content-Type, Content-Length, Accept-Encoding, X-CSRF-Token, Authorization, accept, origin, Cache-Control, X-Requested-With",
+          "Access-Control-Allow-Methods": "GET, HEAD, POST, PUT, DELETE, OPTIONS, PATCH",
+          "Access-Control-Allow-Origin": "*",
+          "Content-Type": "application/json; charset=utf-8",
+          "Date": "Thu, 17 Jul 2025 09:20:22 GMT",
+          "Content-Length": "144"
+        },
+        "elapsed_ms": 14.312,
+        "timestamp": 1752744022.3392951,
+        "request_id": 0,
+        "content": {
+          "code": 65535,
+          "message": "create duplicate collection with different parameters, collection: test_collection_2025_07_17_17_20_21_322167ciWVKMKi"
+        }
+      },
+      "method": "POST",
+      "url": "http://172.17.0.11:23210/v1/vector/collections/create",
+      "headers": {
+        "Content-Type": "application/json",
+        "Authorization": "Bearer root:Milvus",
+        "RequestId": "43d50d6c-62ef-11f0-aed6-0242ac110005"
+      },
+      "timestamp": 1752744022.3229423,
+      "request_id": 0,
+      "content": {
+        "collectionName": "test_collection_2025_07_17_17_20_21_322167ciWVKMKi",
+        "dimension": 130,
+        "metricType": "L2"
+      }
+    },
+    {
+      "response": {
+        "status_code": 200,
+        "headers": {
+          "Access-Control-Allow-Credentials": "true",
+          "Access-Control-Allow-Headers": "Content-Type, Content-Length, Accept-Encoding, X-CSRF-Token, Authorization, accept, origin, Cache-Control, X-Requested-With",
+          "Access-Control-Allow-Methods": "GET, HEAD, POST, PUT, DELETE, OPTIONS, PATCH",
+          "Access-Control-Allow-Origin": "*",
+          "Content-Type": "application/json; charset=utf-8",
+          "Date": "Thu, 17 Jul 2025 09:20:22 GMT",
+          "Content-Length": "22"
+        },
+        "elapsed_ms": 22.842000000000002,
+        "timestamp": 1752744022.3468204,
+        "request_id": 1,
+        "content": {
+          "code": 200,
+          "data": {}
+        }
+      },
+      "method": "POST",
+      "url": "http://172.17.0.11:23210/v1/vector/collections/create",
+      "headers": {
+        "Content-Type": "application/json",
+        "Authorization": "Bearer root:Milvus",
+        "RequestId": "43d5113c-62ef-11f0-949d-0242ac110005"
+      },
+      "timestamp": 1752744022.3231132,
+      "request_id": 1,
+      "content": {
+        "collectionName": "test_collection_2025_07_17_17_20_21_322167ciWVKMKi",
+        "dimension": 131,
+        "metricType": "L2"
+      }
+    },
+    {
+      "response": {
+        "status_code": 200,
+        "headers": {
+          "Access-Control-Allow-Credentials": "true",
+          "Access-Control-Allow-Headers": "Content-Type, Content-Length, Accept-Encoding, X-CSRF-Token, Authorization, accept, origin, Cache-Control, X-Requested-With",
+          "Access-Control-Allow-Methods": "GET, HEAD, POST, PUT, DELETE, OPTIONS, PATCH",
+          "Access-Control-Allow-Origin": "*",
+          "Content-Type": "application/json; charset=utf-8",
+          "Date": "Thu, 17 Jul 2025 09:20:22 GMT",
+          "Content-Length": "144"
+        },
+        "elapsed_ms": 12.925,
+        "timestamp": 1752744022.338465,
+        "request_id": 2,
+        "content": {
+          "code": 65535,
+          "message": "create duplicate collection with different parameters, collection: test_collection_2025_07_17_17_20_21_322167ciWVKMKi"
+        }
+      },
+      "method": "POST",
+      "url": "http://172.17.0.11:23210/v1/vector/collections/create",
+      "headers": {
+        "Content-Type": "application/json",
+        "Authorization": "Bearer root:Milvus",
+        "RequestId": "43d509b6-62ef-11f0-8705-0242ac110005"
+      },
+      "timestamp": 1752744022.3232565,
+      "request_id": 2,
+      "content": {
+        "collectionName": "test_collection_2025_07_17_17_20_21_322167ciWVKMKi",
+        "dimension": 129,
+        "metricType": "L2"
+      }
+    },
+    {
+      "response": {
+        "status_code": 200,
+        "headers": {
+          "Access-Control-Allow-Credentials": "true",
+          "Access-Control-Allow-Headers": "Content-Type, Content-Length, Accept-Encoding, X-CSRF-Token, Authorization, accept, origin, Cache-Control, X-Requested-With",
+          "Access-Control-Allow-Methods": "GET, HEAD, POST, PUT, DELETE, OPTIONS, PATCH",
+          "Access-Control-Allow-Origin": "*",
+          "Content-Type": "application/json; charset=utf-8",
+          "Date": "Thu, 17 Jul 2025 09:20:22 GMT",
+          "Content-Length": "144"
+        },
+        "elapsed_ms": 11.899,
+        "timestamp": 1752744022.3380136,
+        "request_id": 3,
+        "content": {
+          "code": 65535,
+          "message": "create duplicate collection with different parameters, collection: test_collection_2025_07_17_17_20_21_322167ciWVKMKi"
+        }
+      },
+      "method": "POST",
+      "url": "http://172.17.0.11:23210/v1/vector/collections/create",
+      "headers": {
+        "Content-Type": "application/json",
+        "Authorization": "Bearer root:Milvus",
+        "RequestId": "43d5485b-62ef-11f0-9d63-0242ac110005"
+      },
+      "timestamp": 1752744022.3243444,
+      "request_id": 3,
+      "content": {
+        "collectionName": "test_collection_2025_07_17_17_20_21_322167ciWVKMKi",
+        "dimension": 134,
+        "metricType": "IP"
+      }
+    },
+    {
+      "response": {
+        "status_code": 200,
+        "headers": {
+          "Access-Control-Allow-Credentials": "true",
+          "Access-Control-Allow-Headers": "Content-Type, Content-Length, Accept-Encoding, X-CSRF-Token, Authorization, accept, origin, Cache-Control, X-Requested-With",
+          "Access-Control-Allow-Methods": "GET, HEAD, POST, PUT, DELETE, OPTIONS, PATCH",
+          "Access-Control-Allow-Origin": "*",
+          "Content-Type": "application/json; charset=utf-8",
+          "Date": "Thu, 17 Jul 2025 09:20:22 GMT",
+          "Content-Length": "144"
+        },
+        "elapsed_ms": 10.806,
+        "timestamp": 1752744022.339704,
+        "request_id": 4,
+        "content": {
+          "code": 65535,
+          "message": "create duplicate collection with different parameters, collection: test_collection_2025_07_17_17_20_21_322167ciWVKMKi"
+        }
+      },
+      "method": "POST",
+      "url": "http://172.17.0.11:23210/v1/vector/collections/create",
+      "headers": {
+        "Content-Type": "application/json",
+        "Authorization": "Bearer root:Milvus",
+        "RequestId": "43d502fe-62ef-11f0-b123-0242ac110005"
+      },
+      "timestamp": 1752744022.3267076,
+      "request_id": 4,
+      "content": {
+        "collectionName": "test_collection_2025_07_17_17_20_21_322167ciWVKMKi",
+        "dimension": 128,
+        "metricType": "L2"
+      }
+    },
+    {
+      "response": {
+        "status_code": 200,
+        "headers": {
+          "Access-Control-Allow-Credentials": "true",
+          "Access-Control-Allow-Headers": "Content-Type, Content-Length, Accept-Encoding, X-CSRF-Token, Authorization, accept, origin, Cache-Control, X-Requested-With",
+          "Access-Control-Allow-Methods": "GET, HEAD, POST, PUT, DELETE, OPTIONS, PATCH",
+          "Access-Control-Allow-Origin": "*",
+          "Content-Type": "application/json; charset=utf-8",
+          "Date": "Thu, 17 Jul 2025 09:20:22 GMT",
+          "Content-Length": "144"
+        },
+        "elapsed_ms": 12.962,
+        "timestamp": 1752744022.3404946,
+        "request_id": 5,
+        "content": {
+          "code": 65535,
+          "message": "create duplicate collection with different parameters, collection: test_collection_2025_07_17_17_20_21_322167ciWVKMKi"
+        }
+      },
+      "method": "POST",
+      "url": "http://172.17.0.11:23210/v1/vector/collections/create",
+      "headers": {
+        "Content-Type": "application/json",
+        "Authorization": "Bearer root:Milvus",
+        "RequestId": "43d59e30-62ef-11f0-8e6c-0242ac110005"
+      },
+      "timestamp": 1752744022.3267562,
+      "request_id": 5,
+      "content": {
+        "collectionName": "test_collection_2025_07_17_17_20_21_322167ciWVKMKi",
+        "dimension": 137,
+        "metricType": "IP"
+      }
+    },
+    {
+      "response": {
+        "status_code": 200,
+        "headers": {
+          "Access-Control-Allow-Credentials": "true",
+          "Access-Control-Allow-Headers": "Content-Type, Content-Length, Accept-Encoding, X-CSRF-Token, Authorization, accept, origin, Cache-Control, X-Requested-With",
+          "Access-Control-Allow-Methods": "GET, HEAD, POST, PUT, DELETE, OPTIONS, PATCH",
+          "Access-Control-Allow-Origin": "*",
+          "Content-Type": "application/json; charset=utf-8",
+          "Date": "Thu, 17 Jul 2025 09:20:22 GMT",
+          "Content-Length": "144"
+        },
+        "elapsed_ms": 11.779,
+        "timestamp": 1752744022.340117,
+        "request_id": 6,
+        "content": {
+          "code": 65535,
+          "message": "create duplicate collection with different parameters, collection: test_collection_2025_07_17_17_20_21_322167ciWVKMKi"
+        }
+      },
+      "method": "POST",
+      "url": "http://172.17.0.11:23210/v1/vector/collections/create",
+      "headers": {
+        "Content-Type": "application/json",
+        "Authorization": "Bearer root:Milvus",
+        "RequestId": "43d5a394-62ef-11f0-8e53-0242ac110005"
+      },
+      "timestamp": 1752744022.3270557,
+      "request_id": 6,
+      "content": {
+        "collectionName": "test_collection_2025_07_17_17_20_21_322167ciWVKMKi",
+        "dimension": 136,
+        "metricType": "IP"
+      }
+    },
+    {
+      "response": {
+        "status_code": 200,
+        "headers": {
+          "Access-Control-Allow-Credentials": "true",
+          "Access-Control-Allow-Headers": "Content-Type, Content-Length, Accept-Encoding, X-CSRF-Token, Authorization, accept, origin, Cache-Control, X-Requested-With",
+          "Access-Control-Allow-Methods": "GET, HEAD, POST, PUT, DELETE, OPTIONS, PATCH",
+          "Access-Control-Allow-Origin": "*",
+          "Content-Type": "application/json; charset=utf-8",
+          "Date": "Thu, 17 Jul 2025 09:20:22 GMT",
+          "Content-Length": "144"
+        },
+        "elapsed_ms": 10.71,
+        "timestamp": 1752744022.3409083,
+        "request_id": 7,
+        "content": {
+          "code": 65535,
+          "message": "create duplicate collection with different parameters, collection: test_collection_2025_07_17_17_20_21_322167ciWVKMKi"
+        }
+      },
+      "method": "POST",
+      "url": "http://172.17.0.11:23210/v1/vector/collections/create",
+      "headers": {
+        "Content-Type": "application/json",
+        "Authorization": "Bearer root:Milvus",
+        "RequestId": "43d526f3-62ef-11f0-9876-0242ac110005"
+      },
+      "timestamp": 1752744022.327764,
+      "request_id": 7,
+      "content": {
+        "collectionName": "test_collection_2025_07_17_17_20_21_322167ciWVKMKi",
+        "dimension": 132,
+        "metricType": "L2"
+      }
+    },
+    {
+      "response": {
+        "status_code": 200,
+        "headers": {
+          "Access-Control-Allow-Credentials": "true",
+          "Access-Control-Allow-Headers": "Content-Type, Content-Length, Accept-Encoding, X-CSRF-Token, Authorization, accept, origin, Cache-Control, X-Requested-With",
+          "Access-Control-Allow-Methods": "GET, HEAD, POST, PUT, DELETE, OPTIONS, PATCH",
+          "Access-Control-Allow-Origin": "*",
+          "Content-Type": "application/json; charset=utf-8",
+          "Date": "Thu, 17 Jul 2025 09:20:22 GMT",
+          "Content-Length": "144"
+        },
+        "elapsed_ms": 9.366,
+        "timestamp": 1752744022.3388295,
+        "request_id": 8,
+        "content": {
+          "code": 65535,
+          "message": "create duplicate collection with different parameters, collection: test_collection_2025_07_17_17_20_21_322167ciWVKMKi"
+        }
+      },
+      "method": "POST",
+      "url": "http://172.17.0.11:23210/v1/vector/collections/create",
+      "headers": {
+        "Content-Type": "application/json",
+        "Authorization": "Bearer root:Milvus",
+        "RequestId": "43d52a93-62ef-11f0-902c-0242ac110005"
+      },
+      "timestamp": 1752744022.327846,
+      "request_id": 8,
+      "content": {
+        "collectionName": "test_collection_2025_07_17_17_20_21_322167ciWVKMKi",
+        "dimension": 135,
+        "metricType": "IP"
+      }
+    },
+    {
+      "response": {
+        "status_code": 200,
+        "headers": {
+          "Access-Control-Allow-Credentials": "true",
+          "Access-Control-Allow-Headers": "Content-Type, Content-Length, Accept-Encoding, X-CSRF-Token, Authorization, accept, origin, Cache-Control, X-Requested-With",
+          "Access-Control-Allow-Methods": "GET, HEAD, POST, PUT, DELETE, OPTIONS, PATCH",
+          "Access-Control-Allow-Origin": "*",
+          "Content-Type": "application/json; charset=utf-8",
+          "Date": "Thu, 17 Jul 2025 09:20:22 GMT",
+          "Content-Length": "144"
+        },
+        "elapsed_ms": 9.978000000000002,
+        "timestamp": 1752744022.341268,
+        "request_id": 9,
+        "content": {
+          "code": 65535,
+          "message": "create duplicate collection with different parameters, collection: test_collection_2025_07_17_17_20_21_322167ciWVKMKi"
+        }
+      },
+      "method": "POST",
+      "url": "http://172.17.0.11:23210/v1/vector/collections/create",
+      "headers": {
+        "Content-Type": "application/json",
+        "Authorization": "Bearer root:Milvus",
+        "RequestId": "43d5516c-62ef-11f0-ba3c-0242ac110005"
+      },
+      "timestamp": 1752744022.3304915,
+      "request_id": 9,
+      "content": {
+        "collectionName": "test_collection_2025_07_17_17_20_21_322167ciWVKMKi",
+        "dimension": 133,
+        "metricType": "IP"
+      }
+    }
+  ]
+}

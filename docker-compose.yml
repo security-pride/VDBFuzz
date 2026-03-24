@@ -1,0 +1,82 @@
+services:
+  qdrant:
+    image: ${QDRANT_IMAGE:-qdrant/qdrant}
+    container_name: vdbfuzz-qdrant
+    restart: unless-stopped
+    ports:
+      - "${QDRANT_HTTP_PORT:-6333}:6333"
+      - "${QDRANT_GRPC_PORT:-6334}:6334"
+    volumes:
+      - qdrant_storage:/qdrant/storage
+
+  weaviate:
+    image: ${WEAVIATE_IMAGE:-semitechnologies/weaviate}
+    container_name: vdbfuzz-weaviate
+    restart: unless-stopped
+    ports:
+      - "${WEAVIATE_HTTP_PORT:-8080}:8080"
+      - "${WEAVIATE_GRPC_PORT:-50051}:50051"
+    environment:
+      QUERY_DEFAULTS_LIMIT: ${WEAVIATE_QUERY_DEFAULTS_LIMIT:-20}
+      AUTHENTICATION_ANONYMOUS_ACCESS_ENABLED: ${WEAVIATE_AUTH_ANON:-true}
+      PERSISTENCE_DATA_PATH: /var/lib/weaviate
+      DEFAULT_VECTORIZER_MODULE: ${WEAVIATE_DEFAULT_VECTORIZER_MODULE:-none}
+      ENABLE_MODULES: ${WEAVIATE_ENABLE_MODULES:-}
+      CLUSTER_HOSTNAME: node1
+    volumes:
+      - weaviate_data:/var/lib/weaviate
+
+  etcd:
+    image: ${ETCD_IMAGE:-quay.io/coreos/etcd:v3.5.5}
+    container_name: vdbfuzz-etcd
+    restart: unless-stopped
+    environment:
+      ETCD_AUTO_COMPACTION_MODE: revision
+      ETCD_AUTO_COMPACTION_RETENTION: "1000"
+      ETCD_QUOTA_BACKEND_BYTES: "4294967296"
+      ETCD_SNAPSHOT_COUNT: "50000"
+    command:
+      - etcd
+      - -advertise-client-urls=http://etcd:2379
+      - -listen-client-urls=http://0.0.0.0:2379
+      - -data-dir=/etcd
+    volumes:
+      - etcd_data:/etcd
+
+  minio:
+    image: ${MINIO_IMAGE:-minio/minio}
+    container_name: vdbfuzz-minio
+    restart: unless-stopped
+    environment:
+      MINIO_ROOT_USER: ${MINIO_ROOT_USER:-minioadmin}
+      MINIO_ROOT_PASSWORD: ${MINIO_ROOT_PASSWORD:-minioadmin}
+    command: minio server /minio_data --console-address ":9001"
+    ports:
+      - "${MINIO_API_PORT:-9000}:9000"
+      - "${MINIO_CONSOLE_PORT:-9001}:9001"
+    volumes:
+      - minio_data:/minio_data
+
+  milvus:
+    image: ${MILVUS_IMAGE:-milvusdb/milvus:v2.4.6}
+    container_name: vdbfuzz-milvus
+    restart: unless-stopped
+    command: ["milvus", "run", "standalone"]
+    depends_on:
+      - etcd
+      - minio
+    environment:
+      ETCD_ENDPOINTS: http://etcd:2379
+      MINIO_ADDRESS: minio:9000
+    ports:
+      - "${MILVUS_GRPC_PORT:-19530}:19530"
+      - "${MILVUS_HTTP_PORT:-9091}:9091"
+    volumes:
+      - milvus_data:/var/lib/milvus
+
+volumes:
+  qdrant_storage:
+  weaviate_data:
+  etcd_data:
+  minio_data:
+  milvus_data:

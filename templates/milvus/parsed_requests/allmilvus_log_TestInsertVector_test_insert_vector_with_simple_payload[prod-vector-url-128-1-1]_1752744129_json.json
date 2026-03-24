@@ -1,0 +1,104 @@
+{
+  "test_name": "allmilvus_log.TestInsertVector_test_insert_vector_with_simple_payload[prod-vector-url-128-1-1]_1752744129.json",
+  "vdb_type": "qdrant",
+  "requests": [
+    {
+      "response": {
+        "status_code": 200,
+        "headers": {
+          "Access-Control-Allow-Credentials": "true",
+          "Access-Control-Allow-Headers": "Content-Type, Content-Length, Accept-Encoding, X-CSRF-Token, Authorization, accept, origin, Cache-Control, X-Requested-With",
+          "Access-Control-Allow-Methods": "GET, HEAD, POST, PUT, DELETE, OPTIONS, PATCH",
+          "Access-Control-Allow-Origin": "*",
+          "Content-Type": "application/json; charset=utf-8",
+          "Date": "Thu, 17 Jul 2025 09:22:09 GMT",
+          "Content-Length": "22"
+        },
+        "elapsed_ms": 20.497999999999998,
+        "timestamp": 1752744129.0413766,
+        "request_id": 0,
+        "content": {
+          "code": 200,
+          "data": {}
+        }
+      },
+      "method": "POST",
+      "url": "http://172.17.0.11:23210/v1/vector/collections/create",
+      "headers": {
+        "Content-Type": "application/json",
+        "Authorization": "Bearer root:Milvus",
+        "RequestId": "836dc307-62ef-11f0-b2fc-0242ac110005"
+      },
+      "timestamp": 1752744129.020197,
+      "request_id": 0,
+      "content": {
+        "collectionName": "test_collection_2025_07_17_17_22_08_019852MCvXeKFd",
+        "dimension": 128,
+        "primaryField": "url",
+        "vectorField": "vector",
+        "autoID": true,
+        "dbName": "prod"
+      }
+    },
+    {
+      "response": {
+        "status_code": 200,
+        "headers": {
+          "Access-Control-Allow-Credentials": "true",
+          "Access-Control-Allow-Headers": "Content-Type, Content-Length, Accept-Encoding, X-CSRF-Token, Authorization, accept, origin, Cache-Control, X-Requested-With",
+          "Access-Control-Allow-Methods": "GET, HEAD, POST, PUT, DELETE, OPTIONS, PATCH",
+          "Access-Control-Allow-Origin": "*",
+          "Content-Type": "application/json; charset=utf-8",
+          "Date": "Thu, 17 Jul 2025 09:22:09 GMT",
+          "Content-Length": "70"
+        },
+        "elapsed_ms": 4.667,
+        "timestamp": 1752744129.0531368,
+        "request_id": 2,
+        "content": {
+          "code": 200,
+          "data": {
+            "insertCount": 1,
+            "insertIds": [
+              459470532653885623
+            ]
+          }
+        }
+      },
+      "method": "POST",
+      "url": "http://172.17.0.11:23210/v1/vector/insert",
+      "headers": {
+        "Content-Type": "application/json",
+        "Authorization": "Bearer root:Milvus",
+        "RequestId": "8371fd1e-62ef-11f0-b07d-0242ac110005"
+      },
+      "timestamp": 1752744129.0478935,
+      "request_id": 2,
+      "content": {
+        "collectionName": "test_collection_2025_07_17_17_22_08_019852MCvXeKFd",
+        "data": [
+          {
+            "vector": "__FLOAT_ARRAY_DIM_128__",
+            "uid": 0,
+            "name": "Adam Manning",
+            "address": "7812 Wolfe Junction\nPort Zachary, NY 84155",
+            "text": "Human their common who drive decide. Bring nation development company mouth majority floor. Pay every boy foreign strong son lose.\nSuch something magazine again any. Expect artist threat.",
+            "email": "sarahrodriguez@example.net",
+            "phone_number": "001-246-786-2123x43862",
+            "array_int_dynamic": "__FLOAT_ARRAY_DIM_9__",
+            "array_varchar_dynamic": [
+              "Jesse Lewis",
+              "Mary Brooks"
+            ],
+            "json": {
+              "name": "Caitlin Rodriguez",
+              "address": "Unit 3503 Box 6546\nDPO AA 52802"
+            },
+            "key69173": "value90418"
+          }
+        ],
+        "dbName": "prod"
+      }
+    }
+  ]
+}

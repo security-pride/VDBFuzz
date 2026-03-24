@@ -1,0 +1,107 @@
+{
+  "test_name": "allmilvus_log.TestInsertVector_test_insert_vector_with_simple_payload[default-vector-url-128-1-1]_1752744187.json",
+  "vdb_type": "qdrant",
+  "requests": [
+    {
+      "response": {
+        "status_code": 200,
+        "headers": {
+          "Access-Control-Allow-Credentials": "true",
+          "Access-Control-Allow-Headers": "Content-Type, Content-Length, Accept-Encoding, X-CSRF-Token, Authorization, accept, origin, Cache-Control, X-Requested-With",
+          "Access-Control-Allow-Methods": "GET, HEAD, POST, PUT, DELETE, OPTIONS, PATCH",
+          "Access-Control-Allow-Origin": "*",
+          "Content-Type": "application/json; charset=utf-8",
+          "Date": "Thu, 17 Jul 2025 09:23:07 GMT",
+          "Content-Length": "22"
+        },
+        "elapsed_ms": 21.294,
+        "timestamp": 1752744187.1464555,
+        "request_id": 0,
+        "content": {
+          "code": 200,
+          "data": {}
+        }
+      },
+      "method": "POST",
+      "url": "http://172.17.0.11:23210/v1/vector/collections/create",
+      "headers": {
+        "Content-Type": "application/json",
+        "Authorization": "Bearer root:Milvus",
+        "RequestId": "a60fc766-62ef-11f0-9037-0242ac110005"
+      },
+      "timestamp": 1752744187.124511,
+      "request_id": 0,
+      "content": {
+        "collectionName": "test_collection_2025_07_17_17_23_06_124148AVujeQKw",
+        "dimension": 128,
+        "primaryField": "url",
+        "vectorField": "vector",
+        "autoID": true,
+        "dbName": "default"
+      }
+    },
+    {
+      "response": {
+        "status_code": 200,
+        "headers": {
+          "Access-Control-Allow-Credentials": "true",
+          "Access-Control-Allow-Headers": "Content-Type, Content-Length, Accept-Encoding, X-CSRF-Token, Authorization, accept, origin, Cache-Control, X-Requested-With",
+          "Access-Control-Allow-Methods": "GET, HEAD, POST, PUT, DELETE, OPTIONS, PATCH",
+          "Access-Control-Allow-Origin": "*",
+          "Content-Type": "application/json; charset=utf-8",
+          "Date": "Thu, 17 Jul 2025 09:23:07 GMT",
+          "Content-Length": "70"
+        },
+        "elapsed_ms": 5.717,
+        "timestamp": 1752744187.1594262,
+        "request_id": 2,
+        "content": {
+          "code": 200,
+          "data": {
+            "insertCount": 1,
+            "insertIds": [
+              459470532653888359
+            ]
+          }
+        }
+      },
+      "method": "POST",
+      "url": "http://172.17.0.11:23210/v1/vector/insert",
+      "headers": {
+        "Content-Type": "application/json",
+        "Authorization": "Bearer root:Milvus",
+        "RequestId": "a614256a-62ef-11f0-b2ee-0242ac110005"
+      },
+      "timestamp": 1752744187.1531336,
+      "request_id": 2,
+      "content": {
+        "collectionName": "test_collection_2025_07_17_17_23_06_124148AVujeQKw",
+        "data": [
+          {
+            "vector": "__FLOAT_ARRAY_DIM_128__",
+            "uid": 0,
+            "name": "Sarah Jordan",
+            "address": "87917 Patricia Orchard Apt. 550\nNew Scott, TX 09978",
+            "text": "Recognize stage it second. Color plant question because. By good day quality responsibility artist give charge.\nWorld right voice purpose pick anyone. As seek performance international dog cultural.",
+            "email": "kristin70@example.org",
+            "phone_number": "4127225065",
+            "array_int_dynamic": "__FLOAT_ARRAY_DIM_8__",
+            "array_varchar_dynamic": [
+              "Scott Lopez",
+              "Patricia Sullivan",
+              "Cynthia Holmes",
+              "Jeffrey Martinez"
+            ],
+            "json": {
+              "name": "Teresa Bennett",
+              "address": "1538 Dunn Port\nWestburgh, MD 85225"
+            },
+            "key70400": "value8766",
+            "key9396": "value78184"
+          }
+        ],
+        "dbName": "default"
+      }
+    }
+  ]
+}

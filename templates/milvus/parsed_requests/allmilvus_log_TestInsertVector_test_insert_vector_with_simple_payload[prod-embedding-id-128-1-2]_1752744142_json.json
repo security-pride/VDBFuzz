@@ -1,0 +1,178 @@
+{
+  "test_name": "allmilvus_log.TestInsertVector_test_insert_vector_with_simple_payload[prod-embedding-id-128-1-2]_1752744142.json",
+  "vdb_type": "qdrant",
+  "requests": [
+    {
+      "response": {
+        "status_code": 200,
+        "headers": {
+          "Access-Control-Allow-Credentials": "true",
+          "Access-Control-Allow-Headers": "Content-Type, Content-Length, Accept-Encoding, X-CSRF-Token, Authorization, accept, origin, Cache-Control, X-Requested-With",
+          "Access-Control-Allow-Methods": "GET, HEAD, POST, PUT, DELETE, OPTIONS, PATCH",
+          "Access-Control-Allow-Origin": "*",
+          "Content-Type": "application/json; charset=utf-8",
+          "Date": "Thu, 17 Jul 2025 09:22:22 GMT",
+          "Content-Length": "22"
+        },
+        "elapsed_ms": 34.132999999999996,
+        "timestamp": 1752744142.436036,
+        "request_id": 0,
+        "content": {
+          "code": 200,
+          "data": {}
+        }
+      },
+      "method": "POST",
+      "url": "http://172.17.0.11:23210/v1/vector/collections/create",
+      "headers": {
+        "Content-Type": "application/json",
+        "Authorization": "Bearer root:Milvus",
+        "RequestId": "8b678a83-62ef-11f0-aecc-0242ac110005"
+      },
+      "timestamp": 1752744142.401193,
+      "request_id": 0,
+      "content": {
+        "collectionName": "test_collection_2025_07_17_17_22_21_400861Vniihjny",
+        "dimension": 128,
+        "primaryField": "id",
+        "vectorField": "embedding",
+        "autoID": true,
+        "dbName": "prod"
+      }
+    },
+    {
+      "response": {
+        "status_code": 200,
+        "headers": {
+          "Access-Control-Allow-Credentials": "true",
+          "Access-Control-Allow-Headers": "Content-Type, Content-Length, Accept-Encoding, X-CSRF-Token, Authorization, accept, origin, Cache-Control, X-Requested-With",
+          "Access-Control-Allow-Methods": "GET, HEAD, POST, PUT, DELETE, OPTIONS, PATCH",
+          "Access-Control-Allow-Origin": "*",
+          "Content-Type": "application/json; charset=utf-8",
+          "Date": "Thu, 17 Jul 2025 09:22:22 GMT",
+          "Content-Length": "70"
+        },
+        "elapsed_ms": 22.963,
+        "timestamp": 1752744142.466435,
+        "request_id": 2,
+        "content": {
+          "code": 200,
+          "data": {
+            "insertCount": 1,
+            "insertIds": [
+              459470532653886303
+            ]
+          }
+        }
+      },
+      "method": "POST",
+      "url": "http://172.17.0.11:23210/v1/vector/insert",
+      "headers": {
+        "Content-Type": "application/json",
+        "Authorization": "Bearer root:Milvus",
+        "RequestId": "8b6de904-62ef-11f0-a274-0242ac110005"
+      },
+      "timestamp": 1752744142.4429324,
+      "request_id": 2,
+      "content": {
+        "collectionName": "test_collection_2025_07_17_17_22_21_400861Vniihjny",
+        "data": [
+          {
+            "embedding": "__FLOAT_ARRAY_DIM_128__",
+            "uid": 0,
+            "name": "Kelly Jones",
+            "address": "171 Perez Valley\nAnnahaven, NV 88788",
+            "text": "Social eight example it dream. Turn property move cover. Strong after affect man president PM person.\nThreat we glass each majority state ball pretty. Follow American against air action be put.",
+            "email": "jay31@example.com",
+            "phone_number": "(743)259-4832",
+            "array_int_dynamic": "__FLOAT_ARRAY_DIM_10__",
+            "array_varchar_dynamic": [
+              "Gina Hall",
+              "Edward Weber",
+              "Laura Newman"
+            ],
+            "json": {
+              "name": "Robert Baxter",
+              "address": "39028 Schroeder Trace\nAndrewside, WI 20844"
+            },
+            "key74414": "value58710",
+            "key68385": "value38894"
+          }
+        ],
+        "dbName": "prod"
+      }
+    },
+    {
+      "response": {
+        "status_code": 200,
+        "headers": {
+          "Access-Control-Allow-Credentials": "true",
+          "Access-Control-Allow-Headers": "Content-Type, Content-Length, Accept-Encoding, X-CSRF-Token, Authorization, accept, origin, Cache-Control, X-Requested-With",
+          "Access-Control-Allow-Methods": "GET, HEAD, POST, PUT, DELETE, OPTIONS, PATCH",
+          "Access-Control-Allow-Origin": "*",
+          "Content-Type": "application/json; charset=utf-8",
+          "Date": "Thu, 17 Jul 2025 09:22:22 GMT",
+          "Content-Length": "70"
+        },
+        "elapsed_ms": 2.283,
+        "timestamp": 1752744142.472718,
+        "request_id": 3,
+        "content": {
+          "code": 200,
+          "data": {
+            "insertCount": 1,
+            "insertIds": [
+              459470532653886305
+            ]
+          }
+        }
+      },
+      "method": "POST",
+      "url": "http://172.17.0.11:23210/v1/vector/insert",
+      "headers": {
+        "Content-Type": "application/json",
+        "Authorization": "Bearer root:Milvus",
+        "RequestId": "8b720528-62ef-11f0-90db-0242ac110005"
+      },
+      "timestamp": 1752744142.4699247,
+      "request_id": 3,
+      "content": {
+        "collectionName": "test_collection_2025_07_17_17_22_21_400861Vniihjny",
+        "data": [
+          {
+            "embedding": "__FLOAT_ARRAY_DIM_128__",
+            "uid": 0,
+            "name": "Ashlee Walker",
+            "address": "9458 Rachel Drive\nPort Edgar, PR 42980",
+            "text": "Opportunity door why win three must high.\nArt visit that no perhaps boy. Recent story me.\nSeat one just choose possible. Turn company event deep.",
+            "email": "lloydapril@example.net",
+            "phone_number": "4209785491",
+            "array_int_dynamic": "__FLOAT_ARRAY_DIM_2__",
+            "array_varchar_dynamic": [
+              "Daniel Moreno",
+              "Diana Schroeder",
+              "Toni Page",
+              "Jason Thomas",
+              "April Cisneros"
+            ],
+            "json": {
+              "name": "Rachel Good",
+              "address": "4053 Joseph Extensions\nWest Ravenborough, VT 73189"
+            },
+            "key22177": "value33779",
+            "key9821": "value82530",
+            "key46790": "value54840",
+            "key20578": "value44517",
+            "key8975": "value76981",
+            "key96063": "value47184",
+            "key74996": "value48807",
+            "key20424": "value91118",
+            "key10622": "value35866",
+            "key93990": "value71662"
+          }
+        ],
+        "dbName": "prod"
+      }
+    }
+  ]
+}

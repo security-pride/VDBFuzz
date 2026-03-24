@@ -1,0 +1,180 @@
+{
+  "test_name": "allmilvus_log.TestInsertVector_test_insert_vector_with_simple_payload[default-embedding-id-32-1-2]_1752744193.json",
+  "vdb_type": "qdrant",
+  "requests": [
+    {
+      "response": {
+        "status_code": 200,
+        "headers": {
+          "Access-Control-Allow-Credentials": "true",
+          "Access-Control-Allow-Headers": "Content-Type, Content-Length, Accept-Encoding, X-CSRF-Token, Authorization, accept, origin, Cache-Control, X-Requested-With",
+          "Access-Control-Allow-Methods": "GET, HEAD, POST, PUT, DELETE, OPTIONS, PATCH",
+          "Access-Control-Allow-Origin": "*",
+          "Content-Type": "application/json; charset=utf-8",
+          "Date": "Thu, 17 Jul 2025 09:23:13 GMT",
+          "Content-Length": "22"
+        },
+        "elapsed_ms": 20.011999999999997,
+        "timestamp": 1752744193.1032875,
+        "request_id": 0,
+        "content": {
+          "code": 200,
+          "data": {}
+        }
+      },
+      "method": "POST",
+      "url": "http://172.17.0.11:23210/v1/vector/collections/create",
+      "headers": {
+        "Content-Type": "application/json",
+        "Authorization": "Bearer root:Milvus",
+        "RequestId": "a99ce9d9-62ef-11f0-888f-0242ac110005"
+      },
+      "timestamp": 1752744193.0826142,
+      "request_id": 0,
+      "content": {
+        "collectionName": "test_collection_2025_07_17_17_23_12_082304bILqTvse",
+        "dimension": 32,
+        "primaryField": "id",
+        "vectorField": "embedding",
+        "autoID": true,
+        "dbName": "default"
+      }
+    },
+    {
+      "response": {
+        "status_code": 200,
+        "headers": {
+          "Access-Control-Allow-Credentials": "true",
+          "Access-Control-Allow-Headers": "Content-Type, Content-Length, Accept-Encoding, X-CSRF-Token, Authorization, accept, origin, Cache-Control, X-Requested-With",
+          "Access-Control-Allow-Methods": "GET, HEAD, POST, PUT, DELETE, OPTIONS, PATCH",
+          "Access-Control-Allow-Origin": "*",
+          "Content-Type": "application/json; charset=utf-8",
+          "Date": "Thu, 17 Jul 2025 09:23:13 GMT",
+          "Content-Length": "70"
+        },
+        "elapsed_ms": 5.7219999999999995,
+        "timestamp": 1752744193.1167865,
+        "request_id": 2,
+        "content": {
+          "code": 200,
+          "data": {
+            "insertCount": 1,
+            "insertIds": [
+              459470532653888697
+            ]
+          }
+        }
+      },
+      "method": "POST",
+      "url": "http://172.17.0.11:23210/v1/vector/insert",
+      "headers": {
+        "Content-Type": "application/json",
+        "Authorization": "Bearer root:Milvus",
+        "RequestId": "a9a12d29-62ef-11f0-a68c-0242ac110005"
+      },
+      "timestamp": 1752744193.110494,
+      "request_id": 2,
+      "content": {
+        "collectionName": "test_collection_2025_07_17_17_23_12_082304bILqTvse",
+        "data": [
+          {
+            "embedding": "__FLOAT_ARRAY_DIM_32__",
+            "uid": 0,
+            "name": "Mark Lewis",
+            "address": "854 Tucker Lodge\nSchroederton, PR 83376",
+            "text": "Fund bag hope a exactly anyone card. Throw interview dog leader economic response chance.\nArgue collection sport beautiful.",
+            "email": "hinesjoyce@example.com",
+            "phone_number": "001-604-866-0933x149",
+            "array_int_dynamic": "__FLOAT_ARRAY_DIM_6__",
+            "array_varchar_dynamic": [
+              "Justin Gilbert",
+              "Eric Morgan",
+              "Caroline Barnes",
+              "Samantha Johnson"
+            ],
+            "json": {
+              "name": "Colton Cooper",
+              "address": "134 Megan Ways Suite 027\nEast Jillian, SD 19233"
+            },
+            "key65635": "value11443",
+            "key60742": "value87767"
+          }
+        ],
+        "dbName": "default"
+      }
+    },
+    {
+      "response": {
+        "status_code": 200,
+        "headers": {
+          "Access-Control-Allow-Credentials": "true",
+          "Access-Control-Allow-Headers": "Content-Type, Content-Length, Accept-Encoding, X-CSRF-Token, Authorization, accept, origin, Cache-Control, X-Requested-With",
+          "Access-Control-Allow-Methods": "GET, HEAD, POST, PUT, DELETE, OPTIONS, PATCH",
+          "Access-Control-Allow-Origin": "*",
+          "Content-Type": "application/json; charset=utf-8",
+          "Date": "Thu, 17 Jul 2025 09:23:13 GMT",
+          "Content-Length": "70"
+        },
+        "elapsed_ms": 2.029,
+        "timestamp": 1752744193.122598,
+        "request_id": 3,
+        "content": {
+          "code": 200,
+          "data": {
+            "insertCount": 1,
+            "insertIds": [
+              459470532653888699
+            ]
+          }
+        }
+      },
+      "method": "POST",
+      "url": "http://172.17.0.11:23210/v1/vector/insert",
+      "headers": {
+        "Content-Type": "application/json",
+        "Authorization": "Bearer root:Milvus",
+        "RequestId": "a9a2a1ef-62ef-11f0-9f8a-0242ac110005"
+      },
+      "timestamp": 1752744193.1200292,
+      "request_id": 3,
+      "content": {
+        "collectionName": "test_collection_2025_07_17_17_23_12_082304bILqTvse",
+        "data": [
+          {
+            "embedding": "__FLOAT_ARRAY_DIM_32__",
+            "uid": 0,
+            "name": "Julie Harris",
+            "address": "4135 Warner Parkway Suite 798\nNew Josephview, PA 72072",
+            "text": "Carry social food can special officer degree during. Benefit foreign describe hope daughter. Only available break make message collection put debate.",
+            "email": "zball@example.org",
+            "phone_number": "758.854.0552x122",
+            "array_int_dynamic": [
+              70406
+            ],
+            "array_varchar_dynamic": [
+              "Eric Shaw",
+              "Robert Jones",
+              "Sara Smith",
+              "Andre Newton",
+              "Beth Drake",
+              "William Glass",
+              "Nathan Gibson"
+            ],
+            "json": {
+              "name": "Joshua Cruz Jr.",
+              "address": "74663 Hudson Lane Apt. 369\nDeborahbury, FL 78248"
+            },
+            "key6156": "value83249",
+            "key80141": "value68630",
+            "key13537": "value83991",
+            "key58903": "value43841",
+            "key3508": "value69936",
+            "key76572": "value30251",
+            "key73772": "value13161"
+          }
+        ],
+        "dbName": "default"
+      }
+    }
+  ]
+}

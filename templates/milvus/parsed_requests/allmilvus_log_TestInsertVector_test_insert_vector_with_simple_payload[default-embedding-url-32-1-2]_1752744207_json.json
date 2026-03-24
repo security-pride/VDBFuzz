@@ -1,0 +1,189 @@
+{
+  "test_name": "allmilvus_log.TestInsertVector_test_insert_vector_with_simple_payload[default-embedding-url-32-1-2]_1752744207.json",
+  "vdb_type": "qdrant",
+  "requests": [
+    {
+      "response": {
+        "status_code": 200,
+        "headers": {
+          "Access-Control-Allow-Credentials": "true",
+          "Access-Control-Allow-Headers": "Content-Type, Content-Length, Accept-Encoding, X-CSRF-Token, Authorization, accept, origin, Cache-Control, X-Requested-With",
+          "Access-Control-Allow-Methods": "GET, HEAD, POST, PUT, DELETE, OPTIONS, PATCH",
+          "Access-Control-Allow-Origin": "*",
+          "Content-Type": "application/json; charset=utf-8",
+          "Date": "Thu, 17 Jul 2025 09:23:27 GMT",
+          "Content-Length": "22"
+        },
+        "elapsed_ms": 21.79,
+        "timestamp": 1752744207.3910174,
+        "request_id": 0,
+        "content": {
+          "code": 200,
+          "data": {}
+        }
+      },
+      "method": "POST",
+      "url": "http://172.17.0.11:23210/v1/vector/collections/create",
+      "headers": {
+        "Content-Type": "application/json",
+        "Authorization": "Bearer root:Milvus",
+        "RequestId": "b220cb5d-62ef-11f0-b8e0-0242ac110005"
+      },
+      "timestamp": 1752744207.3686461,
+      "request_id": 0,
+      "content": {
+        "collectionName": "test_collection_2025_07_17_17_23_26_368356WTSuncTf",
+        "dimension": 32,
+        "primaryField": "url",
+        "vectorField": "embedding",
+        "autoID": true,
+        "dbName": "default"
+      }
+    },
+    {
+      "response": {
+        "status_code": 200,
+        "headers": {
+          "Access-Control-Allow-Credentials": "true",
+          "Access-Control-Allow-Headers": "Content-Type, Content-Length, Accept-Encoding, X-CSRF-Token, Authorization, accept, origin, Cache-Control, X-Requested-With",
+          "Access-Control-Allow-Methods": "GET, HEAD, POST, PUT, DELETE, OPTIONS, PATCH",
+          "Access-Control-Allow-Origin": "*",
+          "Content-Type": "application/json; charset=utf-8",
+          "Date": "Thu, 17 Jul 2025 09:23:27 GMT",
+          "Content-Length": "70"
+        },
+        "elapsed_ms": 4.913,
+        "timestamp": 1752744207.4037116,
+        "request_id": 2,
+        "content": {
+          "code": 200,
+          "data": {
+            "insertCount": 1,
+            "insertIds": [
+              459470532653889381
+            ]
+          }
+        }
+      },
+      "method": "POST",
+      "url": "http://172.17.0.11:23210/v1/vector/insert",
+      "headers": {
+        "Content-Type": "application/json",
+        "Authorization": "Bearer root:Milvus",
+        "RequestId": "b2254fe5-62ef-11f0-be6a-0242ac110005"
+      },
+      "timestamp": 1752744207.3982296,
+      "request_id": 2,
+      "content": {
+        "collectionName": "test_collection_2025_07_17_17_23_26_368356WTSuncTf",
+        "data": [
+          {
+            "embedding": "__FLOAT_ARRAY_DIM_32__",
+            "uid": 0,
+            "name": "Patricia Williams",
+            "address": "PSC 1148, Box 6396\nAPO AA 62304",
+            "text": "Go together better benefit. Spend own sort. Two respond computer fine many human could.\nLeft wrong language administration build dog. Field cup law work.",
+            "email": "davidmora@example.net",
+            "phone_number": "(819)353-4832x18708",
+            "array_int_dynamic": "__FLOAT_ARRAY_DIM_5__",
+            "array_varchar_dynamic": [
+              "Kimberly Shaw",
+              "Nichole King",
+              "Crystal Sawyer",
+              "Stephen Brown",
+              "Nathan Fleming",
+              "Benjamin Parker",
+              "Douglas Baker",
+              "Lisa Richards",
+              "Michelle Harris"
+            ],
+            "json": {
+              "name": "Anthony Johnson",
+              "address": "66721 Dominguez Stream\nPort William, FM 21648"
+            },
+            "key68894": "value74894",
+            "key1423": "value8915",
+            "key91652": "value28078",
+            "key75227": "value96287",
+            "key1090": "value18465",
+            "key53462": "value67965",
+            "key38176": "value18100"
+          }
+        ],
+        "dbName": "default"
+      }
+    },
+    {
+      "response": {
+        "status_code": 200,
+        "headers": {
+          "Access-Control-Allow-Credentials": "true",
+          "Access-Control-Allow-Headers": "Content-Type, Content-Length, Accept-Encoding, X-CSRF-Token, Authorization, accept, origin, Cache-Control, X-Requested-With",
+          "Access-Control-Allow-Methods": "GET, HEAD, POST, PUT, DELETE, OPTIONS, PATCH",
+          "Access-Control-Allow-Origin": "*",
+          "Content-Type": "application/json; charset=utf-8",
+          "Date": "Thu, 17 Jul 2025 09:23:27 GMT",
+          "Content-Length": "70"
+        },
+        "elapsed_ms": 2.306,
+        "timestamp": 1752744207.410204,
+        "request_id": 3,
+        "content": {
+          "code": 200,
+          "data": {
+            "insertCount": 1,
+            "insertIds": [
+              459470532653889383
+            ]
+          }
+        }
+      },
+      "method": "POST",
+      "url": "http://172.17.0.11:23210/v1/vector/insert",
+      "headers": {
+        "Content-Type": "application/json",
+        "Authorization": "Bearer root:Milvus",
+        "RequestId": "b226b487-62ef-11f0-8a19-0242ac110005"
+      },
+      "timestamp": 1752744207.4073536,
+      "request_id": 3,
+      "content": {
+        "collectionName": "test_collection_2025_07_17_17_23_26_368356WTSuncTf",
+        "data": [
+          {
+            "embedding": "__FLOAT_ARRAY_DIM_32__",
+            "uid": 0,
+            "name": "Nicholas Ellis",
+            "address": "094 Hernandez Prairie Apt. 160\nMeganborough, HI 53700",
+            "text": "Foreign day side war never drop. Next until mean read.\nDecade environmental say ground of three former. Produce measure once.",
+            "email": "nguyenrodney@example.com",
+            "phone_number": "701.428.2804x1759",
+            "array_int_dynamic": "__FLOAT_ARRAY_DIM_5__",
+            "array_varchar_dynamic": [
+              "Timothy Floyd",
+              "Samuel Thompson",
+              "Brent Sullivan",
+              "Holly Cruz",
+              "Kristen Gibson",
+              "Karen Walsh",
+              "Julia Lane",
+              "David Ross",
+              "Stacy Mcconnell",
+              "Joshua Harris"
+            ],
+            "json": {
+              "name": "Rebecca Baker",
+              "address": "1944 Cruz Groves Apt. 593\nNorth Ginabury, OH 17518"
+            },
+            "key41902": "value27698",
+            "key84450": "value18726",
+            "key40346": "value68505",
+            "key6375": "value93593",
+            "key68917": "value93594"
+          }
+        ],
+        "dbName": "default"
+      }
+    }
+  ]
+}

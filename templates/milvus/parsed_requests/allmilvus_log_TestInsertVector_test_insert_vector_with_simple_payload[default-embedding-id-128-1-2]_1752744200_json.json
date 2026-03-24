@@ -1,0 +1,176 @@
+{
+  "test_name": "allmilvus_log.TestInsertVector_test_insert_vector_with_simple_payload[default-embedding-id-128-1-2]_1752744200.json",
+  "vdb_type": "qdrant",
+  "requests": [
+    {
+      "response": {
+        "status_code": 200,
+        "headers": {
+          "Access-Control-Allow-Credentials": "true",
+          "Access-Control-Allow-Headers": "Content-Type, Content-Length, Accept-Encoding, X-CSRF-Token, Authorization, accept, origin, Cache-Control, X-Requested-With",
+          "Access-Control-Allow-Methods": "GET, HEAD, POST, PUT, DELETE, OPTIONS, PATCH",
+          "Access-Control-Allow-Origin": "*",
+          "Content-Type": "application/json; charset=utf-8",
+          "Date": "Thu, 17 Jul 2025 09:23:20 GMT",
+          "Content-Length": "22"
+        },
+        "elapsed_ms": 20.608999999999998,
+        "timestamp": 1752744200.3311546,
+        "request_id": 0,
+        "content": {
+          "code": 200,
+          "data": {}
+        }
+      },
+      "method": "POST",
+      "url": "http://172.17.0.11:23210/v1/vector/collections/create",
+      "headers": {
+        "Content-Type": "application/json",
+        "Authorization": "Bearer root:Milvus",
+        "RequestId": "adebb368-62ef-11f0-935e-0242ac110005"
+      },
+      "timestamp": 1752744200.3098657,
+      "request_id": 0,
+      "content": {
+        "collectionName": "test_collection_2025_07_17_17_23_19_309471RpVHVQMs",
+        "dimension": 128,
+        "primaryField": "id",
+        "vectorField": "embedding",
+        "autoID": true,
+        "dbName": "default"
+      }
+    },
+    {
+      "response": {
+        "status_code": 200,
+        "headers": {
+          "Access-Control-Allow-Credentials": "true",
+          "Access-Control-Allow-Headers": "Content-Type, Content-Length, Accept-Encoding, X-CSRF-Token, Authorization, accept, origin, Cache-Control, X-Requested-With",
+          "Access-Control-Allow-Methods": "GET, HEAD, POST, PUT, DELETE, OPTIONS, PATCH",
+          "Access-Control-Allow-Origin": "*",
+          "Content-Type": "application/json; charset=utf-8",
+          "Date": "Thu, 17 Jul 2025 09:23:20 GMT",
+          "Content-Length": "70"
+        },
+        "elapsed_ms": 4.9319999999999995,
+        "timestamp": 1752744200.3425274,
+        "request_id": 2,
+        "content": {
+          "code": 200,
+          "data": {
+            "insertCount": 1,
+            "insertIds": [
+              459470532653889039
+            ]
+          }
+        }
+      },
+      "method": "POST",
+      "url": "http://172.17.0.11:23210/v1/vector/insert",
+      "headers": {
+        "Content-Type": "application/json",
+        "Authorization": "Bearer root:Milvus",
+        "RequestId": "adefda8c-62ef-11f0-a829-0242ac110005"
+      },
+      "timestamp": 1752744200.3370657,
+      "request_id": 2,
+      "content": {
+        "collectionName": "test_collection_2025_07_17_17_23_19_309471RpVHVQMs",
+        "data": [
+          {
+            "embedding": "__FLOAT_ARRAY_DIM_128__",
+            "uid": 0,
+            "name": "Timothy Berg",
+            "address": "10805 Cooper Motorway Suite 439\nWest Gregory, ME 73232",
+            "text": "Growth hope imagine trade somebody. Then rule wait drop let. Music decade dog view hundred pass. Finally reality resource with hour baby southern.",
+            "email": "lhebert@example.net",
+            "phone_number": "560-290-8694x462",
+            "array_int_dynamic": "__FLOAT_ARRAY_DIM_7__",
+            "array_varchar_dynamic": [
+              "John Schwartz"
+            ],
+            "json": {
+              "name": "Courtney Terrell",
+              "address": "3499 Jerry Estates\nNorth Robertfort, ME 40894"
+            },
+            "key73207": "value37671",
+            "key46338": "value60999",
+            "key59941": "value32826",
+            "key71465": "value8440",
+            "key47921": "value581",
+            "key1571": "value64865",
+            "key75665": "value54990"
+          }
+        ],
+        "dbName": "default"
+      }
+    },
+    {
+      "response": {
+        "status_code": 200,
+        "headers": {
+          "Access-Control-Allow-Credentials": "true",
+          "Access-Control-Allow-Headers": "Content-Type, Content-Length, Accept-Encoding, X-CSRF-Token, Authorization, accept, origin, Cache-Control, X-Requested-With",
+          "Access-Control-Allow-Methods": "GET, HEAD, POST, PUT, DELETE, OPTIONS, PATCH",
+          "Access-Control-Allow-Origin": "*",
+          "Content-Type": "application/json; charset=utf-8",
+          "Date": "Thu, 17 Jul 2025 09:23:20 GMT",
+          "Content-Length": "70"
+        },
+        "elapsed_ms": 2.296,
+        "timestamp": 1752744200.3481584,
+        "request_id": 3,
+        "content": {
+          "code": 200,
+          "data": {
+            "insertCount": 1,
+            "insertIds": [
+              459470532653889041
+            ]
+          }
+        }
+      },
+      "method": "POST",
+      "url": "http://172.17.0.11:23210/v1/vector/insert",
+      "headers": {
+        "Content-Type": "application/json",
+        "Authorization": "Bearer root:Milvus",
+        "RequestId": "adf11ec1-62ef-11f0-aeb6-0242ac110005"
+      },
+      "timestamp": 1752744200.3453543,
+      "request_id": 3,
+      "content": {
+        "collectionName": "test_collection_2025_07_17_17_23_19_309471RpVHVQMs",
+        "data": [
+          {
+            "embedding": "__FLOAT_ARRAY_DIM_128__",
+            "uid": 0,
+            "name": "Jessica Cunningham",
+            "address": "99715 Rogers Inlet Apt. 301\nPotterside, AL 12225",
+            "text": "Cold note author energy identify age. Drive which will hospital official. Poor identify happen physical home behavior sit detail. Guy represent person about economy fund.",
+            "email": "kenneth64@example.net",
+            "phone_number": "(893)722-5663x4727",
+            "array_int_dynamic": "__FLOAT_ARRAY_DIM_7__",
+            "array_varchar_dynamic": [
+              "Emma Jacobs",
+              "Christine Mccall",
+              "Katherine Vasquez",
+              "Linda Wagner",
+              "Gary Hinton"
+            ],
+            "json": {
+              "name": "Kevin Harrell",
+              "address": "2123 Adam Crossroad Suite 236\nNew Thomasstad, MI 56877"
+            },
+            "key9875": "value32816",
+            "key12591": "value38042",
+            "key50723": "value27715",
+            "key17444": "value22227",
+            "key17708": "value74838"
+          }
+        ],
+        "dbName": "default"
+      }
+    }
+  ]
+}

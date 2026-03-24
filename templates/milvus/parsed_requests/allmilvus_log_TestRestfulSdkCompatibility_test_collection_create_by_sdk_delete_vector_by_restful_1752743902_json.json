@@ -1,0 +1,40 @@
+{
+  "test_name": "allmilvus_log.TestRestfulSdkCompatibility_test_collection_create_by_sdk_delete_vector_by_restful_1752743902.json",
+  "vdb_type": "qdrant",
+  "requests": [
+    {
+      "response": {
+        "status_code": 200,
+        "headers": {
+          "Access-Control-Allow-Credentials": "true",
+          "Access-Control-Allow-Headers": "Content-Type, Content-Length, Accept-Encoding, X-CSRF-Token, Authorization, accept, origin, Cache-Control, X-Requested-With",
+          "Access-Control-Allow-Methods": "GET, HEAD, POST, PUT, DELETE, OPTIONS, PATCH",
+          "Access-Control-Allow-Origin": "*",
+          "Content-Type": "application/json; charset=utf-8",
+          "Date": "Thu, 17 Jul 2025 09:18:17 GMT",
+          "Content-Length": "22"
+        },
+        "elapsed_ms": 1.616,
+        "timestamp": 1752743897.721927,
+        "request_id": 0,
+        "content": {
+          "code": 200,
+          "data": {}
+        }
+      },
+      "method": "POST",
+      "url": "http://172.17.0.11:23210/v1/vector/delete",
+      "headers": {
+        "Content-Type": "application/json",
+        "Authorization": "Bearer root:Milvus",
+        "RequestId": "f990204f-62ee-11f0-b87e-0242ac110005"
+      },
+      "timestamp": 1752743897.719748,
+      "request_id": 0,
+      "content": {
+        "collectionName": "test_collection_2025_07_17_17_18_11_777965RMoQLuLg",
+        "id": "__FLOAT_ARRAY_DIM_10__"
+      }
+    }
+  ]
+}
